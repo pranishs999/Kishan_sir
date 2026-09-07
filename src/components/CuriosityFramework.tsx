@@ -10,37 +10,37 @@ export const CuriosityFramework: React.FC = () => {
   return (
     <section 
       id="framework" 
-      className="section-wrapper section-dark"
+      className="section-wrapper"
       style={{
-        backgroundColor: 'var(--dark-bg)',
-        color: 'var(--dark-text)',
-        borderTop: '1px solid var(--dark-border)',
-        borderBottom: '1px solid var(--dark-border)'
+        backgroundColor: 'var(--bg-alt)',
+        color: 'var(--text-primary)',
+        borderTop: '1px solid var(--border-light)',
+        borderBottom: '1px solid var(--border-light)'
       }}
     >
       <div className="container">
         
         {/* Header Block */}
-        <div style={{ marginBottom: '3.5rem' }}>
-          <span className="eyebrow eyebrow-dark">SIGNATURE FRAMEWORK</span>
+        <div style={{ marginBottom: '3rem' }}>
+          <span className="eyebrow">SIGNATURE FRAMEWORK</span>
           <h2 
             className="text-h1" 
             style={{ 
-              color: 'var(--dark-text)', 
+              color: 'var(--text-primary)', 
               fontFamily: 'var(--font-serif)',
-              marginTop: '0.5rem',
+              marginTop: '0.35rem',
               letterSpacing: '-0.02em',
-              fontSize: 'clamp(2.1rem, 4vw, 3.5rem)'
+              fontSize: 'clamp(2rem, 3.8vw, 3.2rem)'
             }}
           >
             FROM CURIOSITY TO COMMERCE
           </h2>
           <p 
             style={{ 
-              fontSize: '1.15rem', 
-              color: 'var(--dark-text-muted)', 
+              fontSize: '1.1rem', 
+              color: 'var(--text-secondary)', 
               maxWidth: '780px', 
-              marginTop: '1rem',
+              marginTop: '0.85rem',
               fontFamily: 'var(--font-sans)',
               lineHeight: 1.6
             }}
@@ -52,11 +52,11 @@ export const CuriosityFramework: React.FC = () => {
         {/* Horizontal Typography Progression Strip */}
         <div 
           style={{
-            borderTop: '1px solid var(--dark-border)',
-            borderBottom: '1px solid var(--dark-border)',
-            paddingTop: '1.25rem',
-            paddingBottom: '1.25rem',
-            marginBottom: '3rem',
+            borderTop: '1px solid var(--border-light)',
+            borderBottom: '1px solid var(--border-light)',
+            paddingTop: '1rem',
+            paddingBottom: '1rem',
+            marginBottom: '2.5rem',
             overflowX: 'auto',
             WebkitOverflowScrolling: 'touch',
             maxWidth: '100%'
@@ -86,9 +86,9 @@ export const CuriosityFramework: React.FC = () => {
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'flex-start',
-                      gap: '0.25rem',
-                      padding: '0.6rem 0.85rem',
-                      borderBottom: `2px solid ${isActive ? 'var(--accent-gold-light)' : 'transparent'}`,
+                      gap: '0.2rem',
+                      padding: '0.5rem 0.85rem',
+                      borderBottom: `2px solid ${isActive ? 'var(--accent-blue)' : 'transparent'}`,
                       transition: 'all 0.25s ease',
                       flexShrink: 0
                     }}
@@ -96,9 +96,9 @@ export const CuriosityFramework: React.FC = () => {
                     <span 
                       style={{ 
                         fontFamily: 'var(--font-sans)', 
-                        fontSize: '0.75rem', 
+                        fontSize: '0.725rem', 
                         fontWeight: 700, 
-                        color: isActive ? 'var(--accent-gold-light)' : 'var(--dark-text-muted)',
+                        color: isActive ? 'var(--accent-blue)' : 'var(--text-muted)',
                         letterSpacing: '0.1em'
                       }}
                     >
@@ -107,9 +107,9 @@ export const CuriosityFramework: React.FC = () => {
                     <span 
                       style={{ 
                         fontFamily: 'var(--font-serif)', 
-                        fontSize: isActive ? '1.35rem' : '1.2rem', 
+                        fontSize: isActive ? '1.3rem' : '1.15rem', 
                         fontWeight: isActive ? 600 : 400, 
-                        color: isActive ? '#FFFFFF' : 'var(--dark-text-muted)',
+                        color: isActive ? 'var(--text-primary)' : 'var(--text-muted)',
                         letterSpacing: '0.03em',
                         whiteSpace: 'nowrap',
                         transition: 'all 0.2s ease'
@@ -122,7 +122,7 @@ export const CuriosityFramework: React.FC = () => {
                   {idx < FRAMEWORK_STEPS.length - 1 && (
                     <ChevronRight 
                       size={16} 
-                      color="var(--dark-border)" 
+                      color="var(--border-light)" 
                       style={{ flexShrink: 0 }} 
                     />
                   )}
@@ -138,14 +138,15 @@ export const CuriosityFramework: React.FC = () => {
           <div style={{ gridColumn: 'span 7' }}>
             <div 
               style={{
-                backgroundColor: 'var(--dark-surface)',
-                border: '1px solid var(--dark-border)',
-                padding: 'clamp(1.5rem, 3.5vw, 2.75rem)',
+                backgroundColor: 'var(--bg-surface)',
+                border: '1px solid var(--border-light)',
+                padding: 'clamp(1.5rem, 3vw, 2.5rem)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1.15rem',
+                gap: '1rem',
                 overflowWrap: 'break-word',
-                wordBreak: 'break-word'
+                wordBreak: 'break-word',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
@@ -162,7 +163,7 @@ export const CuriosityFramework: React.FC = () => {
                 >
                   STAGE {activeStep.stepNumber} OF 07
                 </span>
-                <span style={{ fontSize: '0.875rem', color: 'var(--accent-gold-light)', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.875rem', color: 'var(--accent-gold)', fontWeight: 600 }}>
                   {activeStep.subtitle}
                 </span>
               </div>
@@ -170,34 +171,34 @@ export const CuriosityFramework: React.FC = () => {
               <h3 
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
-                  color: '#FFFFFF',
+                  fontSize: 'clamp(1.65rem, 3vw, 2.2rem)',
+                  color: 'var(--text-primary)',
                   lineHeight: 1.15
                 }}
               >
                 {activeStep.title}
               </h3>
 
-              <p style={{ fontSize: '1.05rem', color: 'var(--dark-text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '1.025rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 {activeStep.description}
               </p>
 
               <div 
                 style={{
-                  marginTop: '0.75rem',
-                  paddingTop: '1.15rem',
-                  borderTop: '1px solid var(--dark-border)',
+                  marginTop: '0.5rem',
+                  paddingTop: '1rem',
+                  borderTop: '1px solid var(--border-light)',
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '0.75rem'
                 }}
               >
-                <Layers size={20} color="var(--accent-gold-light)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <Layers size={20} color="var(--accent-blue)" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <strong style={{ display: 'block', fontSize: '0.8rem', color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <strong style={{ display: 'block', fontSize: '0.775rem', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     Ecosystem Impact
                   </strong>
-                  <span style={{ fontSize: '0.925rem', color: 'var(--dark-text-muted)' }}>
+                  <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                     {activeStep.impact}
                   </span>
                 </div>
@@ -206,23 +207,23 @@ export const CuriosityFramework: React.FC = () => {
           </div>
 
           <div style={{ gridColumn: 'span 5', paddingLeft: 'clamp(0px, 2vw, 1.5rem)' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
               <h4 
                 style={{ 
                   fontFamily: 'var(--font-sans)', 
-                  fontSize: '0.85rem', 
+                  fontSize: '0.825rem', 
                   fontWeight: 700, 
                   letterSpacing: '0.15em', 
                   textTransform: 'uppercase', 
-                  color: 'var(--accent-gold-light)' 
+                  color: 'var(--accent-gold)' 
                 }}
               >
                 Framework Principles
               </h4>
-              <p style={{ fontSize: '1.05rem', color: 'var(--dark-text-muted)', lineHeight: 1.65 }}>
+              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.65 }}>
                 Without a structured bridge between early classroom curiosity and eventual commercialization, intellectual capital remains stagnant.
               </p>
-              <p style={{ fontSize: '1.05rem', color: 'var(--dark-text-muted)', lineHeight: 1.65 }}>
+              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.65 }}>
                 Kishan Bastola's 7-stage framework removes institutional bottlenecks, allowing young minds in Nepal to transition seamlessly from theoretical enquiry into enterprise and national value.
               </p>
             </div>

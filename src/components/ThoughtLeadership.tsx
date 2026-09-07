@@ -14,7 +14,7 @@ export const ThoughtLeadership: React.FC<ThoughtLeadershipProps> = ({ onSelectTh
         
         {/* Section Header */}
         <div style={{ marginBottom: '3.5rem' }}>
-          <span className="eyebrow">08 / THOUGHT LEADERSHIP & ESSAYS</span>
+          <span className="eyebrow">THOUGHT LEADERSHIP & ESSAYS</span>
           <h2 className="text-h1" style={{ maxWidth: '850px', marginTop: '0.5rem' }}>
             Pedagogical Insights & Ecosystem Philosophy
           </h2>

@@ -5,14 +5,14 @@ export const Vision: React.FC = () => {
   return (
     <section 
       id="vision" 
-      className="section-wrapper section-dark"
+      className="section-wrapper"
       style={{
-        backgroundColor: 'var(--dark-bg)',
-        color: 'var(--dark-text)',
-        borderTop: '1px solid var(--dark-border)',
-        borderBottom: '1px solid var(--dark-border)',
-        paddingTop: 'clamp(5rem, 10vw, 9rem)',
-        paddingBottom: 'clamp(5rem, 10vw, 9rem)',
+        backgroundColor: 'var(--bg-surface)',
+        color: 'var(--text-primary)',
+        borderTop: '1px solid var(--border-light)',
+        borderBottom: '1px solid var(--border-light)',
+        paddingTop: 'clamp(3.5rem, 6vw, 6rem)',
+        paddingBottom: 'clamp(3.5rem, 6vw, 6rem)',
         textAlign: 'left'
       }}
     >
@@ -20,36 +20,36 @@ export const Vision: React.FC = () => {
         
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           
-          <span className="eyebrow eyebrow-dark" style={{ marginBottom: '1.5rem' }}>
-            09 / EDUCATIONAL VISION & DECLARATION
+          <span className="eyebrow" style={{ marginBottom: '1.25rem' }}>
+            EDUCATIONAL VISION & DECLARATION
           </span>
 
           {/* Core Vision Header Quote */}
           <h2 
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-              color: '#FFFFFF',
-              lineHeight: 1.08,
+              fontSize: 'clamp(2.2rem, 4.5vw, 3.8rem)',
+              color: 'var(--accent-blue)',
+              lineHeight: 1.1,
               letterSpacing: '-0.02em',
-              marginBottom: '3rem',
+              marginBottom: '2.5rem',
               textTransform: 'uppercase'
             }}
           >
             {VISION_DATA.headerQuote}
           </h2>
 
-          <div className="divider divider-dark" style={{ marginBottom: '3rem' }} />
+          <div className="divider" style={{ marginBottom: '2.5rem' }} />
 
           {/* Vision Lines Stack */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {VISION_DATA.lines.map((line, idx) => (
               <div 
                 key={idx}
                 style={{
                   display: 'flex',
                   alignItems: 'baseline',
-                  gap: '1.5rem'
+                  gap: '1.25rem'
                 }}
               >
                 <span 
@@ -57,7 +57,7 @@ export const Vision: React.FC = () => {
                     fontFamily: 'var(--font-sans)', 
                     fontSize: '0.85rem', 
                     fontWeight: 700, 
-                    color: 'var(--accent-gold-light)',
+                    color: 'var(--accent-gold)',
                     letterSpacing: '0.1em'
                   }}
                 >
@@ -67,9 +67,9 @@ export const Vision: React.FC = () => {
                 <p 
                   style={{
                     fontFamily: 'var(--font-serif)',
-                    fontSize: 'clamp(1.4rem, 2.5vw, 2.2rem)',
-                    color: 'var(--dark-text-muted)',
-                    lineHeight: 1.25,
+                    fontSize: 'clamp(1.25rem, 2.2vw, 1.9rem)',
+                    color: 'var(--text-secondary)',
+                    lineHeight: 1.3,
                     fontWeight: 400
                   }}
                 >

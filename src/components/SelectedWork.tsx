@@ -85,7 +85,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onSelectWork }) => {
                       marginBottom: '0.5rem'
                     }}
                   >
-                    ENTRY {item.number} · {item.role}
+                    {item.role}
                   </span>
 
                   <h3 

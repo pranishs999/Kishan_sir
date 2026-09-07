@@ -35,7 +35,7 @@ export const ContactFooter: React.FC<ContactFooterProps> = ({ onOpenCV }) => {
           }}
         >
           <div>
-            <span className="eyebrow">10 / EXECUTIVE CONTACT & DIRECTORY</span>
+            <span className="eyebrow">EXECUTIVE CONTACT & DIRECTORY</span>
             <h2 className="text-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', marginTop: '0.5rem' }}>
               {CONTACT_DATA.name}
             </h2>

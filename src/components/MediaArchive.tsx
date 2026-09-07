@@ -21,7 +21,7 @@ export const MediaArchive: React.FC<MediaArchiveProps> = ({ onSelectMedia }) => 
         
         {/* Section Header */}
         <div style={{ marginBottom: '3.5rem' }}>
-          <span className="eyebrow">07 / MEDIA & PRESS ARCHIVE</span>
+          <span className="eyebrow">MEDIA & PRESS ARCHIVE</span>
           <h2 className="text-h1" style={{ maxWidth: '850px', marginTop: '0.5rem' }}>
             Verified Press Coverage & Public Record
           </h2>
@@ -56,7 +56,7 @@ export const MediaArchive: React.FC<MediaArchiveProps> = ({ onSelectMedia }) => 
                   }}
                 >
                   <img 
-                    src="/images/press.png" 
+                    src={item.customImageUrl || "/images/tisf.png"} 
                     alt={item.headline}
                     style={{
                       width: '100%',

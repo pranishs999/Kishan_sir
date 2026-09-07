@@ -34,7 +34,7 @@
   /* Layout Spacing */
   --site-max-width: 1400px;
   --grid-gap: 2rem;
-  --section-padding-y: clamp(4.5rem, 8vw, 8.5rem);
+  --section-padding-y: clamp(2.75rem, 4.5vw, 4.75rem);
   --section-padding-x: clamp(1.25rem, 5vw, 4rem);
 
   /* Transitions */
