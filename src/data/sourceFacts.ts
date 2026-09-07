@@ -205,7 +205,7 @@ export const SELECTED_WORK: WorkEntry[] = [
       "International academic networking and cross-border scientific exchange"
     ],
     imagePlaceholderLabel: "INTERNATIONAL DELEGATION: Global Science Competitions — Nepal Delegation",
-    customImageUrl: "/images/tisf_taiwan.svg",
+    customImageUrl: "/images/tisf.img",
     linkText: "TISF Official Site",
     linkUrl: "https://www.ntsec.gov.tw"
   },
@@ -359,7 +359,7 @@ export const MEDIA_ARCHIVE: MediaEntry[] = [
     excerpt: "Country Leader Kishan Bastola heads Nepal's scientific delegation to TISF Taiwan, presenting breakthrough youth research projects on the international stage.",
     fullSummary: "Coverage highlighting the selection, preparation, and international representation of Nepalese secondary students at the Taiwan International Science Fair in Taipei under the leadership of Country Leader Kishan Bastola.",
     clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature — Nepal Delegation at Taiwan International Science Fair",
-    customImageUrl: "/images/",
+    customImageUrl: "/images/tisf.png",
     sourceNotice: "Verified Newspaper Feature — National Press Archive"
   },
   {
@@ -383,7 +383,7 @@ export const MEDIA_ARCHIVE: MediaEntry[] = [
     excerpt: "Chairperson Kishan Bastola introduces the Summer STEAM Expo, bringing interactive science exhibits, telescopes, and robotics to Hetauda, Makwanpur.",
     fullSummary: "Detailed report on Astronova Foundation Nepal's flagship Summer STEAM Expo in Hetauda, highlighting its mission to democratize experiential STEM education.",
     clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature — Summer STEAM Expo Hetauda",
-    customImageUrl: "/images/media_steam_expo.svg",
+    customImageUrl: "/images/camp.png",
     sourceNotice: "Verified Print Clipping — Provincial Daily"
   }
 ];
