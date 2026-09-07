@@ -55,21 +55,36 @@ export const MediaArchive: React.FC<MediaArchiveProps> = ({ onSelectMedia }) => 
                     backgroundColor: '#EFECE3'
                   }}
                 >
-                  <div className="editorial-image-overlay" style={{ background: 'linear-gradient(180deg, rgba(14,42,71,0.85) 0%, rgba(18,19,22,0.95) 100%)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <Newspaper size={16} color="var(--accent-gold-light)" />
-                      <span className="placeholder-badge" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}>
+                  <img 
+                    src="/images/press.png" 
+                    alt={item.headline}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
+                  <div 
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      background: 'linear-gradient(180deg, transparent 0%, rgba(14,42,71,0.92) 100%)',
+                      padding: '1rem',
+                      color: '#FFFFFF',
+                      zIndex: 2
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.2rem' }}>
+                      <Newspaper size={14} color="var(--accent-gold-light)" />
+                      <span className="placeholder-badge" style={{ backgroundColor: 'rgba(255,255,255,0.15)', fontSize: '0.65rem', padding: '0.2rem 0.5rem' }}>
                         PRINT ARCHIVE
                       </span>
                     </div>
-                    <div style={{ marginTop: 'auto' }}>
-                      <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', color: '#FFFFFF' }}>
-                        {item.publication}
-                      </p>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--accent-gold-light)', marginTop: '0.25rem' }}>
-                        {item.clippingPlaceholderLabel}
-                      </p>
-                    </div>
+                    <p style={{ fontFamily: 'var(--font-serif)', fontSize: '0.9rem', color: '#FFFFFF' }}>
+                      {item.publication}
+                    </p>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
-import type { WorkEntry, MediaEntry, ThoughtEntry } from '../types/portfolio';
+import type { WorkEntry, MediaEntry, ThoughtEntry, ThesisEntry } from '../types/portfolio';
 
 interface DetailModalProps {
   isOpen: boolean;
@@ -8,6 +8,7 @@ interface DetailModalProps {
   workData?: WorkEntry | null;
   mediaData?: MediaEntry | null;
   thoughtData?: ThoughtEntry | null;
+  thesisData?: ThesisEntry | null;
 }
 
 export const DetailModal: React.FC<DetailModalProps> = ({
@@ -15,7 +16,8 @@ export const DetailModal: React.FC<DetailModalProps> = ({
   onClose,
   workData,
   mediaData,
-  thoughtData
+  thoughtData,
+  thesisData
 }) => {
   if (!isOpen) return null;
 
@@ -96,7 +98,37 @@ export const DetailModal: React.FC<DetailModalProps> = ({
           </div>
         )}
 
-        {/* THOUGHT DETAIL MODE */}
+        {/* THESIS / ARTICLE DETAIL MODE */}
+        {thesisData && (
+          <div>
+            <span className="eyebrow">{thesisData.field} · {thesisData.year}</span>
+            <h2 
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: '2.2rem',
+                color: 'var(--text-primary)',
+                lineHeight: 1.2,
+                marginBottom: '0.75rem',
+                marginTop: '0.25rem'
+              }}
+            >
+              {thesisData.title}
+            </h2>
+
+            <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--accent-blue)', marginBottom: '1.5rem' }}>
+              Supervision / Authorship: {thesisData.role} ({thesisData.authorOrStudent})
+            </p>
+
+            <div style={{ backgroundColor: 'var(--bg-alt)', padding: '1.5rem', borderLeft: '3px solid var(--accent-gold)', marginBottom: '2rem' }}>
+              <strong style={{ display: 'block', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+                Abstract Summary
+              </strong>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                {thesisData.abstract}
+              </p>
+            </div>
+          </div>
+        )}
         {thoughtData && (
           <div>
             <span className="eyebrow">{thoughtData.category} · {thoughtData.readTime}</span>

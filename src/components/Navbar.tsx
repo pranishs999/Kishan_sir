@@ -24,10 +24,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
 
   const navLinks = [
     { label: 'About', href: '#profile' },
-    { label: 'Work', href: '#work' },
+    { label: 'Delegations', href: '#delegations' },
     { label: 'Initiatives', href: '#institutions' },
-    { label: 'Thought', href: '#thought' },
-    { label: 'Media', href: '#media' },
+    { label: 'Theses', href: '#theses' },
+    { label: 'Gallery', href: '#gallery' },
+    { label: 'Support', href: '#support' },
   ];
 
   return (

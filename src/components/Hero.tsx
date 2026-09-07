@@ -153,34 +153,39 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
                 boxShadow: '0 16px 36px rgba(0,0,0,0.06)'
               }}
             >
-              { (
-                <div className="editorial-image-overlay">
-                  <div>
-                    <span className="placeholder-badge">OFFICIAL PORTRAIT ASSET</span>
-                  </div>
-                  <div style={{ marginTop: 'auto' }}>
-                    <p className="placeholder-label" style={{ fontWeight: 600 }}>
-                      Kishan Bastola
-                    </p>
-                    <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)', marginTop: '0.25rem' }}>
-                      Executive Address · Institutional Leadership & Research Governance
-                    </p>
-                    <div 
-                      style={{
-                        marginTop: '1rem',
-                        paddingTop: '0.75rem',
-                        borderTop: '1px solid rgba(255,255,255,0.2)',
-                        fontSize: '0.75rem',
-                        color: 'var(--accent-gold-light)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em'
-                      }}
-                    >
-                      Supplied Photography Container
-                    </div>
-                  </div>
-                </div>
-              )}
+              <img 
+                src={HERO_DATA.heroImageUrl} 
+                alt="Kishan Bastola — Educationist, Mathematician, STEM Advocate" 
+                loading="eager"
+                decoding="async"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  filter: 'contrast(1.04) saturate(0.95)'
+                }}
+              />
+              <div 
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(180deg, transparent 0%, rgba(18,19,22,0.88) 100%)',
+                  padding: '1.25rem',
+                  color: '#FFFFFF'
+                }}
+              >
+                <span className="placeholder-badge" style={{ backgroundColor: 'var(--accent-blue)' }}>
+                  EXECUTIVE PORTRAIT
+                </span>
+                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', marginTop: '0.35rem', fontWeight: 600, color: '#FFFFFF' }}>
+                  Kishan Bastola
+                </p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--accent-gold-light)', letterSpacing: '0.04em' }}>
+                  Chairperson — Astronova Foundation Nepal · STEM & Math Advocate
+                </p>
+              </div>
             </div>
           </div>
 

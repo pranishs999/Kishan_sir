@@ -38,18 +38,35 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onSelectWork }) => {
                 {/* Image Column */}
                 <div style={{ gridColumn: isEven ? 'span 6' : 'span 6', order: isEven ? 1 : 2 }}>
                   <div className="editorial-image-frame" style={{ minHeight: '380px' }}>
-                    <div className="editorial-image-overlay">
-                      <div>
-                        <span className="placeholder-badge">{item.category}</span>
-                      </div>
-                      <div style={{ marginTop: 'auto' }}>
-                        <p className="placeholder-label">
-                          {item.title}
-                        </p>
-                        <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)', marginTop: '0.25rem' }}>
-                          {item.imagePlaceholderLabel}
-                        </p>
-                      </div>
+                    <img 
+                      src={item.customImageUrl || '/images/astronova.png'} 
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                    <div 
+                      style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        background: 'linear-gradient(180deg, transparent 0%, rgba(18,19,22,0.88) 100%)',
+                        padding: '1.25rem',
+                        color: '#FFFFFF',
+                        zIndex: 2
+                      }}
+                    >
+                      <span className="placeholder-badge" style={{ backgroundColor: 'var(--accent-blue)' }}>
+                        {item.category}
+                      </span>
+                      <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', marginTop: '0.35rem', color: '#FFFFFF' }}>
+                        {item.title}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -114,13 +131,27 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onSelectWork }) => {
                     ))}
                   </ul>
 
-                  <button 
-                    onClick={() => onSelectWork(item)}
-                    className="btn-secondary" 
-                    style={{ padding: '0.75rem 1.5rem', fontSize: '0.85rem' }}
-                  >
-                    Explore Details <ArrowUpRight size={16} />
-                  </button>
+                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <button 
+                      onClick={() => onSelectWork(item)}
+                      className="btn-secondary" 
+                      style={{ padding: '0.75rem 1.5rem', fontSize: '0.85rem' }}
+                    >
+                      Explore Details <ArrowUpRight size={16} />
+                    </button>
+
+                    {item.linkUrl && item.linkUrl.startsWith('http') && (
+                      <a 
+                        href={item.linkUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="btn-primary" 
+                        style={{ padding: '0.75rem 1.5rem', fontSize: '0.85rem' }}
+                      >
+                        {item.linkText || 'Visit Web Link'} <ArrowUpRight size={16} />
+                      </a>
+                    )}
+                  </div>
                 </div>
 
               </div>

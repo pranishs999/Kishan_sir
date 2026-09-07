@@ -61,29 +61,33 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
             <h1 
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: '3.2rem',
+                fontSize: '2.8rem',
                 color: 'var(--text-primary)',
                 lineHeight: 1,
-                marginBottom: '0.5rem'
+                marginBottom: '0.25rem'
               }}
             >
               KISHAN BASTOLA
             </h1>
+            <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
+              (Netra Prasad Bastola) · {CONTACT_DATA.fullNameNep}
+            </p>
             
             <p 
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: '1.4rem',
+                fontSize: '1.35rem',
                 fontStyle: 'italic',
                 color: 'var(--accent-blue)',
                 marginBottom: '1rem'
               }}
             >
-              Educationist · Mathematician · Research & Innovation Ecosystem Builder
+              Chairperson — Astronova Foundation Nepal · STEM & Mathematics Advocate
             </p>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--border-light)', paddingTop: '0.75rem' }}>
-              <span>📍 Bagmati Province, Nepal</span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', fontSize: '0.85rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--border-light)', paddingTop: '0.75rem' }}>
+              <span>📍 Hetauda Sub-Metropolitan City, Makwanpur, Nepal</span>
+              <span>📞 {CONTACT_DATA.phone}</span>
               <span>✉️ {CONTACT_DATA.email}</span>
               <span>🔗 linkedin.com/in/kishan-bastola/</span>
             </div>

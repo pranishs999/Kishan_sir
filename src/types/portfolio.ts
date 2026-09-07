@@ -4,13 +4,6 @@ export interface CredentialItem {
   category: 'experience' | 'education' | 'leadership' | 'current';
 }
 
-export interface RoleFact {
-  title: string;
-  organization: string;
-  type: 'current' | 'former';
-  scope?: string;
-}
-
 export interface FrameworkStep {
   id: string;
   stepNumber: string;
@@ -49,6 +42,41 @@ export interface InstitutionEntry {
   customImageUrl?: string;
 }
 
+export interface DelegationEntry {
+  id: string;
+  title: string;
+  country: string;
+  location: string;
+  flagEmoji: string;
+  role: string;
+  event: string;
+  summary: string;
+  achievements: string[];
+  imageUrl: string;
+}
+
+export interface ThesisEntry {
+  id: string;
+  title: string;
+  authorOrStudent: string;
+  role: string; // 'Supervisor' | 'Author'
+  year: string;
+  field: string; // 'Mathematics Pedagogy' | 'STEAM' | 'Applied Science'
+  abstract: string;
+  pdfUrl?: string;
+}
+
+export interface GalleryItem {
+  id: string;
+  title: string;
+  event: string;
+  category: 'STEAM Expo' | 'International Fair' | 'Workshop' | 'Conference';
+  date: string;
+  location: string;
+  imageUrl: string;
+  caption: string;
+}
+
 export interface MediaEntry {
   id: string;
   headline: string;
@@ -72,10 +100,10 @@ export interface ThoughtEntry {
   keyTakeaways: string[];
 }
 
-export interface UserAssetCustomizer {
-  heroPhotoUrl: string;
-  astronovaPhotoUrl: string;
-  hricPhotoUrl: string;
-  mediaClippingUrl: string;
-  cvPdfUrl: string;
+export interface SupportVisionData {
+  bankName: string;
+  accountHolder: string;
+  accountNumber: string;
+  branch: string;
+  note: string;
 }

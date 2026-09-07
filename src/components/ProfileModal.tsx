@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, CheckCircle2 } from 'lucide-react';
-import { PROFILE_DATA, CREDENTIALS_DATA } from '../data/sourceFacts';
+import { HERO_DATA, PROFILE_DATA, CREDENTIALS_DATA } from '../data/sourceFacts';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -27,12 +27,15 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose, onO
             fontSize: '2.5rem',
             color: 'var(--text-primary)',
             lineHeight: 1.15,
-            marginBottom: '1.5rem',
+            marginBottom: '0.25rem',
             marginTop: '0.25rem'
           }}
         >
-          Kishan Bastola
+          Kishan Bastola (Netra Prasad Bastola)
         </h2>
+        <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
+          {HERO_DATA.fullNameNep}
+        </p>
 
         <p 
           style={{

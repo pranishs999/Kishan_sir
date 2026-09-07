@@ -120,16 +120,31 @@ export const InstitutionBuilding: React.FC = () => {
                   {/* Right Column: Image Asset & Impact Box (Cols 8-12) */}
                   <div style={{ gridColumn: 'span 5', paddingLeft: 'clamp(0px, 2vw, 1.5rem)' }}>
                     <div className="editorial-image-frame" style={{ minHeight: '300px', marginBottom: '1.5rem' }}>
-                      <div className="editorial-image-overlay">
-                        <div>
-                          <span className="placeholder-badge">INSTITUTIONAL ARCHIVE</span>
-                        </div>
-                        <div style={{ marginTop: 'auto' }}>
-                          <p className="placeholder-label">{inst.name}</p>
-                          <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.85)', marginTop: '0.25rem' }}>
-                            {inst.imagePlaceholderLabel}
-                          </p>
-                        </div>
+                      <img 
+                        src={inst.id === 'institution-astronova' ? '/images/astronova.png' : '/images/hric.png'} 
+                        alt={inst.name}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover'
+                        }}
+                      />
+                      <div 
+                        style={{
+                          position: 'absolute',
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          background: 'linear-gradient(180deg, transparent 0%, rgba(18,19,22,0.85) 100%)',
+                          padding: '1rem 1.25rem',
+                          color: '#FFFFFF',
+                          zIndex: 2
+                        }}
+                      >
+                        <span className="placeholder-badge">INSTITUTIONAL ARCHIVE</span>
+                        <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', marginTop: '0.25rem', color: '#FFFFFF' }}>
+                          {inst.name}
+                        </p>
                       </div>
                     </div>
 

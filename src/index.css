@@ -4,32 +4,32 @@
    ========================================================================== */
 
 :root {
-  /* Color Palette */
-  --bg-primary: #F9F8F3;       /* Warm Ivory */
+  /* Color Palette — Crisp Matte Executive Colors (Zero Neon) */
+  --bg-primary: #FAFAF7;       /* Matte Off-White Ivory */
   --bg-surface: #FFFFFF;       /* Pure Off-White Surface */
-  --bg-alt: #F2EFE8;           /* Neutral Cream Alt */
+  --bg-alt: #F3F1EB;           /* Matte Neutral Cream Alt */
   
-  --text-primary: #121316;     /* Deep Charcoal, Near Black */
-  --text-secondary: #4A4D55;   /* Slate Charcoal */
-  --text-muted: #757985;       /* Editorial Muted Grey */
+  --text-primary: #181B1E;     /* Deep Charcoal, Near Black */
+  --text-secondary: #4A4E56;   /* Slate Charcoal */
+  --text-muted: #787C86;       /* Editorial Muted Grey */
   
-  --accent-blue: #0E2A47;      /* Deep Academic Blue */
-  --accent-blue-hover: #163B63;
-  --accent-gold: #9E8256;      /* Muted Bronze / Restrained Gold */
-  --accent-gold-light: #C4B296;
+  --accent-blue: #0F2C4A;      /* Deep Academic Navy Blue */
+  --accent-blue-hover: #173E66;
+  --accent-gold: #9A8055;      /* Matte Bronze Gold */
+  --accent-gold-light: #C6B497;
   
-  --dark-bg: #121316;          /* Immersive Dark Section Canvas */
-  --dark-surface: #1B1C21;     /* Dark Elevated Card */
-  --dark-border: rgba(245, 243, 236, 0.14);
+  --dark-bg: #141619;          /* Immersive Dark Section Canvas */
+  --dark-surface: #1E2125;     /* Dark Elevated Card */
+  --dark-border: rgba(245, 243, 236, 0.12);
   --dark-text: #F5F3EC;        /* Ivory Text on Dark */
-  --dark-text-muted: #A3A8B5;  /* Soft Muted Ivory */
+  --dark-text-muted: #A0A5B2;  /* Muted Soft Ivory */
   
-  --border-light: rgba(18, 19, 22, 0.12);
-  --border-accent: rgba(158, 130, 86, 0.35);
+  --border-light: rgba(24, 27, 30, 0.12);
+  --border-accent: rgba(154, 128, 85, 0.35);
 
-  /* Typography */
+  /* Typography — Poppins Sans & Cormorant Serif */
   --font-serif: 'Cormorant Garamond', 'Instrument Serif', Georgia, serif;
-  --font-sans: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Layout Spacing */
   --site-max-width: 1400px;
