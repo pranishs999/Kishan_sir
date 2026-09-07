@@ -88,7 +88,7 @@ export const GLOBAL_DELEGATIONS: DelegationEntry[] = [
       "Bilateral academic exchange between Nepalese and Southeast Asian science institutions",
       "Systematic incubation of student projects leading up to international competition"
     ],
-    imageUrl: "/images/iostc_indonesia.svg"
+    imageUrl: "/images/tisf.png"
   }
 ];
 
@@ -205,7 +205,7 @@ export const SELECTED_WORK: WorkEntry[] = [
       "International academic networking and cross-border scientific exchange"
     ],
     imagePlaceholderLabel: "INTERNATIONAL DELEGATION: Global Science Competitions — Nepal Delegation",
-    customImageUrl: "/images/tisf.img",
+    customImageUrl: "/images/tisf.png",
     linkText: "TISF Official Site",
     linkUrl: "https://www.ntsec.gov.tw"
   },
@@ -323,7 +323,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: "International Fair",
     date: "Indonesia Event",
     location: "Indonesia 🇮🇩",
-    imageUrl: "/images/iostc_indonesia.svg",
+    imageUrl: "/images/IOSTC.jpg",
     caption: "Nepalese national team delegates at the IOSTC awards ceremony in Indonesia."
   },
   {
@@ -360,7 +360,7 @@ export const MEDIA_ARCHIVE: MediaEntry[] = [
     fullSummary: "Coverage highlighting the selection, preparation, and international representation of Nepalese secondary students at the Taiwan International Science Fair in Taipei under the leadership of Country Leader Kishan Bastola.",
     clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature — Nepal Delegation at Taiwan International Science Fair",
     customImageUrl: "/images/tisf.png",
-    sourceNotice: "Verified Newspaper Feature — National Press Archive"
+    sourceNotice: ""
   },
   {
     id: "media-2",
@@ -371,7 +371,7 @@ export const MEDIA_ARCHIVE: MediaEntry[] = [
     excerpt: "Delegation Leader Kishan Bastola escorts Nepalese young researchers to international honors at IOSTC in Indonesia.",
     fullSummary: "Detailed news report on the achievements of the Nepalese delegation at the International Science & Technology Competition (IOSTC) in Indonesia, celebrating student prototype innovations.",
     clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature — IOSTC Indonesia Delegation",
-    customImageUrl: "/images/media_iostc.svg",
+    customImageUrl: "/images/IOSTC.jpg",
     sourceNotice: "Verified International Coverage"
   },
   {

@@ -26,7 +26,7 @@ export const Delegations: React.FC = () => {
         </div>
 
         {/* Delegations Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
           {GLOBAL_DELEGATIONS.map((del) => (
             <div 
               key={del.id}

@@ -35,18 +35,16 @@ export const MediaArchive: React.FC<MediaArchiveProps> = ({ onSelectMedia }) => 
           {MEDIA_ARCHIVE.map((item) => (
             <div 
               key={item.id}
+              className="grid-12"
               style={{
                 border: '1px solid var(--border-light)',
                 backgroundColor: 'var(--bg-primary)',
-                padding: 'clamp(1.5rem, 3vw, 2.5rem)',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(12, 1fr)',
-                gap: '2rem',
+                padding: 'clamp(1.25rem, 3vw, 2.5rem)',
                 alignItems: 'center'
               }}
             >
               {/* Press Clipping Image Frame (Cols 1-4) */}
-              <div style={{ gridColumn: 'span 4' }}>
+              <div style={{ gridColumn: 'span 4', width: '100%', maxWidth: '100%' }}>
                 <div 
                   className="editorial-image-frame" 
                   style={{ 
@@ -90,7 +88,7 @@ export const MediaArchive: React.FC<MediaArchiveProps> = ({ onSelectMedia }) => 
               </div>
 
               {/* Headline & Details Column (Cols 5-12) */}
-              <div style={{ gridColumn: 'span 8' }}>
+              <div style={{ gridColumn: 'span 8', width: '100%', maxWidth: '100%' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
                   <span 
                     style={{ 

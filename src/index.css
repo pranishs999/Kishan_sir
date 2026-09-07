@@ -27,9 +27,9 @@
   --border-light: rgba(24, 27, 30, 0.12);
   --border-accent: rgba(154, 128, 85, 0.35);
 
-  /* Typography — Exactly 2 Fonts: Poppins (Sans) & Cormorant Garamond (Serif) */
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Typography — Exactly 2 Fonts: Inter (Sans) & Fraunces (Serif) */
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Layout Spacing */
   --site-max-width: 1400px;
@@ -395,6 +395,18 @@ h1, h2, h3, h4, .font-serif {
   align-items: start;
 }
 
+/* Base Responsive Image & Container Helpers */
+img, svg, picture, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1200px) {
+  .credentials-grid-3x3 {
+    gap: 2rem 1.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .grid-12 {
     display: flex;
@@ -402,22 +414,77 @@ h1, h2, h3, h4, .font-serif {
     gap: 2.5rem;
   }
 
+  .grid-12 > div {
+    grid-column: span 12 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
   .credentials-grid-3x3 {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 }
 
 @media (max-width: 768px) {
+  :root {
+    --section-padding-y: clamp(2.25rem, 5vw, 3.5rem);
+    --section-padding-x: clamp(1rem, 4vw, 2rem);
+  }
+
   .text-display {
-    font-size: clamp(2.5rem, 11vw, 4.5rem);
+    font-size: clamp(2.2rem, 9.5vw, 4.2rem) !important;
   }
   
+  .text-h1 {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+  }
+
+  .text-h2 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+  }
+
   .editorial-image-frame {
-    min-height: 280px;
+    min-height: 240px !important;
+    padding: 1rem;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .credentials-grid-3x3 {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem 1.25rem;
+    max-height: 92vh;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-display {
+    font-size: clamp(1.8rem, 8.5vw, 2.8rem) !important;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+
+  .modal-close-btn {
+    top: 1rem;
+    right: 1rem;
+    width: 34px;
+    height: 34px;
   }
 }

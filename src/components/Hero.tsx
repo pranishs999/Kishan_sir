@@ -28,6 +28,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '0.75rem',
             borderBottom: '1px solid var(--border-light)',
             paddingBottom: '1rem',
             marginBottom: '2rem'
@@ -53,17 +55,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
         <div className="grid-12" style={{ alignItems: 'end' }}>
           
           {/* Main Typographic Column (Cols 1-8) */}
-          <div style={{ gridColumn: 'span 8' }}>
+          <div style={{ gridColumn: 'span 8', width: '100%', maxWidth: '100%' }}>
             
             {/* HUGE SERIF NAME: 8-12vw */}
             <h1 
               className="text-display"
               style={{
-                fontSize: 'clamp(3.5rem, 9.5vw, 8.5rem)',
                 lineHeight: 0.94,
                 marginBottom: '1.75rem',
                 color: 'var(--text-primary)',
-                letterSpacing: '-0.03em'
+                letterSpacing: '-0.03em',
+                overflowWrap: 'break-word',
+                wordBreak: 'break-word'
               }}
             >
               {HERO_DATA.name}
@@ -73,7 +76,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
             <p 
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(1.25rem, 2.4vw, 2.1rem)',
+                fontSize: 'clamp(1.15rem, 2.4vw, 2.1rem)',
                 fontStyle: 'italic',
                 lineHeight: 1.25,
                 color: 'var(--accent-blue)',
@@ -143,12 +146,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
           </div>
 
           {/* Asymmetric Photographic Column (Cols 9-12) */}
-          <div style={{ gridColumn: 'span 4' }}>
+          <div style={{ gridColumn: 'span 4', width: '100%', maxWidth: '100%' }}>
             <div 
               className="editorial-image-frame"
               style={{
                 height: '100%',
-                minHeight: '480px',
+                minHeight: 'clamp(320px, 45vh, 480px)',
                 border: '1px solid var(--border-light)',
                 boxShadow: '0 16px 36px rgba(0,0,0,0.06)'
               }}
