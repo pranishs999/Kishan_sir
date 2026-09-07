@@ -27,8 +27,8 @@
   --border-light: rgba(24, 27, 30, 0.12);
   --border-accent: rgba(154, 128, 85, 0.35);
 
-  /* Typography — Poppins Sans & Cormorant Serif */
-  --font-serif: 'Cormorant Garamond', 'Instrument Serif', Georgia, serif;
+  /* Typography — Exactly 2 Fonts: Poppins (Sans) & Cormorant Garamond (Serif) */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Layout Spacing */
@@ -387,23 +387,37 @@ h1, h2, h3, h4, .font-serif {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Grid Adjustments */
+/* Responsive Grid & Layout Adjustments */
+.credentials-grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem 2rem;
+  align-items: start;
+}
+
 @media (max-width: 1024px) {
   .grid-12 {
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .credentials-grid-3x3 {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .grid-12 {
-    grid-template-columns: 1fr;
-  }
-
   .text-display {
     font-size: clamp(2.5rem, 11vw, 4.5rem);
   }
   
   .editorial-image-frame {
     min-height: 280px;
+  }
+
+  .credentials-grid-3x3 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }

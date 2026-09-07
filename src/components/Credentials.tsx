@@ -26,22 +26,15 @@ export const Credentials: React.FC = () => {
           }}
         >
           <span className="eyebrow" style={{ margin: 0 }}>
-            02 / CREDENTIALS AT A GLANCE
+            CREDENTIALS AT A GLANCE
           </span>
           <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             Source Verified Credentials
           </span>
         </div>
 
-        {/* High Impact Typographic Grid */}
-        <div 
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '2.5rem 2rem',
-            alignItems: 'start'
-          }}
-        >
+        {/* High Impact Typographic Grid (3x3 Layout) */}
+        <div className="credentials-grid-3x3">
           {CREDENTIALS_DATA.map((cred, idx) => (
             <div 
               key={idx}

@@ -25,7 +25,7 @@ export const HERO_DATA = {
 };
 
 export const PROFILE_DATA = {
-  sectionNumber: "01 / PROFILE",
+  sectionNumber: "EXECUTIVE PROFILE",
   title: "18 Years of Academic Governance, Mathematical Pedagogy & STEM Advocacy",
   bodyParagraphs: [
     "Kishan Bastola (Netra Prasad Bastola) is an Educationist, Mathematician, STEM Advocate, and Research & Innovation Ecosystem Builder with over 18 years of executive leadership in Nepal's educational sector. Holding a Master's Degree in Mathematics, his work seamlessly integrates academic rigor with systemic institution building.",

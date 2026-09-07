@@ -17,7 +17,7 @@ export const InstitutionBuilding: React.FC = () => {
         
         {/* Section Header */}
         <div style={{ marginBottom: '4rem' }}>
-          <span className="eyebrow">05 / INSTITUTION BUILDING & ECOSYSTEMS</span>
+          <span className="eyebrow">INSTITUTION BUILDING & ECOSYSTEMS</span>
           <h2 className="text-h1" style={{ maxWidth: '900px', marginTop: '0.5rem' }}>
             Building Enduring Infrastructures for Science and Innovation
           </h2>

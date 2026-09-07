@@ -13,9 +13,9 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onSelectWork }) => {
       <div className="container">
         
         {/* Section Header */}
-        <div style={{ marginBottom: '4rem' }}>
-          <span className="eyebrow">04 / SELECTED WORK</span>
-          <h2 className="text-h1" style={{ maxWidth: '850px', marginTop: '0.5rem' }}>
+        <div style={{ marginBottom: '3rem' }}>
+          <span className="eyebrow">SELECTED WORK</span>
+          <h2 className="text-h2" style={{ maxWidth: '780px', marginTop: '0.35rem', fontSize: 'clamp(1.75rem, 3.2vw, 2.4rem)' }}>
             Pioneering Educational & Research Initiatives
           </h2>
         </div>

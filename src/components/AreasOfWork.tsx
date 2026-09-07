@@ -8,7 +8,7 @@ export const AreasOfWork: React.FC = () => {
         
         {/* Section Header */}
         <div style={{ marginBottom: '3.5rem' }}>
-          <span className="eyebrow">06 / AREAS OF WORK & DOMAIN EXPERTISE</span>
+          <span className="eyebrow">AREAS OF WORK & DOMAIN EXPERTISE</span>
           <h2 className="text-h1" style={{ maxWidth: '850px', marginTop: '0.5rem' }}>
             Core Domains of Executive & Pedagogical Focus
           </h2>
