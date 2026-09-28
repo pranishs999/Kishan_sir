@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, Link, NavLink } from 'react-router-dom';
+import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { HERO_DATA } from '../data/sourceFacts';
+import { Breadcrumbs } from './Breadcrumbs';
 
 export const AppLayout: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [moreMenuOpen, setMoreMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -304,6 +310,8 @@ export const AppLayout: React.FC = () => {
           </div>
         )}
       </header>
+
+      <Breadcrumbs />
 
       <main style={{ position: 'relative', zIndex: 100 }}>
         <Outlet />

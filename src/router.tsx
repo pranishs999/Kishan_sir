@@ -8,13 +8,17 @@ import { WorkDetailPage } from './pages/WorkDetailPage';
 import { InstitutionsPage } from './pages/InstitutionsPage';
 import { DelegationsPage } from './pages/DelegationsPage';
 import { FrameworkPage } from './pages/FrameworkPage';
+import { EcosystemPage } from './pages/EcosystemPage';
 import { ResearchPage } from './pages/ResearchPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { MediaPage } from './pages/MediaPage';
+import { NewspapersPage } from './pages/NewspapersPage';
 import { ThoughtsPage } from './pages/ThoughtsPage';
 import { VisionPage } from './pages/VisionPage';
 import { SupportPage } from './pages/SupportPage';
 import { ContactPage } from './pages/ContactPage';
+import { AchievementsPage } from './pages/AchievementsPage';
+import { CVPage } from './pages/CVPage';
 
 export const AppRouter: React.FC = () => {
   return (
@@ -23,18 +27,30 @@ export const AppRouter: React.FC = () => {
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/about/*" element={<AboutPage />} />
           <Route path="/work" element={<WorkPage />} />
           <Route path="/work/:workId" element={<WorkDetailPage />} />
+          <Route path="/initiatives" element={<WorkPage />} />
+          <Route path="/initiatives/:workId" element={<WorkDetailPage />} />
           <Route path="/institutions" element={<InstitutionsPage />} />
           <Route path="/delegations" element={<DelegationsPage />} />
           <Route path="/framework" element={<FrameworkPage />} />
+          <Route path="/ecosystem" element={<EcosystemPage />} />
+          <Route path="/ecosystem/*" element={<EcosystemPage />} />
           <Route path="/research" element={<ResearchPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/media" element={<MediaPage />} />
+          <Route path="/media/newspapers" element={<NewspapersPage />} />
+          <Route path="/media/gallery" element={<GalleryPage />} />
+          <Route path="/media/*" element={<MediaPage />} />
           <Route path="/thoughts" element={<ThoughtsPage />} />
+          <Route path="/thought" element={<ThoughtsPage />} />
+          <Route path="/thought/:slug" element={<ThoughtsPage />} />
           <Route path="/vision" element={<VisionPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/achievements" element={<AchievementsPage />} />
+          <Route path="/cv" element={<CVPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

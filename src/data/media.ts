@@ -1,0 +1,121 @@
+import type { MediaItemEntity } from '../types/schema';
+
+export const media: MediaItemEntity[] = [
+  {
+    id: "media-01",
+    headline: "विद्यालयदेखि अनुसन्धान, नवप्रवर्तन र उद्यमशीलतासम्मको नयाँ राष्ट्रिय मार्गचित्र",
+    publication: "National Educational Press",
+    date: "[VERIFY]",
+    category: "newspaper",
+    thumbnail: "/images/tisf.png",
+    summary: "",
+    externalUrl: "https://share.google/i8fzpGbmPMqoHXYCL",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  },
+  {
+    id: "media-02",
+    headline: "एष्ट्रोनोभा र काठमाडौँ विश्वविद्यालय स्कुल अफ एजुकेशनबीच सम्झौता",
+    publication: "Educational News Nepal",
+    date: "[VERIFY]",
+    category: "newspaper",
+    thumbnail: "/images/astronova.png",
+    summary: "",
+    externalUrl: "https://share.google/rbL9PiCjMIX5ZFgHb",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  },
+  {
+    id: "media-03",
+    headline: "हेटौंडाका वाइवाको आविस्कार अन्तर्राष्ट्रिय विज्ञान प्रदर्शनीका लागि छनौट",
+    publication: "Regional News Feature",
+    date: "[VERIFY]",
+    category: "event",
+    thumbnail: "/images/press1.jpeg",
+    summary: "",
+    externalUrl: "https://share.google/yWlGDrMVMbt8PI0T1",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  },
+  {
+    id: "media-04",
+    headline: "नारायणी कलेजको प्रमुखमा बास्तोला नियुक्त",
+    publication: "Narayanionline.com",
+    date: "[VERIFY]",
+    category: "newspaper",
+    thumbnail: "/images/hero.png",
+    summary: "",
+    externalUrl: "https://share.google/BYT6YUGIJCDBHJAdl",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  },
+  {
+    id: "media-05",
+    headline: "रोबटिक्स, आर्टिफिसिएल इन्टेलिजेन्स, फ्यूचर टेक्नोलोजी र एष्ट्रोनोमीसम्बन्धी कार्यशाला सम्पन्न",
+    publication: "Tech & Science Review",
+    date: "[VERIFY]",
+    category: "event",
+    thumbnail: "/images/workshop.jpg",
+    summary: "",
+    externalUrl: "https://share.google/sEH6pIFURfuSXKL78",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  },
+  {
+    id: "media-06",
+    headline: "एष्ट्रोनोभा फाउण्डेशनले ९ दिने कार्यशाला गर्ने",
+    publication: "Regional Daily",
+    date: "[VERIFY]",
+    category: "event",
+    thumbnail: "/images/camp.png",
+    summary: "",
+    externalUrl: "https://share.google/BdJ7a5pytmuWfnp8d",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  },
+  {
+    id: "media-07",
+    headline: "एस्ट्रोनोभा फाउण्डेशनको आयोजनामा ११ दिने कार्यशाला सुरु",
+    publication: "Bagmati Provincial News",
+    date: "[VERIFY]",
+    category: "event",
+    thumbnail: "/images/camp.png",
+    summary: "",
+    externalUrl: "https://share.google/Z9PAOU6UDKa3v9elz",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  },
+  {
+    id: "media-08",
+    headline: "एष्ट्रोनोभाद्वारा निशुल्क रोबटिक्स र अटोमेशन कार्यशाला",
+    publication: "National Press Feature",
+    date: "[VERIFY]",
+    category: "event",
+    thumbnail: "/images/workshop.jpg",
+    summary: "",
+    externalUrl: "https://share.google/QQ4veCklZ7nfx7Hgm",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  },
+  {
+    id: "media-09",
+    headline: "गणित समाज वाग्मती प्रदेशमा चितवनका आचार्यको नेतृत्व",
+    publication: "Narayanionline.com",
+    date: "[VERIFY]",
+    category: "newspaper",
+    thumbnail: "/images/press2.jpeg",
+    summary: "",
+    externalUrl: "https://share.google/x4DUHejEuHNhJDGeo",
+    verified: false,
+    language: "ne",
+    sourceNotice: "Unverified External Media Source — Pending Content Verification"
+  }
+];
