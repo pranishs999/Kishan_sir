@@ -13,7 +13,7 @@ import type {
 
 export const HERO_DATA = {
   name: "KISHAN BASTOLA",
-  fullNameNep: "किशन बाँस्टोला (नेत्र प्रसाद बाँस्टोला)",
+  fullNameNep: "किशन बास्तोला (नेत्र प्रसाद बास्तोला)",
   nameWithAlias: "Kishan Bastola (Netra Prasad Bastola)",
   title: "Chairperson — Astronova Foundation Nepal · STEM & Mathematics Advocate",
   subtitle: "Educationist · Mathematician · Research & Innovation Ecosystem Builder",
