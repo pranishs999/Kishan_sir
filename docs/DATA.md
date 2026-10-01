@@ -311,3 +311,115 @@ revisable.
 - `cv`, as a singleton composed view, should be implemented as a
   function/selector over the other entities rather than a separately
   maintained data file, to guarantee it never drifts out of sync.
+
+---
+
+## 6. MULTILINGUAL DATA MODEL
+
+All user-facing content must support English and Nepali.
+
+Use:
+
+```ts
+export type LocalizedString = string | {
+  en: string;
+  ne: string;
+};
+```
+
+for translatable fields.
+
+Example:
+
+```ts
+title: {
+  en: "Research & Innovation",
+  ne: "अनुसन्धान तथा नवप्रवर्तन"
+}
+
+description: {
+  en: "Building systemic research ecosystems in Nepal.",
+  ne: "नेपालमा प्रणालीगत अनुसन्धान र नवप्रवर्तन इकोसिस्टमको निर्माण।"
+}
+```
+
+### Non-translatable fields
+
+Do NOT duplicate these:
+
+- id
+- slug
+- image / coverImage / profileImage
+- video
+- websiteUrl / externalUrl
+- date
+- coordinates
+- source URL
+- organization ID
+- initiative ID
+- relationship IDs
+
+### Translatable fields
+
+These should support both languages:
+
+- title
+- subtitle
+- description
+- biography / shortBiography
+- tagline
+- section heading
+- section description
+- button labels
+- category labels
+- captions
+- article content
+- media summaries
+- initiative descriptions
+- form labels
+- form descriptions
+- accessibility text where appropriate
+
+### Example Entity
+
+```ts
+{
+  id: "hric",
+  name: {
+    en: "Hetauda Research and Innovation Center",
+    ne: "हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC)"
+  },
+  role: {
+    en: "Founder & Director",
+    ne: "संस्थापक तथा निर्देशक"
+  },
+  description: {
+    en: "A regional platform for science, technology, research, and innovation in Bagmati Province.",
+    ne: "वाग्मती प्रदेशमा विज्ञान, प्रविधि, अनुसन्धान र नवप्रवर्तनका लागि क्षेत्रीय मञ्च।"
+  },
+  websiteUrl: "https://hric.org.np",
+  coverImage: "/images/hric.png"
+}
+```
+
+### Translation completeness
+
+Every published page should have:
+
+- English content
+- Nepali content
+
+Do not silently display English text inside an otherwise Nepali page unless the term is intentionally kept in English.
+
+If a translation is genuinely unavailable, mark the field as requiring translation during development rather than silently falling back to unrelated content.
+
+### Language helper
+
+The application uses one centralized language/content resolver:
+
+`tField(field, language)`
+
+rather than implementing language selection independently on every page.
+
+This prevents inconsistent translation behavior.
+

@@ -3,22 +3,24 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from './components/AppLayout';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
+import { AboutEducationPage } from './pages/AboutEducationPage';
+import { AboutExperiencePage } from './pages/AboutExperiencePage';
+import { AboutLeadershipPage } from './pages/AboutLeadershipPage';
 import { WorkPage } from './pages/WorkPage';
-import { WorkDetailPage } from './pages/WorkDetailPage';
-import { InstitutionsPage } from './pages/InstitutionsPage';
-import { DelegationsPage } from './pages/DelegationsPage';
-import { FrameworkPage } from './pages/FrameworkPage';
+import { WorkDomainPage } from './pages/WorkDomainPage';
+import { InitiativesPage } from './pages/InitiativesPage';
+import { InitiativeDetailPage } from './pages/InitiativeDetailPage';
 import { EcosystemPage } from './pages/EcosystemPage';
-import { ResearchPage } from './pages/ResearchPage';
-import { GalleryPage } from './pages/GalleryPage';
+import { EcosystemStagePage } from './pages/EcosystemStagePage';
+import { ThoughtPage } from './pages/ThoughtPage';
+import { ThoughtDetailPage } from './pages/ThoughtDetailPage';
 import { MediaPage } from './pages/MediaPage';
 import { NewspapersPage } from './pages/NewspapersPage';
-import { ThoughtsPage } from './pages/ThoughtsPage';
-import { VisionPage } from './pages/VisionPage';
-import { SupportPage } from './pages/SupportPage';
-import { ContactPage } from './pages/ContactPage';
-import { AchievementsPage } from './pages/AchievementsPage';
+import { InterviewsPage } from './pages/InterviewsPage';
+import { EventsPage } from './pages/EventsPage';
+import { GalleryPage } from './pages/GalleryPage';
 import { CVPage } from './pages/CVPage';
+import { ContactPage } from './pages/ContactPage';
 
 export const AppRouter: React.FC = () => {
   return (
@@ -26,31 +28,55 @@ export const AppRouter: React.FC = () => {
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomePage />} />
+          
+          {/* About Section */}
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/about/*" element={<AboutPage />} />
+          <Route path="/about/education" element={<AboutEducationPage />} />
+          <Route path="/about/experience" element={<AboutExperiencePage />} />
+          <Route path="/about/leadership" element={<AboutLeadershipPage />} />
+          
+          {/* Work Section */}
           <Route path="/work" element={<WorkPage />} />
-          <Route path="/work/:workId" element={<WorkDetailPage />} />
-          <Route path="/initiatives" element={<WorkPage />} />
-          <Route path="/initiatives/:workId" element={<WorkDetailPage />} />
-          <Route path="/institutions" element={<InstitutionsPage />} />
-          <Route path="/delegations" element={<DelegationsPage />} />
-          <Route path="/framework" element={<FrameworkPage />} />
+          <Route path="/work/education" element={<WorkDomainPage />} />
+          <Route path="/work/mathematics" element={<WorkDomainPage />} />
+          <Route path="/work/science" element={<WorkDomainPage />} />
+          <Route path="/work/research" element={<WorkDomainPage />} />
+          <Route path="/work/innovation" element={<WorkDomainPage />} />
+          <Route path="/work/entrepreneurship" element={<WorkDomainPage />} />
+          
+          {/* Initiatives Section */}
+          <Route path="/initiatives" element={<InitiativesPage />} />
+          <Route path="/initiatives/hric" element={<InitiativeDetailPage />} />
+          <Route path="/initiatives/astronova" element={<InitiativeDetailPage />} />
+          <Route path="/initiatives/young-scientists" element={<InitiativeDetailPage />} />
+          <Route path="/initiatives/steam" element={<InitiativeDetailPage />} />
+          <Route path="/initiatives/science-engineering-fair" element={<InitiativeDetailPage />} />
+          <Route path="/initiatives/workshops" element={<InitiativeDetailPage />} />
+          
+          {/* Ecosystem Section */}
           <Route path="/ecosystem" element={<EcosystemPage />} />
-          <Route path="/ecosystem/*" element={<EcosystemPage />} />
-          <Route path="/research" element={<ResearchPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/ecosystem/vision" element={<EcosystemStagePage />} />
+          <Route path="/ecosystem/education" element={<EcosystemStagePage />} />
+          <Route path="/ecosystem/research" element={<EcosystemStagePage />} />
+          <Route path="/ecosystem/innovation" element={<EcosystemStagePage />} />
+          <Route path="/ecosystem/mentorship" element={<EcosystemStagePage />} />
+          <Route path="/ecosystem/enterprise" element={<EcosystemStagePage />} />
+          
+          {/* Thought Section */}
+          <Route path="/thought" element={<ThoughtPage />} />
+          <Route path="/thought/:slug" element={<ThoughtDetailPage />} />
+          
+          {/* Media Section */}
           <Route path="/media" element={<MediaPage />} />
           <Route path="/media/newspapers" element={<NewspapersPage />} />
+          <Route path="/media/interviews" element={<InterviewsPage />} />
+          <Route path="/media/events" element={<EventsPage />} />
           <Route path="/media/gallery" element={<GalleryPage />} />
-          <Route path="/media/*" element={<MediaPage />} />
-          <Route path="/thoughts" element={<ThoughtsPage />} />
-          <Route path="/thought" element={<ThoughtsPage />} />
-          <Route path="/thought/:slug" element={<ThoughtsPage />} />
-          <Route path="/vision" element={<VisionPage />} />
-          <Route path="/support" element={<SupportPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/achievements" element={<AchievementsPage />} />
+          
+          {/* CV & Contact */}
           <Route path="/cv" element={<CVPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

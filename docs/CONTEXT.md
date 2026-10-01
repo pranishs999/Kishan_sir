@@ -256,3 +256,51 @@ A future coding agent should treat all three files together as the complete
 project brief and should not begin implementation until claims requiring
 verification (§10, and any `[VERIFY]` markers) have been resolved or
 explicitly accepted as placeholders by the site owner.
+
+---
+
+## 12. LANGUAGE SUPPORT
+
+The website supports two languages:
+
+- English — EN
+- Nepali — नेपाली / NE
+
+English is the default language.
+
+Users can switch between English and Nepali from a global language control in the site header.
+
+The language switch must affect the complete page content, including:
+- navigation
+- headings
+- body text
+- buttons
+- labels
+- metadata
+- forms
+- breadcrumbs
+- footer
+- article content
+- initiative content
+- media descriptions
+- accessibility labels where appropriate
+
+The user's selected language should persist while navigating the website.
+
+Do not use automatic machine translation for the final content.
+
+English and Nepali content should be maintained as separate structured content fields so that translations can be reviewed and corrected.
+
+The website must preserve the same information architecture in both languages.
+
+Language switching must not change:
+- URL meaning
+- content relationships
+- IDs
+- dates
+- external source URLs
+- image references
+- factual data
+
+The language switcher should be available globally rather than requiring users to return to the homepage.
+

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, ArrowUpRight, Newspaper, ExternalLink } from 'lucide-react';
+import { Link, ArrowUpRight, Calendar, ExternalLink } from 'lucide-react';
 import { media } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 
-export const NewspapersPage: React.FC = () => {
+export const EventsPage: React.FC = () => {
   const { tF } = useLanguage();
-  const newspapers = media.filter(m => m.category === 'newspaper');
+  const events = media.filter(m => m.category === 'event');
 
   return (
     <>
@@ -22,9 +22,9 @@ export const NewspapersPage: React.FC = () => {
         }}
       >
         <div className="container">
-          <span className="eyebrow" style={{ marginBottom: '1.5rem' }}>NEWSPAPERS</span>
+          <span className="eyebrow" style={{ marginBottom: '1.5rem' }}>EVENTS</span>
           <h1 className="text-display" style={{ maxWidth: '900px' }}>
-            Newspaper Coverage
+            Event Documentation
           </h1>
           <p style={{ 
             fontFamily: 'var(--font-serif)', 
@@ -34,17 +34,17 @@ export const NewspapersPage: React.FC = () => {
             marginTop: '1rem',
             maxWidth: '800px'
           }}>
-            Print and online newspaper coverage of institutional work and delegations
+            Participation in and organization of workshops, fairs, and ceremonies
           </p>
         </div>
       </section>
 
       <section className="section-wrapper" style={{ borderTop: '1px solid var(--border-light)' }}>
         <div className="container">
-          {newspapers.length > 0 ? (
+          {events.length > 0 ? (
             <>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
-                {newspapers.map((item) => (
+                {events.map((item) => (
                   <div key={item.id} style={{ border: '1px solid var(--border-light)', backgroundColor: 'var(--bg-surface)', padding: '1.75rem', display: 'flex', flexDirection: 'column', transition: 'box-shadow 0.3s ease' }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem' }}>
                       <div style={{ 
@@ -57,11 +57,11 @@ export const NewspapersPage: React.FC = () => {
                         justifyContent: 'center',
                         color: 'var(--accent-blue)'
                       }}>
-                        <Newspaper size={24} />
+                        <Calendar size={24} />
                       </div>
                       <div>
                         <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>
-                          Newspaper
+                          Event
                         </span>
                         <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
                           "{tF(item.headline)}"
@@ -90,9 +90,9 @@ export const NewspapersPage: React.FC = () => {
             </>
           ) : (
             <div style={{ textAlign: 'center', padding: '4rem 2rem', maxWidth: '600px', margin: '0 auto' }}>
-              <h2 className="text-h1" style={{ marginBottom: '1.5rem' }}>No Newspaper Items</h2>
+              <h2 className="text-h1" style={{ marginBottom: '1.5rem' }}>No Event Items</h2>
               <p className="lead-text" style={{ marginBottom: '2rem' }}>
-                Newspaper items will appear here once added.
+                Event items will appear here once added.
               </p>
             </div>
           )}

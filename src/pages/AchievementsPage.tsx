@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Award, FileText, ArrowUpRight } from 'lucide-react';
 import { achievements } from '../data';
+import { useLanguage } from '../context/LanguageContext';
 
 export const AchievementsPage: React.FC = () => {
+  const { tF } = useLanguage();
+
   return (
     <>
       <section style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-light)', paddingTop: 'clamp(3rem, 5vw, 5rem)', paddingBottom: 'clamp(3rem, 5vw, 5rem)' }}>
@@ -43,13 +46,13 @@ export const AchievementsPage: React.FC = () => {
               {achievements.map((item) => (
                 <div key={item.id} style={{ border: '1px solid var(--border-light)', padding: '2rem', backgroundColor: 'var(--bg-surface)' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                    {item.type}
+                    {tF(item.type)}
                   </span>
                   <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', marginTop: '0.35rem' }}>
-                    {item.title}
+                    {tF(item.title)}
                   </h3>
                   <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
-                    {item.description}
+                    {tF(item.description)}
                   </p>
                 </div>
               ))}

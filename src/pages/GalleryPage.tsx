@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { MapPin, Maximize2, X } from 'lucide-react';
-import { GALLERY_ITEMS } from '../data/sourceFacts';
-import type { GalleryItem } from '../types/portfolio';
+import { Link, ArrowUpRight, Image, MapPin, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { gallery } from '../data';
+import { useLanguage } from '../context/LanguageContext';
 
 export const GalleryPage: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
+  const { tF } = useLanguage();
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
-  const categories = ['All', 'STEAM Expo', 'International Fair', 'Workshop'];
+  const handleNext = () => {
+    setSelectedImage(prev => prev !== null ? (prev + 1) % gallery.length : 0);
+  };
 
-  const filteredItems = activeCategory === 'All'
-    ? GALLERY_ITEMS
-    : GALLERY_ITEMS.filter(item => item.category === activeCategory);
+  const handlePrev = () => {
+    setSelectedImage(prev => prev !== null ? (prev - 1 + gallery.length) % gallery.length : gallery.length - 1);
+  };
 
   return (
     <>
@@ -30,7 +32,7 @@ export const GalleryPage: React.FC = () => {
         <div className="container">
           <span className="eyebrow" style={{ marginBottom: '1.5rem' }}>GALLERY</span>
           <h1 className="text-display" style={{ maxWidth: '900px' }}>
-            Visual Archive
+            Visual Documentary Archive
           </h1>
           <p style={{ 
             fontFamily: 'var(--font-serif)', 
@@ -40,208 +42,118 @@ export const GalleryPage: React.FC = () => {
             marginTop: '1rem',
             maxWidth: '800px'
           }}>
-            Summer STEAM Expo & Global Delegations in Action
+            Photographic record of events, workshops, delegations, and institutional activities
           </p>
         </div>
       </section>
 
-      <section id="gallery" className="section-wrapper" style={{ borderTop: '1px solid var(--border-light)' }}>
+      <section className="section-wrapper" style={{ borderTop: '1px solid var(--border-light)' }}>
         <div className="container">
-          
-          <div style={{ marginBottom: '3rem' }}>
-            <span className="eyebrow">MEDIA & EVENT GALLERY</span>
-            <h2 className="text-h1" style={{ maxWidth: '850px', marginTop: '0.5rem' }}>
-              Summer STEAM Expo & Global Delegations in Action
-            </h2>
-            <p className="lead-text" style={{ maxWidth: '780px', marginTop: '1rem' }}>
-              Documenting student science expos in Hetauda, international fair delegations in Taiwan & Indonesia, and incubation workshops at HRIC.
-            </p>
-          </div>
-
-          <div 
-            style={{ 
-              display: 'flex', 
-              gap: '0.75rem', 
-              marginBottom: '2.5rem', 
-              flexWrap: 'wrap' 
-            }}
-          >
-            {categories.map((cat) => {
-              const isActive = activeCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '0.85rem',
-                    fontWeight: 600,
-                    padding: '0.5rem 1.25rem',
-                    border: `1px solid ${isActive ? 'var(--accent-blue)' : 'var(--border-light)'}`,
-                    backgroundColor: isActive ? 'var(--accent-blue)' : 'var(--bg-surface)',
-                    color: isActive ? '#FFFFFF' : 'var(--text-primary)',
-                    cursor: 'pointer',
-                    letterSpacing: '0.04em',
-                    transition: 'var(--transition-smooth)'
-                  }}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
-
-          <div 
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-              gap: '2rem'
-            }}
-          >
-            {filteredItems.map((item) => (
-              <div 
-                key={item.id}
-                onClick={() => setSelectedGalleryItem(item)}
-                style={{
-                  backgroundColor: 'var(--bg-surface)',
-                  border: '1px solid var(--border-light)',
-                  cursor: 'pointer',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  transition: 'var(--transition-smooth)'
-                }}
-              >
-                <div className="editorial-image-frame" style={{ minHeight: '260px', padding: 0 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+            {gallery.map((item, idx) => (
+              <div key={item.id} onClick={() => setSelectedImage(idx)} style={{ border: '1px solid var(--border-light)', backgroundColor: 'var(--bg-surface)', overflow: 'hidden', cursor: 'pointer', transition: 'box-shadow 0.3s ease' }}>
+                <div style={{ position: 'relative', overflow: 'hidden' }}>
                   <img 
                     src={item.imageUrl} 
-                    alt={item.title}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
+                    alt={tF(item.title)} 
+                    style={{ width: '100%', height: '220px', objectFit: 'cover', transition: 'transform 0.3s ease' }}
                   />
-                  <div 
-                    style={{
-                      position: 'absolute',
-                      top: '0.75rem',
-                      right: '0.75rem',
-                      backgroundColor: 'rgba(18,19,22,0.75)',
-                      color: '#FFFFFF',
-                      borderRadius: '50%',
-                      width: '32px',
-                      height: '32px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      zIndex: 2
-                    }}
-                  >
-                    <Maximize2 size={14} />
+                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', backgroundColor: 'rgba(0,0,0,0.7)', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                    <Maximize2 size={20} />
                   </div>
                 </div>
-
                 <div style={{ padding: '1.25rem' }}>
-                  <span 
-                    style={{ 
-                      fontFamily: 'var(--font-sans)', 
-                      fontSize: '0.75rem', 
-                      fontWeight: 700, 
-                      color: 'var(--accent-gold)', 
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      display: 'block',
-                      marginBottom: '0.25rem'
-                    }}
-                  >
-                    {item.category}
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>
+                    {tF(item.category)}
                   </span>
-
-                  <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
-                    {item.title}
+                  <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+                    {tF(item.title)}
                   </h3>
-
-                  <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '0.85rem' }}>
-                    {item.caption}
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '0.75rem' }}>
+                    {tF(item.caption)}
                   </p>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', fontSize: '0.75rem', color: 'var(--text-muted)', borderTop: '1px solid var(--border-light)', paddingTop: '0.65rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <MapPin size={12} /> {item.location}
+                      <MapPin size={14} /> {tF(item.location)}
                     </span>
+                    <span>{item.date}</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {selectedGalleryItem && (
-            <div className="modal-backdrop" onClick={() => setSelectedGalleryItem(null)}>
-              <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '900px', padding: 0 }}>
-                <button 
-                  className="modal-close-btn" 
-                  onClick={() => setSelectedGalleryItem(null)} 
-                  style={{ zIndex: 10, top: '1rem', right: '1rem' }}
-                  aria-label="Close gallery view"
-                >
-                  <X size={20} />
-                </button>
-                <div style={{ position: 'relative', width: '100%', maxHeight: '70vh', backgroundColor: '#000' }}>
-                  <img 
-                    src={selectedGalleryItem.imageUrl} 
-                    alt={selectedGalleryItem.title} 
-                    style={{ width: '100%', height: 'auto', maxHeight: '70vh', objectFit: 'contain' }}
-                  />
-                </div>
-                <div style={{ padding: '2rem' }}>
-                  <span className="eyebrow">{selectedGalleryItem.category} · {selectedGalleryItem.location}</span>
-                  <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', marginTop: '0.25rem', marginBottom: '0.5rem' }}>
-                    {selectedGalleryItem.title}
-                  </h3>
-                  <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                    {selectedGalleryItem.caption}
-                  </p>
-                  <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'flex-end' }}>
-                    <button onClick={() => setSelectedGalleryItem(null)} className="btn-secondary">
-                      Close View
-                    </button>
-                  </div>
-                </div>
-              </div>
+          {gallery.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '4rem 2rem', maxWidth: '600px', margin: '0 auto' }}>
+              <h2 className="text-h1" style={{ marginBottom: '1.5rem' }}>No Gallery Items</h2>
+              <p className="lead-text" style={{ marginBottom: '2rem' }}>
+                Gallery images will appear here once added.
+              </p>
             </div>
           )}
-
         </div>
       </section>
 
-      <section 
-        style={{
-          backgroundColor: 'var(--dark-bg)',
-          color: 'var(--dark-text)',
-          borderTop: '1px solid var(--dark-border)',
-          paddingTop: 'clamp(3rem, 5vw, 4rem)',
-          paddingBottom: 'clamp(3rem, 5vw, 4rem)',
-          textAlign: 'center'
-        }}
-      >
-        <div className="container" style={{ maxWidth: '720px', margin: '0 auto' }}>
-          <span className="eyebrow-dark" style={{ marginBottom: '1.25rem' }}>
-            RELATED
-          </span>
-          <h2 className="text-h1" style={{ marginTop: '0.5rem', marginBottom: '1.5rem' }}>
-            Explore Related Sections
-          </h2>
-          <p style={{ fontSize: '1.1rem', color: 'var(--dark-text-muted)', marginBottom: '2.5rem' }}>
-            Media archive, thought leadership, and research publications.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="/media" className="btn-primary" style={{ padding: '0.85rem 2rem' }}>Media Archive</a>
-            <a href="/thoughts" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Thought Leadership</a>
-            <a href="/research" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Research & Theses</a>
+      {/* Lightbox Modal */}
+      {selectedImage !== null && (
+        <div 
+          className="modal-backdrop" 
+          onClick={() => setSelectedImage(null)}
+          style={{ zIndex: 10000 }}
+        >
+          <div 
+            className="modal-content" 
+            onClick={(e) => e.stopPropagation()} 
+            style={{ maxWidth: '90vw', maxHeight: '90vh', padding: 0, display: 'flex', flexDirection: 'column' }}
+          >
+            <button 
+              className="modal-close-btn" 
+              onClick={() => setSelectedImage(null)} 
+              aria-label="Close gallery"
+              style={{ zIndex: 10, top: '1rem', right: '1rem', backgroundColor: 'rgba(0,0,0,0.5)', borderColor: 'rgba(255,255,255,0.3)', color: 'white' }}
+            >
+              <X size={24} />
+            </button>
+            
+            <div style={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
+              <button 
+                onClick={handlePrev}
+                aria-label="Previous image"
+                style={{ position: 'absolute', left: '2rem', backgroundColor: 'rgba(0,0,0,0.5)', border: 'none', color: 'white', padding: '1rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10 }}
+              >
+                <ChevronLeft size={28} />
+              </button>
+              
+              <img 
+                src={gallery[selectedImage].imageUrl} 
+                alt={tF(gallery[selectedImage].title)} 
+                style={{ maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain' }}
+              />
+              
+              <button 
+                onClick={handleNext}
+                aria-label="Next image"
+                style={{ position: 'absolute', right: '2rem', backgroundColor: 'rgba(0,0,0,0.5)', border: 'none', color: 'white', padding: '1rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10 }}
+              >
+                <ChevronRight size={28} />
+              </button>
+            </div>
+
+            <div style={{ padding: '1.5rem 2rem', backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+              <span className="eyebrow">{tF(gallery[selectedImage].category)} · {tF(gallery[selectedImage].location)}</span>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.75rem', marginTop: '0.5rem', marginBottom: '0.5rem' }}>
+                {tF(gallery[selectedImage].title)}
+              </h3>
+              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '0.5rem' }}>
+                {tF(gallery[selectedImage].caption)}
+              </p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                {gallery[selectedImage].date} · {tF(gallery[selectedImage].location)}
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      )}
     </>
   );
 };

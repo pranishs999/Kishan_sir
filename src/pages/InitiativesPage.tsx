@@ -1,25 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Newspaper, Mic, Calendar, Image, Filter } from 'lucide-react';
-import { media } from '../data';
+import { ArrowUpRight, Filter, Building2, Users, FlaskConical, BookOpen, Wrench, Rocket } from 'lucide-react';
+import { initiatives, institutions } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  newspaper: <Newspaper size={24} />,
-  interview: <Mic size={24} />,
-  event: <Calendar size={24} />,
-  social: <Image size={24} />,
+  astronova: <Building2 size={24} />,
+  hric: <Rocket size={24} />,
+  'young-scientists': <Users size={24} />,
+  steam: <FlaskConical size={24} />,
+  'science-engineering-fair': <BookOpen size={24} />,
+  workshops: <Wrench size={24} />,
+  delegation: <ArrowUpRight size={24} />,
+  education: <BookOpen size={24} />,
 };
 
-export const MediaPage: React.FC = () => {
+export const InitiativesPage: React.FC = () => {
   const { tF, tA } = useLanguage();
 
   const categories = [
-    { id: 'all', label: 'All Media', icon: <Filter size={20} /> },
-    { id: 'newspaper', label: 'Newspapers', icon: <Newspaper size={20} /> },
-    { id: 'interview', label: 'Interviews', icon: <Mic size={20} /> },
-    { id: 'event', label: 'Events', icon: <Calendar size={20} /> },
-    { id: 'social', label: 'Social', icon: <Image size={20} /> },
+    { id: 'all', label: 'All Initiatives', icon: <Filter size={20} /> },
+    { id: 'astronova', label: 'Astronova', icon: <Building2 size={20} /> },
+    { id: 'hric', label: 'HRIC', icon: <Rocket size={20} /> },
+    { id: 'young-scientists', label: 'Young Scientists', icon: <Users size={20} /> },
+    { id: 'steam', label: 'STEAM', icon: <FlaskConical size={20} /> },
+    { id: 'science-engineering-fair', label: 'Science & Engineering Fair', icon: <BookOpen size={20} /> },
+    { id: 'workshops', label: 'Workshops', icon: <Wrench size={20} /> },
+    { id: 'delegation', label: 'Delegations', icon: <ArrowUpRight size={20} /> },
   ];
 
   return (
@@ -37,9 +44,9 @@ export const MediaPage: React.FC = () => {
         }}
       >
         <div className="container">
-          <span className="eyebrow" style={{ marginBottom: '1.5rem' }}>MEDIA & PRESS</span>
+          <span className="eyebrow" style={{ marginBottom: '1.5rem' }}>INITIATIVES</span>
           <h1 className="text-display" style={{ maxWidth: '900px' }}>
-            Media Archive & Public Record
+            Programs & Institution-Building Efforts
           </h1>
           <p style={{ 
             fontFamily: 'var(--font-serif)', 
@@ -49,7 +56,7 @@ export const MediaPage: React.FC = () => {
             marginTop: '1rem',
             maxWidth: '800px'
           }}>
-            Verified press coverage, interviews, and documentary evidence of institutional work
+            Concrete programs and institutional initiatives led by Kishan Bastola
           </p>
         </div>
       </section>
@@ -59,9 +66,10 @@ export const MediaPage: React.FC = () => {
           
           <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
             {categories.map((cat) => (
-              <Link key={cat.id} to={cat.id === 'all' ? '/media' : `/media/${cat.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div style={{ 
-                  padding: '0.75rem 1.25rem',
+              <button
+                key={cat.id}
+                style={{
+                  padding: '0.5rem 1rem',
                   fontSize: '0.85rem',
                   fontWeight: 600,
                   fontFamily: 'var(--font-sans)',
@@ -69,21 +77,22 @@ export const MediaPage: React.FC = () => {
                   border: '1px solid var(--border-light)',
                   borderRadius: '4px',
                   color: 'var(--text-secondary)',
+                  cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
                   transition: 'all 0.2s ease'
-                }}>
-                  {cat.icon}
-                  {cat.label}
-                </div>
-              </Link>
+                }}
+              >
+                {cat.icon}
+                {cat.label}
+              </button>
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
-            {media.map((item) => (
-              <Link key={item.id} to={item.externalUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+            {initiatives.map((init) => (
+              <Link key={init.id} to={`/initiatives/${init.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div style={{ border: '1px solid var(--border-light)', backgroundColor: 'var(--bg-surface)', padding: '1.75rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'box-shadow 0.3s ease' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem' }}>
                     <div style={{ 
@@ -96,48 +105,29 @@ export const MediaPage: React.FC = () => {
                       justifyContent: 'center',
                       color: 'var(--accent-blue)'
                     }}>
-                      {categoryIcons[item.category]}
+                      {categoryIcons[init.category]}
                     </div>
                     <div>
                       <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>
-                        {item.category === 'newspaper' ? 'Newspaper' : item.category === 'interview' ? 'Interview' : item.category === 'event' ? 'Event' : 'Social'}
+                        {tF(init.categoryLabel)}
                       </span>
-                      <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
-                        "{tF(item.headline)}"
+                      <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: 'var(--text-primary)' }}>
+                        {tF(init.title)}
                       </h3>
                     </div>
                   </div>
-                  <div style={{ marginBottom: '1rem' }}>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--accent-blue)', fontWeight: 600 }}>
-                      {tF(item.publication)} · {item.publishedDate}
-                    </p>
-                    {item.verified === false && (
-                      <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-                        Unverified External Source — Pending Content Verification
-                      </span>
-                    )}
-                  </div>
-                  <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.6, flex: 1, marginBottom: '1rem' }}>
-                    {item.summary ? tF(item.summary) : 'Summary pending verification.'}
+                  <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.6, flex: 1, marginBottom: '1.5rem' }}>
+                    {tF(init.summary)}
                   </p>
                   <div style={{ marginTop: 'auto' }}>
                     <span className="editorial-link" style={{ fontSize: '0.85rem' }}>
-                      View Source <ArrowUpRight size={14} />
+                      Explore Initiative <ArrowUpRight size={14} />
                     </span>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
-
-          {media.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '4rem 2rem', maxWidth: '600px', margin: '0 auto' }}>
-              <h2 className="text-h1" style={{ marginBottom: '1.5rem' }}>No Media Items</h2>
-              <p className="lead-text" style={{ marginBottom: '2rem' }}>
-                Media items will appear here once verified.
-              </p>
-            </div>
-          )}
         </div>
       </section>
     </>

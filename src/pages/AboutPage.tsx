@@ -1,8 +1,12 @@
 import React from 'react';
-import { PROFILE_DATA, CREDENTIALS_DATA, HERO_DATA } from '../data/sourceFacts';
-import { Award, GraduationCap, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, Award, GraduationCap, Building2 } from 'lucide-react';
+import { person, education, experience, leadership } from '../data';
+import { useLanguage } from '../context/LanguageContext';
 
 export const AboutPage: React.FC = () => {
+  const { tF, tA } = useLanguage();
+
   return (
     <>
       <section 
@@ -20,7 +24,7 @@ export const AboutPage: React.FC = () => {
         <div className="container">
           <span className="eyebrow" style={{ marginBottom: '1.5rem' }}>EXECUTIVE PROFILE</span>
           <h1 className="text-display" style={{ maxWidth: '900px' }}>
-            {HERO_DATA.name}
+            {tF(person.fullName)}
           </h1>
           <p style={{ 
             fontFamily: 'var(--font-serif)', 
@@ -30,7 +34,7 @@ export const AboutPage: React.FC = () => {
             marginTop: '1rem',
             maxWidth: '800px'
           }}>
-            {HERO_DATA.title}
+            {tF(person.professionalTitle)}
           </p>
           <p style={{ 
             fontSize: '0.85rem', 
@@ -39,7 +43,7 @@ export const AboutPage: React.FC = () => {
             textTransform: 'uppercase',
             marginTop: '1.5rem'
           }}>
-            {HERO_DATA.fullNameNep}
+            {person.nepaliName}
           </p>
         </div>
       </section>
@@ -48,9 +52,9 @@ export const AboutPage: React.FC = () => {
         <div className="container">
           
           <div style={{ marginBottom: '3.5rem' }}>
-            <span className="eyebrow">{PROFILE_DATA.sectionNumber}</span>
+            <span className="eyebrow">EXECUTIVE PROFILE</span>
             <h2 className="text-h1" style={{ maxWidth: '900px', marginTop: '0.5rem' }}>
-              {PROFILE_DATA.title}
+              {tF(person.shortBiography).split('.')[0]}.
             </h2>
           </div>
 
@@ -134,7 +138,7 @@ export const AboutPage: React.FC = () => {
 
             <div style={{ gridColumn: 'span 8', paddingLeft: 'clamp(0px, 3vw, 2rem)' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                {PROFILE_DATA.bodyParagraphs.map((para, idx) => (
+                {tA(person.biography).map((para, idx) => (
                   <p key={idx} className="lead-text" style={{ fontSize: idx === 0 ? '1.25rem' : '1.1rem' }}>
                     {para}
                   </p>
@@ -153,7 +157,7 @@ export const AboutPage: React.FC = () => {
                     Verified Source Credentials
                   </h3>
                   <div className="credentials-grid-3x3" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
-                    {CREDENTIALS_DATA.map((cred, idx) => (
+                    {person.professionalIdentity.map((cred, idx) => (
                       <div 
                         key={idx}
                         style={{
@@ -173,7 +177,7 @@ export const AboutPage: React.FC = () => {
                             lineHeight: 1.15
                           }}
                         >
-                          {cred.label}
+                          {tF(cred.title)}
                         </h4>
                         <p 
                           style={{
@@ -183,7 +187,7 @@ export const AboutPage: React.FC = () => {
                             lineHeight: 1.4
                           }}
                         >
-                          {cred.detail}
+                          {tF(cred.description)}
                         </p>
                       </div>
                     ))}
@@ -218,10 +222,10 @@ export const AboutPage: React.FC = () => {
             Explore selected initiatives, international delegations, the curiosity-to-commerce framework, and institutional leadership.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="/work" className="btn-primary" style={{ padding: '0.85rem 2rem' }}>Selected Work</a>
-            <a href="/delegations" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>International Delegations</a>
-            <a href="/framework" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Curiosity → Commerce Framework</a>
-            <a href="/institutions" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Institutions</a>
+            <Link to="/work" className="btn-primary" style={{ padding: '0.85rem 2rem' }}>Work Domains</Link>
+            <Link to="/initiatives" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Initiatives</Link>
+            <Link to="/ecosystem" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Ecosystem Model</Link>
+            <Link to="/thought" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Thought Leadership</Link>
           </div>
         </div>
       </section>

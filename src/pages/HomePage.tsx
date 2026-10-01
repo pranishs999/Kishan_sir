@@ -2,12 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowDownRight, ArrowUpRight, FileText, Compass, ChevronRight } from 'lucide-react';
 import { person, institutions, ecosystem } from '../data';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useLanguage } from '../context/LanguageContext';
 
 export const HomePage: React.FC = () => {
+  const { tF, tA } = useLanguage();
+  const heroRef = useScrollAnimation({ delay: 100 });
+  const snapshotRef = useScrollAnimation({ delay: 100 });
+  const frameworkRef = useScrollAnimation({ delay: 100 });
+  const institutionsRef = useScrollAnimation({ delay: 100 });
+  const visionRef = useScrollAnimation({ delay: 100 });
+
   return (
     <>
       {/* 1. HERO SECTION */}
       <section 
+        ref={heroRef.ref}
+        className={`animate-fade ${heroRef.isVisible ? 'is-visible' : ''}`}
         style={{
           position: 'relative',
           minHeight: 'calc(100vh - 120px)',
@@ -64,7 +75,7 @@ export const HomePage: React.FC = () => {
                   wordBreak: 'break-word'
                 }}
               >
-                {person.fullName}
+                {tF(person.fullName)}
               </h1>
 
               <p 
@@ -78,7 +89,7 @@ export const HomePage: React.FC = () => {
                   marginBottom: '2rem'
                 }}
               >
-                {person.professionalTitle}
+                {tF(person.professionalTitle)}
               </p>
 
               <div 
@@ -100,7 +111,7 @@ export const HomePage: React.FC = () => {
                     marginBottom: '0.5rem'
                   }}
                 >
-                  {person.tagline}
+                  {tF(person.tagline)}
                 </h2>
                 <p 
                   style={{
@@ -149,7 +160,7 @@ export const HomePage: React.FC = () => {
               >
                 <img 
                   src={person.profileImage} 
-                  alt={`${person.fullName} — ${person.professionalTitle}`} 
+                  alt={`${tF(person.fullName)} — ${tF(person.professionalTitle)}`} 
                   loading="eager"
                   decoding="async"
                   style={{
@@ -171,7 +182,7 @@ export const HomePage: React.FC = () => {
                   }}
                 >
                   <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', fontWeight: 600, color: '#FFFFFF', margin: 0 }}>
-                    {person.fullName}
+                    {tF(person.fullName)}
                   </p>
                   <p style={{ fontSize: '0.75rem', color: 'var(--accent-gold-light)', letterSpacing: '0.04em', margin: 0 }}>
                     {person.nepaliName} · Bagmati Province, Nepal
@@ -187,7 +198,8 @@ export const HomePage: React.FC = () => {
 
       {/* 2. EXECUTIVE SNAPSHOT */}
       <section 
-        className="section-wrapper" 
+        ref={snapshotRef.ref}
+        className={`section-wrapper animate-slide-up ${snapshotRef.isVisible ? 'is-visible' : ''}`}
         style={{ 
           backgroundColor: 'var(--bg-surface)', 
           borderTop: '1px solid var(--border-light)',
@@ -197,7 +209,7 @@ export const HomePage: React.FC = () => {
         }}
       >
         <div className="container">
-          <div className="credentials-grid-3x3">
+          <div className="credentials-grid-3x3 animate-stagger" style={{ opacity: snapshotRef.isVisible ? 1 : 0 }}>
             <div style={{ borderLeft: '2px solid var(--accent-blue)', paddingLeft: '1.25rem' }}>
               <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.75rem', fontWeight: 600 }}>18+ Years</h3>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>Education & Executive Leadership</p>
@@ -220,7 +232,8 @@ export const HomePage: React.FC = () => {
 
       {/* 3. SIGNATURE FRAMEWORK HIGHLIGHT */}
       <section 
-        className="section-wrapper"
+        ref={frameworkRef.ref}
+        className={`section-wrapper animate-reveal-left ${frameworkRef.isVisible ? 'is-visible' : ''}`}
         style={{
           borderTop: '1px solid var(--border-light)',
           borderBottom: '1px solid var(--border-light)'
@@ -264,7 +277,7 @@ export const HomePage: React.FC = () => {
                         0{i + 1}
                       </span>
                       <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>
-                        {step.subtitle}
+                        {tF(step.subtitle)}
                       </span>
                     </div>
                   ))}
@@ -280,7 +293,11 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 4. FEATURED INSTITUTIONAL ECOSYSTEMS */}
-      <section className="section-wrapper" style={{ backgroundColor: 'var(--bg-alt)', borderTop: '1px solid var(--border-light)' }}>
+      <section 
+        ref={institutionsRef.ref}
+        className={`section-wrapper animate-reveal-right ${institutionsRef.isVisible ? 'is-visible' : ''}`}
+        style={{ backgroundColor: 'var(--bg-alt)', borderTop: '1px solid var(--border-light)' }}
+      >
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
@@ -292,18 +309,18 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div className="animate-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', opacity: institutionsRef.isVisible ? 1 : 0 }}>
             {institutions.slice(0, 2).map((inst) => (
               <div key={inst.id} style={{ border: '1px solid var(--border-light)', backgroundColor: 'var(--bg-surface)', padding: '1.75rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                    {inst.type}
+                    {tF(inst.type)}
                   </span>
                   <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', marginTop: '0.35rem', marginBottom: '0.5rem' }}>
-                    {inst.name}
+                    {tF(inst.name)}
                   </h3>
                   <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', lineHeight: 1.55, marginBottom: '1.25rem' }}>
-                    {inst.description}
+                    {tF(inst.description)}
                   </p>
                 </div>
                 <Link to={`/initiatives/${inst.id}`} className="editorial-link" style={{ fontSize: '0.85rem' }}>
@@ -316,7 +333,10 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 5. EXECUTIVE VISION & CTA */}
-      <section className="section-wrapper section-dark">
+      <section 
+        ref={visionRef.ref}
+        className={`section-wrapper section-dark animate-scale ${visionRef.isVisible ? 'is-visible' : ''}`}
+      >
         <div className="container" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
           <span className="eyebrow-dark" style={{ marginBottom: '1.25rem' }}>EXECUTIVE VISION</span>
           <h2 className="text-display" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', color: 'var(--dark-text)', marginBottom: '1.75rem', lineHeight: 1.15 }}>

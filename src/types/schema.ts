@@ -1,47 +1,59 @@
+export type Language = 'en' | 'ne';
+
+export type LocalizedString = string | {
+  en: string;
+  ne: string;
+};
+
+export type LocalizedStringArray = (string | { en: string; ne: string })[] | {
+  en: string[];
+  ne: string[];
+};
+
 export interface PersonEntity {
-  fullName: string;
+  fullName: LocalizedString;
   nepaliName: string;
-  professionalTitle: string;
-  tagline: string;
-  shortBiography: string;
-  biography: string[];
-  currentFocus: string[];
+  professionalTitle: LocalizedString;
+  tagline: LocalizedString;
+  shortBiography: LocalizedString;
+  biography: LocalizedStringArray;
+  currentFocus: LocalizedString[];
   profileImage: string;
-  professionalIdentity: { title: string; description: string }[];
+  professionalIdentity: { title: LocalizedString; description: LocalizedString }[];
 }
 
 export interface EducationEntity {
   id: string;
-  degree: string;
-  field: string;
-  institution: string;
-  location: string;
+  degree: LocalizedString;
+  field: LocalizedString;
+  institution: LocalizedString;
+  location: LocalizedString;
   year: string;
   verified: boolean;
-  description: string;
+  description: LocalizedString;
 }
 
 export interface ExperienceEntity {
   id: string;
-  position: string;
-  organization: string;
+  position: LocalizedString;
+  organization: LocalizedString;
   startDate: string;
   endDate: string;
-  location: string;
-  description: string;
-  responsibilities: string[];
-  achievements: string[];
+  location: LocalizedString;
+  description: LocalizedString;
+  responsibilities: LocalizedString[];
+  achievements: LocalizedString[];
   verified: boolean;
 }
 
 export interface LeadershipEntity {
   id: string;
-  role: string;
-  organization: string;
-  organizationType: string;
+  role: LocalizedString;
+  organization: LocalizedString;
+  organizationType: LocalizedString;
   period: string;
-  description: string;
-  responsibilities: string[];
+  description: LocalizedString;
+  responsibilities: LocalizedString[];
   relatedInitiativeId?: string;
   verified: boolean;
 }
@@ -51,26 +63,26 @@ export type WorkCategory = 'education' | 'mathematics' | 'science' | 'research' 
 export interface WorkEntity {
   id: string;
   slug: string;
-  title: string;
+  title: LocalizedString;
   category: WorkCategory;
-  categoryLabel: string;
-  description: string;
-  principles: string[];
+  categoryLabel: LocalizedString;
+  description: LocalizedString;
+  principles: LocalizedString[];
   relatedInitiativeIds: string[];
   iconName?: string;
 }
 
 export interface InstitutionEntity {
   id: string;
-  name: string;
-  type: string;
-  role: string;
-  establishedNotice: string;
-  description: string;
-  mission: string;
-  governance: string;
-  keyPillars: string[];
-  impactSummary: string;
+  name: LocalizedString;
+  type: LocalizedString;
+  role: LocalizedString;
+  establishedNotice: LocalizedString;
+  description: LocalizedString;
+  mission: LocalizedString;
+  governance: LocalizedString;
+  keyPillars: LocalizedString[];
+  impactSummary: LocalizedString;
   coverImage: string;
   websiteUrl: string | null;
   verified: boolean;
@@ -89,110 +101,118 @@ export type InitiativeCategory =
 export interface InitiativeEntity {
   id: string;
   slug: string;
-  title: string;
+  title: LocalizedString;
   category: InitiativeCategory;
-  categoryLabel: string;
+  categoryLabel: LocalizedString;
   institutionId: string;
-  role: string;
-  summary: string;
-  description: string;
-  location: string;
+  role: LocalizedString;
+  summary: LocalizedString;
+  description: LocalizedString;
+  location: LocalizedString;
   startDate: string;
   endDate?: string;
-  activities: string[];
-  highlights: string[];
-  image: string;
-  externalLink?: string;
+  impactMetrics: { label: LocalizedString; value: string }[];
+  keyOutcomes: LocalizedString[];
+  coverImage: string;
+  galleryImages?: string[];
+  media?: string[];
+  linkUrl?: string;
+  linkText?: LocalizedString;
   verified: boolean;
 }
 
 export interface EcosystemStakeholder {
   id: string;
-  name: string;
-  role: string;
-  description: string;
+  name: LocalizedString;
+  role: LocalizedString;
+  description: LocalizedString;
 }
 
 export interface EcosystemConnection {
   from: string;
   to: string;
-  description: string;
+  description: LocalizedString;
+}
+
+export interface EcosystemPipelineStep {
+  id: string;
+  stage: LocalizedString;
+  subtitle: LocalizedString;
+  description: LocalizedString;
+  impact: LocalizedString;
 }
 
 export interface EcosystemEntity {
   stakeholders: EcosystemStakeholder[];
   connections: EcosystemConnection[];
-  pipeline: { id: string; stage: string; subtitle: string; description: string; impact: string }[];
-  focusAreas: string[];
-  outcomes: { label: string; value: string; verified: boolean }[];
+  pipeline: EcosystemPipelineStep[];
 }
 
 export interface ArticleEntity {
   id: string;
   slug: string;
-  title: string;
-  author: string;
-  date: string;
-  category: string;
-  excerpt: string;
-  content: string;
+  title: LocalizedString;
+  publishedDate: string;
+  readTime: string;
+  category: LocalizedString;
+  summary: LocalizedString;
+  content: LocalizedString[];
   coverImage?: string;
-  tags: string[];
-  relatedInitiativeIds: string[];
+  tags?: string[];
+  relatedInitiativeIds?: string[];
+  verified: boolean;
 }
 
-export type MediaCategory = 'newspaper' | 'interview' | 'event';
+export type MediaCategory = 'newspaper' | 'interview' | 'event' | 'social';
 
-export interface MediaItemEntity {
+export interface MediaEntity {
   id: string;
-  headline: string;
-  publication: string;
-  date: string;
+  headline: LocalizedString;
+  publication: LocalizedString;
+  publishedDate: string;
   category: MediaCategory;
-  thumbnail: string;
-  summary: string;
   externalUrl: string;
+  summary?: LocalizedString;
+  image?: string;
   verified: boolean;
-  language: 'ne' | 'en';
-  sourceNotice?: string;
+  verificationNotes?: string;
 }
 
 export interface AchievementEntity {
   id: string;
-  type: string;
-  title: string;
-  organization: string;
-  date: string;
-  description: string;
+  type: LocalizedString;
+  title: LocalizedString;
+  awarder: LocalizedString;
+  year: string;
+  category: LocalizedString;
+  description: LocalizedString;
   verified: boolean;
-  evidenceUrl?: string;
 }
 
-export interface GalleryItemEntity {
+export interface GalleryEntity {
   id: string;
-  image: string;
-  caption: string;
-  event: string;
+  title: LocalizedString;
+  category: LocalizedString;
   date: string;
-  location: string;
-  category: string;
+  imageUrl: string;
+  caption: LocalizedString;
+  location: LocalizedString;
   relatedInitiativeId?: string;
 }
 
 export interface ContactEntity {
-  name: string;
-  title: string;
-  description: string;
   email: string;
+  altEmail?: string;
   phone: string;
-  office: string;
-  address: string;
-  locationNep: string;
+  whatsapp: string;
+  location: LocalizedString;
+  address: LocalizedString;
+  fullNameNep?: string;
+  credentialsLine?: string;
   facebookUrl: string;
   linkedinUrl: string;
   astronovaUrl: string;
-  hricUrl: string;
   tisfUrl: string;
-  manUrl: string;
-  contactPurposes: string[];
+  MANBagmatiUrl: string;
+  collaborationPurposes: { id: string; label: LocalizedString; description: LocalizedString }[];
 }

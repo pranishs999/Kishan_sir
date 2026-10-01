@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Globe, Send, CheckCircle, MessageSquare } from 'lucide-react';
-import { CONTACT_DATA } from '../data/sourceFacts';
+import { Link, ArrowUpRight, Mail, Phone, MapPin, Globe, Send, CheckCircle, MessageSquare } from 'lucide-react';
+import { contact } from '../data';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ContactPage: React.FC = () => {
+  const { tF } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,7 +41,7 @@ export const ContactPage: React.FC = () => {
         <div className="container">
           <span className="eyebrow" style={{ marginBottom: '1.5rem' }}>CONTACT</span>
           <h1 className="text-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 5.5rem)', marginTop: '0.5rem' }}>
-            {CONTACT_DATA.name}
+            {tF(contact.fullNameNep || contact.address)}
           </h1>
           <p style={{ 
             fontFamily: 'var(--font-serif)', 
@@ -48,7 +50,7 @@ export const ContactPage: React.FC = () => {
             color: 'var(--accent-blue)', 
             marginTop: '0.5rem' 
           }}>
-            {CONTACT_DATA.fullNameNep}
+            {tF(contact.fullNameNep || contact.address)}
           </p>
           <p style={{ 
             fontSize: '0.85rem', 
@@ -57,7 +59,7 @@ export const ContactPage: React.FC = () => {
             textTransform: 'uppercase',
             marginTop: '1rem'
           }}>
-            {CONTACT_DATA.credentialsLine}
+            {tF(contact.credentialsLine || contact.location)}
           </p>
         </div>
       </section>
@@ -91,7 +93,7 @@ export const ContactPage: React.FC = () => {
                       Office Location
                     </strong>
                     <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginTop: '0.2rem' }}>
-                      {CONTACT_DATA.location}
+                      {tF(contact.address)}
                     </p>
                   </div>
                 </div>
@@ -103,16 +105,16 @@ export const ContactPage: React.FC = () => {
                       Official Email
                     </strong>
                     <a 
-                      href={`mailto:${CONTACT_DATA.email}`}
+                      href={`mailto:${contact.email}`}
                       style={{ fontSize: '1.05rem', color: 'var(--accent-blue)', textDecoration: 'none', fontWeight: 600, display: 'block', marginTop: '0.2rem' }}
                     >
-                      {CONTACT_DATA.email}
+                      {contact.email}
                     </a>
                     <a 
-                      href={`mailto:${CONTACT_DATA.altEmail}`}
+                      href={`mailto:${contact.altEmail}`}
                       style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textDecoration: 'none' }}
                     >
-                      {CONTACT_DATA.altEmail}
+                      {contact.altEmail}
                     </a>
                   </div>
                 </div>
@@ -124,13 +126,13 @@ export const ContactPage: React.FC = () => {
                       Direct Phone / WhatsApp
                     </strong>
                     <a 
-                      href={`tel:${CONTACT_DATA.phone}`}
+                      href={`tel:${contact.phone}`}
                       style={{ fontSize: '1.05rem', color: 'var(--text-primary)', textDecoration: 'none', fontWeight: 600, display: 'block', marginTop: '0.2rem' }}
                     >
-                      {CONTACT_DATA.phone}
+                      {contact.phone}
                     </a>
                     <a 
-                      href={`https://wa.me/${CONTACT_DATA.whatsapp}`}
+                      href={`https://wa.me/${contact.whatsapp}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ fontSize: '0.85rem', color: 'green', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.25rem' }}
@@ -158,7 +160,7 @@ export const ContactPage: React.FC = () => {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <a 
-                  href={CONTACT_DATA.facebookUrl}
+                  href={contact.facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary"
@@ -168,7 +170,7 @@ export const ContactPage: React.FC = () => {
                 </a>
 
                 <a 
-                  href={CONTACT_DATA.linkedinUrl}
+                  href={contact.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary"
@@ -178,7 +180,7 @@ export const ContactPage: React.FC = () => {
                 </a>
 
                 <a 
-                  href={CONTACT_DATA.astronovaUrl}
+                  href={contact.astronovaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary"
@@ -188,7 +190,7 @@ export const ContactPage: React.FC = () => {
                 </a>
 
                 <a 
-                  href={CONTACT_DATA.tisfUrl}
+                  href={contact.tisfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary"
@@ -198,7 +200,7 @@ export const ContactPage: React.FC = () => {
                 </a>
 
                 <a 
-                  href={CONTACT_DATA.MANBagmatiUrl}
+                  href={contact.MANBagmatiUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary"
@@ -305,9 +307,7 @@ export const ContactPage: React.FC = () => {
                       <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.35rem' }}>
                         Subject / Enquiry Type
                       </label>
-                      <input 
-                        type="text" 
-                        placeholder="e.g. STEM Expo Collaboration / Research Supervision / TISF Enquiry"
+                      <select 
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                         style={{
@@ -318,7 +318,14 @@ export const ContactPage: React.FC = () => {
                           fontSize: '0.95rem',
                           backgroundColor: 'var(--bg-primary)'
                         }}
-                      />
+                      >
+                        <option value="">Select enquiry type...</option>
+                        {contact.collaborationPurposes.map((purpose) => (
+                          <option key={purpose.id} value={purpose.id}>
+                            {tF(purpose.label)}
+                          </option>
+                        ))}
+                      </select>
                     </div>
 
                     <div>
@@ -378,9 +385,9 @@ export const ContactPage: React.FC = () => {
             Support the vision, read the vision statement, and explore the work.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="/support" className="btn-primary" style={{ padding: '0.85rem 2rem' }}>Support the Vision</a>
-            <a href="/vision" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Read Vision Statement</a>
-            <a href="/work" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Explore the Work</a>
+            <Link to="/support" className="btn-primary" style={{ padding: '0.85rem 2rem' }}>Support the Vision</Link>
+            <Link to="/vision" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Read Vision Statement</Link>
+            <Link to="/work" className="btn-secondary-dark" style={{ padding: '0.85rem 2rem' }}>Explore the Work</Link>
           </div>
         </div>
       </section>

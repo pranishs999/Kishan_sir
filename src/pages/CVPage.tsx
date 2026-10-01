@@ -1,8 +1,11 @@
 import React from 'react';
 import { cv } from '../data';
-import { Award, GraduationCap, Building2, Globe, Download } from 'lucide-react';
+import { Award, GraduationCap, Building2, Globe, Download, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const CVPage: React.FC = () => {
+  const { tF, tA } = useLanguage();
+
   return (
     <>
       <section style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-light)', paddingTop: 'clamp(2.5rem, 4vw, 4rem)', paddingBottom: 'clamp(2rem, 3vw, 3rem)' }}>
@@ -11,10 +14,10 @@ export const CVPage: React.FC = () => {
             <div>
               <span className="eyebrow">OFFICIAL RECORD · CURRICULUM VITAE</span>
               <h1 className="text-display" style={{ fontSize: 'clamp(2.4rem, 5vw, 4.2rem)', marginTop: '0.35rem' }}>
-                {cv.fullName}
+                {tF(cv.fullName)}
               </h1>
               <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--accent-blue)', marginTop: '0.5rem', fontStyle: 'italic' }}>
-                {cv.title}
+                {tF(cv.title)}
               </p>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '0.5rem' }}>
                 {cv.nepaliName}
@@ -46,7 +49,7 @@ export const CVPage: React.FC = () => {
               Executive Profile & Focus
             </h2>
             <p className="lead-text" style={{ fontSize: '1.15rem', lineHeight: 1.65 }}>
-              {cv.profile}
+              {tF(cv.profile)}
             </p>
           </div>
 
@@ -58,13 +61,13 @@ export const CVPage: React.FC = () => {
             {cv.education.map((edu) => (
               <div key={edu.id} style={{ borderLeft: '2px solid var(--accent-blue)', paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: 'var(--text-primary)' }}>
-                  {edu.degree}
+                  {tF(edu.degree)}
                 </h3>
                 <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--accent-blue)', marginTop: '0.2rem' }}>
-                  {edu.institution} · {edu.location}
+                  {tF(edu.institution)} · {tF(edu.location)}
                 </p>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
-                  {edu.description}
+                  {tF(edu.description)}
                 </p>
               </div>
             ))}
@@ -79,16 +82,16 @@ export const CVPage: React.FC = () => {
               {cv.leadership.map((lead) => (
                 <div key={lead.id} style={{ border: '1px solid var(--border-light)', padding: '1.5rem', backgroundColor: 'var(--bg-surface)' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                    {lead.organizationType}
+                    {tF(lead.organizationType)}
                   </span>
                   <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', marginTop: '0.35rem' }}>
-                    {lead.role} — {lead.organization}
+                    {tF(lead.role)} — {tF(lead.organization)}
                   </h3>
                   <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.5rem', lineHeight: 1.55 }}>
-                    {lead.description}
+                    {tF(lead.description)}
                   </p>
                   <ul style={{ listStyle: 'none', paddingLeft: '1rem', marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                    {lead.responsibilities.map((resp, idx) => (
+                    {tA(lead.responsibilities).map((resp, idx) => (
                       <li key={idx} style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                         · {resp}
                       </li>
@@ -108,11 +111,11 @@ export const CVPage: React.FC = () => {
               {cv.experience.map((exp) => (
                 <div key={exp.id} style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '1.5rem' }}>
                   <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem' }}>
-                    {exp.position} — {exp.organization}
+                    {tF(exp.position)} — {tF(exp.organization)}
                   </h3>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{exp.location}</span>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{tF(exp.location)}</span>
                   <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
-                    {exp.description}
+                    {tF(exp.description)}
                   </p>
                 </div>
               ))}
@@ -131,6 +134,31 @@ export const CVPage: React.FC = () => {
               <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
                 Official Country Leader and Delegation Head representing Nepal at international science and technology competitions, escorting secondary student researchers to present before international juries.
               </p>
+            </div>
+          </div>
+
+          {/* Selected Media */}
+          <div style={{ marginBottom: '3rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '1.5rem' }}>
+              Selected Media Coverage
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+              {cv.selectedMedia.map((m) => (
+                <div key={m.id} style={{ border: '1px solid var(--border-light)', padding: '1.5rem', backgroundColor: 'var(--bg-surface)' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>
+                    {m.category === 'newspaper' ? 'Newspaper' : m.category === 'interview' ? 'Interview' : 'Event'}
+                  </span>
+                  <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+                    "{tF(m.headline)}"
+                  </h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--accent-blue)', marginBottom: '0.5rem' }}>
+                    {tF(m.publication)} · {m.publishedDate}
+                  </p>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                    {m.summary ? tF(m.summary) : 'Summary pending verification.'}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 

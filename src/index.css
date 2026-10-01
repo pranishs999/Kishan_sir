@@ -40,6 +40,48 @@
   /* Transitions */
   --ease-editorial: cubic-bezier(0.25, 1, 0.35, 1);
   --transition-smooth: all 0.35s var(--ease-editorial);
+  
+  /* Animation Timing */
+  --anim-duration-fast: 0.2s;
+  --anim-duration-base: 0.35s;
+  --anim-duration-slow: 0.6s;
+  --anim-delay-step: 0.08s;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --bg-primary: #141619;
+  --bg-surface: #1E2125;
+  --bg-alt: #1E2125;
+  
+  --text-primary: #F5F3EC;
+  --text-secondary: #C8C5BC;
+  --text-muted: #8A8D94;
+  
+  --accent-blue: #3A7BD5;
+  --accent-blue-hover: #4A8BF5;
+  --accent-gold: #C6B497;
+  --accent-gold-light: #D4C4A8;
+  
+  --dark-bg: #0A0B0D;
+  --dark-surface: #141619;
+  --dark-border: rgba(245, 243, 236, 0.12);
+  --dark-text: #F5F3EC;
+  --dark-text-muted: #A0A5B2;
+  
+  --border-light: rgba(245, 243, 236, 0.15);
+  --border-accent: rgba(198, 180, 151, 0.35);
+}
+
+/* Theme Transition */
+html, body, .container, .section-wrapper, .editorial-image-frame,
+.btn-primary, .btn-secondary, .btn-secondary-dark,
+.editorial-link, .editorial-link-dark,
+.modal-backdrop, .modal-content, .modal-close-btn {
+  transition: background-color var(--transition-smooth), 
+              color var(--transition-smooth), 
+              border-color var(--transition-smooth),
+              box-shadow var(--transition-smooth);
 }
 
 /* Reset & Global Base */
@@ -487,4 +529,117 @@ img, svg, picture, canvas {
     width: 34px;
     height: 34px;
   }
+}
+
+/* ==========================================================================
+   SCROLL ANIMATIONS — Subtle, Editorial, Respects prefers-reduced-motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--anim-duration-slow) var(--ease-editorial),
+              transform var(--anim-duration-slow) var(--ease-editorial);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children animation */
+.animate-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--anim-duration-base) var(--ease-editorial),
+              transform var(--anim-duration-base) var(--ease-editorial);
+}
+
+.animate-stagger.is-visible > *:nth-child(1)  { transition-delay: calc(var(--anim-delay-step) * 0); }
+.animate-stagger.is-visible > *:nth-child(2)  { transition-delay: calc(var(--anim-delay-step) * 1); }
+.animate-stagger.is-visible > *:nth-child(3)  { transition-delay: calc(var(--anim-delay-step) * 2); }
+.animate-stagger.is-visible > *:nth-child(4)  { transition-delay: calc(var(--anim-delay-step) * 3); }
+.animate-stagger.is-visible > *:nth-child(5)  { transition-delay: calc(var(--anim-delay-step) * 4); }
+.animate-stagger.is-visible > *:nth-child(6)  { transition-delay: calc(var(--anim-delay-step) * 5); }
+.animate-stagger.is-visible > *:nth-child(7)  { transition-delay: calc(var(--anim-delay-step) * 6); }
+.animate-stagger.is-visible > *:nth-child(8)  { transition-delay: calc(var(--anim-delay-step) * 7); }
+.animate-stagger.is-visible > *:nth-child(9)  { transition-delay: calc(var(--anim-delay-step) * 8); }
+.animate-stagger.is-visible > *:nth-child(10) { transition-delay: calc(var(--anim-delay-step) * 9); }
+.animate-stagger.is-visible > *:nth-child(11) { transition-delay: calc(var(--anim-delay-step) * 10); }
+.animate-stagger.is-visible > *:nth-child(12) { transition-delay: calc(var(--anim-delay-step) * 11); }
+
+.animate-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade in only (for text-heavy sections) */
+.animate-fade {
+  opacity: 0;
+  transition: opacity var(--anim-duration-slow) var(--ease-editorial);
+}
+
+.animate-fade.is-visible {
+  opacity: 1;
+}
+
+/* Slide up from bottom (for cards, images) */
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--anim-duration-slow) var(--ease-editorial),
+              transform var(--anim-duration-slow) var(--ease-editorial);
+}
+
+.animate-slide-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scale in (for images, featured items) */
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity var(--anim-duration-slow) var(--ease-editorial),
+              transform var(--anim-duration-slow) var(--ease-editorial);
+}
+
+.animate-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Reveal from left/right (for alternating layouts) */
+.animate-reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity var(--anim-duration-slow) var(--ease-editorial),
+              transform var(--anim-duration-slow) var(--ease-editorial);
+}
+
+.animate-reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity var(--anim-duration-slow) var(--ease-editorial),
+              transform var(--anim-duration-slow) var(--ease-editorial);
+}
+
+.animate-reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
 }

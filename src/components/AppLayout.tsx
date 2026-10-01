@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { ChevronDown, Sun, Moon } from 'lucide-react';
 import { HERO_DATA } from '../data/sourceFacts';
 import { Breadcrumbs } from './Breadcrumbs';
+import { useTheme } from '../context/ThemeContext';
+import { useLanguage } from '../context/LanguageContext';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const AppLayout: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [moreMenuOpen, setMoreMenuOpen] = useState(false);
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+  useLanguage(); // Initialize language context
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,23 +35,83 @@ export const AppLayout: React.FC = () => {
     setMoreMenuOpen(false);
   };
 
-  const mainNavLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Work', path: '/work' },
-    { label: 'Research', path: '/research' },
-    { label: 'Thoughts', path: '/thoughts' },
-    { label: 'Contact', path: '/contact' },
-  ];
-
-  const moreNavLinks = [
-    { label: 'Institutions', path: '/institutions' },
-    { label: 'Delegations', path: '/delegations' },
-    { label: 'Framework', path: '/framework' },
-    { label: 'Gallery', path: '/gallery' },
-    { label: 'Media', path: '/media' },
-    { label: 'Vision', path: '/vision' },
-    { label: 'Support', path: '/support' },
+  // UX.md Primary Navigation with dropdowns
+  const navSections = [
+    {
+      label: 'About',
+      path: '/about',
+      children: [
+        { label: 'Overview', path: '/about' },
+        { label: 'Education', path: '/about/education' },
+        { label: 'Experience', path: '/about/experience' },
+        { label: 'Leadership', path: '/about/leadership' },
+      ]
+    },
+    {
+      label: 'Work',
+      path: '/work',
+      children: [
+        { label: 'Overview', path: '/work' },
+        { label: 'Education', path: '/work/education' },
+        { label: 'Mathematics', path: '/work/mathematics' },
+        { label: 'Science', path: '/work/science' },
+        { label: 'Research', path: '/work/research' },
+        { label: 'Innovation', path: '/work/innovation' },
+        { label: 'Entrepreneurship', path: '/work/entrepreneurship' },
+      ]
+    },
+    {
+      label: 'Initiatives',
+      path: '/initiatives',
+      children: [
+        { label: 'Archive', path: '/initiatives' },
+        { label: 'HRIC', path: '/initiatives/hric' },
+        { label: 'Astronova', path: '/initiatives/astronova' },
+        { label: 'Young Scientists', path: '/initiatives/young-scientists' },
+        { label: 'STEAM', path: '/initiatives/steam' },
+        { label: 'Science & Engineering Fair', path: '/initiatives/science-engineering-fair' },
+        { label: 'Workshops', path: '/initiatives/workshops' },
+      ]
+    },
+    {
+      label: 'Ecosystem',
+      path: '/ecosystem',
+      children: [
+        { label: 'Overview', path: '/ecosystem' },
+        { label: 'Vision', path: '/ecosystem/vision' },
+        { label: 'Education', path: '/ecosystem/education' },
+        { label: 'Research', path: '/ecosystem/research' },
+        { label: 'Innovation', path: '/ecosystem/innovation' },
+        { label: 'Mentorship', path: '/ecosystem/mentorship' },
+        { label: 'Enterprise', path: '/ecosystem/enterprise' },
+      ]
+    },
+    {
+      label: 'Thought',
+      path: '/thought',
+      children: []
+    },
+    {
+      label: 'Media',
+      path: '/media',
+      children: [
+        { label: 'Overview', path: '/media' },
+        { label: 'Newspapers', path: '/media/newspapers' },
+        { label: 'Interviews', path: '/media/interviews' },
+        { label: 'Events', path: '/media/events' },
+        { label: 'Gallery', path: '/media/gallery' },
+      ]
+    },
+    {
+      label: 'CV',
+      path: '/cv',
+      children: []
+    },
+    {
+      label: 'Contact',
+      path: '/contact',
+      children: []
+    },
   ];
 
   return (
@@ -77,7 +141,7 @@ export const AppLayout: React.FC = () => {
             to="/"
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '1.4rem',
+              fontSize: '1.15rem',
               fontWeight: 600,
               letterSpacing: '0.05em',
               color: 'var(--text-primary)',
@@ -106,112 +170,67 @@ export const AppLayout: React.FC = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '2rem'
+              gap: '0.25rem'
             }}
             className="desktop-nav"
           >
-            {mainNavLinks.map((link) => (
+            {navSections.map((section) => (
               <NavLink
-                key={link.label}
-                to={link.path}
+                key={section.label}
+                to={section.path}
                 onClick={handleNavigation}
                 style={({ isActive }) => ({
                   fontFamily: 'var(--font-sans)',
-                  fontSize: '0.875rem',
+                  fontSize: '0.78rem',
                   fontWeight: 500,
                   color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
                   textDecoration: 'none',
                   letterSpacing: '0.04em',
                   transition: 'color 0.2s ease',
-                  position: 'relative'
+                  padding: '0.4rem 0.6rem',
+                  borderRadius: '4px'
                 })}
               >
-                {link.label}
+                {section.label}
               </NavLink>
             ))}
+          </nav>
 
-            <span style={{ 
-              color: 'var(--border-light)', 
-              userSelect: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}>
-              <NavLink
-                to="/about"
-                style={({ isActive }) => ({
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.875rem',
-                  fontWeight: 500,
-                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
-                  textDecoration: 'none',
-                  letterSpacing: '0.04em',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  transition: 'color 0.2s ease'
-                })}
-              >
-                More
-                <ChevronDown size={14} />
-              </NavLink>
-              <div 
-                style={{ 
-                  position: 'relative' 
-                }}
-                onMouseEnter={() => setMoreMenuOpen(true)}
-                onMouseLeave={() => setMoreMenuOpen(false)}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '100%',
-                    right: 0,
-                    backgroundColor: 'var(--bg-primary)',
-                    border: '1px solid var(--border-light)',
-                    borderRadius: '4px',
-                    boxShadow: '0 12px 32px rgba(0,0,0,0.1)',
-                    padding: '1rem',
-                    minWidth: '200px',
-                    opacity: moreMenuOpen ? 1 : 0,
-                    visibility: moreMenuOpen ? 'visible' : 'hidden',
-                    transform: moreMenuOpen ? 'translateY(0)' : 'translateY(-8px)',
-                    transition: 'all 0.2s ease',
-                    zIndex: 1000,
-                    display: moreMenuOpen ? 'block' : 'none'
-                  }}
-                  onMouseEnter={() => setMoreMenuOpen(true)}
-                  onMouseLeave={() => setMoreMenuOpen(false)}
-                >
-                  {moreNavLinks.map((link) => (
-                    <NavLink
-                      key={link.label}
-                      to={link.path}
-                      onClick={handleNavigation}
-                      style={({ isActive }) => ({
-                        display: 'block',
-                        fontFamily: 'var(--font-sans)',
-                        fontSize: '0.875rem',
-                        fontWeight: 500,
-                        color: isActive ? 'var(--accent-blue)' : 'var(--text-secondary)',
-                        textDecoration: 'none',
-                        padding: '0.5rem 0',
-                        letterSpacing: '0.04em',
-                        transition: 'color 0.2s ease'
-                      })}
-                    >
-                      {link.label}
-                    </NavLink>
-                  ))}
-                </div>
-              </div>
-            </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <LanguageSwitcher />
+            
+            <button
+              onClick={toggleTheme}
+              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+              style={{
+                background: 'transparent',
+                border: '1px solid var(--border-light)',
+                padding: '0.5rem',
+                cursor: 'pointer',
+                color: 'var(--text-primary)',
+                borderRadius: '4px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'var(--transition-smooth)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--bg-alt)';
+                e.currentTarget.style.borderColor = 'var(--accent-gold)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.borderColor = 'var(--border-light)';
+              }}
+            >
+              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+            </button>
 
             <Link
               to="/contact"
               style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: '0.85rem',
+                fontSize: '0.78rem',
                 fontWeight: 600,
                 color: 'var(--text-primary)',
                 textDecoration: 'none',
@@ -232,22 +251,7 @@ export const AppLayout: React.FC = () => {
             >
               Contact
             </Link>
-          </nav>
-
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="mobile-toggle"
-            aria-label="Toggle navigation menu"
-            style={{
-              background: 'transparent',
-              border: '1px solid var(--border-light)',
-              padding: '0.5rem',
-              cursor: 'pointer',
-              color: 'var(--text-primary)'
-            }}
-          >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          </div>
         </div>
 
         {mobileMenuOpen && (
@@ -261,51 +265,77 @@ export const AppLayout: React.FC = () => {
               gap: '1.25rem'
             }}
           >
-            {mainNavLinks.map((link) => (
-              <NavLink
-                key={link.label}
-                to={link.path}
-                onClick={handleNavigation}
-                style={({ isActive }) => ({
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.35rem',
-                  color: isActive ? 'var(--accent-blue)' : 'var(--text-primary)',
-                  textDecoration: 'none'
-                })}
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            {navSections.map((section) => {
+              const hasChildren = section.children.length > 0;
+              return (
+                <React.Fragment key={section.label}>
+                  <NavLink
+                    to={section.path}
+                    onClick={handleNavigation}
+                    style={({ isActive }) => ({
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: '1.35rem',
+                      color: isActive ? 'var(--accent-blue)' : 'var(--text-primary)',
+                      textDecoration: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    })}
+                  >
+                    {section.label}
+                    {hasChildren && <ChevronDown size={18} />}
+                  </NavLink>
+                  {hasChildren && (
+                    <div style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {section.children.map((child) => (
+                        <NavLink
+                          key={child.label}
+                          to={child.path}
+                          onClick={handleNavigation}
+                          style={({ isActive }) => ({
+                            fontFamily: 'var(--font-serif)',
+                            fontSize: '1.15rem',
+                            color: isActive ? 'var(--accent-blue)' : 'var(--text-secondary)',
+                            textDecoration: 'none',
+                            padding: '0.5rem 0'
+                          })}
+                        >
+                          {child.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  )}
+                </React.Fragment>
+              );
+            })}
+
             <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '1rem', marginTop: '0.5rem' }}>
-              <span style={{ 
-                fontFamily: 'var(--font-sans)', 
-                fontSize: '0.75rem', 
-                fontWeight: 700, 
-                color: 'var(--accent-gold)', 
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                display: 'block',
-                marginBottom: '1rem'
-              }}>
-                More Pages
-              </span>
-              {moreNavLinks.map((link) => (
-                <NavLink
-                  key={link.label}
-                  to={link.path}
-                  onClick={handleNavigation}
-                  style={({ isActive }) => ({
-                    display: 'block',
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: '1.15rem',
-                    color: isActive ? 'var(--accent-blue)' : 'var(--text-primary)',
-                    textDecoration: 'none',
-                    padding: '0.5rem 0'
-                  })}
-                >
-                  {link.label}
-                </NavLink>
-              ))}
+              <LanguageSwitcher />
+              
+              <button
+                onClick={toggleTheme}
+                aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+                style={{
+                  background: 'transparent',
+                  border: '1px solid var(--border-light)',
+                  padding: '0.75rem 1rem',
+                  cursor: 'pointer',
+                  color: 'var(--text-primary)',
+                  borderRadius: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.75rem',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                  marginTop: '0.5rem',
+                  transition: 'var(--transition-smooth)'
+                }}
+              >
+                {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
+              </button>
             </div>
           </div>
         )}
@@ -356,22 +386,9 @@ export const AppLayout: React.FC = () => {
                 Quick Links
               </h4>
               <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {mainNavLinks.map((link) => (
-                  <Link key={link.label} to={link.path} style={{ fontSize: '0.95rem', color: 'var(--dark-text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}>
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            <div>
-              <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent-gold-light)', marginBottom: '1rem' }}>
-                More
-              </h4>
-              <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {moreNavLinks.map((link) => (
-                  <Link key={link.label} to={link.path} style={{ fontSize: '0.95rem', color: 'var(--dark-text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}>
-                    {link.label}
+                {navSections.map((section) => (
+                  <Link key={section.label} to={section.path} style={{ fontSize: '0.95rem', color: 'var(--dark-text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}>
+                    {section.label}
                   </Link>
                 ))}
               </nav>

@@ -14,6 +14,8 @@ Top-level nav (desktop, persistent header):
 
 ```
 About | Work | Initiatives | Ecosystem | Thought | Media | CV | Contact
+
+                                      EN | नेपाली
 ```
 
 **Dropdown structure:**
@@ -633,3 +635,88 @@ Shared template:
 - Any route with no available verified content for a section should
   render an honest "content coming soon" or omit the section entirely —
   never a fabricated placeholder that reads as real content.
+
+---
+
+## 5. LANGUAGE SWITCHER
+
+Global language control:
+
+EN | नेपाली
+
+Default:
+English
+
+Supported languages:
+- English
+- Nepali
+
+### Behavior
+
+The language switcher appears in the global header.
+
+When the user selects Nepali:
+- current page remains the same
+- content changes to Nepali
+- navigation changes to Nepali
+- buttons and labels change to Nepali
+- page metadata/content presentation changes appropriately
+- user should not be unexpectedly redirected to the homepage
+
+When the user selects English:
+- the same page returns to English
+
+### Persistence
+
+Remember the user's selected language during the session and across normal navigation.
+
+If appropriate for implementation, persist the preference locally.
+
+### Mobile
+
+The language switcher must remain accessible on mobile without occupying excessive header space.
+
+### Accessibility
+
+The control must:
+- have a clear accessible label
+- expose the current language
+- be keyboard accessible
+- have a visible selected state
+- not rely only on color
+
+Recommended accessible label:
+
+"Language: English"
+
+or
+
+"भाषा: नेपाली"
+
+### Content parity
+
+Both language versions must represent the same information.
+
+Do not remove important information merely because the page is in Nepali.
+
+### Translation quality
+
+Nepali should be professionally written rather than literal word-for-word machine translation.
+
+Keep:
+- people's names
+- organization names
+- technical terminology
+- official titles
+- event names
+
+consistent unless an established Nepali form exists.
+
+For official organization names, preserve the official English name where appropriate and provide the Nepali equivalent when useful.
+
+### URL Strategy
+
+Use a consistent strategy throughout the website.
+
+Client-side language state (`LanguageContext`) with local preference persistence (`localStorage`), enabling instant seamless in-place language switching on all pages.
+
