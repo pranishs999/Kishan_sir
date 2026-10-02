@@ -32,7 +32,6 @@ export const AppLayout: React.FC = () => {
 
   const handleNavigation = () => {
     setMobileMenuOpen(false);
-    setMoreMenuOpen(false);
   };
 
   // UX.md Primary Navigation with dropdowns

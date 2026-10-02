@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { Language, LocalizedString, LocalizedStringArray } from '../types/schema';
 import { tField, tArray, uiDict } from '../utils/i18n';
+import { getTranslatedContent, getTranslatedArray } from '../services/translation';
 
 interface LanguageContextType {
   language: Language;
@@ -9,6 +10,8 @@ interface LanguageContextType {
   t: (key: keyof typeof uiDict['en']) => string;
   tF: (field: LocalizedString | undefined | null) => string;
   tA: (arr: LocalizedStringArray | undefined | null) => string[];
+  translate: (field: LocalizedString | undefined | null) => Promise<string>;
+  translateArray: (arr: LocalizedStringArray | undefined | null) => Promise<string[]>;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -57,8 +60,34 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return tArray(arr, language);
   };
 
+  // Async translation with fallback: manual > cached API > new API > English
+  const translate = useCallback(
+    async (field: LocalizedString | undefined | null): Promise<string> => {
+      return getTranslatedContent(field, language);
+    },
+    [language]
+  );
+
+  const translateArray = useCallback(
+    async (arr: LocalizedStringArray | undefined | null): Promise<string[]> => {
+      return getTranslatedArray(arr, language);
+    },
+    [language]
+  );
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t, tF, tA }}>
+    <LanguageContext.Provider
+      value={{
+        language,
+        setLanguage,
+        toggleLanguage,
+        t,
+        tF,
+        tA,
+        translate,
+        translateArray,
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );
