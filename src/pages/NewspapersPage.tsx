@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, ArrowUpRight, Newspaper, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Newspaper } from 'lucide-react';
 import { media } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 

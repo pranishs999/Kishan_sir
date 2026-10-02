@@ -14,7 +14,7 @@ const domainIcons: Record<string, React.ReactNode> = {
 };
 
 export const WorkPage: React.FC = () => {
-  const { tF, tA } = useLanguage();
+  const { tF } = useLanguage();
 
   return (
     <>

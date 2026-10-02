@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, ArrowUpRight, Mic, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Mic } from 'lucide-react';
 import { media } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 

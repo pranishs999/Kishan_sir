@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Award, GraduationCap, Building2 } from 'lucide-react';
-import { person, education, experience, leadership } from '../data';
+import { Award, GraduationCap, Building2 } from 'lucide-react';
+import { person } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 
 export const AboutPage: React.FC = () => {

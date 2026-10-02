@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowUpRight, ArrowLeft, Users, MapPin, Calendar, Target, Image, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, ArrowLeft, MapPin, Calendar, Target, ExternalLink } from 'lucide-react';
 import { initiatives, institutions, media, gallery } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 

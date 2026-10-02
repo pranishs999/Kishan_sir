@@ -5,7 +5,7 @@ import { education } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 
 export const AboutEducationPage: React.FC = () => {
-  const { tF, tA } = useLanguage();
+  const { tF } = useLanguage();
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { cv } from '../data';
-import { Award, GraduationCap, Building2, Globe, Download, ArrowUpRight } from 'lucide-react';
+import { Award, GraduationCap, Building2, Globe, Download } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const CVPage: React.FC = () => {

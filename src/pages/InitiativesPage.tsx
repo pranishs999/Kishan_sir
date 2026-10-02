@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Filter, Building2, Users, FlaskConical, BookOpen, Wrench, Rocket } from 'lucide-react';
-import { initiatives, institutions } from '../data';
+import { initiatives } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -16,7 +16,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
 };
 
 export const InitiativesPage: React.FC = () => {
-  const { tF, tA } = useLanguage();
+  const { tF } = useLanguage();
 
   const categories = [
     { id: 'all', label: 'All Initiatives', icon: <Filter size={20} /> },

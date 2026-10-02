@@ -12,7 +12,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
 };
 
 export const MediaPage: React.FC = () => {
-  const { tF, tA } = useLanguage();
+  const { tF } = useLanguage();
 
   const categories = [
     { id: 'all', label: 'All Media', icon: <Filter size={20} /> },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, Calendar, Clock, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Calendar, Clock } from 'lucide-react';
 import { articles } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 

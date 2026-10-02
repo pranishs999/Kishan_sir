@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Building2, Globe, Award } from 'lucide-react';
+import { ArrowUpRight, Award } from 'lucide-react';
 import { leadership } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 

@@ -6,7 +6,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useLanguage } from '../context/LanguageContext';
 
 export const HomePage: React.FC = () => {
-  const { tF, tA } = useLanguage();
+  const { tF } = useLanguage();
   const heroRef = useScrollAnimation({ delay: 100 });
   const snapshotRef = useScrollAnimation({ delay: 100 });
   const frameworkRef = useScrollAnimation({ delay: 100 });

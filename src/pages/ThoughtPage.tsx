@@ -5,7 +5,7 @@ import { articles } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 
 export const ThoughtPage: React.FC = () => {
-  const { tF, tA } = useLanguage();
+  const { tF } = useLanguage();
 
   return (
     <>
