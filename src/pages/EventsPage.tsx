@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, ArrowUpRight, Calendar, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Calendar } from 'lucide-react';
 import { media } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 

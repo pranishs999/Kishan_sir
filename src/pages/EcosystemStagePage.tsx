@@ -1,18 +1,8 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowUpRight, ArrowLeft, Users, BookOpen, Lightbulb, Microscope, Building2, Handshake, Rocket, Target, ChevronRight, Wrench } from 'lucide-react';
+import { ArrowUpRight, ArrowLeft, Users, BookOpen, Lightbulb, Microscope, Building2, Handshake, Rocket, ChevronRight } from 'lucide-react';
 import { ecosystem } from '../data';
 import { useLanguage } from '../context/LanguageContext';
-
-const stageIcons: Record<string, React.ReactNode> = {
-  curiosity: <Lightbulb size={24} />,
-  learning: <BookOpen size={24} />,
-  research: <Microscope size={24} />,
-  prototype: <Wrench size={24} />,
-  innovation: <Lightbulb size={24} />,
-  enterprise: <Rocket size={24} />,
-  commerce: <Building2 size={24} />,
-};
 
 const stakeholderIcons: Record<string, React.ReactNode> = {
   students: <Users size={24} />,
@@ -27,7 +17,7 @@ const stakeholderIcons: Record<string, React.ReactNode> = {
 
 export const EcosystemStagePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { tF, tA } = useLanguage();
+  const { tF } = useLanguage();
   
   const stage = ecosystem.pipeline.find(s => s.id === slug);
   const stageIndex = ecosystem.pipeline.findIndex(s => s.id === slug);

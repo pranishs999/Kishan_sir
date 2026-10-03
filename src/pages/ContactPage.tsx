@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, ArrowUpRight, Mail, Phone, MapPin, Globe, Send, CheckCircle, MessageSquare } from 'lucide-react';
+import { Link, Mail, Phone, MapPin, Globe, Send, CheckCircle, MessageSquare } from 'lucide-react';
 import { contact } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 

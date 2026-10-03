@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, ArrowUpRight, Image, MapPin, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { gallery } from '../data';
 import { useLanguage } from '../context/LanguageContext';
 

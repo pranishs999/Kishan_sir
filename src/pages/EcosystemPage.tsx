@@ -26,7 +26,7 @@ const stageIcons: Record<string, React.ReactNode> = {
 };
 
 export const EcosystemPage: React.FC = () => {
-  const { tF, tA } = useLanguage();
+  const { tF } = useLanguage();
   const [activeStepId, setActiveStepId] = useState<string>('curiosity');
   const activeStep = ecosystem.pipeline.find(s => s.id === activeStepId) || ecosystem.pipeline[0];
 
@@ -203,7 +203,7 @@ export const EcosystemPage: React.FC = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-            {ecosystem.pipeline.map((step, idx) => (
+            {ecosystem.pipeline.map((step) => (
               <Link key={step.id} to={`/ecosystem/${step.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div style={{ border: '1px solid var(--border-light)', backgroundColor: 'var(--bg-surface)', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'box-shadow 0.3s ease, border-color 0.3s ease' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem' }}>
