@@ -39,7 +39,7 @@ export const person: PersonEntity = {
   nepaliName: "नैत्र प्रसाद बास्तोला (किशन बास्तोला)",
   professionalTitle: {
     en: "Educationist | Mathematician | Research & Innovation Ecosystem Builder",
-    ne: "शिक्षाविद् | गणितज्ञ | अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता"
+    ne: "शिक्षासेवी | गणितज्ञ | अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता"
   },
   tagline: {
     en: "From Curiosity to Commerce",
@@ -47,7 +47,7 @@ export const person: PersonEntity = {
   },
   shortBiography: {
     en: "Kishan Bastola is an educationist, mathematician and Research & Innovation Ecosystem Builder with 18 years of experience in education. He holds a Master's Degree in Mathematics and has served as a School Principal and Campus Chief. He has served as Country Leader for the Taiwan International Science Fair (TISF), Province Secretary of the Mathematical Association of Nepal (MAN), Bagmati, and Executive Member of the Nepal Mathematical Society (NMS), Bagmati. He is the President of Astronova Foundation Nepal and the Founder & Director of Hetauda Research and Innovation Center (HRIC).",
-    ne: "किशन बास्तोला १८ वर्षको शैक्षिक अनुभव भएका शिक्षाविद्, गणितज्ञ र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। उनीसँग गणित विषयमा स्नातकोत्तर MA/MSc. उपाधि छ र उनले प्रिन्सिपल तथा क्याम्पस प्रमुखको रूपमा नेतृत्वदायी भूमिका निर्वाह गरिसकेका छन्। उनले ताइवान अन्तर्राष्ट्रिय विज्ञान प्रदर्शनी (TISF) को कन्ट्री लिडर, गणित समाज नेपाल (MAN) बागमती प्रदेशको सचिव, र नेपाल म्याथमेटिकल सोसाइटी (NMS) बागमतीको कार्यकारिणी सदस्यको रूपमा सेवा गरेका छन्। उनी एष्ट्रोनोभा फाउण्डेशन नेपालका अध्यक्ष तथा हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC) का संस्थापक तथा निर्देशक हुन्।"
+    ne: "किशन बास्तोला १८ वर्षको शैक्षिक अनुभव भएका शिक्षासेवी, गणितज्ञ र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। उनीसँग गणित विषयमा स्नातकोत्तर MA/MSc. उपाधि छ र उनले प्रिन्सिपल तथा क्याम्पस प्रमुखको रूपमा नेतृत्वदायी भूमिका निर्वाह गरिसकेका छन्। उनले ताइवान अन्तर्राष्ट्रिय विज्ञान प्रदर्शनी (TISF) को कन्ट्री लिडर, गणित समाज नेपाल (MAN) बागमती प्रदेशको सचिव, र नेपाल म्याथमेटिकल सोसाइटी (NMS) बागमतीको कार्यकारिणी सदस्यको रूपमा सेवा गरेका छन्। उनी एष्ट्रोनोभा फाउण्डेशन नेपालका अध्यक्ष तथा हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC) का संस्थापक तथा निर्देशक हुन्।"
   },
   biography: {
     en: [
@@ -56,7 +56,7 @@ export const person: PersonEntity = {
       "On international platforms, he serves as Country Leader for Nepal at global scientific competitions including the Taiwan International Science Fair (TISF, Taiwan) and the International Science & Technology Competition (IOSTC, Indonesia), guiding young Nepalese researchers to international recognition."
     ],
     ne: [
-      "किशन बास्तोला (नेत्र प्रसाद बास्तोला) नेपालको शिक्षा क्षेत्रमा १८ वर्षभन्दा बढीको कार्यकारी नेतृत्व अनुभव बोकेका शिक्षाविद्, गणितज्ञ, STEM अभियन्ता र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। गणितमा स्नातकोत्तर उपाधि हासिल गरेका उनको कार्यले प्राज्ञिक गम्भीरता र संस्थागत संरचना निर्माणलाई सहज रूपमा जोड्दछ।",
+      "किशन बास्तोला (नेत्र प्रसाद बास्तोला) नेपालको शिक्षा क्षेत्रमा १८ वर्षभन्दा बढीको कार्यकारी नेतृत्व अनुभव बोकेका शिक्षासेवी, गणितज्ञ, STEM अभियन्ता र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। गणितमा स्नातकोत्तर उपाधि हासिल गरेका उनको कार्यले प्राज्ञिक गम्भीरता र संस्थागत संरचना निर्माणलाई सहज रूपमा जोड्दछ।",
       "प्रिन्सिपल तथा क्याम्पस प्रमुखको रूपमा सेवा गरिसकेका उनले हाल एष्ट्रोनोभा फाउण्डेशन नेपालको अध्यक्ष, गणित समाज नेपाल (MAN) बागमती प्रदेशको सचिव, नेपाल म्याथमेटिकल सोसाइटी (NMS) बागमती प्रदेशको कार्यकारिणी सदस्य र हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC) को संस्थापक तथा निर्देशकको रूपमा राष्ट्रिय तथा प्रादेशिक पहलहरूको नेतृत्व गरिरहेका छन्।",
       "अन्तर्राष्ट्रिय मञ्चहरूमा उनले ताइवान अन्तर्राष्ट्रिय विज्ञान प्रदर्शनी (TISF, ताइवान) र अन्तर्राष्ट्रिय विज्ञान तथा प्रविधि प्रतियोगिता (IOSTC, इन्डोनेसिया) लगायतका विश्वव्यापी वैज्ञानिक प्रतियोगिताहरूमा नेपालको कन्ट्री लिडरको रूपमा सेवा गर्दै युवा नेपाली अनुसन्धानकर्ताहरूलाई अन्तर्राष्ट्रिय पहिचान दिलाउन मार्गदर्शन गरिरहेका छन्।"
     ]
@@ -77,7 +77,7 @@ export const person: PersonEntity = {
   profileImage: "/images/hero.png",
   professionalIdentity: [
     {
-      title: { en: "Educationist", ne: "शिक्षाविद्" },
+      title: { en: "Educationist", ne: "शिक्षासेवी" },
       description: { en: "18 years in education, including leadership as School Principal and Campus Chief.", ne: "प्रिन्सिपल र क्याम्पस प्रमुखको रूपमा १८ वर्षको शैक्षिक नेतृत्व अनुभव।" }
     },
     {
@@ -936,7 +936,7 @@ export const contact: ContactEntity = {
   linkedinUrl: "https://www.linkedin.com/in/kishan-bastola/",
   astronovaUrl: "https://astronovafoundation.com",
   tisfUrl: "https://www.ntsec.gov.tw",
-  MANBagmatiUrl: "https://www.facebook.com/profile.php?id=61571369803423",
+  MANBagmatiUrl: "https://www.facebook.com/share/18Re3ajNqx/",
   collaborationPurposes: [
     {
       id: "research",
@@ -1448,5 +1448,5 @@ export const CONTACT_DATA = {
   astronovaUrl: "https://astronovafoundation.com",
   hricUrl: "#institution-hric",
   tisfUrl: "https://www.ntsec.gov.tw",
-  MANBagmatiUrl: "https://www.facebook.com/profile.php?id=61571369803423"
+  MANBagmatiUrl: "https://www.facebook.com/share/18Re3ajNqx/"
 };
