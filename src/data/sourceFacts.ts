@@ -36,7 +36,7 @@ export const person: PersonEntity = {
     en: "Kishan Bastola",
     ne: "किशन बास्तोला"
   },
-  nepaliName: "नैत्र प्रसाद बास्तोला (किशन बास्तोला)",
+  nepaliName: "नेत्र प्रसाद बास्तोला (किशन बास्तोला)",
   professionalTitle: {
     en: "Educationist | Mathematician | Research & Innovation Ecosystem Builder",
     ne: "शिक्षासेवी | गणितज्ञ | अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता"
@@ -659,7 +659,7 @@ export const ecosystem: EcosystemEntity = {
     { from: "mentors", to: "researchers", description: { en: "Collaborative laboratory experimentation at HRIC", ne: "HRIC मा सहयोगात्मक प्रयोगशाला प्रयोग" } },
     { from: "researchers", to: "universities", description: { en: "Academic research validation and MOU partnerships", ne: "प्राज्ञिक अनुसन्धान प्रमाणीकरण र MOU साझेदारी" } },
     { from: "industry", to: "students", description: { en: "Real-world agricultural and municipal problem statements", ne: "वास्तविक कृषि तथा नगरपालिकाका समस्या कथनहरू" } },
-    { from: "innovations", to: "entrepreneurs", description: { en: "Incubation and prototype commercialization into local value", ne: "इन्क्युबेशन र स्थानीय मूल्यमा प्रोटोटाइप व्यावसायीकरण" } }
+    { from: "researchers", to: "entrepreneurs", description: { en: "Incubation and prototype commercialization into local value", ne: "इन्क्युबेशन र स्थानीय मूल्यमा प्रोटोटाइप व्यावसायीकरण" } }
   ],
   pipeline: [
     {
@@ -970,6 +970,8 @@ export const contact: ContactEntity = {
 // CV (composed view over core entities)
 // =====================================================
 
+export { getRelatedInitiatives } from '../utils/lookup';
+
 export const cv = {
   profile: person.shortBiography,
   fullName: person.fullName,
@@ -1065,7 +1067,7 @@ export const GLOBAL_DELEGATIONS: DelegationEntry[] = [
       "Bilateral academic exchange between Nepalese and Southeast Asian science institutions",
       "Systematic incubation of student projects leading up to international competition"
     ],
-    imageUrl: "/images/tisf.png"
+    imageUrl: "/images/IOSTC.jpg"
   }
 ];
 
@@ -1428,7 +1430,7 @@ export const SUPPORT_VISION_DATA: SupportVisionData = {
 
 export const CONTACT_DATA = {
   name: "KISHAN BASTOLA",
-  fullNameNep: "किशन बाँस्टोला (नेत्र प्रसाद बाँस्टोला)",
+  fullNameNep: "किशन बास्तोला (नेत्र प्रसाद बास्तोला)",
   titleStack: [
     "Chairperson — Astronova Foundation Nepal",
     "STEM & Mathematics Advocate",
