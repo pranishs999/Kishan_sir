@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Menu, X } from 'lucide-react';
-import { HERO_DATA } from '../data/sourceFacts';
+import { Menu, X } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-interface NavbarProps {
-  onOpenCV: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
+export const Navbar: React.FC = () => {
+  const { language, toggleLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -22,161 +19,159 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'About', href: '#profile' },
-    { label: 'Delegations', href: '#delegations' },
-    { label: 'Initiatives', href: '#institutions' },
-    { label: 'Theses', href: '#theses' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Support', href: '#support' },
+  const navQuestions = [
+    {
+      id: 'who-am-i',
+      href: '#who-am-i',
+      en: 'Who am I ?',
+      ne: 'म को हुँ ?'
+    },
+    {
+      id: 'how-it-works',
+      href: '#how-it-works',
+      en: 'How does it work ?',
+      ne: 'यो कसरी चल्छ ?'
+    },
+    {
+      id: 'what-we-built',
+      href: '#what-we-built',
+      en: 'What have we built ?',
+      ne: 'हामीले के बनायौं ?'
+    },
+    {
+      id: 'collaborate',
+      href: '#collaborate',
+      en: 'Shall we collaborate ?',
+      ne: 'सहकार्य गरौं ?'
+    }
   ];
 
   return (
-    <header 
+    <header
       style={{
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        backgroundColor: isScrolled ? 'rgba(249, 248, 243, 0.94)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
-        borderBottom: `1px solid ${isScrolled ? 'var(--border-light)' : 'transparent'}`,
-        transition: 'all 0.3s cubic-bezier(0.25, 1, 0.35, 1)'
+        backgroundColor: isScrolled ? 'rgba(249, 248, 243, 0.95)' : 'rgba(249, 248, 243, 0.85)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: `1px solid ${isScrolled ? 'var(--border-light)' : 'rgba(218, 215, 203, 0.5)'}`,
+        transition: 'all 0.3s ease'
       }}
     >
-      <div 
+      <div
         className="container"
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          paddingTop: '1.25rem',
-          paddingBottom: '1.25rem'
+          paddingTop: '1rem',
+          paddingBottom: '1rem'
         }}
       >
         {/* Brand Identity */}
-        <a 
+        <a
           href="#"
           style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: '1.4rem',
-            fontWeight: 600,
-            letterSpacing: '0.05em',
+            fontSize: '1.25rem',
+            fontWeight: 700,
+            letterSpacing: '0.02em',
             color: 'var(--text-primary)',
-            textDecoration: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
+            textDecoration: 'none'
           }}
         >
-          {HERO_DATA.name}
-          <span 
-            style={{ 
-              fontSize: '0.75rem', 
-              fontFamily: 'var(--font-sans)', 
-              fontWeight: 500, 
-              color: 'var(--accent-gold)',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase'
-            }}
-          >
-            · Portfolio
-          </span>
+          {language === 'ne' ? 'किशन बास्तोला' : 'Kishan Bastola'}
         </a>
 
         {/* Desktop Navigation */}
-        <nav 
+        <nav
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '2rem'
+            gap: '2.25rem'
           }}
           className="desktop-nav"
         >
-          {navLinks.map((link) => (
+          {navQuestions.map((q) => (
             <a
-              key={link.label}
-              href={link.href}
+              key={q.id}
+              href={q.href}
               style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.875rem',
+                fontFamily: 'var(--font-serif)',
+                fontSize: '0.95rem',
                 fontWeight: 500,
-                color: 'var(--text-secondary)',
+                color: 'var(--text-primary)',
                 textDecoration: 'none',
-                letterSpacing: '0.04em',
+                position: 'relative',
+                paddingBottom: '0.2rem',
                 transition: 'color 0.2s ease'
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+              className="nav-question-link"
             >
-              {link.label}
+              {q[language]}
             </a>
           ))}
 
-          <span style={{ color: 'var(--border-light)', userSelect: 'none' }}>|</span>
-
-          {/* Action CTAs */}
+          {/* Inline Language Toggle */}
           <button
-            onClick={onOpenCV}
+            onClick={toggleLanguage}
+            aria-label="Toggle language"
             style={{
               background: 'transparent',
               border: 'none',
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.875rem',
-              fontWeight: 600,
-              color: 'var(--accent-blue)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              letterSpacing: '0.04em'
-            }}
-          >
-            <FileText size={15} />
-            CV
-          </button>
-
-          <a
-            href="#contact"
-            style={{
-              fontFamily: 'var(--font-sans)',
               fontSize: '0.85rem',
               fontWeight: 600,
-              color: 'var(--text-primary)',
-              textDecoration: 'none',
-              padding: '0.45rem 1rem',
-              border: '1px solid var(--border-light)',
               letterSpacing: '0.05em',
-              textTransform: 'uppercase',
-              transition: 'var(--transition-smooth)'
+              color: 'var(--text-secondary)',
+              cursor: 'pointer',
+              padding: '0.2rem 0.5rem',
+              marginLeft: '0.5rem',
+              transition: 'color 0.2s ease'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--text-primary)';
-              e.currentTarget.style.color = 'var(--bg-primary)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = 'var(--text-primary)';
-            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
           >
-            Contact
-          </a>
+            <span style={{ color: language === 'en' ? 'var(--text-primary)' : 'var(--text-muted)', fontWeight: language === 'en' ? 700 : 400 }}>EN</span>
+            <span style={{ margin: '0 0.3rem', color: 'var(--border-light)' }}>|</span>
+            <span style={{ color: language === 'ne' ? 'var(--text-primary)' : 'var(--text-muted)', fontWeight: language === 'ne' ? 700 : 400 }}>ने</span>
+          </button>
         </nav>
 
-        {/* Mobile Hamburger Toggle */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="mobile-toggle"
-          aria-label="Toggle navigation menu"
-          style={{
-            background: 'transparent',
-            border: '1px solid var(--border-light)',
-            padding: '0.5rem',
-            cursor: 'pointer',
-            color: 'var(--text-primary)'
-          }}
-        >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {/* Mobile Toggle & Language Switcher */}
+        <div className="mobile-nav-controls" style={{ display: 'none', alignItems: 'center', gap: '0.75rem' }}>
+          <button
+            onClick={toggleLanguage}
+            aria-label="Toggle language"
+            style={{
+              background: 'transparent',
+              border: '1px solid var(--border-light)',
+              borderRadius: '3px',
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              color: 'var(--text-primary)',
+              cursor: 'pointer',
+              padding: '0.3rem 0.6rem'
+            }}
+          >
+            {language === 'en' ? 'ने' : 'EN'}
+          </button>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              color: 'var(--text-primary)',
+              padding: '0.25rem'
+            }}
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
@@ -185,55 +180,44 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCV }) => {
           style={{
             backgroundColor: 'var(--bg-primary)',
             borderBottom: '1px solid var(--border-light)',
-            padding: '1.5rem 2rem',
+            padding: '1.25rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1.25rem'
+            gap: '1rem'
           }}
         >
-          {navLinks.map((link) => (
+          {navQuestions.map((q) => (
             <a
-              key={link.label}
-              href={link.href}
+              key={q.id}
+              href={q.href}
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: '1.35rem',
+                fontSize: '1.15rem',
                 color: 'var(--text-primary)',
                 textDecoration: 'none'
               }}
             >
-              {link.label}
+              {q[language]}
             </a>
           ))}
-          <div style={{ display: 'flex', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border-light)' }}>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenCV();
-              }}
-              className="btn-primary"
-              style={{ padding: '0.65rem 1.25rem', fontSize: '0.8rem' }}
-            >
-              <FileText size={15} /> View CV
-            </button>
-          </div>
         </div>
       )}
 
-      {/* Responsive Inline CSS */}
+      {/* Underline hover effect styles */}
       <style>{`
+        .nav-question-link {
+          border-bottom: 2px solid transparent;
+        }
+        .nav-question-link:hover {
+          border-bottom: 2px solid var(--accent-gold);
+        }
         @media (max-width: 860px) {
           .desktop-nav {
             display: none !important;
           }
-          .mobile-toggle {
+          .mobile-nav-controls {
             display: flex !important;
-          }
-        }
-        @media (min-width: 861px) {
-          .mobile-toggle {
-            display: none !important;
           }
         }
       `}</style>

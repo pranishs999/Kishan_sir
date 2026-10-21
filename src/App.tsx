@@ -1,129 +1,65 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { Profile } from './components/Profile';
-import { Credentials } from './components/Credentials';
-import { Delegations } from './components/Delegations';
-import { CuriosityFramework } from './components/CuriosityFramework';
-import { SelectedWork } from './components/SelectedWork';
-import { InstitutionBuilding } from './components/InstitutionBuilding';
-import { SupervisedTheses } from './components/SupervisedTheses';
-import { AreasOfWork } from './components/AreasOfWork';
-import { GallerySection } from './components/GallerySection';
-import { MediaArchive } from './components/MediaArchive';
-import { ThoughtLeadership } from './components/ThoughtLeadership';
-import { Vision } from './components/Vision';
-import { SupportVision } from './components/SupportVision';
-import { ContactFormSection } from './components/ContactFormSection';
-
-import { ProfileModal } from './components/ProfileModal';
+import { ChapterWhoAmI } from './components/ChapterWhoAmI';
+import { ChapterHowItWorks } from './components/ChapterHowItWorks';
+import { ChapterWhatWeBuilt } from './components/ChapterWhatWeBuilt';
+import { ChapterCollaborate } from './components/ChapterCollaborate';
 import { CVModal } from './components/CVModal';
-import { DetailModal } from './components/DetailModal';
-
-import type { WorkEntry, MediaEntry, ThoughtEntry, ThesisEntry } from './types/portfolio';
+import { useLanguage } from './context/LanguageContext';
 
 export const App: React.FC = () => {
-  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
-
-  const [activeWorkModal, setActiveWorkModal] = useState<WorkEntry | null>(null);
-  const [activeMediaModal, setActiveMediaModal] = useState<MediaEntry | null>(null);
-  const [activeThoughtModal, setActiveThoughtModal] = useState<ThoughtEntry | null>(null);
-  const [activeThesisModal, setActiveThesisModal] = useState<ThesisEntry | null>(null);
-
-  const isDetailModalOpen = Boolean(activeWorkModal || activeMediaModal || activeThoughtModal || activeThesisModal);
-
-  const closeDetailModal = () => {
-    setActiveWorkModal(null);
-    setActiveMediaModal(null);
-    setActiveThoughtModal(null);
-    setActiveThesisModal(null);
-  };
+  const { language } = useLanguage();
 
   return (
     <div style={{ backgroundColor: 'var(--bg-primary)', minHeight: '100vh', color: 'var(--text-primary)' }}>
       
-      {/* 00 / Minimal Sticky Navigation Header */}
-      <Navbar 
-        onOpenCV={() => setIsCVModalOpen(true)}
-      />
+      {/* 4-Question Minimalist Header */}
+      <Navbar />
 
-      {/* Hero Section */}
-      <Hero 
-        onOpenCV={() => setIsCVModalOpen(true)}
-      />
+      {/* Hero Section with strictly 1 button (Download CV) */}
+      <Hero onOpenCV={() => setIsCVModalOpen(true)} />
 
-      {/* 01 / PROFILE */}
-      <Profile 
-        onOpenProfileModal={() => setIsProfileModalOpen(true)}
-      />
+      {/* Chapter 1: Who am I ? */}
+      <ChapterWhoAmI />
 
-      {/* 02 / CREDENTIALS AT A GLANCE */}
-      <Credentials />
+      {/* Chapter 2: How does it work ? */}
+      <ChapterHowItWorks />
 
-      {/* 03 / GLOBAL SCIENTIFIC DELEGATIONS (TISF Taiwan & IOSTC Indonesia) */}
-      <Delegations />
+      {/* Chapter 3: What have we built ? */}
+      <ChapterWhatWeBuilt />
 
-      {/* 04 / SIGNATURE FRAMEWORK: FROM CURIOSITY TO COMMERCE */}
-      <CuriosityFramework />
+      {/* Chapter 4: Shall we collaborate ? */}
+      <ChapterCollaborate />
 
-      {/* 05 / SELECTED WORK & INITIATIVES */}
-      <SelectedWork 
-        onSelectWork={(work) => setActiveWorkModal(work)}
-      />
+      {/* Minimal Footer */}
+      <footer
+        style={{
+          backgroundColor: 'var(--bg-alt)',
+          borderTop: '1px solid var(--border-light)',
+          padding: '2rem 0',
+          textAlign: 'center'
+        }}
+      >
+        <div className="container">
+          <p
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.85rem',
+              color: 'var(--text-muted)',
+              margin: 0
+            }}
+          >
+            © {new Date().getFullYear()} {language === 'ne' ? 'किशन बास्तोला। सर्वाधिकार सुरक्षित।' : 'Kishan Bastola. All rights reserved.'}
+          </p>
+        </div>
+      </footer>
 
-      {/* 06 / INSTITUTION BUILDING & ECOSYSTEMS */}
-      <InstitutionBuilding />
-
-      {/* 07 / ARTICLES & SUPERVISED THESES */}
-      <SupervisedTheses 
-        onSelectThesis={(thesis) => setActiveThesisModal(thesis)}
-      />
-
-      {/* 08 / AREAS OF WORK & DOMAIN EXPERTISE */}
-      <AreasOfWork />
-
-      {/* 09 / MEDIA & EVENT GALLERY (Summer STEAM Expo) */}
-      <GallerySection />
-
-      {/* 10 / MEDIA & PRESS ARCHIVE */}
-      <MediaArchive 
-        onSelectMedia={(media) => setActiveMediaModal(media)}
-      />
-
-      {/* 11 / THOUGHT LEADERSHIP & ESSAYS */}
-      <ThoughtLeadership 
-        onSelectThought={(thought) => setActiveThoughtModal(thought)}
-      />
-
-      {/* 12 / VISION & DECLARATION */}
-      <Vision />
-
-      {/* 13 / SUPPORT OUR VISION (Rastriya Banijya Bank Details & QR) */}
-      <SupportVision />
-
-      {/* 14 / EXECUTIVE CONTACT, SOCIALS & DIRECT FORM */}
-      <ContactFormSection />
-
-      {/* MODAL DRAWERS */}
-      <ProfileModal 
-        isOpen={isProfileModalOpen}
-        onClose={() => setIsProfileModalOpen(false)}
-        onOpenCV={() => setIsCVModalOpen(true)}
-      />
-
-      <CVModal 
+      {/* CV Modal Drawer */}
+      <CVModal
         isOpen={isCVModalOpen}
         onClose={() => setIsCVModalOpen(false)}
-      />
-
-      <DetailModal 
-        isOpen={isDetailModalOpen}
-        onClose={closeDetailModal}
-        workData={activeWorkModal}
-        mediaData={activeMediaModal}
-        thoughtData={activeThoughtModal}
-        thesisData={activeThesisModal}
       />
 
     </div>

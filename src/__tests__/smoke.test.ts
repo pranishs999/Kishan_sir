@@ -1,7 +1,21 @@
 import { describe, it, expect } from 'vitest';
-import { person, work, institutions, ecosystem } from '../data';
+import { person, work, institutions, ecosystem, initiatives, getRelatedInitiatives } from '../data';
 
 describe('Data Integrity & Type Validation Smoke Tests', () => {
+  it('relational helper getRelatedInitiatives matches by id or slug correctly', () => {
+    const related = getRelatedInitiatives(['astronova', 'steam-expo', 'non-existent'], initiatives);
+    expect(related.length).toBe(2);
+    expect(related[0].slug).toBe('astronova');
+    expect(related[1].slug).toBe('steam-expo');
+  });
+
+  it('ecosystem connections reference valid stakeholder IDs', () => {
+    const validIds = ecosystem.stakeholders.map(s => s.id);
+    ecosystem.connections.forEach(conn => {
+      expect(validIds).toContain(conn.from);
+      expect(validIds).toContain(conn.to);
+    });
+  });
   it('loads person profile with required fields', () => {
     expect(person.fullName).toBeDefined();
     expect(person.professionalTitle).toBeDefined();

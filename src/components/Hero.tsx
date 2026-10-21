@@ -1,199 +1,176 @@
 import React from 'react';
-import { ArrowDownRight, FileText } from 'lucide-react';
-import { HERO_DATA } from '../data/sourceFacts';
+import { Download } from 'lucide-react';
+import { person } from '../data/sourceFacts';
+import { useLanguage } from '../context/LanguageContext';
 
 interface HeroProps {
-  onOpenCV: () => void;
+  onOpenCV?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenCV }) => {
+  const { language, tF } = useLanguage();
+
+  const handleDownloadCV = () => {
+    if (onOpenCV) {
+      onOpenCV();
+    } else {
+      window.open('/cv.pdf', '_blank');
+    }
+  };
+
   return (
-    <section 
+    <section
+      id="hero"
       style={{
-        position: 'relative',
-        minHeight: 'calc(100vh - 80px)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'between',
-        paddingTop: 'clamp(2rem, 4vw, 4rem)',
-        paddingBottom: 'clamp(3rem, 6vw, 5rem)',
-        overflow: 'hidden'
+        paddingTop: 'clamp(3rem, 6vw, 6rem)',
+        paddingBottom: 'clamp(4rem, 8vw, 7rem)',
+        borderBottom: '1px solid var(--border-light)'
       }}
     >
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        
-        {/* Top Eyebrow Row */}
-        <div 
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '0.75rem',
-            borderBottom: '1px solid var(--border-light)',
-            paddingBottom: '1rem',
-            marginBottom: '2rem'
-          }}
-        >
-          <span className="eyebrow" style={{ margin: 0 }}>
-            EXECUTIVE PORTFOLIO & ARCHIVE
-          </span>
-          <span 
-            style={{ 
-              fontFamily: 'var(--font-sans)', 
-              fontSize: '0.8rem', 
-              color: 'var(--text-muted)',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase'
-            }}
-          >
-            BAGMATI PROVINCE · NEPAL
-          </span>
-        </div>
-
-        {/* Asymmetric 12-Column Grid */}
-        <div className="grid-12" style={{ alignItems: 'end' }}>
+      <div className="container">
+        <div className="grid-12" style={{ alignItems: 'center', rowGap: '3rem' }}>
           
-          {/* Main Typographic Column (Cols 1-8) */}
-          <div style={{ gridColumn: 'span 8', width: '100%', maxWidth: '100%' }}>
+          {/* Left Column: Typographic Details */}
+          <div style={{ gridColumn: 'span 7', width: '100%' }}>
             
-            {/* HUGE SERIF NAME: 8-12vw */}
-            <h1 
-              className="text-display"
+            <p
               style={{
-                lineHeight: 0.94,
-                marginBottom: '1.75rem',
-                color: 'var(--text-primary)',
-                letterSpacing: '-0.03em',
-                overflowWrap: 'break-word',
-                wordBreak: 'break-word'
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-gold)',
+                marginBottom: '1rem'
               }}
             >
-              {HERO_DATA.name}
-            </h1>
-
-            {/* Subtitle Descriptor */}
-            <p 
-              style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(1.15rem, 2.4vw, 2.1rem)',
-                fontStyle: 'italic',
-                lineHeight: 1.25,
-                color: 'var(--accent-blue)',
-                maxWidth: '720px',
-                marginBottom: '3rem'
-              }}
-            >
-              {HERO_DATA.title}
+              {language === 'ne' ? 'कार्यकारी पोर्टफोलियो' : 'EXECUTIVE PORTFOLIO'}
             </p>
 
-            {/* Framework Statement Block */}
-            <div 
+            <h1
               style={{
-                borderLeft: '2px solid var(--accent-gold)',
-                paddingLeft: '1.75rem',
-                marginTop: '2.5rem',
-                maxWidth: '680px'
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                fontWeight: 700,
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+                color: 'var(--text-primary)',
+                marginBottom: '1.25rem'
               }}
             >
-              <h2 
+              {tF(person.fullName)}
+            </h1>
+
+            <p
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(1.15rem, 2vw, 1.5rem)',
+                fontStyle: 'italic',
+                color: 'var(--accent-blue)',
+                lineHeight: 1.35,
+                marginBottom: '1.5rem',
+                maxWidth: '650px'
+              }}
+            >
+              {tF(person.professionalTitle)}
+            </p>
+
+            <div
+              style={{
+                display: 'inline-block',
+                borderLeft: '3px solid var(--accent-gold)',
+                paddingLeft: '1.25rem',
+                marginBottom: '2.5rem'
+              }}
+            >
+              <p
                 style={{
                   fontFamily: 'var(--font-sans)',
-                  fontSize: '0.85rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: 'var(--accent-gold)',
-                  marginBottom: '0.65rem'
+                  fontSize: 'clamp(1rem, 1.25vw, 1.2rem)',
+                  fontWeight: 600,
+                  letterSpacing: '0.02em',
+                  color: 'var(--text-primary)'
                 }}
               >
-                {HERO_DATA.frameworkHeader}
-              </h2>
-              <p 
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: 'clamp(1.05rem, 1.4vw, 1.3rem)',
-                  lineHeight: 1.55,
-                  color: 'var(--text-primary)',
-                  fontWeight: 400
-                }}
-              >
-                {HERO_DATA.frameworkTagline}
+                "{tF(person.tagline)}"
               </p>
             </div>
 
-            {/* CTAs */}
-            <div 
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                gap: '1.25rem',
-                marginTop: '3.25rem'
-              }}
-            >
-              <a href="#work" className="btn-primary">
-                {HERO_DATA.primaryCTA}
-                <ArrowDownRight size={18} />
-              </a>
-
-              <button onClick={onOpenCV} className="btn-secondary">
-                <FileText size={18} />
-                {HERO_DATA.secondaryCTA}
+            {/* STRICT SINGLE BUTTON IN HERO */}
+            <div>
+              <button
+                onClick={handleDownloadCV}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.65rem',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.95rem',
+                  fontWeight: 600,
+                  color: 'var(--bg-primary)',
+                  backgroundColor: 'var(--text-primary)',
+                  padding: '0.85rem 1.75rem',
+                  border: 'none',
+                  borderRadius: '2px',
+                  cursor: 'pointer',
+                  letterSpacing: '0.03em',
+                  transition: 'opacity 0.2s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.88')}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+              >
+                <Download size={18} />
+                {language === 'ne' ? 'CV डाउनलोड गर्नुहोस् ↓' : 'Download CV ↓'}
               </button>
             </div>
 
           </div>
 
-          {/* Asymmetric Photographic Column (Cols 9-12) */}
-          <div style={{ gridColumn: 'span 4', width: '100%', maxWidth: '100%' }}>
-            <div 
-              className="editorial-image-frame"
+          {/* Right Column: Hero Portrait */}
+          <div style={{ gridColumn: 'span 5', width: '100%' }}>
+            <div
               style={{
-                height: '100%',
-                minHeight: 'clamp(320px, 45vh, 480px)',
+                position: 'relative',
+                borderRadius: '4px',
+                overflow: 'hidden',
                 border: '1px solid var(--border-light)',
-                boxShadow: '0 16px 36px rgba(0,0,0,0.06)'
+                backgroundColor: 'var(--card-bg)',
+                boxShadow: '0 12px 32px rgba(0,0,0,0.05)'
               }}
             >
-              <img 
-                src={HERO_DATA.heroImageUrl} 
-                alt="Kishan Bastola — Educationist, Mathematician, STEM Advocate" 
-                loading="eager"
-                decoding="async"
+              <img
+                src={person.profileImage}
+                alt={tF(person.fullName)}
                 style={{
                   width: '100%',
-                  height: '100%',
+                  height: 'auto',
+                  display: 'block',
                   objectFit: 'cover',
-                  filter: 'contrast(1.04) saturate(0.95)'
+                  maxHeight: '480px'
                 }}
               />
-              <div 
+              <div
                 style={{
                   position: 'absolute',
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  background: 'linear-gradient(180deg, transparent 0%, rgba(18,19,22,0.88) 100%)',
-                  padding: '1.25rem',
+                  background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%)',
+                  padding: '1.25rem 1.5rem',
                   color: '#FFFFFF'
                 }}
               >
-                <span className="placeholder-badge" style={{ backgroundColor: 'var(--accent-blue)' }}>
-                  EXECUTIVE PORTRAIT
-                </span>
-                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', marginTop: '0.35rem', fontWeight: 600, color: '#FFFFFF' }}>
-                  Kishan Bastola
+                <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', fontWeight: 600, color: '#FFFFFF', margin: 0 }}>
+                  {person.nepaliName}
                 </p>
-                <p style={{ fontSize: '0.75rem', color: 'var(--accent-gold-light)', letterSpacing: '0.04em' }}>
-                  Chairperson — Astronova Foundation Nepal · STEM & Math Advocate
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8rem', color: 'var(--accent-gold-light)', margin: '0.2rem 0 0 0' }}>
+                  {language === 'ne' ? 'अध्यक्ष — एष्ट्रोनोभा फाउण्डेशन नेपाल' : 'Chairperson — Astronova Foundation Nepal'}
                 </p>
               </div>
             </div>
           </div>
 
         </div>
-
       </div>
     </section>
   );
