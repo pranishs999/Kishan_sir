@@ -36,7 +36,7 @@ export const person: PersonEntity = {
     en: "Kishan Bastola",
     ne: "किशन बास्तोला"
   },
-  nepaliName: "नैत्र प्रसाद बास्तोला (किशन बास्तोला)",
+  nepaliName: "किशन बास्तोला",
   professionalTitle: {
     en: "Educationist | Mathematician | Research & Innovation Ecosystem Builder",
     ne: "शिक्षासेवी | गणितज्ञ | अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता"
@@ -56,7 +56,7 @@ export const person: PersonEntity = {
       "On international platforms, he serves as Country Leader for Nepal at global scientific competitions including the Taiwan International Science Fair (TISF, Taiwan) and the International Science & Technology Competition (IOSTC, Indonesia), guiding young Nepalese researchers to international recognition."
     ],
     ne: [
-      "किशन बास्तोला (नेत्र प्रसाद बास्तोला) नेपालको शिक्षा क्षेत्रमा १८ वर्षभन्दा बढीको कार्यकारी नेतृत्व अनुभव बोकेका शिक्षासेवी, गणितज्ञ, STEM अभियन्ता र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। गणितमा स्नातकोत्तर उपाधि हासिल गरेका उनको कार्यले प्राज्ञिक गम्भीरता र संस्थागत संरचना निर्माणलाई सहज रूपमा जोड्दछ।",
+      "किशन बास्तोला  नेपालको शिक्षा क्षेत्रमा १८ वर्षभन्दा बढीको कार्यकारी नेतृत्व अनुभव बोकेका शिक्षासेवी, गणितज्ञ, STEM अभियन्ता र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। गणितमा स्नातकोत्तर उपाधि हासिल गरेका उनको कार्यले प्राज्ञिक गम्भीरता र संस्थागत संरचना निर्माणलाई सहज रूपमा जोड्दछ।",
       "प्रिन्सिपल तथा क्याम्पस प्रमुखको रूपमा सेवा गरिसकेका उनले हाल एष्ट्रोनोभा फाउण्डेशन नेपालको अध्यक्ष, गणित समाज नेपाल (MAN) बागमती प्रदेशको सचिव, नेपाल म्याथमेटिकल सोसाइटी (NMS) बागमती प्रदेशको कार्यकारिणी सदस्य र हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC) को संस्थापक तथा निर्देशकको रूपमा राष्ट्रिय तथा प्रादेशिक पहलहरूको नेतृत्व गरिरहेका छन्।",
       "अन्तर्राष्ट्रिय मञ्चहरूमा उनले ताइवान अन्तर्राष्ट्रिय विज्ञान प्रदर्शनी (TISF, ताइवान) र अन्तर्राष्ट्रिय विज्ञान तथा प्रविधि प्रतियोगिता (IOSTC, इन्डोनेसिया) लगायतका विश्वव्यापी वैज्ञानिक प्रतियोगिताहरूमा नेपालको कन्ट्री लिडरको रूपमा सेवा गर्दै युवा नेपाली अनुसन्धानकर्ताहरूलाई अन्तर्राष्ट्रिय पहिचान दिलाउन मार्गदर्शन गरिरहेका छन्।"
     ]
@@ -659,7 +659,7 @@ export const ecosystem: EcosystemEntity = {
     { from: "mentors", to: "researchers", description: { en: "Collaborative laboratory experimentation at HRIC", ne: "HRIC मा सहयोगात्मक प्रयोगशाला प्रयोग" } },
     { from: "researchers", to: "universities", description: { en: "Academic research validation and MOU partnerships", ne: "प्राज्ञिक अनुसन्धान प्रमाणीकरण र MOU साझेदारी" } },
     { from: "industry", to: "students", description: { en: "Real-world agricultural and municipal problem statements", ne: "वास्तविक कृषि तथा नगरपालिकाका समस्या कथनहरू" } },
-    { from: "innovations", to: "entrepreneurs", description: { en: "Incubation and prototype commercialization into local value", ne: "इन्क्युबेशन र स्थानीय मूल्यमा प्रोटोटाइप व्यावसायीकरण" } }
+    { from: "researchers", to: "entrepreneurs", description: { en: "Incubation and prototype commercialization into local value", ne: "इन्क्युबेशन र स्थानीय मूल्यमा प्रोटोटाइप व्यावसायीकरण" } }
   ],
   pipeline: [
     {
@@ -930,7 +930,7 @@ export const contact: ContactEntity = {
   whatsapp: "9855030706",
   location: { en: "Bagmati Province, Nepal", ne: "बागमती प्रदेश, नेपाल" },
   address: { en: "Hetauda Sub-Metropolitan City, Makwanpur, Bagmati Province, Nepal", ne: "हेटौंडा उपमहानगरपालिका, मकवानपुर, बागमती प्रदेश, नेपाल" },
-  fullNameNep: "किशन बास्तोला (नेत्र प्रसाद बास्तोला)",
+  fullNameNep: "किशन बास्तोला ",
   credentialsLine: "18+ Years in Education | Master's Degree in Mathematics | Former School Principal & Campus Chief",
   facebookUrl: "https://www.facebook.com/kishan.bastola",
   linkedinUrl: "https://www.linkedin.com/in/kishan-bastola/",
@@ -970,6 +970,8 @@ export const contact: ContactEntity = {
 // CV (composed view over core entities)
 // =====================================================
 
+export { getRelatedInitiatives } from '../utils/lookup';
+
 export const cv = {
   profile: person.shortBiography,
   fullName: person.fullName,
@@ -990,8 +992,8 @@ export const cv = {
 
 export const HERO_DATA = {
   name: "KISHAN BASTOLA",
-  fullNameNep: "किशन बास्तोला (नेत्र प्रसाद बास्तोला)",
-  nameWithAlias: "Kishan Bastola (Netra Prasad Bastola)",
+  fullNameNep: "किशन बास्तोला",
+  nameWithAlias: "Kishan Bastola ",
   title: "Chairperson — Astronova Foundation Nepal · STEM & Mathematics Advocate",
   subtitle: "Educationist · Mathematician · Research & Innovation Ecosystem Builder",
   frameworkHeader: "FROM CURIOSITY TO COMMERCE",
@@ -1065,7 +1067,7 @@ export const GLOBAL_DELEGATIONS: DelegationEntry[] = [
       "Bilateral academic exchange between Nepalese and Southeast Asian science institutions",
       "Systematic incubation of student projects leading up to international competition"
     ],
-    imageUrl: "/images/tisf.png"
+    imageUrl: "/images/IOSTC.jpg"
   }
 ];
 
@@ -1428,7 +1430,7 @@ export const SUPPORT_VISION_DATA: SupportVisionData = {
 
 export const CONTACT_DATA = {
   name: "KISHAN BASTOLA",
-  fullNameNep: "किशन बाँस्टोला (नेत्र प्रसाद बाँस्टोला)",
+  fullNameNep: "किशन बास्तोला ",
   titleStack: [
     "Chairperson — Astronova Foundation Nepal",
     "STEM & Mathematics Advocate",

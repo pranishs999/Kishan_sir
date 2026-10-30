@@ -1,129 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
-import { ChevronDown, Sun, Moon } from 'lucide-react';
-import { HERO_DATA } from '../data/sourceFacts';
-import { Breadcrumbs } from './Breadcrumbs';
-import { useTheme } from '../context/ThemeContext';
+import { Outlet, useLocation, Link } from 'react-router-dom';
+import { Menu, X, Globe, ArrowUpRight, ChevronRight, Mail, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { LanguageSwitcher } from './LanguageSwitcher';
+import { contact } from '../data/sourceFacts';
 
 export const AppLayout: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage, tF } = useLanguage();
   const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
-  useLanguage(); // Initialize language context
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+  const navLinks = [
+    { path: '/who-am-i', labelEn: 'Who am I ?', labelNe: 'म को हुँ ?' },
+    { path: '/how-it-works', labelEn: 'How does it work ?', labelNe: 'यो कसरी चल्छ ?' },
+    { path: '/what-we-built', labelEn: 'What have we built ?', labelNe: 'हामीले के बनायौं ?' },
+    { path: '/collaborate', labelEn: 'Shall we collaborate ?', labelNe: 'सहकार्य गरौं ?' },
+  ];
 
+  // Handle scroll detection for subtle navbar border elevation
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = () => {
+  // Close mobile drawer when route changes
+  useEffect(() => {
     setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  const isLinkActive = (path: string) => {
+    if (path === '/who-am-i') {
+      return location.pathname === '/' || location.pathname === '/who-am-i';
+    }
+    return location.pathname === path;
   };
 
-  // UX.md Primary Navigation with dropdowns
-  const navSections = [
-    {
-      label: 'About',
-      path: '/about',
-      children: [
-        { label: 'Overview', path: '/about' },
-        { label: 'Education', path: '/about/education' },
-        { label: 'Experience', path: '/about/experience' },
-        { label: 'Leadership', path: '/about/leadership' },
-      ]
-    },
-    {
-      label: 'Work',
-      path: '/work',
-      children: [
-        { label: 'Overview', path: '/work' },
-        { label: 'Education', path: '/work/education' },
-        { label: 'Mathematics', path: '/work/mathematics' },
-        { label: 'Science', path: '/work/science' },
-        { label: 'Research', path: '/work/research' },
-        { label: 'Innovation', path: '/work/innovation' },
-        { label: 'Entrepreneurship', path: '/work/entrepreneurship' },
-      ]
-    },
-    {
-      label: 'Initiatives',
-      path: '/initiatives',
-      children: [
-        { label: 'Archive', path: '/initiatives' },
-        { label: 'HRIC', path: '/initiatives/hric' },
-        { label: 'Astronova', path: '/initiatives/astronova' },
-        { label: 'Young Scientists', path: '/initiatives/young-scientists' },
-        { label: 'STEAM', path: '/initiatives/steam' },
-        { label: 'Science & Engineering Fair', path: '/initiatives/science-engineering-fair' },
-        { label: 'Workshops', path: '/initiatives/workshops' },
-      ]
-    },
-    {
-      label: 'Ecosystem',
-      path: '/ecosystem',
-      children: [
-        { label: 'Overview', path: '/ecosystem' },
-        { label: 'Vision', path: '/ecosystem/vision' },
-        { label: 'Education', path: '/ecosystem/education' },
-        { label: 'Research', path: '/ecosystem/research' },
-        { label: 'Innovation', path: '/ecosystem/innovation' },
-        { label: 'Mentorship', path: '/ecosystem/mentorship' },
-        { label: 'Enterprise', path: '/ecosystem/enterprise' },
-      ]
-    },
-    {
-      label: 'Thought',
-      path: '/thought',
-      children: []
-    },
-    {
-      label: 'Media',
-      path: '/media',
-      children: [
-        { label: 'Overview', path: '/media' },
-        { label: 'Newspapers', path: '/media/newspapers' },
-        { label: 'Interviews', path: '/media/interviews' },
-        { label: 'Events', path: '/media/events' },
-        { label: 'Gallery', path: '/media/gallery' },
-      ]
-    },
-    {
-      label: 'CV',
-      path: '/cv',
-      children: []
-    },
-    {
-      label: 'Contact',
-      path: '/contact',
-      children: []
-    },
-  ];
-
   return (
-    <div style={{ backgroundColor: 'var(--bg-primary)', minHeight: '100vh', color: 'var(--text-primary)' }}>
+    <div style={{ backgroundColor: 'var(--bg-primary)', minHeight: '100vh', color: 'var(--text-primary)', display: 'flex', flexDirection: 'column' }}>
+      
+      {/* Editorial Top Navigation Header */}
       <header 
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 1000,
-          backgroundColor: isScrolled ? 'rgba(249, 248, 243, 0.94)' : 'transparent',
-          backdropFilter: isScrolled ? 'blur(10px)' : 'none',
-          borderBottom: `1px solid ${isScrolled ? 'var(--border-light)' : 'transparent'}`,
-          transition: 'all 0.3s cubic-bezier(0.25, 1, 0.35, 1)'
+          backgroundColor: isScrolled ? 'rgba(250, 250, 247, 0.98)' : 'rgba(250, 250, 247, 0.92)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: `1px solid ${isScrolled ? 'var(--border-light)' : 'rgba(24, 27, 30, 0.08)'}`,
+          transition: 'all 0.25s ease'
         }}
       >
         <div 
@@ -132,310 +59,501 @@ export const AppLayout: React.FC = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            paddingTop: '1.25rem',
-            paddingBottom: '1.25rem'
+            paddingTop: '0.85rem',
+            paddingBottom: '0.85rem'
           }}
         >
+          {/* Brand Identity / Logo */}
           <Link 
-            to="/"
+            to="/who-am-i"
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '1.15rem',
-              fontWeight: 600,
-              letterSpacing: '0.05em',
+              fontSize: '1.25rem',
+              fontWeight: 700,
+              letterSpacing: '0.02em',
               color: 'var(--text-primary)',
               textDecoration: 'none',
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'baseline',
               gap: '0.5rem'
             }}
           >
-            {HERO_DATA.name}
+            <span>{language === 'ne' ? 'किशन बास्तोला' : 'Kishan Bastola'}</span>
             <span 
               style={{ 
-                fontSize: '0.75rem', 
                 fontFamily: 'var(--font-sans)', 
-                fontWeight: 500, 
+                fontSize: '0.72rem', 
+                fontWeight: 600, 
                 color: 'var(--accent-gold)',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase'
               }}
             >
-              · Portfolio
+              · {language === 'ne' ? 'पोर्टफोलियो' : 'Portfolio'}
             </span>
           </Link>
 
+          {/* Desktop Navigation Links - Strictly Exactly the 4 Destinations */}
           <nav 
+            className="desktop-only"
+            aria-label="Main Navigation"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.25rem'
+              gap: '1.5rem'
             }}
-            className="desktop-nav"
           >
-            {navSections.map((section) => (
-              <NavLink
-                key={section.label}
-                to={section.path}
-                onClick={handleNavigation}
-                style={({ isActive }) => ({
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.78rem',
-                  fontWeight: 500,
-                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
-                  textDecoration: 'none',
-                  letterSpacing: '0.04em',
-                  transition: 'color 0.2s ease',
-                  padding: '0.4rem 0.6rem',
-                  borderRadius: '4px'
-                })}
-              >
-                {section.label}
-              </NavLink>
-            ))}
+            {navLinks.map((link) => {
+              const active = isLinkActive(link.path);
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.86rem',
+                    fontWeight: active ? 700 : 500,
+                    letterSpacing: '0.01em',
+                    color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
+                    textDecoration: 'none',
+                    position: 'relative',
+                    padding: '0.35rem 0',
+                    transition: 'color 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                  onMouseLeave={(e) => {
+                    if (!active) e.currentTarget.style.color = 'var(--text-primary)';
+                  }}
+                >
+                  {language === 'ne' ? link.labelNe : link.labelEn}
+                  {active && (
+                    <span 
+                      style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '2px',
+                        backgroundColor: 'var(--accent-gold)',
+                        borderRadius: '1px'
+                      }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <LanguageSwitcher />
+          {/* Controls: Language Switcher & Mobile Menu Trigger */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             
+            {/* Bilingual Toggle (EN | ने) */}
             <button
-              onClick={toggleTheme}
-              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+              onClick={toggleLanguage}
+              aria-label={language === 'ne' ? 'Switch to English' : 'नेपालीमा हेर्नुहोस्'}
               style={{
                 background: 'transparent',
                 border: '1px solid var(--border-light)',
-                padding: '0.5rem',
-                cursor: 'pointer',
+                borderRadius: '3px',
+                padding: '0.4rem 0.65rem',
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.78rem',
+                fontWeight: 700,
                 color: 'var(--text-primary)',
-                borderRadius: '4px',
-                display: 'flex',
+                cursor: 'pointer',
+                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'var(--transition-smooth)'
+                gap: '0.4rem',
+                transition: 'all 0.15s ease'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--bg-alt)';
-                e.currentTarget.style.borderColor = 'var(--accent-gold)';
+                e.currentTarget.style.borderColor = 'var(--border-dark)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
                 e.currentTarget.style.borderColor = 'var(--border-light)';
               }}
             >
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+              <Globe size={13} style={{ color: 'var(--accent-gold)' }} />
+              <span>{language === 'ne' ? 'EN' : 'नेपाली'}</span>
             </button>
 
-            <Link
-              to="/contact"
+            {/* Mobile Menu Hamburger */}
+            <button
+              className="mobile-only"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
               style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.78rem',
-                fontWeight: 600,
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
                 color: 'var(--text-primary)',
-                textDecoration: 'none',
-                padding: '0.45rem 1rem',
-                border: '1px solid var(--border-light)',
-                letterSpacing: '0.05em',
-                textTransform: 'uppercase',
-                transition: 'var(--transition-smooth)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--text-primary)';
-                e.currentTarget.style.color = 'var(--bg-primary)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = 'var(--text-primary)';
+                padding: '0.35rem',
+                display: 'flex',
+                alignItems: 'center'
               }}
             >
-              Contact
-            </Link>
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
           </div>
+
         </div>
 
+        {/* Mobile Navigation Drawer: Strictly Exactly the 4 Destinations */}
         {mobileMenuOpen && (
-          <div
+          <div 
             style={{
               backgroundColor: 'var(--bg-primary)',
               borderBottom: '1px solid var(--border-light)',
-              padding: '1.5rem 2rem',
+              padding: '1.25rem 1.5rem 1.75rem 1.5rem',
               display: 'flex',
               flexDirection: 'column',
-              gap: '1.25rem'
+              gap: '1rem',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.06)'
             }}
           >
-            {navSections.map((section) => {
-              const hasChildren = section.children.length > 0;
+            {navLinks.map((link) => {
+              const active = isLinkActive(link.path);
               return (
-                <React.Fragment key={section.label}>
-                  <NavLink
-                    to={section.path}
-                    onClick={handleNavigation}
-                    style={({ isActive }) => ({
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: '1.35rem',
-                      color: isActive ? 'var(--accent-blue)' : 'var(--text-primary)',
-                      textDecoration: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem'
-                    })}
-                  >
-                    {section.label}
-                    {hasChildren && <ChevronDown size={18} />}
-                  </NavLink>
-                  {hasChildren && (
-                    <div style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                      {section.children.map((child) => (
-                        <NavLink
-                          key={child.label}
-                          to={child.path}
-                          onClick={handleNavigation}
-                          style={({ isActive }) => ({
-                            fontFamily: 'var(--font-serif)',
-                            fontSize: '1.15rem',
-                            color: isActive ? 'var(--accent-blue)' : 'var(--text-secondary)',
-                            textDecoration: 'none',
-                            padding: '0.5rem 0'
-                          })}
-                        >
-                          {child.label}
-                        </NavLink>
-                      ))}
-                    </div>
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.15rem',
+                    fontWeight: active ? 700 : 500,
+                    color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
+                    textDecoration: 'none',
+                    padding: '0.5rem 0',
+                    borderBottom: '1px solid var(--border-light)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  <span>{language === 'ne' ? link.labelNe : link.labelEn}</span>
+                  {active && (
+                    <span style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', fontWeight: 700 }}>
+                      ●
+                    </span>
                   )}
-                </React.Fragment>
+                </Link>
               );
             })}
-
-            <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '1rem', marginTop: '0.5rem' }}>
-              <LanguageSwitcher />
-              
-              <button
-                onClick={toggleTheme}
-                aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid var(--border-light)',
-                  padding: '0.75rem 1rem',
-                  cursor: 'pointer',
-                  color: 'var(--text-primary)',
-                  borderRadius: '4px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.75rem',
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '1rem',
-                  fontWeight: 500,
-                  marginTop: '0.5rem',
-                  transition: 'var(--transition-smooth)'
-                }}
-              >
-                {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-                <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
-              </button>
-            </div>
           </div>
         )}
       </header>
 
-      <Breadcrumbs />
-
-      <main style={{ position: 'relative', zIndex: 100 }}>
+      {/* Main Content Body */}
+      <main style={{ flexGrow: 1 }}>
         <Outlet />
       </main>
 
+      {/* Multi-Page Editorial Routing Footer */}
       <footer 
-        id="footer"
         style={{
-          backgroundColor: 'var(--dark-bg)',
-          color: 'var(--dark-text)',
-          borderTop: '1px solid var(--dark-border)',
-          paddingTop: 'clamp(3rem, 5vw, 4rem)',
-          paddingBottom: '2rem',
+          backgroundColor: 'var(--bg-alt)',
+          borderTop: '1px solid var(--border-light)',
+          padding: '3.5rem 0 2rem 0',
           marginTop: 'auto'
         }}
       >
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
+          
+          {/* Main 4-Column Footer Grid */}
+          <div 
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '2.5rem',
+              paddingBottom: '2.5rem',
+              borderBottom: '1px solid var(--border-light)'
+            }}
+          >
+            {/* Col 1: Bio & Core Philosophy */}
             <div>
-              <Link 
-                to="/"
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.5rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.05em',
-                  color: 'var(--dark-text)',
-                  textDecoration: 'none',
-                  display: 'block',
-                  marginBottom: '1rem'
+              <p 
+                style={{ 
+                  fontFamily: 'var(--font-serif)', 
+                  fontSize: '1.25rem', 
+                  fontWeight: 700, 
+                  color: 'var(--text-primary)',
+                  margin: '0 0 0.35rem 0'
                 }}
               >
-                {HERO_DATA.name}
-              </Link>
-              <p style={{ fontSize: '0.95rem', color: 'var(--dark-text-muted)', lineHeight: 1.6, maxWidth: '280px' }}>
-                Educationist · Mathematician · Research & Innovation Ecosystem Builder · STEM Advocate
+                {language === 'ne' ? 'किशन बास्तोला' : 'Kishan Bastola'}
+              </p>
+              <p 
+                style={{ 
+                  fontFamily: 'var(--font-sans)', 
+                  fontSize: '0.84rem', 
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.5,
+                  margin: '0 0 1rem 0'
+                }}
+              >
+                {language === 'ne' 
+                  ? 'शिक्षासेवी · गणितज्ञ · अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता'
+                  : 'Educationist · Mathematician · Research & Innovation Ecosystem Builder'}
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '0.88rem',
+                  fontStyle: 'italic',
+                  color: 'var(--accent-gold)',
+                  margin: 0
+                }}
+              >
+                "{language === 'ne' ? 'जिज्ञासादेखि वाणिज्यसम्म' : 'From Curiosity to Commerce'}"
               </p>
             </div>
 
+            {/* Col 2: Four Core Pages (React Router Navigation) */}
             <div>
-              <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent-gold-light)', marginBottom: '1rem' }}>
-                Quick Links
+              <h4 
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  color: 'var(--text-primary)',
+                  margin: '0 0 1rem 0'
+                }}
+              >
+                {language === 'ne' ? 'पोर्टफोलियो पृष्ठहरू' : 'Portfolio Pages'}
               </h4>
-              <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {navSections.map((section) => (
-                  <Link key={section.label} to={section.path} style={{ fontSize: '0.95rem', color: 'var(--dark-text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}>
-                    {section.label}
-                  </Link>
-                ))}
-              </nav>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                {navLinks.map((link) => {
+                  const active = isLinkActive(link.path);
+                  return (
+                    <li key={link.path}>
+                      <Link
+                        to={link.path}
+                        style={{
+                          fontFamily: 'var(--font-sans)',
+                          fontSize: '0.88rem',
+                          color: active ? 'var(--accent-blue)' : 'var(--text-secondary)',
+                          textDecoration: 'none',
+                          fontWeight: active ? 600 : 400,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.35rem',
+                          transition: 'color 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                        onMouseLeave={(e) => {
+                          if (!active) e.currentTarget.style.color = 'var(--text-secondary)';
+                        }}
+                      >
+                        <ChevronRight size={14} style={{ color: active ? 'var(--accent-gold)' : 'var(--text-muted)' }} />
+                        {language === 'ne' ? link.labelNe : link.labelEn}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
 
+            {/* Col 3: Key Institutional Flagships */}
             <div>
-              <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent-gold-light)', marginBottom: '1rem' }}>
-                Contact
+              <h4 
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  color: 'var(--text-primary)',
+                  margin: '0 0 1rem 0'
+                }}
+              >
+                {language === 'ne' ? 'संस्थागत सहकार्य' : 'Ecosystem Anchors'}
               </h4>
-              <address style={{ fontStyle: 'normal', fontSize: '0.95rem', color: 'var(--dark-text-muted)', lineHeight: 1.8 }}>
-                <div>Hetauda Sub-Metropolitan City</div>
-                <div>Makwanpur, Bagmati Province, Nepal</div>
-                <div style={{ marginTop: '0.5rem' }}>
-                  <a href="mailto:contact@astronovafoundation.com" style={{ color: 'var(--accent-gold-light)', textDecoration: 'none' }}>contact@astronovafoundation.com</a>
-                </div>
-                <div>+977-9855030706</div>
-              </address>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                <li>
+                  <a
+                    href="https://astronovafoundation.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '0.88rem',
+                      color: 'var(--text-secondary)',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                  >
+                    <span>Astronova Foundation</span>
+                    <ArrowUpRight size={13} style={{ color: 'var(--text-muted)' }} />
+                  </a>
+                </li>
+                <li>
+                  <Link
+                    to="/what-we-built"
+                    style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '0.88rem',
+                      color: 'var(--text-secondary)',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                  >
+                    <span>Hetauda Research Center (HRIC)</span>
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/share/18Re3ajNqx/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '0.88rem',
+                      color: 'var(--text-secondary)',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                  >
+                    <span>MAN Bagmati Province</span>
+                    <ArrowUpRight size={13} style={{ color: 'var(--text-muted)' }} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/kishan-bastola-3a67041b3/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '0.88rem',
+                      color: 'var(--text-secondary)',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem'
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                  >
+                    <span>LinkedIn Profile</span>
+                    <ArrowUpRight size={13} style={{ color: 'var(--text-muted)' }} />
+                  </a>
+                </li>
+              </ul>
             </div>
+
+            {/* Col 4: Verified Contact Info & Address */}
+            <div>
+              <h4 
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  color: 'var(--text-primary)',
+                  margin: '0 0 1rem 0'
+                }}
+              >
+                {language === 'ne' ? 'सम्पर्क विवरण' : 'Direct Inquiries'}
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                <a
+                  href={`mailto:${contact.email}`}
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.88rem',
+                    color: 'var(--text-secondary)',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                >
+                  <Mail size={15} style={{ color: 'var(--accent-gold)', flexShrink: 0 }} />
+                  <span>{contact.email}</span>
+                </a>
+                <a
+                  href={`tel:${contact.phone}`}
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.88rem',
+                    color: 'var(--text-secondary)',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+                >
+                  <Phone size={15} style={{ color: 'var(--accent-gold)', flexShrink: 0 }} />
+                  <span>{contact.phone}</span>
+                </a>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.88rem',
+                    color: 'var(--text-secondary)',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.5rem'
+                  }}
+                >
+                  <MapPin size={15} style={{ color: 'var(--accent-gold)', flexShrink: 0, marginTop: '2px' }} />
+                  <span>
+                    {tF(contact.address)}
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div style={{ borderTop: '1px solid var(--dark-border)', paddingTop: '2rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-            <p style={{ fontSize: '0.85rem', color: 'var(--dark-text-muted)' }}>
-              © {new Date().getFullYear()} Kishan Bastola. All rights reserved.
+          {/* Bottom Bar */}
+          <div 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '1rem',
+              paddingTop: '1.75rem',
+              fontSize: '0.8rem',
+              color: 'var(--text-muted)',
+              fontFamily: 'var(--font-sans)'
+            }}
+          >
+            <p style={{ margin: 0 }}>
+              © {new Date().getFullYear()} {language === 'ne' ? 'किशन बास्तोला। सर्वाधिकार सुरक्षित।' : 'Kishan Bastola. All rights reserved.'}
             </p>
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
-              <a href="https://www.facebook.com/kishan.bastola" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark-text-muted)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-gold-light)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--dark-text-muted)'}>Facebook</a>
-              <a href="https://www.linkedin.com/in/kishan-bastola/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark-text-muted)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-gold-light)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--dark-text-muted)'}>LinkedIn</a>
-              <a href="https://astronovafoundation.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--dark-text-muted)', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-gold-light)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--dark-text-muted)'}>Astronova Foundation</a>
-            </div>
+            <p style={{ margin: 0, fontStyle: 'italic', fontFamily: 'var(--font-serif)', color: 'var(--accent-gold)' }}>
+              "{language === 'ne' ? 'जिज्ञासादेखि वाणिज्यसम्म' : 'From Curiosity to Commerce'}"
+            </p>
           </div>
         </div>
       </footer>
 
-      <style>{`
-        @media (max-width: 860px) {
-          .desktop-nav {
-            display: none !important;
-          }
-          .mobile-toggle {
-            display: flex !important;
-          }
-        }
-        @media (min-width: 861px) {
-          .mobile-toggle {
-            display: none !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };
