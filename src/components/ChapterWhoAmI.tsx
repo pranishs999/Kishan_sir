@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Download, Plus, Minus, ArrowDown, Award, GraduationCap, Briefcase, ChevronRight } from 'lucide-react';
+import { Download, Plus, Minus, Award, GraduationCap, Briefcase, ChevronRight } from 'lucide-react';
 import { person, CREDENTIALS_DATA, education, experience, leadership } from '../data/sourceFacts';
 import { useLanguage } from '../context/LanguageContext';
 
