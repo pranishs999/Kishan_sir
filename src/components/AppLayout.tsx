@@ -14,40 +14,40 @@ export const AppLayout: React.FC = () => {
     { 
       path: '/what-shaped-me', 
       num: '01',
-      labelEn: 'What Shaped Me', 
-      labelNe: 'पृष्ठभूमि र यात्रा',
+      labelEn: 'What Shaped Me?', 
+      labelNe: 'मलाई केले निर्माण गर्‍यो?',
       descEn: 'Personal story, Master’s in Mathematics, 18-year timeline',
       descNe: 'मेरो पृष्ठभूमि, शिक्षा र १८ वर्षे शैक्षिक यात्रा'
     },
     { 
       path: '/what-drives-me', 
       num: '02',
-      labelEn: 'What Drives Me', 
-      labelNe: 'उद्देश्य र दर्शन',
+      labelEn: 'What Drives Me?', 
+      labelNe: 'मलाई केले अघि बढाउँछ?',
       descEn: 'Educational philosophy, curiosity, scientific thinking',
       descNe: 'उद्देश्य, विश्वास, दर्शन र विद्यार्थी केन्द्रित सिकाइ'
     },
     { 
       path: '/what-problems-am-i-solving', 
       num: '03',
-      labelEn: 'Problems I Solve', 
-      labelNe: 'समस्या समाधान',
+      labelEn: 'What Problems Am I Solving?', 
+      labelNe: 'म कुन समस्या समाधान गर्दैछु?',
       descEn: 'Addressing rote learning, research culture, decentralized labs',
       descNe: 'शिक्षा र अनुसन्धानका प्रणालीगत खाडल तथा समाधान'
     },
     { 
       path: '/what-am-i-creating', 
       num: '04',
-      labelEn: 'What I Create', 
-      labelNe: 'संस्था र इकोसिस्टम',
+      labelEn: 'What Am I Creating?', 
+      labelNe: 'म के निर्माण गर्दैछु?',
       descEn: 'HRIC, AstroNova Foundation, community maker labs',
       descNe: 'HRIC, एष्ट्रोनोभा फाउण्डेशन, STEM तथा अन्तर्राष्ट्रिय मञ्च'
     },
     { 
       path: '/how-do-i-create-value', 
       num: '05',
-      labelEn: 'Create Value', 
-      labelNe: 'मूल्य सिर्जना',
+      labelEn: 'How I Create Value?', 
+      labelNe: 'म कसरी मूल्य सिर्जना गर्छु?',
       descEn: 'Curiosity to Commerce: 7-stage research-to-impact pipeline',
       descNe: 'जिज्ञासादेखि वाणिज्यसम्म: अनुसन्धान, प्रोटोटाइप र बजार'
     },
@@ -55,7 +55,7 @@ export const AppLayout: React.FC = () => {
       path: '/what-future-am-i-building', 
       num: '06',
       labelEn: 'What Future Am I Building?', 
-      labelNe: 'भविष्य र सहकार्य',
+      labelNe: 'म कस्तो भविष्य निर्माण गर्दैछु?',
       descEn: 'Decentralized innovation hubs & collaboration call',
       descNe: 'दीर्घकालीन भिजन तथा राष्ट्रिय/अन्तर्राष्ट्रिय साझेदारी'
     },
@@ -156,7 +156,7 @@ export const AppLayout: React.FC = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '1rem'
+              gap: 'clamp(0.45rem, 0.85vw, 0.85rem)'
             }}
           >
             {navLinks.map((link) => {
@@ -167,13 +167,13 @@ export const AppLayout: React.FC = () => {
                   to={link.path}
                   style={{
                     fontFamily: 'var(--font-sans)',
-                    fontSize: '0.82rem',
+                    fontSize: '0.75rem',
                     fontWeight: active ? 700 : 500,
                     letterSpacing: '0.01em',
                     color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
                     textDecoration: 'none',
                     position: 'relative',
-                    padding: '0.35rem 0.2rem',
+                    padding: '0.35rem 0.15rem',
                     whiteSpace: 'nowrap',
                     transition: 'color 0.2s ease'
                   }}
@@ -312,7 +312,7 @@ export const AppLayout: React.FC = () => {
                       <div
                         style={{
                           fontFamily: 'var(--font-serif)',
-                          fontSize: '1rem',
+                          fontSize: '0.92rem',
                           fontWeight: active ? 700 : 600,
                           color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
                           marginBottom: '0.15rem'
@@ -323,7 +323,7 @@ export const AppLayout: React.FC = () => {
                       <div
                         style={{
                           fontFamily: 'var(--font-sans)',
-                          fontSize: '0.75rem',
+                          fontSize: '0.72rem',
                           color: 'var(--text-muted)',
                           lineHeight: 1.3
                         }}
