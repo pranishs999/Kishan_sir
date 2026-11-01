@@ -8,7 +8,9 @@ import type {
   GalleryItem,
   MediaEntry,
   ThoughtEntry,
-  SupportVisionData
+  SupportVisionData,
+  QuestionSitemapItem,
+  ProblemStatement
 } from '../types/portfolio';
 
 import type {
@@ -1027,13 +1029,13 @@ export const PROFILE_DATA = {
 export const CREDENTIALS_DATA: CredentialItem[] = [
   { label: "18+ Years", detail: "Dedicated Leadership in Education & STEM Advocacy", category: "experience" },
   { label: "Master's Degree", detail: "Mathematics (M.Sc. / M.A.)", category: "education" },
-  { label: "Chairperson", detail: "Astronova Foundation Nepal", category: "current" },
+  { label: "President", detail: "Astronova Foundation Nepal", category: "current" },
   { label: "Province Secretary", detail: "Mathematical Association of Nepal (MAN), Bagmati", category: "current" },
   { label: "Executive Member", detail: "Nepal Mathematical Society (NMS), Bagmati", category: "current" },
   { label: "Founder & Director", detail: "Hetauda Research & Innovation Center (HRIC)", category: "current" },
   { label: "Global Delegations", detail: "Country Leader: TISF (Taiwan) & IOSTC (Indonesia)", category: "current" },
   { label: "Former Principal", detail: "School Principal — Institutional Governance", category: "leadership" },
-  { label: "Former Campus Chief", detail: "Higher Education & Campus Management", category: "leadership" }
+  { label: "Former Campus Chief", detail: "Higher Education & Campus Management (Narayani College)", category: "leadership" }
 ];
 
 export const GLOBAL_DELEGATIONS: DelegationEntry[] = [
@@ -1071,6 +1073,118 @@ export const GLOBAL_DELEGATIONS: DelegationEntry[] = [
   }
 ];
 
+export const SIX_QUESTIONS: QuestionSitemapItem[] = [
+  {
+    id: "q1",
+    number: "01",
+    titleEn: "WHAT SHAPED ME?",
+    titleNe: "मेरो पृष्ठभूमि, शिक्षा र यात्राले मलाई कसरी निर्माण गर्यो?",
+    meaningNe: "मेरो पृष्ठभूमि, शिक्षा र यात्राले मलाई कसरी निर्माण गर्यो?",
+    summaryEn: "Personal story, Master’s Degree in Mathematics, 18 years in education, former School Principal and Campus Chief, career timeline, key turning points and professional development.",
+    summaryNe: "व्यक्तिगत कथा, गणितमा स्नातकोत्तर, १८ वर्ष शिक्षामा, पूर्व विद्यालय प्रधानाध्यापक तथा क्याम्पस प्रमुख, क्यारियर टाइमलाइन र मुख्य मोडहरू।",
+    route: "/what-shaped-me",
+    anchor: ""
+  },
+  {
+    id: "q2",
+    number: "02",
+    titleEn: "WHAT DRIVES ME?",
+    titleNe: "मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ?",
+    meaningNe: "मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ?",
+    summaryEn: "Education philosophy, student-centred learning, curiosity, mathematics and scientific thinking, belief that lack of resources should not prevent student potential, and the purpose behind the work.",
+    summaryNe: "शैक्षिक दर्शन, विद्यार्थी केन्द्रित सिकाइ, जिज्ञासा, गणित तथा वैज्ञानिक सोच, स्रोतको अभावले विद्यार्थीको सम्भावना रोकिनु हुँदैन भन्ने विश्वास।",
+    route: "/what-drives-me",
+    anchor: ""
+  },
+  {
+    id: "q3",
+    number: "03",
+    titleEn: "WHAT PROBLEMS AM I SOLVING?",
+    titleNe: "शिक्षा, अनुसन्धान र नवप्रवर्तन क्षेत्रमा म कुन समस्या समाधान गर्न खोज्दैछु?",
+    meaningNe: "शिक्षा, अनुसन्धान र नवप्रवर्तन क्षेत्रमा म कुन समस्या समाधान गर्न खोज्दैछु?",
+    summaryEn: "Explain the gaps being addressed: limited hands-on learning, weak access to mentors and laboratories, limited student research pathways, and weak links between learning, innovation and real-world application. Present these as problem statements and validate with evidence where possible.",
+    summaryNe: "सीमित व्यावहारिक सिकाइ, मेन्टर र प्रयोगशालामा कमजोर पहुँच, सीमित विद्यार्थी अनुसन्धान मार्ग, र सिकाइ-आविष्कार-प्रयोगबीचको कमजोर सम्बन्धको समाधान।",
+    route: "/what-problems-am-i-solving",
+    anchor: ""
+  },
+  {
+    id: "q4",
+    number: "04",
+    titleEn: "WHAT AM I CREATING?",
+    titleNe: "म कुन संस्था, प्रणाली र अवसर निर्माण गर्दैछु?",
+    meaningNe: "म कुन संस्था, प्रणाली र अवसर निर्माण गर्दैछु?",
+    summaryEn: "Astronova Foundation Nepal, Hetauda Research and Innovation Center (HRIC), HRIC Scientific Ecosystem, STEAM learning initiatives, student research and science fair pathways, mentor networks and institutional partnerships. Show the relationship among these initiatives with a clear ecosystem diagram.",
+    summaryNe: "एष्ट्रोनोभा फाउण्डेशन नेपाल, हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC), HRIC वैज्ञानिक इकोसिस्टम, STEAM सिकाइ पहलहरू, विद्यार्थी अनुसन्धान र विज्ञान प्रदर्शनी मार्ग, मेन्टर सञ्जाल र संस्थागत साझेदारी।",
+    route: "/what-am-i-creating",
+    anchor: ""
+  },
+  {
+    id: "q5",
+    number: "05",
+    titleEn: "HOW DO I CREATE VALUE?",
+    titleNe: "म ज्ञान, अनुसन्धान र नवप्रवर्तनलाई वास्तविक मूल्यमा कसरी रूपान्तरण गर्छु?",
+    meaningNe: "म ज्ञान, अनुसन्धान र नवप्रवर्तनलाई वास्तविक मूल्यमा कसरी रूपान्तरण गर्छु?",
+    summaryEn: "This page explains the signature framework From Curiosity to Commerce: Curiosity → Learning → Research → Prototype → Innovation → Enterprise → Commerce. Clarify that commerce means real-world application, market relevance and social/economic value—not simply pushing students into business.",
+    summaryNe: "हस्ताक्षर ढाँचा 'जिज्ञासादेखि वाणिज्यसम्म': जिज्ञासा → सिकाइ → अनुसन्धान → प्रोटोटाइप → नवप्रवर्तन → उद्यम → वाणिज्य। वाणिज्यको अर्थ वास्तविक प्रयोग, बजार सान्दर्भिकता र सामाजिक/आर्थिक मूल्य हो।",
+    route: "/how-do-i-create-value",
+    anchor: ""
+  },
+  {
+    id: "q6",
+    number: "06",
+    titleEn: "WHAT FUTURE AM I BUILDING?",
+    titleNe: "म कस्तो भविष्य निर्माण गर्न चाहन्छु र कोसँग सहकार्य गर्न चाहन्छु?",
+    meaningNe: "म कस्तो भविष्य निर्माण गर्न चाहन्छु र कोसँग सहकार्य गर्न चाहन्छु?",
+    summaryEn: "Long-term vision for Nepal, future direction for HRIC and scientific ecosystem development, research interests, desired partnerships with universities, schools, government, researchers, industry and international organizations. Include a clear collaboration/contact invitation.",
+    summaryNe: "नेपालका लागि दीर्घकालीन दृष्टि, HRIC र वैज्ञानिक इकोसिस्टम विकासको आगामी दिशा, अनुसन्धान रुचि, विश्वविद्यालय, विद्यालय, सरकार, अनुसन्धानकर्ता, उद्योग र अन्तर्राष्ट्रिय संस्थाहरूसँगको साझेदारी तथा सहकार्य निमन्त्रणा।",
+    route: "/what-future-am-i-building",
+    anchor: ""
+  }
+];
+
+export const PROBLEM_STATEMENTS: ProblemStatement[] = [
+  {
+    id: "gap-handson",
+    number: "01",
+    titleEn: "Limited Hands-on Learning",
+    titleNe: "व्यावहारिक सिकाइको अभाव",
+    descriptionEn: "Most school science and mathematics remain confined to rote memorization and theoretical textbooks, leaving students with little experiential or inquiry-based learning.",
+    descriptionNe: "धेरैजसो विद्यालयमा विज्ञान र गणित केवल घोकन्ते विद्या र पाठ्यपुस्तकमा सीमित छ, जसले गर्दा विद्यार्थीहरूले प्रयोगात्मक र खोजमूलक सिकाइको अवसर पाउँदैनन्।",
+    solutionEn: "Deploying interactive STEAM workshops, robotics, and hands-on experimentation via Astronova Foundation Nepal.",
+    solutionNe: "एष्ट्रोनोभा फाउण्डेशनमार्फत अन्तरक्रियात्मक STEAM कार्यशाला, रोबोटिक्स र व्यावहारिक प्रयोगहरूको विस्तार।"
+  },
+  {
+    id: "gap-mentors-labs",
+    number: "02",
+    titleEn: "Weak Access to Mentors & Labs",
+    titleNe: "प्रयोगशाला तथा मेन्टरको कमजोर पहुँच",
+    descriptionEn: "Outside central metropolitan hubs, rural and regional students have virtually zero access to modern prototyping labs, computational tools, and qualified academic mentors.",
+    descriptionNe: "मुख्य सहरहरू बाहिर, ग्रामीण र मोफसलका विद्यार्थीहरूलाई आधुनिक प्रोटोटाइपिङ प्रयोगशाला, कम्प्युटेसनल उपकरण र दक्ष प्राज्ञिक मेन्टरको पहुँच शून्यप्रायः छ।",
+    solutionEn: "Establishing regional research hubs like HRIC in Hetauda with dedicated lab facilities and expert mentorship.",
+    solutionNe: "हेटौंडामा HRIC जस्ता क्षेत्रीय अनुसन्धान केन्द्र स्थापना गरी समर्पित प्रयोगशाला र विज्ञ मेन्टरशिप उपलब्ध गराउने।"
+  },
+  {
+    id: "gap-student-research",
+    number: "03",
+    titleEn: "Isolated Student Research Pathways",
+    titleNe: "विद्यार्थी अनुसन्धान मार्गको अभाव",
+    descriptionEn: "Talented young minds with original project ideas lack structural platforms to defend their research, obtain validation, and compete on national or international stages.",
+    descriptionNe: "मौलिक सोच भएका प्रतिभाशाली विद्यार्थीहरूसँग आफ्नो अनुसन्धान पुष्टि गर्ने, राष्ट्रिय वा अन्तर्राष्ट्रिय मञ्चमा प्रतिस्पर्धा गर्ने संस्थागत संयन्त्र छैन।",
+    solutionEn: "Leading national cohorts via the Young Scientist Development Program (YSDP) and delegations to TISF Taiwan & IOSTC Indonesia.",
+    solutionNe: "युवा वैज्ञानिक विकास कार्यक्रम (YSDP) र ताइवान TISF तथा इन्डोनेसिया IOSTC जस्ता विश्वस्तरीय मञ्चहरूमा राष्ट्रिय टोलीको नेतृत्व।"
+  },
+  {
+    id: "gap-market-application",
+    number: "04",
+    titleEn: "Weak Link Between Research & Market Value",
+    titleNe: "सिकाइ, नवप्रवर्तन र बजार मूल्यबीचको खाडल",
+    descriptionEn: "Academic research and science fair projects rarely translate into working prototypes or enterprise solutions that address tangible societal and economic needs.",
+    descriptionNe: "प्राज्ञिक अनुसन्धान र विज्ञान प्रदर्शनीका मोडलहरू वास्तविक समाज र बजारका आवश्यकता समाधान गर्ने कार्यशील प्रोटोटाइप वा उद्यममा रूपान्तरण हुन सक्दैनन्।",
+    solutionEn: "Operating the 'From Curiosity to Commerce' framework to link youth innovations to municipal and economic relevance.",
+    solutionNe: "'जिज्ञासादेखि वाणिज्यसम्म' को ७-चरणीय रूपरेखामार्फत युवा नवप्रवर्तनलाई स्थानीय आवश्यकता र बजार मूल्यसँग जोड्ने।"
+  }
+];
+
 export const FRAMEWORK_STEPS: FrameworkStep[] = [
   {
     id: "curiosity",
@@ -1097,35 +1211,35 @@ export const FRAMEWORK_STEPS: FrameworkStep[] = [
     impact: "Produces verifiable student research projects worthy of national and international scientific competition."
   },
   {
-    id: "innovation",
+    id: "prototype",
     stepNumber: "04",
-    title: "INNOVATION",
+    title: "PROTOTYPE",
     subtitle: "Hardware & Software Prototyping",
     description: "Providing regional laboratory infrastructure at HRIC Hetauda to translate research papers into physical prototypes and digital solutions.",
     impact: "Transforms abstract ideas into functional technological artifacts and working hardware models."
   },
   {
-    id: "enterprise",
+    id: "innovation",
     stepNumber: "05",
+    title: "INNOVATION",
+    subtitle: "Validation & Refinement",
+    description: "Testing prototypes under real-world conditions, validating engineering assumptions, and refining user experience for local community utility.",
+    impact: "Ensures technical robustness and practical utility for local community and municipal challenges."
+  },
+  {
+    id: "enterprise",
+    stepNumber: "06",
     title: "ENTERPRISE",
     subtitle: "Social & Commercial Viability",
     description: "Evaluating prototypes for community utility, scalability, and market readiness, connecting student creators with institutional partners.",
     impact: "Instills entrepreneurial vision and practical problem-solving tailored to local economic needs."
   },
   {
-    id: "value",
-    stepNumber: "06",
-    title: "VALUE",
-    subtitle: "Socio-Economic Impact",
-    description: "Deploying validated innovations to solve agricultural, educational, or municipal challenges across Bagmati Province.",
-    impact: "Generates tangible societal value, employment opportunities, and technological autonomy."
-  },
-  {
     id: "commerce",
     stepNumber: "07",
     title: "COMMERCE",
-    subtitle: "Sustainable Ecosystem",
-    description: "Reinvesting economic and institutional yields back into youth mentorship, research grants, and regional center expansion.",
+    subtitle: "Sustainable Socio-Economic Value",
+    description: "Real-world societal deployment, market relevance, and economic value creation—reinvesting yields back into youth mentorship, research grants, and regional center expansion.",
     impact: "Establishes a self-sustaining cycle where research fuels enterprise and enterprise funds future curiosity."
   }
 ];
@@ -1135,9 +1249,10 @@ export const SELECTED_WORK: WorkEntry[] = [
     id: "astronova",
     number: "01",
     title: "Astronova Foundation Nepal",
-    role: "Chairperson & Executive Leader",
+    role: "President / Chairperson",
     organization: "Astronova Foundation Nepal",
     category: "STEM & Mathematics Advocacy",
+    status: "active",
     summary: "Leading a nationwide scientific foundation dedicated to promoting STEAM education, mathematical pedagogy, and youth research incubation across Nepal.",
     fullDescription: "Astronova Foundation Nepal serves as an institutional umbrella for experiential learning. Under Kishan Bastola's leadership, the foundation organizes regional science fairs, teacher development workshops, and national student delegations to international scientific competitions.",
     highlights: [
@@ -1157,6 +1272,7 @@ export const SELECTED_WORK: WorkEntry[] = [
     role: "Founder & Director",
     organization: "Hetauda Research & Innovation Center (HRIC)",
     category: "Research & Incubation Hub",
+    status: "active",
     summary: "Establishing a regional center of excellence for technological prototyping, scientific research, and innovation in Hetauda, Makwanpur.",
     fullDescription: "Founded and directed by Kishan Bastola, HRIC provides regional youth, researchers, and educators with dedicated laboratories, technical mentorship, and prototype testing environments in Hetauda Sub-Metropolitan City, Makwanpur, Bagmati Province.",
     highlights: [
@@ -1170,12 +1286,53 @@ export const SELECTED_WORK: WorkEntry[] = [
     linkUrl: "#institution-hric"
   },
   {
-    id: "tisf-iostc",
+    id: "ysdp",
     number: "03",
+    title: "Young Scientist Development Program (YSDP)",
+    role: "Program Lead & Senior Mentor",
+    organization: "Astronova Foundation Nepal & HRIC",
+    category: "Youth Research & Mentorship",
+    status: "active",
+    summary: "Identifying, training, and incubating secondary school students with high potential in STEM inquiry and applied research.",
+    fullDescription: "The Young Scientist Development Program (YSDP) creates structured learning pathways for school students, providing laboratory access, research design guidance, and direct mentorship from university professors and engineers.",
+    highlights: [
+      "Incubation of youth research papers and working prototypes",
+      "Hands-on scientific inquiry modules across Bagmati Province",
+      "Pathway for students to qualify for international science fairs"
+    ],
+    imagePlaceholderLabel: "YOUTH PROGRAM: Young Scientist Development Program — Research Cohort",
+    customImageUrl: "/images/workshop.jpg",
+    linkText: "Explore YSDP Pathways",
+    linkUrl: "/how-it-works"
+  },
+  {
+    id: "nsef",
+    number: "04",
+    title: "National Science & Engineering Fair (NSEF)",
+    role: "Chief Organizer & Convener",
+    organization: "Astronova Foundation Nepal",
+    category: "National Science Competition",
+    status: "pilot",
+    summary: "Nepal's premier competitive science and engineering platform evaluating original secondary student inventions.",
+    fullDescription: "NSEF provides a national jury-evaluated arena where student researchers from across Nepal present empirical projects in environmental science, robotics, mathematics, and biomedical engineering.",
+    highlights: [
+      "Rigorous peer-reviewed judging rubric modeled on international science fairs",
+      "National qualifying ground for TISF Taiwan delegations",
+      "Exhibition of student hardware and software prototypes"
+    ],
+    imagePlaceholderLabel: "NATIONAL FAIR: National Science & Engineering Fair (NSEF)",
+    customImageUrl: "/images/camp.png",
+    linkText: "NSEF Guidelines & Highlights",
+    linkUrl: "/what-we-built"
+  },
+  {
+    id: "tisf-iostc",
+    number: "05",
     title: "Global Science Delegations (TISF & IOSTC)",
     role: "Country Leader & Delegation Head",
     organization: "Taiwan International Science Fair & IOSTC Indonesia",
     category: "International Scientific Representation",
+    status: "active",
     summary: "Representing Nepal on global scientific platforms and mentoring high-school researchers for international competition in Taiwan and Indonesia.",
     fullDescription: "As Delegation Head for Nepal, Kishan Bastola selects, mentors, and escorts Nepal's top young scientific minds to present research projects to international juries of scientists in Taiwan and Indonesia.",
     highlights: [
@@ -1189,12 +1346,33 @@ export const SELECTED_WORK: WorkEntry[] = [
     linkUrl: "https://www.ntsec.gov.tw"
   },
   {
+    id: "steam-workshops",
+    number: "06",
+    title: "Astronova STEAM & Community Robotics Workshops",
+    role: "Director of Pedagogy",
+    organization: "Astronova Foundation Nepal",
+    category: "Hands-on Technical Workshops",
+    status: "active",
+    summary: "Free community robotics, artificial intelligence, astronomy, and automation workshops for school learners.",
+    fullDescription: "Multi-day intensive bootcamps delivering practical training in microcontrollers, sensory robotics, algorithms, and observational astronomy to demystify advanced technology for public and institutional students.",
+    highlights: [
+      "9-day and 11-day free hands-on robotics workshops conducted in Bagmati Province",
+      "Hands-on soldering, sensor integration, and coding modules",
+      "Participation of diverse student cohorts across Makwanpur schools"
+    ],
+    imagePlaceholderLabel: "WORKSHOP ARCHIVE: Community Robotics & AI Workshop",
+    customImageUrl: "/images/workshop.jpg",
+    linkText: "View Workshop Highlights",
+    linkUrl: "/what-we-built"
+  },
+  {
     id: "math-associations",
-    number: "04",
+    number: "07",
     title: "Bagmati Mathematical Societies Leadership",
     role: "Province Secretary (MAN) & Executive Member (NMS)",
     organization: "Mathematical Association of Nepal & Nepal Mathematical Society, Bagmati",
     category: "Academic Governance & Pedagogy",
+    status: "active",
     summary: "Advancing mathematical education standards, teacher training, and curriculum development across Bagmati Province.",
     fullDescription: "Serving as Province Secretary for the Mathematical Association of Nepal (MAN) Bagmati and Executive Member of the Nepal Mathematical Society (NMS) Bagmati, Kishan Bastola advocates for modern pedagogical methods, analytical problem-solving skills, and mathematical research.",
     highlights: [
@@ -1206,6 +1384,26 @@ export const SELECTED_WORK: WorkEntry[] = [
     customImageUrl: "/images/hero.png",
     linkText: "Academic Network Details",
     linkUrl: "https://www.facebook.com/profile.php?id=61571369803423"
+  },
+  {
+    id: "innovation-labs",
+    number: "08",
+    title: "Regional Innovation Labs & Maker Spaces",
+    role: "Strategic Lead & Planner",
+    organization: "HRIC & Municipal Partners",
+    category: "Future Infrastructure",
+    status: "planned",
+    summary: "Planning decentralized maker spaces and community digital fabrication labs across Bagmati Province municipalities.",
+    fullDescription: "Collaborating with local governments, schools, and private donors to establish accessible maker spaces equipped with 3D printers, laser cutters, and electronics benches outside capital cities.",
+    highlights: [
+      "Decentralized innovation hubs for district-level youth",
+      "Public-private-academic partnership model",
+      "Dedicated incubation support for grassroots municipal technology solutions"
+    ],
+    imagePlaceholderLabel: "FUTURE LAB: Regional Digital Fabrication & Innovation Space",
+    customImageUrl: "/images/hric.png",
+    linkText: "Collaborate on Lab Setup",
+    linkUrl: "/collaborate"
   }
 ];
 

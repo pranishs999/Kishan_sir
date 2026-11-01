@@ -86,4 +86,22 @@ describe('Data Integrity & Type Validation Smoke Tests', () => {
     expect(MEDIA_ARCHIVE.length).toBeGreaterThan(0);
     expect(GALLERY_ITEMS.length).toBeGreaterThan(0);
   });
+
+  it('validates exactly 6 primary destinations and their dedicated routes', async () => {
+    const { SIX_QUESTIONS } = await import('../data');
+    expect(SIX_QUESTIONS).toBeDefined();
+    expect(SIX_QUESTIONS.length).toBe(6);
+
+    const expectedRoutes = [
+      '/what-shaped-me',
+      '/what-drives-me',
+      '/what-problems-am-i-solving',
+      '/what-am-i-creating',
+      '/how-do-i-create-value',
+      '/what-future-am-i-building'
+    ];
+
+    expect(SIX_QUESTIONS.map(q => q.route)).toEqual(expectedRoutes);
+    expect(SIX_QUESTIONS.map(q => q.number)).toEqual(['01', '02', '03', '04', '05', '06']);
+  });
 });

@@ -11,7 +11,12 @@ import {
   ExternalLink,
   HeartHandshake,
   ArrowRight,
-  ChevronLeft
+  ChevronLeft,
+  Building,
+  School,
+  Microscope,
+  Users,
+  Sparkles
 } from 'lucide-react';
 import { person, contact, SUPPORT_VISION_DATA } from '../data/sourceFacts';
 import { useLanguage } from '../context/LanguageContext';
@@ -64,6 +69,83 @@ export const ChapterCollaborate: React.FC = () => {
       titleNe: 'विशिष्ट सम्बोधन तथा अतिथि मन्तव्य',
       descEn: 'Addresses on mathematics education, ecosystem building, and Curiosity-to-Commerce.',
       descNe: 'गणित शिक्षा, इकोसिस्टम निर्माण र "जिज्ञासादेखि वाणिज्यसम्म" विषयमा मन्तव्य तथा सत्र सञ्चालन।'
+    }
+  ];
+
+  const strategicVisionPillars = [
+    {
+      id: 'decentralized',
+      number: '01',
+      titleEn: 'Decentralized Research & Prototyping Hubs',
+      titleNe: 'काठमाडौं बाहिर विकेन्द्रित अनुसन्धान तथा मेकिङ पूर्वाधार',
+      descEn: 'Replicating the HRIC model across Bagmati Province municipalities to ensure district-level youth have direct access to physical laboratories, 3D prototyping, and robotics benches.',
+      descNe: 'हेटौंडाको HRIC मोडललाई बागमती र अन्य प्रदेशका पालिकाहरूमा विस्तार गरी स्थानीय विद्यार्थीलाई प्रयोगशाला, थ्रीडी प्रोटोटाइपिङ र रोबोटिक्स उपकरणसम्म प्रत्यक्ष पहुँच दिलाउने।',
+      icon: <Building size={20} style={{ color: 'var(--accent-gold)' }} />
+    },
+    {
+      id: 'steam-reform',
+      number: '02',
+      titleEn: 'Public School STEAM & Mathematics Transformation',
+      titleNe: 'सार्वजनिक विद्यालयमा STEAM र गणित शिक्षणको रूपान्तरण',
+      descEn: 'Shifting from traditional rote-memorization to experiential inquiry-based pedagogy where students touch, build, test, and measure mathematical models in real-world environments.',
+      descNe: 'सैद्धान्तिक रटन्ते विधिबाट व्यावहारिक खोजमा आधारित शिक्षणमा रूपान्तरण, जहाँ विद्यार्थीले गणितीय र वैज्ञानिक सिद्धान्तहरू हातैले बनाएर, परीक्षण गरेर सिक्न पाउँछन्।',
+      icon: <School size={20} style={{ color: 'var(--accent-gold)' }} />
+    },
+    {
+      id: 'brain-retention',
+      number: '03',
+      titleEn: 'Retaining Youth Talent via Curiosity-to-Commerce',
+      titleNe: 'आविष्कार र उद्यमशीलतामार्फत युवा प्रतिभाको संरक्षण',
+      descEn: 'Connecting research directly to agriculture, technology, and local industry so Nepal’s brilliant young minds find viable intellectual and entrepreneurial careers at home.',
+      descNe: 'अनुसन्धान र आविष्कारलाई स्थानीय उद्योग, कृषि र प्रविधिसँग जोडेर बजारयोग्य मूल्य सिर्जना गर्ने, जसले गर्दा प्रतिभाशाली नेपाली युवाहरूले स्वदेशमै बौद्धिक र आर्थिक अवसर पाउन सकून्।',
+      icon: <Sparkles size={20} style={{ color: 'var(--accent-gold)' }} />
+    }
+  ];
+
+  const invitationProfiles = [
+    {
+      id: 'schools',
+      titleEn: 'Schools & Educational Leaders',
+      titleNe: 'विद्यालय तथा शैक्षिक नेतृत्वकर्ताहरू',
+      roleEn: 'Principals, Department Heads & Trustees',
+      roleNe: 'प्रधानाध्यापक, विभाग प्रमुख तथा व्यवस्थापन',
+      descEn: 'Implement hands-on STEAM curriculum, teacher pedagogical training, and school science/robotics clubs.',
+      descNe: 'व्यावहारिक STEAM पाठ्यक्रम, शिक्षक क्षमता विकास र विद्यार्थी विज्ञान/रोबोटिक्स क्लब स्थापना।',
+      icon: <School size={20} style={{ color: 'var(--accent-blue)' }} />,
+      inquiryType: 'STEAM Education & School Lab Setup'
+    },
+    {
+      id: 'universities',
+      titleEn: 'Universities & Academic Researchers',
+      titleNe: 'विश्वविद्यालय तथा प्राज्ञिक अनुसन्धानकर्ता',
+      roleEn: 'Deans, Professors & Research Supervisors',
+      roleNe: 'डीन, प्राध्यापक तथा शोध निर्देशकहरू',
+      descEn: 'Joint research studies, M.Ed./M.Sc. co-supervision, pedagogy publications, and academic seminars.',
+      descNe: 'संयुक्त अनुसन्धान, स्नातकोत्तर शोध सह-पर्यवेक्षण, जर्नल प्रकाशन र राष्ट्रिय सम्मेलन आयोजना।',
+      icon: <Microscope size={20} style={{ color: 'var(--accent-blue)' }} />,
+      inquiryType: 'University Research & Thesis Co-Supervision'
+    },
+    {
+      id: 'municipalities',
+      titleEn: 'Municipalities & Civic Leaders',
+      titleNe: 'स्थानीय सरकार तथा नीतिनिर्माताहरू',
+      roleEn: 'Mayors, Education Officers & Ward Chairs',
+      roleNe: 'नगरप्रमुख, शिक्षा शाखा प्रमुख तथा जनप्रतिनिधि',
+      descEn: 'Establish municipal innovation centers, public maker spaces, and provincial youth science fairs.',
+      descNe: 'नगरस्तरीय नवप्रवर्तन केन्द्र, सार्वजनिक मेकर स्पेस र प्रादेशिक विज्ञान प्रदर्शनी सञ्चालन।',
+      icon: <Building size={20} style={{ color: 'var(--accent-blue)' }} />,
+      inquiryType: 'Municipal Innovation Center Setup'
+    },
+    {
+      id: 'philanthropy',
+      titleEn: 'Industry & Philanthropic Partners',
+      titleNe: 'उद्योग तथा सामाजिक साझेदारहरू',
+      roleEn: 'CSR Leaders, Tech Founders & Donors',
+      roleNe: 'उद्योगी, प्रविधि संस्थापक तथा दातृ निकाय',
+      descEn: 'Support student research grants, hardware prototyping tools, and global competition travel grants.',
+      descNe: 'विद्यार्थी अनुसन्धान छात्रवृत्ति, हार्डवेयर प्रोटोटाइपिङ ल्याब र अन्तर्राष्ट्रिय मञ्च सहभागिता सहयोग।',
+      icon: <Users size={20} style={{ color: 'var(--accent-blue)' }} />,
+      inquiryType: 'Student Innovation Grants & Sponsorship'
     }
   ];
 
@@ -129,7 +211,7 @@ export const ChapterCollaborate: React.FC = () => {
                 color: 'var(--accent-gold)'
               }}
             >
-              {language === 'ne' ? 'अध्याय ०४' : 'CHAPTER 04'}
+              {language === 'ne' ? 'प्रश्न ०६' : 'QUESTION 06'}
             </span>
             <span style={{ color: 'var(--border-dark)', fontSize: '0.78rem' }}>/</span>
             <span 
@@ -142,7 +224,7 @@ export const ChapterCollaborate: React.FC = () => {
                 color: 'var(--text-muted)'
               }}
             >
-              {language === 'ne' ? 'सहकार्य गरौं ?' : 'SHALL WE COLLABORATE ?'}
+              {language === 'ne' ? 'भविष्य र सहकार्य' : 'WHAT FUTURE AM I BUILDING ?'}
             </span>
           </div>
 
@@ -159,8 +241,87 @@ export const ChapterCollaborate: React.FC = () => {
           </span>
         </div>
 
+        {/* Question 06 Narrative Framework Anchor & Banner */}
+        <div 
+          id="future"
+          style={{
+            backgroundColor: 'var(--bg-alt)',
+            border: '1px solid var(--border-light)',
+            borderLeft: '4px solid var(--accent-gold)',
+            borderRadius: '4px',
+            padding: '1.25rem 1.5rem',
+            marginBottom: '2.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '1rem'
+          }}
+        >
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.25rem' }}>
+              <span 
+                style={{
+                  fontFamily: 'var(--font-mono, monospace)',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  backgroundColor: 'var(--accent-gold)',
+                  color: '#FFFFFF',
+                  padding: '0.2rem 0.5rem',
+                  borderRadius: '2px',
+                  letterSpacing: '0.05em'
+                }}
+              >
+                06. WHAT FUTURE AM I BUILDING?
+              </span>
+              <span 
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.15rem',
+                  fontWeight: 700,
+                  color: 'var(--text-primary)'
+                }}
+              >
+                {language === 'ne' 
+                  ? 'म कस्तो भविष्य निर्माण गर्न चाहन्छु र कोसँग सहकार्य गर्न चाहन्छु?' 
+                  : 'What Future Am I Building and With Whom Do I Seek Collaboration?'}
+              </span>
+            </div>
+            <p 
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: '0.96rem',
+                fontStyle: 'italic',
+                color: 'var(--accent-blue)',
+                margin: '0 0 0.25rem 0'
+              }}
+            >
+              {language === 'ne' 
+                ? 'नेपालका लागि दीर्घकालीन दृष्टि, HRIC र वैज्ञानिक इकोसिस्टम विकासको आगामी दिशा, अनुसन्धान रुचि, विश्वविद्यालय, विद्यालय, सरकार, अनुसन्धानकर्ता, उद्योग र अन्तर्राष्ट्रिय संस्थाहरूसँगको साझेदारी तथा सहकार्य निमन्त्रणा।'
+                : 'Long-term vision for Nepal, future direction for HRIC and scientific ecosystem development, research interests, desired partnerships with universities, schools, government, researchers, industry and international organizations. Include a clear collaboration/contact invitation.'}
+            </p>
+          </div>
+
+          <span 
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.76rem',
+              fontWeight: 600,
+              color: 'var(--accent-blue)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              backgroundColor: '#FFFFFF',
+              border: '1px solid var(--border-light)',
+              padding: '0.35rem 0.75rem',
+              borderRadius: '2px'
+            }}
+          >
+            {language === 'ne' ? 'धारा ६: दीर्घकालीन दृष्टिकोण' : 'SECTION 6: LONG-TERM VISION'}
+          </span>
+        </div>
+
         {/* Section Heading & Statement */}
-        <div style={{ maxWidth: '820px', marginBottom: '3.5rem' }}>
+        <div style={{ maxWidth: '850px', marginBottom: '3.5rem' }}>
           <h2 
             style={{
               fontFamily: 'var(--font-serif)',
@@ -245,6 +406,248 @@ export const ChapterCollaborate: React.FC = () => {
               <MessageSquare size={17} style={{ color: '#25D366' }} />
               <span>WhatsApp</span>
             </a>
+          </div>
+        </div>
+
+        {/* 3 Strategic Vision Pillars for Nepal (Brief Section 4 & Section 5) */}
+        <div style={{ marginBottom: '4rem' }}>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <span 
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-gold)',
+                display: 'block',
+                marginBottom: '0.35rem'
+              }}
+            >
+              {language === 'ne' ? 'नेपालका लागि दीर्घकालीन रणनीतिक स्तम्भहरू' : 'STRATEGIC VISION PILLARS FOR NEPAL'}
+            </span>
+            <h3 
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(1.4rem, 2.2vw, 1.85rem)',
+                fontWeight: 700,
+                color: 'var(--text-primary)',
+                margin: 0
+              }}
+            >
+              {language === 'ne' ? 'विकेन्द्रित अनुसन्धान, व्यावहारिक शिक्षा र प्रतिभा संरक्षण' : 'Decentralized Research, Educational Transformation & Brain Retention'}
+            </h3>
+          </div>
+
+          <div 
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+              gap: '1.5rem'
+            }}
+          >
+            {strategicVisionPillars.map((pillar) => (
+              <div 
+                key={pillar.id}
+                style={{
+                  backgroundColor: 'var(--bg-alt)',
+                  border: '1px solid var(--border-light)',
+                  borderTop: '3px solid var(--accent-gold)',
+                  borderRadius: '4px',
+                  padding: '1.75rem',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <div 
+                    style={{
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '50%',
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid var(--border-light)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                    }}
+                  >
+                    {pillar.icon}
+                  </div>
+                  <span 
+                    style={{
+                      fontFamily: 'var(--font-mono, monospace)',
+                      fontSize: '0.82rem',
+                      fontWeight: 700,
+                      color: 'var(--text-muted)'
+                    }}
+                  >
+                    PILLAR #{pillar.number}
+                  </span>
+                </div>
+
+                <h4 
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.18rem',
+                    fontWeight: 700,
+                    color: 'var(--text-primary)',
+                    marginBottom: '0.75rem',
+                    lineHeight: 1.3
+                  }}
+                >
+                  {language === 'ne' ? pillar.titleNe : pillar.titleEn}
+                </h4>
+
+                <p 
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.9rem',
+                    lineHeight: 1.6,
+                    color: 'var(--text-secondary)',
+                    margin: 0
+                  }}
+                >
+                  {language === 'ne' ? pillar.descNe : pillar.descEn}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 4 Clear Invitation Profiles (Who Can Collaborate) */}
+        <div style={{ marginBottom: '4rem' }}>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <span 
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-gold)',
+                display: 'block',
+                marginBottom: '0.35rem'
+              }}
+            >
+              {language === 'ne' ? 'सहकार्यका चार प्रमुख साझेदार वर्गहरू' : 'FOUR COLLABORATION PARTNER PROFILES'}
+            </span>
+            <h3 
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(1.4rem, 2.2vw, 1.85rem)',
+                fontWeight: 700,
+                color: 'var(--text-primary)',
+                margin: 0
+              }}
+            >
+              {language === 'ne' ? 'हामी कसरी सहकार्य गर्न सक्छौं?' : 'Who We Partner With & How We Create Impact'}
+            </h3>
+          </div>
+
+          <div 
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.5rem'
+            }}
+          >
+            {invitationProfiles.map((item) => (
+              <div 
+                key={item.id}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid var(--border-light)',
+                  borderRadius: '4px',
+                  padding: '1.6rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  boxShadow: '0 4px 14px rgba(0,0,0,0.02)',
+                  transition: 'border-color 0.2s ease, transform 0.2s ease'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                  <div 
+                    style={{
+                      width: '38px',
+                      height: '38px',
+                      borderRadius: '4px',
+                      backgroundColor: 'var(--bg-alt)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 
+                      style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontSize: '1.05rem',
+                        fontWeight: 700,
+                        color: 'var(--text-primary)',
+                        margin: 0,
+                        lineHeight: 1.25
+                      }}
+                    >
+                      {language === 'ne' ? item.titleNe : item.titleEn}
+                    </h4>
+                    <span 
+                      style={{
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.75rem',
+                        color: 'var(--text-muted)'
+                      }}
+                    >
+                      {language === 'ne' ? item.roleNe : item.roleEn}
+                    </span>
+                  </div>
+                </div>
+
+                <p 
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.86rem',
+                    lineHeight: 1.55,
+                    color: 'var(--text-secondary)',
+                    marginBottom: '1.25rem',
+                    flexGrow: 1
+                  }}
+                >
+                  {language === 'ne' ? item.descNe : item.descEn}
+                </p>
+
+                <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '1rem', marginTop: 'auto' }}>
+                  <button
+                    onClick={() => {
+                      setSelectedPurpose(item.inquiryType);
+                      const composerElement = document.getElementById('composer-section');
+                      if (composerElement) {
+                        composerElement.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                      fontFamily: 'var(--font-sans)',
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      color: 'var(--accent-blue)',
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      padding: 0,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <span>{language === 'ne' ? 'साझेदारी प्रस्ताव लेख्नुहोस्' : 'Initiate Inquiry'}</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -444,7 +847,7 @@ export const ChapterCollaborate: React.FC = () => {
           </div>
 
           {/* Right Column: Accessible Message Composer */}
-          <div style={{ gridColumn: 'span 7', width: '100%' }}>
+          <div id="composer-section" style={{ gridColumn: 'span 7', width: '100%' }}>
             
             <span 
               style={{
@@ -473,7 +876,7 @@ export const ChapterCollaborate: React.FC = () => {
                 gap: '1.25rem'
               }}
             >
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="form-grid-2col">
                 <div>
                   <label 
                     htmlFor="collab-name"
@@ -821,7 +1224,7 @@ export const ChapterCollaborate: React.FC = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
             <Link
-              to="/what-we-built"
+              to="/how-do-i-create-value"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -849,11 +1252,11 @@ export const ChapterCollaborate: React.FC = () => {
               }}
             >
               <ChevronLeft size={16} />
-              <span>{language === 'ne' ? 'अघिल्लो: हामीले के बनायौं ?' : 'Previous: What have we built ?'}</span>
+              <span>{language === 'ne' ? '← ०५. मूल्य सिर्जना' : '← 05. How I Create Value'}</span>
             </Link>
 
             <Link
-              to="/who-am-i"
+              to="/what-shaped-me"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -878,7 +1281,7 @@ export const ChapterCollaborate: React.FC = () => {
                 e.currentTarget.style.borderColor = 'var(--border-light)';
               }}
             >
-              <span>{language === 'ne' ? 'सुरुवात: म को हुँ ?' : 'Return to Profile: Who am I ?'}</span>
+              <span>{language === 'ne' ? 'सुरुवात: ०१. पृष्ठभूमि र यात्रा' : 'Return to Start: 01. What Shaped Me?'}</span>
               <ArrowRight size={16} />
             </Link>
           </div>

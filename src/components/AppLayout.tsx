@@ -11,10 +11,54 @@ export const AppLayout: React.FC = () => {
   const location = useLocation();
 
   const navLinks = [
-    { path: '/who-am-i', labelEn: 'Who am I ?', labelNe: 'म को हुँ ?' },
-    { path: '/how-it-works', labelEn: 'How does it work ?', labelNe: 'यो कसरी चल्छ ?' },
-    { path: '/what-we-built', labelEn: 'What have we built ?', labelNe: 'हामीले के बनायौं ?' },
-    { path: '/collaborate', labelEn: 'Shall we collaborate ?', labelNe: 'सहकार्य गरौं ?' },
+    { 
+      path: '/what-shaped-me', 
+      num: '01',
+      labelEn: 'What Shaped Me', 
+      labelNe: 'पृष्ठभूमि र यात्रा',
+      descEn: 'Personal story, Master’s in Mathematics, 18-year timeline',
+      descNe: 'मेरो पृष्ठभूमि, शिक्षा र १८ वर्षे शैक्षिक यात्रा'
+    },
+    { 
+      path: '/what-drives-me', 
+      num: '02',
+      labelEn: 'What Drives Me', 
+      labelNe: 'उद्देश्य र दर्शन',
+      descEn: 'Educational philosophy, curiosity, scientific thinking',
+      descNe: 'उद्देश्य, विश्वास, दर्शन र विद्यार्थी केन्द्रित सिकाइ'
+    },
+    { 
+      path: '/what-problems-am-i-solving', 
+      num: '03',
+      labelEn: 'Problems I Solve', 
+      labelNe: 'समस्या समाधान',
+      descEn: 'Addressing rote learning, research culture, decentralized labs',
+      descNe: 'शिक्षा र अनुसन्धानका प्रणालीगत खाडल तथा समाधान'
+    },
+    { 
+      path: '/what-am-i-creating', 
+      num: '04',
+      labelEn: 'What I Create', 
+      labelNe: 'संस्था र इकोसिस्टम',
+      descEn: 'HRIC, AstroNova Foundation, community maker labs',
+      descNe: 'HRIC, एष्ट्रोनोभा फाउण्डेशन, STEM तथा अन्तर्राष्ट्रिय मञ्च'
+    },
+    { 
+      path: '/how-do-i-create-value', 
+      num: '05',
+      labelEn: 'Create Value', 
+      labelNe: 'मूल्य सिर्जना',
+      descEn: 'Curiosity to Commerce: 7-stage research-to-impact pipeline',
+      descNe: 'जिज्ञासादेखि वाणिज्यसम्म: अनुसन्धान, प्रोटोटाइप र बजार'
+    },
+    { 
+      path: '/what-future-am-i-building', 
+      num: '06',
+      labelEn: 'What Future Am I Building?', 
+      labelNe: 'भविष्य र सहकार्य',
+      descEn: 'Decentralized innovation hubs & collaboration call',
+      descNe: 'दीर्घकालीन भिजन तथा राष्ट्रिय/अन्तर्राष्ट्रिय साझेदारी'
+    },
   ];
 
   // Handle scroll detection for subtle navbar border elevation
@@ -31,9 +75,20 @@ export const AppLayout: React.FC = () => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Auto-close mobile drawer when window expands past mobile breakpoint (1024px)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1024) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const isLinkActive = (path: string) => {
-    if (path === '/who-am-i') {
-      return location.pathname === '/' || location.pathname === '/who-am-i';
+    if (path === '/what-shaped-me') {
+      return location.pathname === '/' || location.pathname === '/what-shaped-me';
     }
     return location.pathname === path;
   };
@@ -65,7 +120,7 @@ export const AppLayout: React.FC = () => {
         >
           {/* Brand Identity / Logo */}
           <Link 
-            to="/who-am-i"
+            to="/what-shaped-me"
             style={{
               fontFamily: 'var(--font-serif)',
               fontSize: '1.25rem',
@@ -75,7 +130,8 @@ export const AppLayout: React.FC = () => {
               textDecoration: 'none',
               display: 'flex',
               alignItems: 'baseline',
-              gap: '0.5rem'
+              gap: '0.5rem',
+              flexShrink: 0
             }}
           >
             <span>{language === 'ne' ? 'किशन बास्तोला' : 'Kishan Bastola'}</span>
@@ -93,14 +149,14 @@ export const AppLayout: React.FC = () => {
             </span>
           </Link>
 
-          {/* Desktop Navigation Links - Strictly Exactly the 4 Destinations */}
+          {/* Desktop Navigation Links - The 6 Primary Destinations */}
           <nav 
             className="desktop-only"
             aria-label="Main Navigation"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '1.5rem'
+              gap: '1rem'
             }}
           >
             {navLinks.map((link) => {
@@ -111,13 +167,14 @@ export const AppLayout: React.FC = () => {
                   to={link.path}
                   style={{
                     fontFamily: 'var(--font-sans)',
-                    fontSize: '0.86rem',
+                    fontSize: '0.82rem',
                     fontWeight: active ? 700 : 500,
                     letterSpacing: '0.01em',
                     color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
                     textDecoration: 'none',
                     position: 'relative',
-                    padding: '0.35rem 0',
+                    padding: '0.35rem 0.2rem',
+                    whiteSpace: 'nowrap',
                     transition: 'color 0.2s ease'
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
@@ -179,11 +236,11 @@ export const AppLayout: React.FC = () => {
               <span>{language === 'ne' ? 'EN' : 'नेपाली'}</span>
             </button>
 
-            {/* Mobile Menu Hamburger */}
+            {/* Mobile Menu Hamburger (Visible ONLY on mobile <= 860px) */}
             <button
               className="mobile-only"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
               style={{
                 background: 'transparent',
@@ -191,8 +248,8 @@ export const AppLayout: React.FC = () => {
                 cursor: 'pointer',
                 color: 'var(--text-primary)',
                 padding: '0.35rem',
-                display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -202,16 +259,16 @@ export const AppLayout: React.FC = () => {
 
         </div>
 
-        {/* Mobile Navigation Drawer: Strictly Exactly the 4 Destinations */}
+        {/* Mobile Navigation Drawer: The 6 Primary Destinations */}
         {mobileMenuOpen && (
           <div 
+            className="mobile-nav-drawer mobile-only"
             style={{
               backgroundColor: 'var(--bg-primary)',
               borderBottom: '1px solid var(--border-light)',
               padding: '1.25rem 1.5rem 1.75rem 1.5rem',
-              display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
+              gap: '0.75rem',
               boxShadow: '0 8px 24px rgba(0,0,0,0.06)'
             }}
           >
@@ -223,23 +280,65 @@ export const AppLayout: React.FC = () => {
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
                   style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: '1.15rem',
-                    fontWeight: active ? 700 : 500,
-                    color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
                     textDecoration: 'none',
-                    padding: '0.5rem 0',
+                    padding: '0.65rem 0.5rem',
+                    borderRadius: '4px',
+                    backgroundColor: active ? 'var(--bg-alt)' : 'transparent',
                     borderBottom: '1px solid var(--border-light)',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    gap: '0.75rem',
+                    transition: 'all 0.15s ease'
                   }}
                 >
-                  <span>{language === 'ne' ? link.labelNe : link.labelEn}</span>
-                  {active && (
-                    <span style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', fontWeight: 700 }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-mono, monospace)',
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        backgroundColor: active ? 'var(--accent-blue)' : 'var(--bg-surface)',
+                        color: active ? '#FFFFFF' : 'var(--text-secondary)',
+                        border: '1px solid var(--border-light)',
+                        padding: '0.15rem 0.4rem',
+                        borderRadius: '2px',
+                        marginTop: '0.2rem'
+                      }}
+                    >
+                      {link.num}
+                    </span>
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: 'var(--font-serif)',
+                          fontSize: '1rem',
+                          fontWeight: active ? 700 : 600,
+                          color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
+                          marginBottom: '0.15rem'
+                        }}
+                      >
+                        {language === 'ne' ? link.labelNe : link.labelEn}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: 'var(--font-sans)',
+                          fontSize: '0.75rem',
+                          color: 'var(--text-muted)',
+                          lineHeight: 1.3
+                        }}
+                      >
+                        {language === 'ne' ? link.descNe : link.descEn}
+                      </div>
+                    </div>
+                  </div>
+
+                  {active ? (
+                    <span style={{ fontSize: '0.85rem', color: 'var(--accent-gold)', fontWeight: 700 }}>
                       ●
                     </span>
+                  ) : (
+                    <ChevronRight size={16} style={{ color: 'var(--text-muted)' }} />
                   )}
                 </Link>
               );
@@ -313,7 +412,7 @@ export const AppLayout: React.FC = () => {
               </p>
             </div>
 
-            {/* Col 2: Four Core Pages (React Router Navigation) */}
+            {/* Col 2: Six Primary Questions (React Router Navigation) */}
             <div>
               <h4 
                 style={{
@@ -326,7 +425,7 @@ export const AppLayout: React.FC = () => {
                   margin: '0 0 1rem 0'
                 }}
               >
-                {language === 'ne' ? 'पोर्टफोलियो पृष्ठहरू' : 'Portfolio Pages'}
+                {language === 'ne' ? 'मुख्य ६ प्रश्नहरू' : 'Primary Destinations'}
               </h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                 {navLinks.map((link) => {
@@ -399,7 +498,7 @@ export const AppLayout: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    to="/what-we-built"
+                    to="/what-am-i-creating"
                     style={{
                       fontFamily: 'var(--font-sans)',
                       fontSize: '0.88rem',

@@ -13,6 +13,31 @@ export interface FrameworkStep {
   impact: string;
 }
 
+export type ProgramStatus = 'active' | 'pilot' | 'planned';
+
+export interface QuestionSitemapItem {
+  id: string;
+  number: string;
+  titleEn: string;
+  titleNe: string;
+  meaningNe: string;
+  summaryEn: string;
+  summaryNe: string;
+  route: string;
+  anchor: string;
+}
+
+export interface ProblemStatement {
+  id: string;
+  number: string;
+  titleEn: string;
+  titleNe: string;
+  descriptionEn: string;
+  descriptionNe: string;
+  solutionEn: string;
+  solutionNe: string;
+}
+
 export interface WorkEntry {
   id: string;
   number: string;
@@ -20,6 +45,7 @@ export interface WorkEntry {
   role: string;
   organization: string;
   category: string;
+  status?: ProgramStatus;
   summary: string;
   fullDescription: string;
   highlights: string[];

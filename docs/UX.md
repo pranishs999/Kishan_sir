@@ -1,722 +1,229 @@
 # UX.md
 ### Information Architecture & UX Specification — Kishan Bastola Portfolio
+#### Based on: Developer Handoff & Website Content Brief (`Kishan_Bastola_Portfolio_Website_Developer_Brief.docx`)
 
-This document defines every route, its purpose, and its UX requirements.
-It assumes `CONTEXT.md` as ground truth for tone, content rules, and design
-direction. No CSS values, component code, or visual mockups are specified
-here — only structure, behavior, and content intent.
+This document defines the user experience, information architecture, navigation model, and page-level specifications for the portfolio website of **Kishan Bastola**. It operationalizes the core brief: replacing traditional generic resume menus (`About / Skills / Experience`) with a question-led editorial narrative that guides visitors through Kishan's background, philosophy, institutional achievements, and collaboration vision.
 
 ---
 
-## 1. Primary Navigation
+## 1. Information Architecture & Navigation Strategy
 
-Top-level nav (desktop, persistent header):
+### The 6 Primary Destinations
+Per Section 3, 7, and 12 of the Developer Brief, the website replaces traditional generic resume menus (`About / Skills / Experience`) with the **6 Questions as Primary Destinations**. Each question is a dedicated route and primary navigation destination:
 
 ```
-About | Work | Initiatives | Ecosystem | Thought | Media | CV | Contact
+01. WHAT SHAPED ME?        → 02. WHAT DRIVES ME?        → 03. PROBLEMS I SOLVE
+(/what-shaped-me)            (/what-drives-me)            (/what-problems-am-i-solving)
 
-                                      EN | नेपाली
+04. WHAT I CREATE          → 05. CREATE VALUE           → 06. FUTURE VISION
+(/what-am-i-creating)        (/how-do-i-create-value)     (/what-future-am-i-building)
 ```
 
-**Dropdown structure:**
+### Route-to-Question Mapping (Primary Destinations)
 
-- **About** → About (overview), Education, Experience, Leadership
-- **Work** → Work (overview), Education, Mathematics, Science, Research,
-  Innovation, Entrepreneurship
-- **Initiatives** → Initiatives (overview/archive), HRIC, Astronova,
-  Young Scientists, STEAM, Science & Engineering Fair, Workshops
-- **Ecosystem** → Ecosystem (overview), Vision, Education, Research,
-  Innovation, Mentorship, Enterprise
-- **Thought** → no dropdown (archive → detail pattern)
-- **Media** → Media (overview), Newspapers, Interviews, Events, Gallery
-- **CV** → no dropdown, single page
-- **Contact** → no dropdown, single page
+| Route | Primary Destination | Conceptual Question Addressed (Brief §3 & §12) | Core UX Focus |
+|:---|:---|:---|:---|
+| `/` or `/what-shaped-me` | **01. What Shaped Me?**<br/>*(०१. पृष्ठभूमि र यात्रा)* | **01. WHAT SHAPED ME?**<br/>*(मेरो पृष्ठभूमि, शिक्षा र यात्राले मलाई कसरी निर्माण गर्‍यो?)* | Personal story, Master’s Degree in Mathematics, 18 years in education, former School Principal and Campus Chief, career timeline, key turning points, credentials bento, and verified CV document viewer. |
+| `/what-drives-me` | **02. What Drives Me?**<br/>*(०२. उद्देश्य र दर्शन)* | **02. WHAT DRIVES ME?**<br/>*(मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ?)* | Education philosophy, student-centred learning, curiosity, mathematics and scientific thinking, belief that lack of resources should not prevent student potential, and the purpose behind the work. |
+| `/what-problems-am-i-solving` | **03. Problems I Solve**<br/>*(०३. समस्या समाधान)* | **03. WHAT PROBLEMS AM I SOLVING?**<br/>*(शिक्षा, अनुसन्धान र नवप्रवर्तन क्षेत्रमा म कुन समस्या समाधान गर्न खोज्दैछु?)* | Systemic gaps in Nepal: limited hands-on learning, weak research culture, missing innovation pipeline, talent brain drain, and the concrete institutional solutions via decentralized research infrastructure. |
+| `/what-am-i-creating` | **04. What I Create**<br/>*(०४. संस्था र इकोसिस्टम)* | **04. WHAT AM I CREATING?**<br/>*(म कुन संस्था, प्रणाली र अवसर निर्माण गर्दैछु?)* | Scientific Ecosystem Relationship Diagram (Astronova, HRIC, STEAM, Pathways, Mentors, Partners) + 4 flagship initiatives with status badges + 4-tab interactive verified archive (Theses, Thoughts, Media, Gallery). |
+| `/how-do-i-create-value` | **05. Create Value**<br/>*(०५. मूल्य सिर्जना)* | **05. HOW DO I CREATE VALUE?**<br/>*(म ज्ञान, अनुसन्धान र नवप्रवर्तनलाई वास्तविक मूल्यमा कसरी रूपान्तरण गर्छु?)* | Signature framework *From Curiosity to Commerce*: 7-stage interactive pipeline (Curiosity → Learning → Research → Prototype → Innovation → Enterprise → Commerce), commerce definition, and multi-stakeholder connection matrix. |
+| `/what-future-am-i-building` | **06. Future Vision**<br/>*(०६. भविष्य र सहकार्य)* | **06. WHAT FUTURE AM I BUILDING?**<br/>*(म कस्तो भविष्य निर्माण गर्न चाहन्छु र कोसँग सहकार्य गर्न चाहन्छु?)* | Long-term vision for Nepal and Bagmati Province, decentralizing innovation hubs, 4 invitation profiles, 5 partnership focus domains, direct accessible inquiry composer, and verified non-profit bank details. |
 
-Home (`/`) is reached via the logo/wordmark, not a nav item.
+### Official Question-Led Sitemap (Verbatim Specification)
 
----
+```
+01. WHAT SHAPED ME?
+मेरो पृष्ठभूमि, शिक्षा र यात्राले मलाई कसरी निर्माण गर्‍यो?
+Personal story, Master’s Degree in Mathematics, 18 years in education, former School Principal and Campus Chief, career timeline, key turning points and professional development.
 
-## 2. Global UX Rules
+02. WHAT DRIVES ME?
+मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ?
+Education philosophy, student-centred learning, curiosity, mathematics and scientific thinking, belief that lack of resources should not prevent student potential, and the purpose behind the work.
 
-**Breadcrumbs**
-Shown on every page below the top level (i.e. everything except `/`,
-and the six top-level section landing pages, which show wordmark only).
-Pattern: `Section / Subsection`. Breadcrumbs are clickable at every level.
+03. WHAT PROBLEMS AM I SOLVING?
+शिक्षा, अनुसन्धान र नवप्रवर्तन क्षेत्रमा म कुन समस्या समाधान गर्न खोज्दैछु?
+Explain the gaps being addressed: limited hands-on learning, weak access to mentors and laboratories, limited student research pathways, and weak links between learning, innovation and real-world application. Present these as problem statements and validate with evidence where possible.
 
-**Internal linking**
-Every detail page (initiative, article, media item, gallery item) must
-link back to: its parent archive, its related initiative/person entity
-(via ID, see `DATA.md`), and at least one contextually related page
-(e.g. an HRIC-tagged article links to `/initiatives/hric`).
+04. WHAT AM I CREATING?
+म कुन संस्था, प्रणाली र अवसर निर्माण गर्दैछु?
+Astronova Foundation Nepal, Hetauda Research and Innovation Center (HRIC), HRIC Scientific Ecosystem, STEAM learning initiatives, student research and science fair pathways, mentor networks and institutional partnerships. Show the relationship among these initiatives with a clear ecosystem diagram.
 
-**Contextual navigation**
-Each subsection landing page (e.g. `/work`) surfaces its own children as
-in-page cards/links, not just via the dropdown — the dropdown is a
-convenience, not the only path.
+05. HOW DO I CREATE VALUE?
+म ज्ञान, अनुसन्धान र नवप्रवर्तनलाई वास्तविक मूल्यमा कसरी रूपान्तरण गर्छु?
+This page explains the signature framework From Curiosity to Commerce: Curiosity → Learning → Research → Prototype → Innovation → Enterprise → Commerce. Clarify that commerce means real-world application, market relevance and social/economic value—not simply pushing students into business.
 
-**Active navigation state**
-The top-level nav item is visually marked active whenever the current
-route is that section or any of its children. The dropdown item matching
-the exact current route is marked active within the open menu.
-
-**Mobile navigation**
-Collapses to a single menu (hamburger or equivalent). Top-level sections
-are expandable/accordion rows revealing their children — no hover-based
-dropdowns on touch devices. CV and Contact remain single top-level rows.
-
-**Responsive content hierarchy**
-On narrow viewports, multi-column layouts (e.g. timelines, stakeholder
-maps, media grids) collapse to a single stacked column in the same
-reading order as desktop — no content is hidden, only re-flowed.
-
-**Image behavior**
-Every image requires descriptive alt text. Portrait/identity images of
-Kishan Bastola are never cropped in a way that loses recognizability.
-Newspaper clippings and scanned documents display at a size that keeps
-text legible or link out to a full-resolution/original view.
-
-**Accessibility (site-wide baseline)**
-- Semantic heading order (single `h1` per page, no skipped levels)
-- Visible focus states on all interactive elements
-- Sufficient color contrast for an "editorial/institutional" palette
-- All interactive elements reachable and operable by keyboard
-- Descriptive link text (no bare "click here")
-- Long-form pages (Thought articles, About/Ecosystem essays) support
-  readable line length and scalable text
-
-**Long-form reading**
-Thought articles and any essay-length About/Ecosystem copy use a
-single-column reading layout, distinct from the wider institutional
-layout used elsewhere, prioritizing legibility over density.
-
-**Archive/filter behavior**
-Archives (Initiatives, Thought, Media, Gallery) support category
-filtering. Filters are additive within a single archive, never combined
-across archives. Empty filter results show an explicit empty state, never
-a blank page. Filter state is reflected in the URL where feasible so
-results are shareable/bookmarkable.
-
-**External-link behavior**
-Any link leaving the site (news source, social post, external
-organization site) opens in a new tab and is visually/iconographically
-marked as external, consistent with the "external media must be
-identified" rule in `CONTEXT.md`.
+06. WHAT FUTURE AM I BUILDING?
+म कस्तो भविष्य निर्माण गर्न चाहन्छु र कोसँग सहकार्य गर्न चाहन्छु?
+Long-term vision for Nepal, future direction for HRIC and scientific ecosystem development, research interests, desired partnerships with universities, schools, government, researchers, industry and international organizations. Include a clear collaboration/contact invitation.
+```
 
 ---
 
-## 3. Route Specifications
+## 2. Global Navigation & Header UX
 
-Each route below defines: Purpose · Audience · Primary User Question ·
-Sections (in order) · Primary CTA · Secondary CTA · Related Pages ·
-Data Required · Mobile Behavior · Accessibility Notes.
+### Desktop Navigation Header (Viewports $> 1024\text{px}$)
+- **Left:** Brand wordmark linking to `/what-shaped-me`:
+  - English: `Kishan Bastola · Portfolio`
+  - Nepali: `किशन बास्तोला · पोर्टफोलियो`
+- **Center / Right:** Exactly the 6 Primary Navigation Destinations:
+  1. `01. What Shaped Me` / `०१. पृष्ठभूमि र यात्रा` (`/what-shaped-me`)
+  2. `02. What Drives Me` / `०२. उद्देश्य र दर्शन` (`/what-drives-me`)
+  3. `03. Problems I Solve` / `०३. समस्या समाधान` (`/what-problems-am-i-solving`)
+  4. `04. What I Create` / `०४. संस्था र इकोसिस्टम` (`/what-am-i-creating`)
+  5. `05. Create Value` / `०५. मूल्य सिर्जना` (`/how-do-i-create-value`)
+  6. `06. Future Vision` / `०६. भविष्य र सहकार्य` (`/what-future-am-i-building`)
+- **Right Utility:** Bilingual Toggle Button (`EN | नेपाली`) with globe icon.
+- **Active State:** Solid gold indicator underline (`#9A8055`) and deep navy text color (`#0F2C4A`) matching current `location.pathname`.
+- **Hamburger Button:** **Strictly hidden on desktop** via `.mobile-only` (`display: none !important`).
 
----
-
-### `/` — HOME
-
-- **Purpose:** Orient any visitor to who Kishan Bastola is and route them
-  toward the area they care about (journalist, university partner,
-  student/parent, funder, general public).
-- **Audience:** Mixed/first-time visitors of all types.
-- **Primary user question:** "Who is this person and why should I keep
-  reading?"
-- **Sections (order):**
-  1. Hero — name, title, signature line, portrait
-  2. Professional Snapshot — credentials at a glance
-  3. Short Profile — condensed biography
-  4. Curiosity → Commerce framework — the pathway diagram, explained
-  5. Selected Work — cross-section highlights (education, research,
-     innovation, etc.)
-  6. Institutions — Astronova, HRIC, and other affiliated bodies
-  7. Selected Media — 3–5 pulled media items
-  8. Latest Thought — most recent 1–3 articles
-  9. Vision — the professional vision statement
-  10. Contact/Collaboration CTA
-- **Primary CTA:** "View CV" or "Explore the Ecosystem" (route this
-  through a single decision point, not both competing).
-- **Secondary CTA:** "Get in Touch" → `/contact`
-- **Related pages:** All top-level sections (Home is the hub).
-- **Data required:** `person`, `institutions` (featured subset),
-  `work` (featured subset), `media` (featured subset), `articles`
-  (latest), `ecosystem` (pipeline summary).
-- **Mobile behavior:** Sections stack vertically in the same order;
-  the pathway diagram (§4) becomes a vertical stepper instead of a
-  horizontal flow.
-- **Accessibility:** Hero heading is the page's single `h1`; the pathway
-  diagram must have a text-equivalent list, not rely on graphic-only
-  representation.
+### Mobile Navigation Header (Viewports $\le 1024\text{px}$)
+- **Desktop Links:** Hidden via `.desktop-only` (`display: none !important`).
+- **Mobile Menu Trigger:** Accessible hamburger button (`Menu` / `X` icon, `aria-expanded`, touch target $\ge 44\text{px}$).
+- **Mobile Navigation Drawer:**
+  - Slides down smoothly from the sticky header.
+  - Lists all 6 primary destinations with question number pills (`01`–`06`), bilingual titles, and informative subtitles.
+  - Active destination displays an active background tint and gold bullet indicator.
+  - Automatically closes upon link navigation or when the viewport expands past $1024\text{px}$.
+  - Includes the persistent global language switcher.
 
 ---
 
-### `/about` — ABOUT
+## 3. Page-by-Page Detailed UX Specifications
 
-- **Purpose:** Give a fuller narrative answer to "who is this person"
-  than Home, before branching into Education/Experience/Leadership.
-- **Audience:** Visitors who want depth — researchers, partners,
-  journalists.
-- **Primary user question:** "What is his story and how did he get here?"
-- **Sections (order):** Profile, Professional Journey, Philosophy,
-  Current Focus
-- **Primary CTA:** "See Education" or "See Experience" (links into
-  children)
-- **Secondary CTA:** "Download CV" → `/cv`
-- **Related pages:** `/about/education`, `/about/experience`,
-  `/about/leadership`, `/cv`
-- **Data required:** `person` (biography, currentFocus), `education`
-  (summary), `experience` (summary), `leadership` (summary)
-- **Mobile behavior:** Four sections stack; each section header is
-  sticky-scoped only if the pattern is used elsewhere consistently,
-  otherwise plain stacked headers.
-- **Accessibility:** Philosophy quote content marked up as a `blockquote`
-  with attribution, not styled text alone.
+### Page 1: "Who am I ?" (`/who-am-i`)
+*Addressing: What Shaped Me? & What Drives Me?*
 
----
-
-### `/about/education` — EDUCATION
-
-- **Purpose:** Present formal academic credentials.
-- **Audience:** Academic partners, institutions, journalists verifying
-  credentials.
-- **Primary user question:** "What are his qualifications?"
-- **Sections (order):** Degree record(s), field/institution detail,
-  narrative context (how mathematics shaped his later work)
-- **Primary CTA:** "See Experience" → `/about/experience`
-- **Secondary CTA:** "View CV" → `/cv`
-- **Related pages:** `/about`, `/about/experience`, `/cv`
-- **Data required:** `education[]`
-- **Mobile behavior:** Each degree record becomes a single stacked card.
-- **Accessibility:** Records presented as a list (`ul`/`ol` or definition
-  list), not a table that would require horizontal scrolling on mobile.
+1. **Chapter Eyebrow:** `CHAPTER 01 / WHO AM I ? · BAGMATI PROVINCE · NEPAL`
+2. **Hero Typographic Grid:**
+   - **Full Name:** `Kishan Bastola` / `किशन बास्तोला` in elegant Fraunces Serif ($H_1$).
+   - **Professional Title:** `Educationist | Mathematician | Research & Innovation Ecosystem Builder`.
+   - **Signature Concept Badge:** `"From Curiosity to Commerce"`.
+   - **Short Introductory Bio:** Concise, verified 80–120 word narrative from Section 2 of Brief.
+   - **Call-to-Action Group:**
+     - Primary button: `Download CV ↓` (opens accessible, printable CV modal).
+     - Secondary button: `Discover How It Works →` (navigates to `/how-it-works`).
+   - **Authentic Portrait Frame:** High-resolution portrait (`/images/hero.png`) with dignified gradient overlay and location caption.
+3. **At-a-Glance Credentials Bento (Section 4 & 5 of Brief):**
+   - 3×3 structured grid presenting:
+     1. Master’s Degree in Mathematics (Tribhuvan University)
+     2. 18 Years in Education Leadership
+     3. Former School Principal
+     4. Former Campus Chief (Narayani College)
+     5. Country Leader (Taiwan International Science Fair)
+     6. Province Secretary (Mathematical Association of Nepal, Bagmati)
+     7. Executive Member (Nepal Mathematical Society, Bagmati)
+     8. President (Astronova Foundation Nepal)
+     9. Founder & Director (Hetauda Research & Innovation Center)
+4. **Academic Credentials & Degree Narrative:**
+   - Detailed breakdown of mathematical background, academic specialization, and thesis focus.
+5. **Expandable 18-Year Leadership Timeline:**
+   - Chronological progression from pure mathematics educator to national science delegation leader and ecosystem builder.
+   - Collapsible drawer pattern to keep the page clean while allowing deep-dive inspection.
+6. **Next Chapter Bridge:** Seamless transition banner linking directly to `/how-it-works`.
 
 ---
 
-### `/about/experience` — EXPERIENCE
+### Page 2: "How does it work ?" (`/how-it-works`)
+*Addressing: What Problems Am I Solving? & How Do I Create Value?*
 
-- **Purpose:** Present professional roles in chronological/institutional
-  order (School Principal, Campus Chief, etc.).
-- **Audience:** Institutional partners, employers, journalists.
-- **Primary user question:** "What has he done professionally?"
-- **Sections (order):** Timeline of positions, per-position detail
-  (organization, dates, responsibilities, achievements, evidence)
-- **Primary CTA:** "See Leadership" → `/about/leadership`
-- **Secondary CTA:** "View CV" → `/cv`
-- **Related pages:** `/about`, `/about/leadership`, `/cv`,
-  relevant `/initiatives/*` if a role connects to one
-- **Data required:** `experience[]`
-- **Mobile behavior:** Timeline collapses to a vertical stacked list in
-  chronological order; no horizontal timeline scroll.
-- **Accessibility:** Dates and organization names are real text (not
-  embedded in images); evidence links clearly labeled.
-
----
-
-### `/about/leadership` — LEADERSHIP
-
-- **Purpose:** Present current and notable institutional/organizational
-  leadership roles distinct from employment history.
-- **Audience:** Institutional partners, media, collaborators.
-- **Primary user question:** "What organizations does he lead or
-  represent?"
-- **Sections (order):** Role list (President — Astronova, Founder &
-  Director — HRIC, Country Leader — TISF, Province Secretary — MAN,
-  Executive Member — NMS), per-role description
-- **Primary CTA:** "Explore Initiatives" → `/initiatives`
-- **Secondary CTA:** "View CV" → `/cv`
-- **Related pages:** `/initiatives/hric`, `/initiatives/astronova`,
-  `/about/experience`, `/cv`
-- **Data required:** `leadership[]`
-- **Mobile behavior:** Roles stack as individual cards, each linking to
-  its related initiative where one exists.
-- **Accessibility:** Organization type (e.g. "Foundation," "Society")
-  stated in visible text, not conveyed by icon/color alone.
+1. **Chapter Eyebrow:** `CHAPTER 02 / HOW DOES IT WORK ? · 7-STAGE ECOSYSTEM BLUEPRINT`
+2. **Problem Statement & Philosophy:**
+   - Clarifying the fundamental educational bottleneck in Nepal: rote memorization, underfunded labs, and zero pre-university research culture.
+   - Philosophical core quote: *"A question can become knowledge. Knowledge can become research. Research can become innovation. Innovation can become an enterprise. An enterprise can create value for society."*
+3. **Interactive 7-Stage Pathway Stepper:**
+   - Keyboard-accessible visual pipeline tabs:
+     1. **Curiosity** (जिज्ञासा) — Student inquiry & questioning.
+     2. **Learning** (सिकाइ) — Structured study & mathematical fundamentals.
+     3. **Research** (अनुसन्धान) — Empirical methodology & experimentation.
+     4. **Prototype** (प्रोटोटाइप) — Working model fabrication in lab.
+     5. **Innovation** (नवप्रवर्तन) — Scalable solution to real problems.
+     6. **Enterprise** (उद्यम) — Institutional & operational venture building.
+     7. **Commerce** (वाणिज्य) — Real-world relevance & economic/social value.
+   - **Active Stage Panel:** Highlights the definition, educational objective, and institutional anchor for the selected stage.
+4. **Five-Stakeholder Connectivity Mapping:**
+   - Interactive ecosystem filter allowing visitors to see how HRIC and Astronova connect:
+     - Students & Young Innovators
+     - Teachers & STEAM Mentors
+     - Researchers & Academic Universities
+     - Industry & Tech Enterprises
+     - Government & Local Municipalities
+5. **Next Chapter Bridge:** Directional button linking directly to `/what-we-built`.
 
 ---
 
-### `/work` — WORK (overview)
+### Page 3: "What have we built ?" (`/what-we-built`)
+*Addressing: What Am I Creating?*
 
-- **Purpose:** Explain the professional *domains* Kishan Bastola works
-  across, as fields of expertise — not as a portfolio of projects.
-- **Audience:** Anyone assessing his professional range.
-- **Primary user question:** "What does he actually do, professionally?"
-- **Sections (order):** Intro framing ("work as domains, not projects"),
-  six domain cards (Education, Mathematics, Science, Research,
-  Innovation, Entrepreneurship), cross-link to Ecosystem
-- **Primary CTA:** Into a specific domain (contextual, varies by visitor)
-- **Secondary CTA:** "See the Ecosystem model" → `/ecosystem`
-- **Related pages:** all six `/work/*` children, `/ecosystem`
-- **Data required:** `work[]` (all categories)
-- **Mobile behavior:** Domain cards stack in the fixed order listed
-  above.
-- **Accessibility:** Domain cards are real links (not click-only `div`s).
-
----
-
-### `/work/education`, `/work/mathematics`, `/work/science`,
-### `/work/research`, `/work/innovation`, `/work/entrepreneurship`
-
-These six routes share one template (content differs, structure does
-not):
-
-- **Purpose:** Explain this professional domain — approach, principles,
-  and how it connects to the wider ecosystem. **Not** a project archive.
-- **Audience:** Domain-specific: educators, mathematicians, scientists,
-  researchers, innovators/students, entrepreneurs/investors respectively.
-- **Primary user question:** "How does he approach [domain], and what
-  has he built in it?"
-- **Sections (order):** Domain description, guiding principles list,
-  related initiatives (pulled by relationship, not duplicated content),
-  connection back to the Curiosity→Commerce pathway
-- **Primary CTA:** Into the most relevant related initiative
-- **Secondary CTA:** "Back to Work overview" → `/work`
-- **Related pages:** `/work`, relevant `/initiatives/*`,
-  relevant `/ecosystem/*` stage
-- **Data required:** `work` (single entity by slug), `initiatives[]`
-  (filtered by `relatedInitiatives`)
-- **Mobile behavior:** Principles list and related-initiative cards
-  stack; no loss of content.
-- **Accessibility:** Related-initiative cards include the initiative name
-  as real link text, not "read more."
+1. **Chapter Eyebrow:** `CHAPTER 03 / WHAT HAVE WE BUILT ? · EVIDENCED ACHIEVEMENTS`
+2. **Curated Flagship Initiatives (2×2 Grid):**
+   - **Hetauda Research & Innovation Center (HRIC):** Regional hub for science, innovation, and young scientist incubation.
+   - **Astronova Foundation Nepal:** Non-profit institutional platform championing mathematics and STEAM across Bagmati province.
+   - **Taiwan International Science Fair (TISF) Delegation:** National leadership, mentoring students representing Nepal globally.
+   - **International Olympiad on Science, Technology & Chemistry (IOSTC) Indonesia:** Global science competitions and delegation leadership.
+   - Each card displays authentic photography, verified key metric badge, narrative summary, and outbound verification link.
+3. **Self-Contained 4-Tab Interactive Archive:**
+   - **Tab 1: Supervised Graduate Theses** — Title, candidate, institution, academic year, and domain of research.
+   - **Tab 2: Published Thoughts & Papers** — Essays and articles on pedagogy, mathematics education, and science policy.
+   - **Tab 3: Verified Press & Media Clippings** — Official newspaper clippings, external headlines, and source links.
+   - **Tab 4: Summer STEAM Expo Gallery** — Authentic photographic documentation of student prototypes, robotics kits, and astronomy workshops.
+4. **Next Chapter Bridge:** Transition banner linking to `/collaborate`.
 
 ---
 
-### `/initiatives` — INITIATIVES (archive)
+### Page 4: "Shall we collaborate ?" (`/collaborate`)
+*Addressing: What Future Am I Building?*
 
-- **Purpose:** Central archive of all named initiatives, programs, and
-  institution-building efforts.
-- **Audience:** Partners, media, participants, general public.
-- **Primary user question:** "What has he actually built or run?"
-- **Sections (order):** Category filters, initiative grid/list, featured
-  initiatives (HRIC, Astronova) pinned/prioritized
-- **Primary CTA:** Into an initiative detail page
-- **Secondary CTA:** Filter by category
-- **Related pages:** all `/initiatives/*` children, `/ecosystem`
-- **Data required:** `initiatives[]`
-- **Mobile behavior:** Grid becomes single-column list; filters become a
-  dropdown/accordion rather than an inline filter bar.
-- **Accessibility:** Filter controls are properly labeled form controls;
-  filter results are announced (e.g. result count) for screen readers.
-
----
-
-### `/initiatives/hric` — HRIC
-
-Treated as a major institutional initiative, not a standard archive
-entry.
-
-- **Purpose:** Fully represent HRIC as an institution in its own right.
-- **Audience:** Partners, government/university stakeholders, students,
-  media.
-- **Primary user question:** "What is HRIC and how does it work?"
-- **Sections (order):** Identity (name/what it is), Mission, Vision,
-  Ecosystem model (stakeholders + pathway), Focus areas, Programs,
-  Activities, Network (partner organizations), Media, Gallery
-- **Primary CTA:** "Partner with HRIC" / "Get Involved" → `/contact`
-  (pre-filtered to relevant purpose)
-- **Secondary CTA:** "See the wider Ecosystem" → `/ecosystem`
-- **Related pages:** `/ecosystem`, `/initiatives/young-scientists`,
-  `/initiatives/steam`, `/initiatives/science-engineering-fair`,
-  `/media`, `/about/leadership`
-- **Data required:** `institutions` (HRIC entity), `initiatives[]`
-  (filtered to HRIC), `ecosystem`, `media[]` (filtered), `gallery[]`
-  (filtered)
-- **Mobile behavior:** Nine sections stack; a persistent "on this page"
-  jump menu is optional given length, collapsible on mobile.
-- **Accessibility:** Long page — each section has its own heading level
-  for landmark/skip-navigation support.
+1. **Chapter Eyebrow:** `CHAPTER 04 / SHALL WE COLLABORATE ? · PARTNERSHIPS & INQUIRIES`
+2. **Future Vision Statement:**
+   - Expanding scientific infrastructure to secondary schools across Nepal.
+   - Developing regional incubation centers where rural students can access high-grade laboratories.
+3. **Five Partnership Focus Domains (Direct `mailto:` triggers):**
+   1. *Academic Research & Graduate Mentorship*
+   2. *Institutional Science Fairs & STEAM Labs*
+   3. *Keynote Lectures & Mathematics Workshops*
+   4. *Ecosystem Incubation & Policy Advisory*
+   5. *Young Scientist Sponsorship & Delegation Support*
+4. **Accessible Collaboration Inquiry Composer:**
+   - Name, Email, Organization, Domain Selection, and Proposal Message.
+   - Generates a pre-formatted verified `mailto:` payload directly addressed to `contact@astronovafoundation.com`.
+   - Clear feedback stating that submissions trigger an official email client without third-party form trackers.
+5. **Verified Direct Contacts:**
+   - Email: `contact@astronovafoundation.com` (with one-click copy feedback)
+   - Phone: `+977-9855030706` (with copy feedback)
+   - Location: Hetauda Sub-Metropolitan City, Makwanpur, Bagmati Province, Nepal
+   - Official Links: Astronova Foundation Portal, LinkedIn Profile, Mathematical Association of Nepal (MAN) Bagmati
+6. **Support the Vision (Non-Profit Contribution Drawer):**
+   - Collapsible panel disclosing verified bank account details for Astronova Foundation Nepal:
+     - Bank: Rastriya Banijya Bank
+     - Account Name: ASTRONOVA FOUNDATION NEPAL
+     - Account Number: `130010006086001`
+     - Branch: Hetauda
+7. **Concluding Statement:**
+   - Re-stating the core commitment: *"From Curiosity to Commerce"*.
 
 ---
 
-### `/initiatives/astronova` — ASTRONOVA
+## 4. Multi-Page Editorial Routing Footer
 
-- **Purpose:** Represent Astronova Foundation Nepal as an institution.
-- **Audience:** Same as HRIC (partners, students, media).
-- **Primary user question:** "What is Astronova and what does it run?"
-- **Sections (order):** Identity, Mission focus (creative/innovative/
-  entrepreneurial mindset development), Programs (workshops etc.),
-  Media, Gallery
-- **Primary CTA:** "Get Involved" → `/contact`
-- **Secondary CTA:** "See related workshops" → `/initiatives/workshops`
-- **Related pages:** `/initiatives/workshops`,
-  `/initiatives/young-scientists`, `/about/leadership`, `/media`
-- **Data required:** `institutions` (Astronova entity), `initiatives[]`
-  (filtered), `media[]` (filtered), `gallery[]` (filtered)
-- **Mobile behavior:** Standard stacked sections.
-- **Accessibility:** Same baseline as §2.
+Every page is anchored by an editorial 4-column footer:
+- **Col 1 (Identity & Mission):** Full name, titles, and italicized philosophy quote.
+- **Col 2 (Portfolio Pages):** Direct router links with chevron indicators to the 4 destinations.
+- **Col 3 (Ecosystem Anchors):** Outbound links with external arrow icons to Astronova Foundation, HRIC, MAN Bagmati, and LinkedIn.
+- **Col 4 (Direct Inquiries):** Verified email, telephone, and postal address in Hetauda.
+- **Bottom Bar:** Copyright year, rights declaration, and signature motto.
 
 ---
 
-### `/initiatives/young-scientists`, `/initiatives/steam`,
-### `/initiatives/science-engineering-fair`, `/initiatives/workshops`
-
-Shared template:
-
-- **Purpose:** Represent this specific initiative category — its intent,
-  activities, and evidence — within the HRIC/Astronova ecosystem.
-- **Audience:** Students/parents, educators, media, fellow organizers.
-- **Primary user question:** "What is this program and can I/my
-  student take part?"
-- **Sections (order):** Description, activities list, documentary
-  evidence (media + gallery), how to participate/get involved
-- **Primary CTA:** "Get Involved" / "Contact" → `/contact`
-- **Secondary CTA:** Link to parent institution (HRIC or Astronova)
-- **Related pages:** `/initiatives`, `/initiatives/hric` and/or
-  `/initiatives/astronova`, `/media/gallery`
-- **Data required:** `initiatives[]` (filtered by category),
-  `media[]`, `gallery[]`
-- **Mobile behavior:** Standard stacked sections; gallery becomes a
-  swipeable single-row or stacked grid.
-- **Accessibility:** Gallery images carry individual captions, not a
-  single generic alt text repeated across images.
-
----
-
-### `/ecosystem` — ECOSYSTEM (overview)
-
-This is a major conceptual section, distinct from Initiatives (which is
-concrete/programmatic).
-
-- **Purpose:** Explain the *model* — how stakeholders connect and how
-  curiosity becomes commerce.
-- **Audience:** Partners, policymakers, university/government
-  stakeholders, serious researchers of the model itself.
-- **Primary user question:** "How does this all actually fit together?"
-- **Sections (order):** Framing intro, stakeholder map (Students,
-  Teachers, Mentors, Researchers, Universities, Government, Industry,
-  Entrepreneurs and their relationships), the central pathway
-  (Curiosity → Learning → Research → Prototype → Innovation →
-  Enterprise → Commerce), links into the five ecosystem sub-pages
-- **Primary CTA:** Into a specific ecosystem stage page
-- **Secondary CTA:** "See it in practice at HRIC" →
-  `/initiatives/hric`
-- **Related pages:** all five `/ecosystem/*` children,
-  `/initiatives/hric`, `/work`
-- **Data required:** `ecosystem` (stakeholders, connections, pipeline,
-  focusAreas — explicitly **not** `outcomes` unless verified numbers
-  exist; see Content Accuracy Rules)
-- **Mobile behavior:** Stakeholder map, which is inherently relational/
-  diagrammatic, must degrade to a plain stacked list of stakeholders
-  with their described relationships in text — never an unreadable
-  shrunk diagram.
-- **Accessibility:** The stakeholder map and pathway diagram must both
-  have full text equivalents; do not rely on an SVG/diagram alone to
-  convey the model.
-
----
-
-### `/ecosystem/vision`, `/ecosystem/education`, `/ecosystem/research`,
-### `/ecosystem/innovation`, `/ecosystem/mentorship`,
-### `/ecosystem/enterprise`
-
-Shared template:
-
-- **Purpose:** Explain this specific stage/dimension of the ecosystem in
-  depth.
-- **Audience:** Stakeholders relevant to that stage (e.g. `/mentorship`
-  → potential mentors; `/enterprise` → potential
-  investors/entrepreneurship partners).
-- **Primary user question:** "What role does [stage] play, and how do I
-  fit in?"
-- **Sections (order):** Description of the stage, its stakeholders,
-  its connection to adjacent stages in the pathway, related
-  initiatives/work
-- **Primary CTA:** Stage-appropriate ("Become a Mentor," "Partner on
-  Research," etc.) → `/contact` (pre-filtered purpose)
-- **Secondary CTA:** "Back to Ecosystem overview" → `/ecosystem`
-- **Related pages:** `/ecosystem`, relevant `/work/*`,
-  relevant `/initiatives/*`
-- **Data required:** `ecosystem` (filtered to this stage),
-  `work[]` (related), `initiatives[]` (related)
-- **Mobile behavior:** Standard stacked sections.
-- **Accessibility:** Standard baseline; stage name is the page `h1`.
-
----
-
-### `/thought` — THOUGHT (archive)
-
-- **Purpose:** House long-form written perspective (essays, reflections,
-  commentary) separate from news/media coverage.
-- **Audience:** Readers seeking his own voice/ideas, not third-party
-  coverage.
-- **Primary user question:** "What does he think, in his own words?"
-- **Sections (order):** Intro framing, category filter (if categories
-  exist), article list (reverse-chronological)
-- **Primary CTA:** Into an article
-- **Secondary CTA:** none required
-- **Related pages:** individual `/thought/[slug]` detail pages (not
-  separately enumerated in the route list, but implied by the
-  `articles` entity)
-- **Data required:** `articles[]`
-- **Mobile behavior:** List becomes single column; excerpt length may
-  shorten but must remain complete sentences, not mid-word truncation.
-- **Accessibility:** Each list entry is a single link wrapping the whole
-  card (or a clearly primary link), not multiple ambiguous links per
-  card.
-
-**Article detail (`/thought/[slug]`):**
-- **Purpose:** Present one full article in a readable long-form layout.
-- **Sections (order):** Title, author/date/category metadata, cover
-  image, body content, related initiatives, related articles
-- **Primary CTA:** "Read more Thought" → back to `/thought`
-- **Data required:** single `articles` entity by slug
-- **Accessibility:** Uses the long-form reading layout defined in §2.
-
----
-
-### `/media` — MEDIA (overview)
-
-- **Purpose:** Function as public/documentary evidence — proof of
-  activity and coverage, distinct from self-authored Thought content.
-- **Audience:** Journalists, partners verifying credibility, general
-  public.
-- **Primary user question:** "Where has this been covered/documented?"
-- **Sections (order):** Intro framing, links into the four
-  subcategories, a mixed recent-highlights feed
-- **Primary CTA:** Into a subcategory
-- **Secondary CTA:** none required
-- **Related pages:** `/media/newspapers`, `/media/interviews`,
-  `/media/events`, `/media/gallery`
-- **Data required:** `media[]` (all), `gallery[]` (summary)
-- **Mobile behavior:** Subcategory links stack; recent-highlights feed
-  becomes single column.
-- **Accessibility:** External-source items follow the external-link
-  rules in §2 without exception.
-
----
-
-### `/media/newspapers` — NEWSPAPERS
-
-- **Purpose:** Present print/online newspaper coverage, prioritizing the
-  actual clipping/image over paraphrase.
-- **Audience:** Journalists, credibility-checking partners.
-- **Primary user question:** "What has the press actually printed?"
-- **Sections (order):** Filterable list/grid of newspaper items, each
-  showing the clipping image first, then publication/date/short
-  context, then external link
-- **Primary CTA:** "View source" (external link)
-- **Secondary CTA:** none required
-- **Related pages:** `/media`, related `/initiatives/*` where tagged
-- **Data required:** `media[]` (filtered to category = newspaper),
-  each carrying `verified` status per `CONTEXT.md` §10
-- **Mobile behavior:** Clipping images remain legible-sized; grid
-  becomes single column.
-- **Accessibility:** Unverified items are labeled as such in visible
-  text, not color alone.
-
----
-
-### `/media/interviews` — INTERVIEWS
-
-- **Purpose:** Present interview coverage (video/audio/print Q&A).
-- **Audience:** General public, media, partners.
-- **Sections (order):** Filterable list of interviews, each with
-  source, date, format, external link
-- **Primary CTA:** "Watch/Read" (external link)
-- **Secondary CTA:** none required
-- **Related pages:** `/media`
-- **Data required:** `media[]` (filtered to category = interview)
-- **Mobile behavior:** Standard stacked list.
-- **Accessibility:** Video/audio embeds (if any) require captions/
-  transcripts where the source provides them; otherwise link out only.
-
----
-
-### `/media/events` — EVENTS
-
-- **Purpose:** Document participation in or organization of events
-  (workshops, fairs, ceremonies).
-- **Audience:** Partners, participants, press.
-- **Sections (order):** Filterable list of event coverage, each with
-  event name, date, location, related initiative, media/links
-- **Primary CTA:** Into related initiative
-- **Secondary CTA:** "View source" (external link, where applicable)
-- **Related pages:** `/media`, `/initiatives/*` (related),
-  `/media/gallery`
-- **Data required:** `media[]` (filtered to category = event),
-  `initiatives[]` (related)
-- **Mobile behavior:** Standard stacked list.
-- **Accessibility:** Standard baseline.
-
----
-
-### `/media/gallery` — GALLERY
-
-- **Purpose:** Visual documentary record across all events/initiatives.
-- **Audience:** General public, participants, press.
-- **Sections (order):** Category/initiative filter, image grid with
-  captions
-- **Primary CTA:** none required beyond viewing (lightbox/expand is a
-  UI behavior, not a CTA)
-- **Secondary CTA:** Into related initiative from an image's caption
-- **Related pages:** `/media`, relevant `/initiatives/*`
-- **Data required:** `gallery[]`
-- **Mobile behavior:** Grid becomes single or double column; lightbox
-  (if used) must be swipe- and keyboard-navigable.
-- **Accessibility:** Every gallery image has a real caption/alt text
-  (event, date, location at minimum) — never left blank.
-
----
-
-### `/achievements` — ACHIEVEMENTS
-
-- **Purpose:** Consolidated record of recognitions/milestones distinct
-  from role-based Leadership content.
-- **Audience:** Partners, press, credibility-checking visitors.
-- **Primary user question:** "What has he been recognized for?"
-- **Sections (order):** Filterable list by type, each entry with
-  organization, date, description, evidence link
-- **Primary CTA:** "View evidence" (where available)
-- **Secondary CTA:** "View CV" → `/cv`
-- **Related pages:** `/cv`, `/about/leadership`, `/media`
-- **Data required:** `achievements[]`
-- **Mobile behavior:** Standard stacked list.
-- **Accessibility:** Entries with no public evidence are marked as such
-  rather than left ambiguous.
-
----
-
-### `/cv` — CV
-
-- **Purpose:** Structured, comprehensive professional record; a formal
-  counterpart to the narrative About/Work/Leadership pages.
-- **Audience:** Institutional partners, employers, formal reviewers.
-- **Primary user question:** "Can I see this as a single structured
-  record, and can I download it?"
-- **Sections (order):** Profile summary, Education, Experience,
-  Leadership, Organizations, Research, Teaching, International
-  Engagement, Media (selected)
-- **Primary CTA:** "Download CV (PDF)" — placeholder until a real file
-  exists; do not fabricate a download that isn't backed by a real
-  document
-- **Secondary CTA:** "Contact" → `/contact`
-- **Related pages:** `/about/*`, `/achievements`, `/media`
-- **Data required:** `cv` (aggregating references into `education`,
-  `experience`, `leadership`, etc. — see `DATA.md` relationship rules)
-- **Mobile behavior:** Sections stack; download action remains
-  reachable without scrolling past the whole page (e.g. sticky or
-  early-placed CTA).
-- **Accessibility:** If rendered as structured HTML (not just a PDF
-  embed), it must use real headings/lists so it is screen-reader
-  navigable, not an image of a document.
-
----
-
-### `/contact` — CONTACT
-
-- **Purpose:** Enable professional collaboration inquiries, routed by
-  purpose.
-- **Audience:** Anyone initiating contact — researchers, educators,
-  institutions, mentors, media, partners.
-- **Primary user question:** "How do I reach him, and about what?"
-- **Sections (order):** Intro framing, purpose selector (Research,
-  Education, Institutional Collaboration, Mentorship, Speaking, Media,
-  Partnership, Other), contact form/details, direct contact info
-  (email/phone/office/address where available), professional links
-- **Primary CTA:** Submit inquiry / send email
-- **Secondary CTA:** none required
-- **Related pages:** contextually linked from CTAs throughout the site
-  (HRIC, Astronova, Ecosystem stages, CV)
-- **Data required:** `contact`
-- **Mobile behavior:** Purpose selector becomes a simple dropdown/select
-  rather than a multi-button row; form fields stack full-width.
-- **Accessibility:** Form fields have visible labels (not placeholder-
-  only labels), clear error states, and a confirmable success state on
-  submission.
-
----
-
-## 4. Notes for the Implementing Agent
-
-- Every route above must resolve to real data via `DATA.md` entities —
-  no route should render literal hardcoded prose duplicating another
-  page's content.
-- Where a page says "related initiatives" or "related work," this must
-  be computed from the ID relationships defined in `DATA.md`, not
-  manually duplicated per page.
-- Any route with no available verified content for a section should
-  render an honest "content coming soon" or omit the section entirely —
-  never a fabricated placeholder that reads as real content.
-
----
-
-## 5. LANGUAGE SWITCHER
-
-Global language control:
-
-EN | नेपाली
-
-Default:
-English
-
-Supported languages:
-- English
-- Nepali
-
-### Behavior
-
-The language switcher appears in the global header.
-
-When the user selects Nepali:
-- current page remains the same
-- content changes to Nepali
-- navigation changes to Nepali
-- buttons and labels change to Nepali
-- page metadata/content presentation changes appropriately
-- user should not be unexpectedly redirected to the homepage
-
-When the user selects English:
-- the same page returns to English
-
-### Persistence
-
-Remember the user's selected language during the session and across normal navigation.
-
-If appropriate for implementation, persist the preference locally.
-
-### Mobile
-
-The language switcher must remain accessible on mobile without occupying excessive header space.
-
-### Accessibility
-
-The control must:
-- have a clear accessible label
-- expose the current language
-- be keyboard accessible
-- have a visible selected state
-- not rely only on color
-
-Recommended accessible label:
-
-"Language: English"
-
-or
-
-"भाषा: नेपाली"
-
-### Content parity
-
-Both language versions must represent the same information.
-
-Do not remove important information merely because the page is in Nepali.
-
-### Translation quality
-
-Nepali should be professionally written rather than literal word-for-word machine translation.
-
-Keep:
-- people's names
-- organization names
-- technical terminology
-- official titles
-- event names
-
-consistent unless an established Nepali form exists.
-
-For official organization names, preserve the official English name where appropriate and provide the Nepali equivalent when useful.
-
-### URL Strategy
-
-Use a consistent strategy throughout the website.
-
-Client-side language state (`LanguageContext`) with local preference persistence (`localStorage`), enabling instant seamless in-place language switching on all pages.
-
+## 5. Responsive Design & Accessibility Standards
+
+1. **Breakpoints:**
+   - Desktop / Wide: $> 1024\text{px}$ (12-column grid, persistent horizontal nav)
+   - Tablet / Medium: $861\text{px} - 1024\text{px}$ (2-column grids, horizontal nav)
+   - Mobile: $\le 860\text{px}$ (single-column stack, hamburger drawer, full-width buttons)
+   - Small Mobile: $\le 480\text{px}$ (compact padding, responsive typography clamp)
+2. **Accessibility (WCAG 2.1 AA):**
+   - Color contrast ratio exceeds $4.5:1$ for all text against backgrounds.
+   - Explicit `aria-label`, `role="tab"`, `role="tablist"`, and keyboard navigation support (`ArrowLeft`, `ArrowRight`, `Enter`, `Space`).
+   - `prefers-reduced-motion` fully respected for all CSS transitions.
+   - Focus indicators (`outline: 2px solid var(--accent-gold)`) on all interactive buttons and inputs.

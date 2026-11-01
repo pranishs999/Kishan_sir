@@ -1,425 +1,406 @@
 # DATA.md
-### Data / Content Model — Kishan Bastola Portfolio
+### Data Architecture & Content Model — Kishan Bastola Portfolio
 
-This document defines the complete content model. The implementation must
-use centralized data (`src/data/`) referenced by every route in `UX.md` —
-never hardcoded, duplicated copy per page.
+This document defines the complete data architecture and content model for the personal portfolio of **Kishan Bastola**. All data models, entity relationships, and schemas documented here adhere strictly to the **Developer Handoff & Website Content Brief** (`Kishan_Bastola_Portfolio_Website_Developer_Brief.docx`).
 
-Content values themselves (dates, statistics, award names, etc.) must come
-from `CONTEXT.md` or explicit verification, per the Content Accuracy Rules.
-Where no verified value exists, the field should be present with an empty/
-placeholder value and a `verified: false` flag, not a fabricated value.
+Implementation lives in `src/data/sourceFacts.ts`, typed by `src/types/portfolio.ts` and `src/types/schema.ts`. Data must never be hardcoded ad-hoc inside UI components.
 
 ---
 
-## 1. Recommended File Structure
+## 1. Core Principles & Standards
 
-```
-src/data/
-  person.ts
-  education.ts
-  experience.ts
-  leadership.ts
-  work.ts
-  institutions.ts
-  initiatives.ts
-  ecosystem.ts
-  articles.ts
-  media.ts
-  achievements.ts
-  gallery.ts
-  cv.ts
-  contact.ts
-  index.ts        // re-exports everything for convenient import
-```
-
-Each file exports a typed array (or single object, for `person`/
-`ecosystem`/`cv`/`contact`) of its entity. IDs are stable strings
-(kebab-case slugs), never array indices, so relationships survive
-reordering.
+1. **Official Brief Fidelity**: All personal information, credentials, titles, signature lines, organizational roles, and philosophical frameworks directly mirror the verified Developer Brief.
+2. **Zero Fabrication**: No awards, impact figures, student metrics, or institutional relationships may be fabricated. Where data is unverified or awaiting owner confirmation, it is explicitly flagged with `verified: false` or documented in the handoff checklist.
+3. **Program Lifecycle Categorization**: Every institutional program and initiative is explicitly tagged with its operational status:
+   - `active`: Fully operational, currently running programs with verifiable evidence.
+   - `pilot`: Initial cohort or experimental execution phase.
+   - `planned`: Conceptual, roadmap, or upcoming initiatives.
+4. **Bilingual Parity**: All human-readable content supports English (`en`) and Nepali (`ne`) natively via `LocalizedString`.
+5. **Relational Normalization**: Core entities (institutions, credentials, initiatives, media) use stable kebab-case string IDs and are referenced across views rather than duplicated.
 
 ---
 
-## 2. Entities
+## 2. Global Type Definitions
 
-### `person` (singleton object)
-| Field | Type | Notes |
-|---|---|---|
-| `fullName` | string | "Kishan Bastola" |
-| `nepaliName` | string | नैत्र प्रसाद बास्तोला (किशन बास्तोला) |
-| `professionalTitle` | string | "Educationist \| Mathematician \| Research & Innovation Ecosystem Builder" |
-| `tagline` | string | "From Curiosity to Commerce" |
-| `shortBiography` | string | See `CONTEXT.md` §6 for verified source text |
-| `biography` | string (long-form) | Full narrative biography |
-| `currentFocus` | string[] | See `CONTEXT.md` §4 |
-| `profileImage` | image ref | Real portrait asset — never a stock placeholder |
-| `professionalIdentity` | string[] | The 5–6 "positioning" identities in `CONTEXT.md` §6 |
+### 2.1 Multilingual Types
 
-### `education[]`
-| Field | Type |
-|---|---|
-| `degree` | string |
-| `field` | string |
-| `institution` | string |
-| `location` | string |
-| `year` | string \| `[VERIFY]` |
-| `description` | string |
-
-### `experience[]`
-| Field | Type |
-|---|---|
-| `position` | string |
-| `organization` | string |
-| `startDate` | string \| `[VERIFY]` |
-| `endDate` | string \| "Present" \| `[VERIFY]` |
-| `location` | string |
-| `description` | string |
-| `responsibilities` | string[] |
-| `achievements` | string[] |
-| `evidence` | link[] — reference to `media` IDs or external URLs |
-
-### `leadership[]`
-| Field | Type |
-|---|---|
-| `role` | string |
-| `organization` | string |
-| `organizationType` | string (e.g. "Foundation", "Research Center", "Professional Society") |
-| `period` | string \| `[VERIFY]` |
-| `description` | string |
-| `responsibilities` | string[] |
-
-Initial known entries (from `CONTEXT.md` §3): President/Astronova
-Foundation Nepal; Founder & Director/HRIC; Country Leader/TISF; Province
-Secretary/MAN Bagmati; Executive Member/NMS Bagmati.
-
-### `work[]`
-| Field | Type |
-|---|---|
-| `id` | string |
-| `title` | string |
-| `slug` | string — matches `/work/[slug]` routes |
-| `category` | enum: `education` \| `mathematics` \| `science` \| `research` \| `innovation` \| `entrepreneurship` |
-| `description` | string |
-| `principles` | string[] |
-| `relatedInitiatives` | `initiatives[].id`[] |
-
-Six seed records, one per `/work/*` route.
-
-### `institutions[]`
-| Field | Type |
-|---|---|
-| `id` | string |
-| `name` | string |
-| `type` | string (e.g. "Foundation", "Research & Innovation Center") |
-| `role` | string — the person's role there (cross-reference `leadership`) |
-| `description` | string |
-| `logo` | image ref |
-| `coverImage` | image ref |
-| `websiteUrl` | url \| null |
-
-Seed records: Astronova Foundation Nepal, Hetauda Research and Innovation
-Center (HRIC). Additional institutions (MAN, NMS, TISF) may be modeled
-here too, marked `type: "Professional Society"` / `"International Fair"`.
-
-### `initiatives[]`
-| Field | Type |
-|---|---|
-| `id` | string |
-| `title` | string |
-| `category` | enum: `education` \| `astronova` \| `hric` \| `young-scientists` \| `steam` \| `science-engineering-fair` \| `workshops` \| other |
-| `organization` | `institutions[].id` |
-| `role` | string |
-| `description` | string |
-| `location` | string |
-| `startDate` | string \| `[VERIFY]` |
-| `endDate` | string \| `[VERIFY]` |
-| `participants` | number \| `[VERIFY]` — omit rather than guess |
-| `activities` | string[] |
-| `images` | image ref[] |
-| `videos` | video ref[] |
-| `media` | `media[].id`[] |
-| `relatedPeople` | string[] |
-| `relatedOrganizations` | string[] |
-| `externalLinks` | url[] |
-
-### `ecosystem` (singleton object)
-| Field | Type |
-|---|---|
-| `stakeholders` | `{ id, name, description }[]` — Students, Teachers, Mentors, Researchers, Universities, Government, Industry, Entrepreneurs |
-| `connections` | `{ from: stakeholderId, to: stakeholderId, description }[]` |
-| `pipeline` | ordered string[] — Curiosity → Learning → Research → Prototype → Innovation → Enterprise → Commerce |
-| `focusAreas` | string[] |
-| `outcomes` | **leave empty unless verified numeric/qualitative outcomes exist** — do not populate with invented figures |
-
-### `articles[]` (Thought)
-| Field | Type |
-|---|---|
-| `id` | string |
-| `title` | string |
-| `slug` | string |
-| `author` | string (default "Kishan Bastola") |
-| `date` | string |
-| `category` | string |
-| `excerpt` | string |
-| `content` | string (long-form) |
-| `coverImage` | image ref |
-| `tags` | string[] |
-| `relatedInitiatives` | `initiatives[].id`[] |
-
-No seed content exists yet — this entity starts empty pending authored
-essays; do not fabricate articles.
-
-### `media[]`
-| Field | Type |
-|---|---|
-| `id` | string |
-| `headline` | string |
-| `publication` | string |
-| `date` | string \| `[VERIFY]` |
-| `category` | enum: `newspaper` \| `interview` \| `event` |
-| `thumbnail` | image ref |
-| `summary` | string — only populate once source content is verified; otherwise leave blank |
-| `externalUrl` | url |
-| `verified` | boolean — `false` for all seed entries in §4 below until confirmed |
-| `language` | string (e.g. `ne` for Nepali sources) |
-
-### `achievements[]`
-| Field | Type |
-|---|---|
-| `id` | string |
-| `type` | string |
-| `title` | string |
-| `organization` | string |
-| `date` | string \| `[VERIFY]` |
-| `description` | string |
-| `evidence` | link \| `media[].id` |
-
-No seed content exists — do not populate until specific achievements are
-supplied and verified.
-
-### `gallery[]`
-| Field | Type |
-|---|---|
-| `id` | string |
-| `image` | image ref |
-| `caption` | string |
-| `event` | string |
-| `date` | string \| `[VERIFY]` |
-| `location` | string |
-| `category` | string |
-| `relatedInitiative` | `initiatives[].id` |
-
-### `cv` (singleton object)
-| Field | Type |
-|---|---|
-| `profile` | references `person.shortBiography` |
-| `education` | references `education[]` |
-| `experience` | references `experience[]` |
-| `leadership` | references `leadership[]` |
-| `organizations` | references `institutions[]` |
-| `research` | references `work[]` filtered to `category: research` (or a dedicated list once available) |
-| `teaching` | string[] / references `experience[]` filtered where applicable |
-| `internationalEngagement` | e.g. TISF role, from `leadership[]` |
-| `media` | selected subset of `media[]` |
-
-The `cv` entity is a **composition/view**, not a duplicate data store — it
-should be built by referencing the other entities' IDs at render time
-wherever possible, to satisfy the "no duplication" rule below.
-
-### `contact` (singleton object)
-| Field | Type |
-|---|---|
-| `name` | string |
-| `title` | string |
-| `description` | string |
-| `email` | string \| `[VERIFY]` |
-| `phone` | string \| `[VERIFY]` |
-| `office` | string \| `[VERIFY]` |
-| `address` | string \| `[VERIFY]` |
-| `professionalLinks` | `{ label, url }[]` |
-| `contactPurposes` | string[] — Research, Education, Institutional Collaboration, Mentorship, Speaking, Media, Partnership, Other |
-
----
-
-## 3. Data Relationship Rules
-
-- **No duplication of factual content.** A fact (e.g. HRIC's mission
-  statement) is written once, in `institutions[]`, and every other
-  entity references it by `id` rather than restating it.
-- **Reference chain:**
-  ```
-  person
-    → institutions   (via leadership roles)
-      → initiatives   (via institution id)
-        → media       (via initiative id)
-          → gallery    (via initiative id)
-        → articles     (via relatedInitiatives)
-  ```
-- **Example — HRIC:** defined once in `institutions[]` (`id: "hric"`),
-  then referenced by:
-  - `/` (Home → Institutions section)
-  - `/initiatives/hric` (primary detail page)
-  - `/about/leadership` (via `leadership[]` entry pointing at
-    `institution: "hric"`)
-  - `/ecosystem` (as the practical example of the model)
-  - `/media` (via `media[].relatedOrganizations` or initiative linkage)
-  - `/cv` (via `organizations` composition)
-- Any UI component that needs "related content" must query by these IDs
-  at render/build time, not receive hand-copied prose.
-
----
-
-## 4. Media Sources — Seed Data (UNVERIFIED)
-
-The following should be loaded into `media[]` as seed records with
-`verified: false`, `language: "ne"` (Nepali) unless noted, and no
-`summary` populated until someone confirms the article content:
-
-| id | headline (as supplied) | url |
-|---|---|---|
-| `media-01` | विद्यालयदेखि अनुसन्धान, नवप्रवर्तन र उद्यमशीलतासम्मको नयाँ राष्ट्रिय मार्गचित्र | https://share.google/i8fzpGbmPMqoHXYCL |
-| `media-02` | एष्ट्रोनोभा र काठमाडौँ विश्वविद्यालय स्कुल अफ एजुकेशनबीच सम्झौता | https://share.google/rbL9PiCjMIX5ZFgHb |
-| `media-03` | हेटौंडाका वाइवाको आविस्कार अन्तर्राष्ट्रिय विज्ञान प्रदर्शनीका लागि छनौट | https://share.google/yWlGDrMVMbt8PI0T1 |
-| `media-04` | नारायणी कलेजको प्रमुखमा बास्तोला नियुक्त | https://share.google/BYT6YUGIJCDBHJAdl |
-| `media-05` | रोबटिक्स, आर्टिफिसिएल इन्टेलिजेन्स, फ्यूचर टेक्नोलोजी र एष्ट्रोनोमीसम्बन्धी कार्यशाला सम्पन्न | https://share.google/sEH6pIFURfuSXKL78 |
-| `media-06` | एष्ट्रोनोभा फाउण्डेशनले ९ दिने कार्यशाला गर्ने | https://share.google/BdJ7a5pytmuWfnp8d |
-| `media-07` | एस्ट्रोनोभा फाउण्डेशनको आयोजनामा ११ दिने कार्यशाला सुरु | https://share.google/Z9PAOU6UDKa3v9elz |
-| `media-08` | एष्ट्रोनोभाद्वारा निशुल्क रोबटिक्स र अटोमेशन कार्यशाला | https://share.google/QQ4veCklZ7nfx7Hgm |
-| `media-09` | गणित समाज वाग्मती प्रदेशमा चितवनका आचार्यको नेतृत्व (Narayanionline.com) | https://share.google/x4DUHejEuHNhJDGeo |
-
-Plus three unclassified Facebook references (model as `category:
-"event"` or a new `social` category, `verified: false`):
-- https://www.facebook.com/share/p/1Hty84niRw/
-- https://www.facebook.com/story.php?story_fbid=27525063983764092&id=100000615823037&rdid=QTa2DTjfSHMOJw5g
-- https://www.facebook.com/story.php?story_fbid=27525063983764092&id=100000615823037&rdid=J2S3huBdMfJQRMnC
-
-`category` (newspaper/interview/event) for each of `media-01`–`media-09`
-should be assigned once content is verified — do not guess based on the
-headline alone beyond an initial best-effort tag that is clearly
-revisable.
-
----
-
-## 5. Notes for the Implementing Agent
-
-- Treat `[VERIFY]` as a hard stop for that specific field, not for the
-  whole entity — render the rest of the entity normally with that one
-  field omitted or visibly marked.
-- Do not add a `stats`/`outcomes` UI component anywhere until
-  `ecosystem.outcomes` or an equivalent verified field actually has
-  content — an empty stats bar is worse than no stats bar.
-- `cv`, as a singleton composed view, should be implemented as a
-  function/selector over the other entities rather than a separately
-  maintained data file, to guarantee it never drifts out of sync.
-
----
-
-## 6. MULTILINGUAL DATA MODEL
-
-All user-facing content must support English and Nepali.
-
-Use:
-
-```ts
+```typescript
 export type LocalizedString = string | {
   en: string;
   ne: string;
 };
-```
 
-for translatable fields.
+export type Language = 'en' | 'ne';
 
-Example:
-
-```ts
-title: {
-  en: "Research & Innovation",
-  ne: "अनुसन्धान तथा नवप्रवर्तन"
-}
-
-description: {
-  en: "Building systemic research ecosystems in Nepal.",
-  ne: "नेपालमा प्रणालीगत अनुसन्धान र नवप्रवर्तन इकोसिस्टमको निर्माण।"
+export function tField(field: LocalizedString | undefined, lang: Language): string {
+  if (!field) return '';
+  if (typeof field === 'string') return field;
+  return field[lang] || field.en || '';
 }
 ```
 
-### Non-translatable fields
+### 2.2 Program Status Enum
 
-Do NOT duplicate these:
+```typescript
+export type ProgramStatus = 'active' | 'pilot' | 'planned';
+```
 
-- id
-- slug
-- image / coverImage / profileImage
-- video
-- websiteUrl / externalUrl
-- date
-- coordinates
-- source URL
-- organization ID
-- initiative ID
-- relationship IDs
+---
 
-### Translatable fields
+## 3. Entity Schemas & Models
 
-These should support both languages:
+### 3.1 `PersonProfile` (Singleton)
 
-- title
-- subtitle
-- description
-- biography / shortBiography
-- tagline
-- section heading
-- section description
-- button labels
-- category labels
-- captions
-- article content
-- media summaries
-- initiative descriptions
-- form labels
-- form descriptions
-- accessibility text where appropriate
+Captures the core personal brand, identity, and narrative biography.
 
-### Example Entity
-
-```ts
-{
-  id: "hric",
-  name: {
-    en: "Hetauda Research and Innovation Center",
-    ne: "हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC)"
-  },
-  role: {
-    en: "Founder & Director",
-    ne: "संस्थापक तथा निर्देशक"
-  },
-  description: {
-    en: "A regional platform for science, technology, research, and innovation in Bagmati Province.",
-    ne: "वाग्मती प्रदेशमा विज्ञान, प्रविधि, अनुसन्धान र नवप्रवर्तनका लागि क्षेत्रीय मञ्च।"
-  },
-  websiteUrl: "https://hric.org.np",
-  coverImage: "/images/hric.png"
+```typescript
+export interface PersonProfile {
+  fullName: LocalizedString;          // "Kishan Bastola" / "किशन बास्तोला"
+  formalNepaliName?: string;          // "नैत्र प्रसाद बास्तोला" (Citizenship/Legal record)
+  professionalTitle: LocalizedString; // "Educationist | Mathematician | Research & Innovation Ecosystem Builder"
+  signatureLine: LocalizedString;     // "FROM CURIOSITY TO COMMERCE"
+  tagline: LocalizedString;           // "Building an ecosystem that transforms curiosity into knowledge, research, innovation, enterprise and value creation."
+  shortIntro: LocalizedString;        // 80–120 word homepage synopsis
+  biography: {
+    en: string[];                     // Multi-paragraph narrative bio
+    ne: string[];
+  };
+  currentFocus: LocalizedString[];    // Focus areas (Education, Mathematics, STEAM, Research, Innovation, etc.)
+  profileImage: string;               // Verified portrait asset path
+  professionalIdentity: {
+    title: LocalizedString;           // e.g., "Educationist", "Mathematician", "Innovation Ecosystem Builder"
+    description: LocalizedString;
+  }[];
 }
 ```
 
-### Translation completeness
+**Verified Values from Brief:**
+- **English Name**: Kishan Bastola
+- **Nepali Name**: किशन बास्तोला (Formal: नैत्र प्रसाद बास्तोला)
+- **Title**: Educationist | Mathematician | Research & Innovation Ecosystem Builder
+- **Signature Line**: FROM CURIOSITY TO COMMERCE
+- **Tagline**: "Building an ecosystem that transforms curiosity into knowledge, research, innovation, enterprise and value creation."
+- **Experience**: 18 Years in the Education Sector
+- **Highest Degree**: Master's Degree in Mathematics (M.Sc. / M.A.)
 
-Every published page should have:
+---
 
-- English content
-- Nepali content
+### 3.2 `QuestionSitemapItem[]` (The 6-Question Framework)
 
-Do not silently display English text inside an otherwise Nepali page unless the term is intentionally kept in English.
+The six core inquiry pillars established in Section 3 & Section 12 of the Developer Brief, mapped to the website's 4 multi-page destination routes.
 
-If a translation is genuinely unavailable, mark the field as requiring translation during development rather than silently falling back to unrelated content.
+| No. | Question (EN) | Nepali Subtitle | Narrative Core & Scope | Destination Page |
+|:---:|:---|:---|:---|:---:|
+| **01** | **WHAT SHAPED ME?** | मेरो पृष्ठभूमि, शिक्षा र यात्राले मलाई कसरी निर्माण गर्यो? | Personal story, Master’s Degree in Mathematics, 18 years in education, former School Principal and Campus Chief, career timeline, key turning points and professional development. | `/who-am-i#what-shaped-me` |
+| **02** | **WHAT DRIVES ME?** | मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ? | Education philosophy, student-centred learning, curiosity, mathematics and scientific thinking, belief that lack of resources should not prevent student potential, and the purpose behind the work. | `/who-am-i#what-drives-me` |
+| **03** | **WHAT PROBLEMS AM I SOLVING?** | शिक्षा, अनुसन्धान र नवप्रवर्तन क्षेत्रमा म कुन समस्या समाधान गर्न खोज्दैछु? | Explain the gaps being addressed: limited hands-on learning, weak access to mentors and laboratories, limited student research pathways, and weak links between learning, innovation and real-world application. Present these as problem statements and validate with evidence where possible. | `/how-it-works#problems` |
+| **04** | **WHAT AM I CREATING?** | म कुन संस्था, प्रणाली र अवसर निर्माण गर्दैछु? | Astronova Foundation Nepal, Hetauda Research and Innovation Center (HRIC), HRIC Scientific Ecosystem, STEAM learning initiatives, student research and science fair pathways, mentor networks and institutional partnerships. Show the relationship among these initiatives with a clear ecosystem diagram. | `/what-we-built#creating` |
+| **05** | **HOW DO I CREATE VALUE?** | म ज्ञान, अनुसन्धान र नवप्रवर्तनलाई वास्तविक मूल्यमा कसरी रूपान्तरण गर्छु? | This page explains the signature framework From Curiosity to Commerce: Curiosity → Learning → Research → Prototype → Innovation → Enterprise → Commerce. Clarify that commerce means real-world application, market relevance and social/economic value—not simply pushing students into business. | `/how-it-works#pathway` |
+| **06** | **WHAT FUTURE AM I BUILDING?** | म कस्तो भविष्य निर्माण गर्न चाहन्छु र कोसँग सहकार्य गर्न चाहन्छु? | Long-term vision for Nepal, future direction for HRIC and scientific ecosystem development, research interests, desired partnerships with universities, schools, government, researchers, industry and international organizations. Include a clear collaboration/contact invitation. | `/collaborate#future` |
 
-### Language helper
+### Verbatim Site Map Specification (आधिकारिक साइटम्याप)
+```
+01. WHAT SHAPED ME?
+मेरो पृष्ठभूमि, शिक्षा र यात्राले मलाई कसरी निर्माण गर्यो?
+Personal story, Master’s Degree in Mathematics, 18 years in education, former School Principal and Campus Chief, career timeline, key turning points and professional development.
 
-The application uses one centralized language/content resolver:
+02. WHAT DRIVES ME?
+मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ?
+Education philosophy, student-centred learning, curiosity, mathematics and scientific thinking, belief that lack of resources should not prevent student potential, and the purpose behind the work.
 
-`tField(field, language)`
+03. WHAT PROBLEMS AM I SOLVING?
+शिक्षा, अनुसन्धान र नवप्रवर्तन क्षेत्रमा म कुन समस्या समाधान गर्न खोज्दैछु?
+Explain the gaps being addressed: limited hands-on learning, weak access to mentors and laboratories, limited student research pathways, and weak links between learning, innovation and real-world application. Present these as problem statements and validate with evidence where possible.
 
-rather than implementing language selection independently on every page.
+04. WHAT AM I CREATING?
+म कुन संस्था, प्रणाली र अवसर निर्माण गर्दैछु?
+Astronova Foundation Nepal, Hetauda Research and Innovation Center (HRIC), HRIC Scientific Ecosystem, STEAM learning initiatives, student research and science fair pathways, mentor networks and institutional partnerships. Show the relationship among these initiatives with a clear ecosystem diagram.
 
-This prevents inconsistent translation behavior.
+05. HOW DO I CREATE VALUE?
+म ज्ञान, अनुसन्धान र नवप्रवर्तनलाई वास्तविक मूल्यमा कसरी रूपान्तरण गर्छु?
+This page explains the signature framework From Curiosity to Commerce: Curiosity → Learning → Research → Prototype → Innovation → Enterprise → Commerce. Clarify that commerce means real-world application, market relevance and social/economic value—not simply pushing students into business.
 
+06. WHAT FUTURE AM I BUILDING?
+म कस्तो भविष्य निर्माण गर्न चाहन्छु र कोसँग सहकार्य गर्न चाहन्छु?
+Long-term vision for Nepal, future direction for HRIC and scientific ecosystem development, research interests, desired partnerships with universities, schools, government, researchers, industry and international organizations. Include a clear collaboration/contact invitation.
+```
+
+```typescript
+export interface QuestionSitemapItem {
+  id: string;
+  questionNumber: string;             // "01" through "06"
+  title: LocalizedString;
+  nepaliMeaning: string;
+  coreSummary: LocalizedString;
+  pageRoute: '/who-am-i' | '/how-it-works' | '/what-we-built' | '/collaborate';
+  sectionAnchor: string;
+  keyTopics: LocalizedString[];
+}
+```
+
+---
+
+### 3.3 `FrameworkStep[]` (From Curiosity to Commerce)
+
+The 7-stage pipeline defining how curiosity transforms into societal and economic value. Note that **Commerce** represents real-world application, market relevance, and social/economic value—not simply pushing students into commercial business.
+
+```typescript
+export interface FrameworkStep {
+  id: string;
+  stepNumber: string;                 // "01" through "07"
+  title: LocalizedString;             // Curiosity, Learning, Research, Prototype, Innovation, Enterprise, Commerce
+  nepaliTitle: string;
+  subtitle: LocalizedString;
+  description: LocalizedString;
+  impact: LocalizedString;
+}
+```
+
+**The 7 Stages:**
+1. **Curiosity (जिज्ञासा)**: Igniting wonder, asking questions, challenging assumptions.
+2. **Learning (सिकाई)**: Hands-on exploration, theoretical foundations, rigorous scientific method.
+3. **Research (अनुसन्धान)**: In-depth inquiry, data collection, mentorship from active domain experts.
+4. **Prototype (प्रारूप / प्रोटोटाइप)**: Building physical and computational models to test hypotheses.
+5. **Innovation (नवप्रवर्तन)**: Solving concrete local and global challenges through novel approaches.
+6. **Enterprise (उद्यमशीलता)**: Structuring sustainable operations, intellectual property, and teams.
+7. **Commerce (व्यापार तथा मूल्य सिर्जना)**: Real-world societal deployment, market adoption, and tangible economic value creation.
+
+---
+
+### 3.4 `CredentialItem[]` & `LeadershipEntity[]`
+
+Verified executive appointments, institutional governance, and academic credentials.
+
+```typescript
+export interface CredentialItem {
+  id: string;
+  label: LocalizedString;
+  detail: LocalizedString;
+  category: 'education' | 'leadership' | 'experience' | 'governance';
+  verified: boolean;
+  period?: string;
+  institutionId?: string;
+}
+
+export interface LeadershipEntity {
+  id: string;
+  role: LocalizedString;
+  organization: LocalizedString;
+  organizationType: 'Foundation' | 'Research Center' | 'Professional Society' | 'Academic Institution' | 'Global Fair';
+  period: string;
+  description: LocalizedString;
+  verified: boolean;
+}
+```
+
+**Verified Leadership Records:**
+- **President**: Astronova Foundation Nepal (Nonprofit platform & leadership)
+- **Founder & Director**: Hetauda Research and Innovation Center (HRIC)
+- **Country Leader**: Taiwan International Science Fair (TISF), National Science and Technology Council (NSTC) / NTSEC Taiwan
+- **Province Secretary**: Mathematical Association of Nepal (MAN), Bagmati Province
+- **Executive Member**: Nepal Mathematical Society (NMS), Bagmati Province
+- **Former Campus Chief**: Narayani College
+- **Former School Principal**: Secondary Educational Institution (18 years total leadership)
+
+---
+
+### 3.5 `InstitutionEntity[]` (Ecosystem Architecture)
+
+Defines the institutional vehicles through which initiatives are executed.
+
+```typescript
+export interface InstitutionEntity {
+  id: string;
+  name: LocalizedString;
+  role: LocalizedString;
+  type: 'Nonprofit Foundation' | 'Research Center' | 'Professional Society' | 'Academic Institution';
+  establishedNotice?: LocalizedString;
+  mission: LocalizedString;
+  governance: LocalizedString;
+  keyPillars: LocalizedString[];
+  impactSummary: LocalizedString;
+  websiteUrl?: string;
+  logoUrl?: string;
+  coverImageUrl?: string;
+  verified: boolean;
+}
+```
+
+**Primary Institutions:**
+- `astronova`: **Astronova Foundation Nepal** — Nonprofit institutional vehicle providing governance, educational programs, and youth science leadership.
+- `hric`: **Hetauda Research and Innovation Center (HRIC)** — Regional research, technology, and incubation hub in Bagmati Province.
+- `man-bagmati`: **Mathematical Association of Nepal (MAN) Bagmati Province** — Professional mathematics pedagogy body.
+- `nms-bagmati`: **Nepal Mathematical Society (NMS) Bagmati Province** — Mathematical research and academic dissemination.
+- `tisf`: **Taiwan International Science Fair (TISF)** — Global platform connecting Nepalese student innovators to international competitions.
+
+---
+
+### 3.6 `InitiativeEntity[]` / `WorkEntry[]` (With Operational Status)
+
+Each initiative must state its lifecycle phase per Section 6 of the brief (`active`, `pilot`, or `planned`).
+
+```typescript
+export interface InitiativeEntity {
+  id: string;
+  number: string;
+  title: LocalizedString;
+  role: LocalizedString;
+  organizationId: string;             // References InstitutionEntity.id
+  category: 'STEAM' | 'Research' | 'Ecosystem' | 'Mathematics' | 'Innovation';
+  status: ProgramStatus;              // 'active' | 'pilot' | 'planned'
+  summary: LocalizedString;
+  fullDescription: LocalizedString;
+  highlights: LocalizedString[];
+  participantsCount?: number;         // Populated only with verified figures
+  customImageUrl?: string;
+  linkText?: LocalizedString;
+  linkUrl?: string;
+  verified: boolean;
+}
+```
+
+**Core Initiatives List:**
+1. **Young Scientist Development Program (YSDP)**: `status: 'active'`
+2. **National Science & Engineering Fair (NSEF)**: `status: 'pilot'`
+3. **Astronova STEAM & Robotics Community Workshops**: `status: 'active'`
+4. **HRIC Scientific Incubation Ecosystem**: `status: 'active'`
+5. **International Science Fair Delegations (TISF Taiwan & IOSTC Indonesia)**: `status: 'active'`
+6. **Mathematics Enrichment & Olympiad Mentorship**: `status: 'active'`
+7. **Advanced Regional Innovation Labs & Maker Spaces**: `status: 'planned'`
+
+---
+
+### 3.7 `DelegationEntry[]` (International Science Delegations)
+
+```typescript
+export interface DelegationEntry {
+  id: string;
+  title: LocalizedString;
+  country: string;
+  location: string;
+  flagEmoji: string;
+  role: LocalizedString;              // e.g. "Country Leader / Head of Delegation"
+  event: LocalizedString;             // "Taiwan International Science Fair (TISF)" / "IOSTC Indonesia"
+  summary: LocalizedString;
+  achievements: LocalizedString[];
+  imageUrl: string;
+  verified: boolean;
+}
+```
+
+---
+
+### 3.8 `ThesisEntry[]` (Academic Theses & Research)
+
+```typescript
+export interface ThesisEntry {
+  id: string;
+  title: LocalizedString;
+  authorOrStudent: string;
+  role: 'Supervisor' | 'Author' | 'Mentor';
+  year: string;
+  field: 'Mathematics Pedagogy' | 'Applied Mathematics' | 'STEAM Curriculum';
+  abstract: LocalizedString;
+  pdfUrl?: string;
+  verified: boolean;
+}
+```
+
+---
+
+### 3.9 `MediaEntry[]` (Press Clippings & Public Record)
+
+Media entries catalog verified news reporting, television interviews, and institutional announcements.
+
+```typescript
+export interface MediaEntry {
+  id: string;
+  headline: LocalizedString;
+  publication: string;
+  date: string;
+  category: 'Newspaper' | 'Online Press' | 'Institutional Notice' | 'Broadcast';
+  excerpt: LocalizedString;
+  fullSummary: LocalizedString;
+  customImageUrl?: string;
+  sourceUrl?: string;
+  verified: boolean;
+}
+```
+
+**Seed Media Records from Verified Brief Sources:**
+- `media-01`: *विद्यालयदेखि अनुसन्धान, नवप्रवर्तन र उद्यमशीलतासम्मको नयाँ राष्ट्रिय मार्गचित्र*
+- `media-02`: *एष्ट्रोनोभा र काठमाडौँ विश्वविद्यालय स्कुल अफ एजुकेशनबीच सम्झौता*
+- `media-03`: *हेटौंडाका वाइवाको आविस्कार अन्तर्राष्ट्रिय विज्ञान प्रदर्शनीका लागि छनौट (TISF)*
+- `media-04`: *नारायणी कलेजको प्रमुखमा बास्तोला नियुक्त*
+- `media-05`: *रोबटिक्स, आर्टिफिसिएल इन्टेलिजेन्स, फ्युचर टेक्नोलोजी र एष्ट्रोनोमी कार्यशाला*
+- `media-06`: *एष्ट्रोनोभा फाउण्डेशनले ९ दिने कार्यशाला गर्ने*
+- `media-07`: *एस्ट्रोनोभा फाउण्डेशनको आयोजनामा ११ दिने कार्यशाला सम्पन्न*
+- `media-08`: *एष्ट्रोनोभाद्वारा निशुल्क रोबटिक्स र अटोमेशन कार्यशाला*
+- `media-09`: *गणित समाज वाग्मती प्रदेशमा नेतृत्व चयन (Narayanionline)*
+
+---
+
+### 3.10 `ThoughtEntry[]` (Articles & Educational Philosophy)
+
+Long-form thought leadership and essays authored by Kishan Bastola.
+
+```typescript
+export interface ThoughtEntry {
+  id: string;
+  title: LocalizedString;
+  category: LocalizedString;
+  date: string;
+  readTime: string;
+  excerpt: LocalizedString;
+  keyTakeaways: LocalizedString[];
+  content?: LocalizedString;
+}
+```
+
+---
+
+### 3.11 `SupportVisionData` & Contact Entities
+
+```typescript
+export interface SupportVisionData {
+  bankName: string;
+  accountHolder: string;
+  accountNumber: string;
+  branch: string;
+  swiftCode?: string;
+  note: LocalizedString;
+}
+
+export interface ContactEntity {
+  email: string;
+  phone?: string;
+  officeLocation: LocalizedString;
+  socialLinks: {
+    platform: string;
+    label: string;
+    url: string;
+  }[];
+  collaborationCategories: LocalizedString[];
+}
+```
+
+**Verified Contact & Support Baseline:**
+- **Institutional Bank**: Astronova Foundation Nepal institutional account details for research grants and STEAM program support.
+- **Office Location**: Hetauda, Bagmati Province, Nepal.
+- **Inquiry Categories**: Academic Partnerships, Research Collaboration, STEAM Lab Mentorship, Speaking Engagements, Philanthropic Ecosystem Grants.
+
+---
+
+## 4. Developer Handoff Checklist & Open Items
+
+Per Section 14 of the Developer Brief, the following items must be confirmed with Kishan Bastola before finalizing public release:
+
+- [x] Master's Degree in Mathematics (M.Sc. / M.A.) confirmed.
+- [x] 18-Year Education Sector Leadership timeframe confirmed.
+- [x] Primary leadership titles: President (Astronova Foundation Nepal), Founder & Director (HRIC) confirmed.
+- [x] TISF Country Leader title and scope documented.
+- [x] MAN and NMS Bagmati Province executive roles cataloged.
+- [x] Programs categorized by status (`active`, `pilot`, `planned`).
+- [ ] Final confirmation of public bank account display for Astronova Foundation.
+- [ ] Final confirmation of high-resolution portrait photograph preferences.
+- [ ] Owner approval of final bilingual text strings before production deployment.

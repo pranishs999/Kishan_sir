@@ -64,41 +64,66 @@
 
 ---
 
-## 3. Full Component Architecture
+---
+
+## 3. The 6-Question Conceptual Sitemap (आधिकारिक साइटम्याप)
+
+The site structure is driven by six inquiries, organized across 4 primary multi-page routes:
+
+```
+01. WHAT SHAPED ME?
+मेरो पृष्ठभूमि, शिक्षा र यात्राले मलाई कसरी निर्माण गर्यो?
+Personal story, Master’s Degree in Mathematics, 18 years in education, former School Principal and Campus Chief, career timeline, key turning points and professional development.
+
+02. WHAT DRIVES ME?
+मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ?
+Education philosophy, student-centred learning, curiosity, mathematics and scientific thinking, belief that lack of resources should not prevent student potential, and the purpose behind the work.
+
+03. WHAT PROBLEMS AM I SOLVING?
+शिक्षा, अनुसन्धान र नवप्रवर्तन क्षेत्रमा म कुन समस्या समाधान गर्न खोज्दैछु?
+Explain the gaps being addressed: limited hands-on learning, weak access to mentors and laboratories, limited student research pathways, and weak links between learning, innovation and real-world application. Present these as problem statements and validate with evidence where possible.
+
+04. WHAT AM I CREATING?
+म कुन संस्था, प्रणाली र अवसर निर्माण गर्दैछु?
+Astronova Foundation Nepal, Hetauda Research and Innovation Center (HRIC), HRIC Scientific Ecosystem, STEAM learning initiatives, student research and science fair pathways, mentor networks and institutional partnerships. Show the relationship among these initiatives with a clear ecosystem diagram.
+
+05. HOW DO I CREATE VALUE?
+म ज्ञान, अनुसन्धान र नवप्रवर्तनलाई वास्तविक मूल्यमा कसरी रूपान्तरण गर्छु?
+This page explains the signature framework From Curiosity to Commerce: Curiosity → Learning → Research → Prototype → Innovation → Enterprise → Commerce. Clarify that commerce means real-world application, market relevance and social/economic value—not simply pushing students into business.
+
+06. WHAT FUTURE AM I BUILDING?
+म कस्तो भविष्य निर्माण गर्न चाहन्छु र कोसँग सहकार्य गर्न चाहन्छु?
+Long-term vision for Nepal, future direction for HRIC and scientific ecosystem development, research interests, desired partnerships with universities, schools, government, researchers, industry and international organizations. Include a clear collaboration/contact invitation.
+```
+
+---
+
+## 4. Multi-Page Component Architecture
 
 ```
 Kishan_sir/
 ├── host.sh                      # Shell script for network hosting on 0.0.0.0:5173
-├── SITE_CONTEXT.md              # Complete developer guide, architecture & design documentation
-├── package.json                 # Node dependencies, build scripts & "host" script
-├── index.html                   # HTML entry point with Google Fonts
+├── README.md                    # Project overview and site map specification
+├── SITE_CONTEXT.md              # Technical architecture & design documentation
+├── docs/                        # Complete technical and UX specifications
+│   ├── CONTEXT.md               # Fact base, credentials, roles & verbatim site map
+│   ├── DATA.md                  # Schema definitions & data models
+│   └── UX.md                    # Navigation model, route mapping & UX standards
 └── src/
-    ├── index.css                # Global CSS design system, grid, typography & dark modes
+    ├── index.css                # Global CSS design system, grid & typography tokens
     ├── types/
-    │   └── portfolio.ts         # TypeScript interfaces for portfolio data models
+    │   ├── portfolio.ts         # TypeScript interfaces for portfolio data models
+    │   └── schema.ts            # Relational database schemas
     ├── data/
-    │   └── sourceFacts.ts       # Single source of truth for text content & bank details
+    │   └── sourceFacts.ts       # Single source of truth for text content, data & SIX_QUESTIONS
     ├── components/
-    │   ├── Navbar.tsx           # Restrained header with section navigation links
-    │   ├── Hero.tsx             # Asymmetric 12-column editorial hero with exact copy
-    │   ├── Profile.tsx          # 01 / PROFILE section with 2-column layout & profile drawer
-    │   ├── Credentials.tsx      # 02 / CREDENTIALS text-focused credential grid
-    │   ├── Delegations.tsx      # 03 / GLOBAL DELEGATIONS (TISF Taiwan & IOSTC Indonesia)
-    │   ├── CuriosityFramework.tsx # 04 / FROM CURIOSITY TO COMMERCE interactive dark section
-    │   ├── SelectedWork.tsx     # 05 / SELECTED WORK editorial entry list & detail drawer
-    │   ├── InstitutionBuilding.tsx # 06 / INSTITUTION BUILDING (Astronova & HRIC)
-    │   ├── SupervisedTheses.tsx # 07 / ARTICLES & SUPERVISED THESES list & abstract viewer
-    │   ├── AreasOfWork.tsx      # 08 / AREAS OF WORK typographic list with thin separators
-    │   ├── GallerySection.tsx   # 09 / MEDIA & GALLERY (Summer STEAM Expo & delegations)
-    │   ├── MediaArchive.tsx     # 10 / MEDIA newspaper clipping press archive
-    │   ├── ThoughtLeadership.tsx # 11 / THOUGHT editorial article entries & takeaway viewer
-    │   ├── Vision.tsx           # 12 / VISION dark minimal canvas with exact 6-line vision quote
-    │   ├── SupportVision.tsx    # 13 / SUPPORT OUR VISION (Rastriya Banijya Bank A/C & QR)
-    │   ├── ContactFormSection.tsx # 14 / DIRECT CONTACT, PHONE/WHATSAPP, HETAUDA ADDRESS & FORM
-    │   ├── ProfileModal.tsx     # Executive dossier drawer
-    │   ├── CVModal.tsx          # Printable verified CV document viewer modal
-    │   └── DetailModal.tsx      # Reusable detail modal for work, media, thought & thesis items
-    └── App.tsx                  # Main application orchestrator
+    │   ├── AppLayout.tsx        # Persistent global header (4 links + language toggle) & footer
+    │   ├── ChapterWhoAmI.tsx    # Page 1: "Who am I ?" (Q01: What Shaped Me? + Q02: What Drives Me?)
+    │   ├── ChapterHowItWorks.tsx # Page 2: "How does it work ?" (Q03: What Problems Am I Solving? + Q05: How Do I Create Value?)
+    │   ├── ChapterWhatWeBuilt.tsx # Page 3: "What have we built ?" (Q04: What Am I Creating? + Ecosystem Diagram + Flagship Initiatives + 4-Part Archive)
+    │   ├── ChapterCollaborate.tsx # Page 4: "Shall we collaborate ?" (Q06: What Future Am I Building? + Inquiry Composer + Direct Contacts)
+    │   └── CVModal.tsx          # Printable verified CV document viewer modal
+    └── App.tsx                  # Main router setup with 4 core pages
 ```
 
 ---
