@@ -12,52 +12,36 @@ export const AppLayout: React.FC = () => {
 
   const navLinks = [
     { 
-      path: '/what-shaped-me', 
+      path: '/who-am-i', 
       num: '01',
-      labelEn: 'What Shaped Me?', 
-      labelNe: 'मलाई केले निर्माण गर्‍यो?',
-      descEn: 'Personal story, Master’s in Mathematics, 18-year timeline',
-      descNe: 'मेरो पृष्ठभूमि, शिक्षा र १८ वर्षे शैक्षिक यात्रा'
+      labelEn: 'Who am I ?', 
+      labelNe: 'म को हुँ ?',
+      descEn: '01. What Shaped Me? · 02. What Drives Me?',
+      descNe: '०१. पृष्ठभूमि र यात्रा · ०२. उद्देश्य र दर्शन'
     },
     { 
-      path: '/what-drives-me', 
+      path: '/how-it-works', 
       num: '02',
-      labelEn: 'What Drives Me?', 
-      labelNe: 'मलाई केले अघि बढाउँछ?',
-      descEn: 'Educational philosophy, curiosity, scientific thinking',
-      descNe: 'उद्देश्य, विश्वास, दर्शन र विद्यार्थी केन्द्रित सिकाइ'
+      labelEn: 'How does it work ?', 
+      labelNe: 'यो कसरी चल्छ ?',
+      descEn: '03. What Problems Am I Solving? · 05. How I Create Value?',
+      descNe: '०३. समस्या समाधान · ०५. मूल्य सिर्जना'
     },
     { 
-      path: '/what-problems-am-i-solving', 
+      path: '/what-we-built', 
       num: '03',
-      labelEn: 'What Problems Am I Solving?', 
-      labelNe: 'म कुन समस्या समाधान गर्दैछु?',
-      descEn: 'Addressing rote learning, research culture, decentralized labs',
-      descNe: 'शिक्षा र अनुसन्धानका प्रणालीगत खाडल तथा समाधान'
+      labelEn: 'What have we built ?', 
+      labelNe: 'हामीले के बनायौं ?',
+      descEn: '04. What Am I Creating? · Ecosystem & Initiatives',
+      descNe: '०४. संस्था र इकोसिस्टम · उपलब्धिहरू'
     },
     { 
-      path: '/what-am-i-creating', 
+      path: '/collaborate', 
       num: '04',
-      labelEn: 'What Am I Creating?', 
-      labelNe: 'म के निर्माण गर्दैछु?',
-      descEn: 'HRIC, AstroNova Foundation, community maker labs',
-      descNe: 'HRIC, एष्ट्रोनोभा फाउण्डेशन, STEM तथा अन्तर्राष्ट्रिय मञ्च'
-    },
-    { 
-      path: '/how-do-i-create-value', 
-      num: '05',
-      labelEn: 'How I Create Value?', 
-      labelNe: 'म कसरी मूल्य सिर्जना गर्छु?',
-      descEn: 'Curiosity to Commerce: 7-stage research-to-impact pipeline',
-      descNe: 'जिज्ञासादेखि वाणिज्यसम्म: अनुसन्धान, प्रोटोटाइप र बजार'
-    },
-    { 
-      path: '/what-future-am-i-building', 
-      num: '06',
-      labelEn: 'What Future Am I Building?', 
-      labelNe: 'म कस्तो भविष्य निर्माण गर्दैछु?',
-      descEn: 'Decentralized innovation hubs & collaboration call',
-      descNe: 'दीर्घकालीन भिजन तथा राष्ट्रिय/अन्तर्राष्ट्रिय साझेदारी'
+      labelEn: 'Shall we collaborate ?', 
+      labelNe: 'सहकार्य गरौं ?',
+      descEn: '06. What Future Am I Building? · Vision & Inquiries',
+      descNe: '०६. भविष्य र सहकार्य · प्रत्यक्ष सम्पर्क'
     },
   ];
 
@@ -87,10 +71,20 @@ export const AppLayout: React.FC = () => {
   }, []);
 
   const isLinkActive = (path: string) => {
-    if (path === '/what-shaped-me') {
-      return location.pathname === '/' || location.pathname === '/what-shaped-me';
+    const current = location.pathname;
+    if (path === '/who-am-i') {
+      return current === '/who-am-i' || current === '/what-shaped-me' || current === '/what-drives-me';
     }
-    return location.pathname === path;
+    if (path === '/how-it-works') {
+      return current === '/how-it-works' || current === '/what-problems-am-i-solving' || current === '/how-do-i-create-value';
+    }
+    if (path === '/what-we-built') {
+      return current === '/what-we-built' || current === '/what-am-i-creating';
+    }
+    if (path === '/collaborate') {
+      return current === '/collaborate' || current === '/what-future-am-i-building';
+    }
+    return false;
   };
 
   return (
@@ -120,7 +114,7 @@ export const AppLayout: React.FC = () => {
         >
           {/* Brand Identity / Logo */}
           <Link 
-            to="/what-shaped-me"
+            to="/"
             style={{
               fontFamily: 'var(--font-serif)',
               fontSize: '1.25rem',
@@ -149,14 +143,14 @@ export const AppLayout: React.FC = () => {
             </span>
           </Link>
 
-          {/* Desktop Navigation Links - The 6 Primary Destinations */}
+          {/* Desktop Navigation Links - Exactly 4 Primary Destinations */}
           <nav 
             className="desktop-only"
             aria-label="Main Navigation"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 'clamp(0.45rem, 0.85vw, 0.85rem)'
+              gap: 'clamp(0.75rem, 1.4vw, 1.5rem)'
             }}
           >
             {navLinks.map((link) => {
@@ -167,13 +161,13 @@ export const AppLayout: React.FC = () => {
                   to={link.path}
                   style={{
                     fontFamily: 'var(--font-sans)',
-                    fontSize: '0.75rem',
+                    fontSize: '0.82rem',
                     fontWeight: active ? 700 : 500,
                     letterSpacing: '0.01em',
                     color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
                     textDecoration: 'none',
                     position: 'relative',
-                    padding: '0.35rem 0.15rem',
+                    padding: '0.4rem 0.2rem',
                     whiteSpace: 'nowrap',
                     transition: 'color 0.2s ease'
                   }}
@@ -413,6 +407,7 @@ export const AppLayout: React.FC = () => {
             </div>
 
             {/* Col 2: Six Primary Questions (React Router Navigation) */}
+            {/* Col 2: Four Core Chapters & Mixed Tabs */}
             <div>
               <h4 
                 style={{
@@ -425,9 +420,9 @@ export const AppLayout: React.FC = () => {
                   margin: '0 0 1rem 0'
                 }}
               >
-                {language === 'ne' ? 'मुख्य ६ प्रश्नहरू' : 'Primary Destinations'}
+                {language === 'ne' ? 'मुख्य ४ खण्डहरू' : 'Primary Chapters'}
               </h4>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {navLinks.map((link) => {
                   const active = isLinkActive(link.path);
                   return (
@@ -451,8 +446,19 @@ export const AppLayout: React.FC = () => {
                         }}
                       >
                         <ChevronRight size={14} style={{ color: active ? 'var(--accent-gold)' : 'var(--text-muted)' }} />
-                        {language === 'ne' ? link.labelNe : link.labelEn}
+                        <span>{language === 'ne' ? link.labelNe : link.labelEn}</span>
                       </Link>
+                      <div 
+                        style={{
+                          fontFamily: 'var(--font-sans)',
+                          fontSize: '0.72rem',
+                          color: 'var(--text-muted)',
+                          paddingLeft: '1.25rem',
+                          marginTop: '0.15rem'
+                        }}
+                      >
+                        {language === 'ne' ? link.descNe : link.descEn}
+                      </div>
                     </li>
                   );
                 })}

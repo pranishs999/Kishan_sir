@@ -18,7 +18,11 @@ import {
 import { VISION_DATA, ecosystem, PROBLEM_STATEMENTS } from '../data/sourceFacts';
 import { useLanguage } from '../context/LanguageContext';
 
-export const ChapterHowItWorks: React.FC = () => {
+interface ChapterHowItWorksProps {
+  onNavigateToProblems?: () => void;
+}
+
+export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigateToProblems }) => {
   const { language, tF } = useLanguage();
   const [selectedStage, setSelectedStage] = useState<string>(ecosystem.pipeline[0]?.id || 'curiosity');
   const [selectedStakeholder, setSelectedStakeholder] = useState<string | null>(null);
@@ -781,40 +785,74 @@ export const ChapterHowItWorks: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
-            <Link
-              to="/what-am-i-creating"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.88rem',
-                fontWeight: 600,
-                color: 'var(--text-secondary)',
-                backgroundColor: 'transparent',
-                padding: '0.75rem 1.1rem',
-                border: '1px solid var(--border-light)',
-                borderRadius: '2px',
-                textDecoration: 'none',
-                letterSpacing: '0.01em',
-                transition: 'all 0.2s ease',
-                whiteSpace: 'nowrap'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--bg-alt)';
-                e.currentTarget.style.color = 'var(--text-primary)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = 'var(--text-secondary)';
-              }}
-            >
-              <ChevronLeft size={16} />
-              <span>{language === 'ne' ? '← ०४. संस्था र इकोसिस्टम' : '← 04. What I Create'}</span>
-            </Link>
+            {onNavigateToProblems ? (
+              <button
+                onClick={onNavigateToProblems}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.88rem',
+                  fontWeight: 600,
+                  color: 'var(--text-secondary)',
+                  backgroundColor: 'transparent',
+                  padding: '0.75rem 1.1rem',
+                  border: '1px solid var(--border-light)',
+                  borderRadius: '2px',
+                  cursor: 'pointer',
+                  letterSpacing: '0.01em',
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--bg-alt)';
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
+                }}
+              >
+                <ChevronLeft size={16} />
+                <span>{language === 'ne' ? '← ०३. समस्या र समाधान' : '← 03. Problems We Solve'}</span>
+              </button>
+            ) : (
+              <Link
+                to="/how-it-works?tab=03"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.88rem',
+                  fontWeight: 600,
+                  color: 'var(--text-secondary)',
+                  backgroundColor: 'transparent',
+                  padding: '0.75rem 1.1rem',
+                  border: '1px solid var(--border-light)',
+                  borderRadius: '2px',
+                  textDecoration: 'none',
+                  letterSpacing: '0.01em',
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--bg-alt)';
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
+                }}
+              >
+                <ChevronLeft size={16} />
+                <span>{language === 'ne' ? '← ०३. समस्या र समाधान' : '← 03. Problems We Solve'}</span>
+              </Link>
+            )}
 
             <Link 
-              to="/what-future-am-i-building"
+              to="/what-we-built"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -834,7 +872,7 @@ export const ChapterHowItWorks: React.FC = () => {
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
             >
-              <span>{language === 'ne' ? '०६. भविष्य र सहकार्य →' : 'Next: 06. Future Vision →'}</span>
+              <span>{language === 'ne' ? 'अध्याय ०३: हामीले के बनायौं ? →' : 'Next: Chapter 03 (What have we built?) →'}</span>
               <ChevronRight size={18} />
             </Link>
           </div>

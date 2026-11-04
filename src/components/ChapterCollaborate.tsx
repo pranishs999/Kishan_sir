@@ -831,7 +831,7 @@ export const ChapterCollaborate: React.FC = () => {
                     <span>Astronova Foundation Portal</span>
                     <ExternalLink size={13} />
                   </a>
-                  <a href="https://www.linkedin.com/in/kishan-bastola-3a67041b3/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <a href="https://www.linkedin.com/in/kishan-bastola/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
                     <span>LinkedIn Profile</span>
                     <ExternalLink size={13} />
                   </a>

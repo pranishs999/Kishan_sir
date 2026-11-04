@@ -6,9 +6,10 @@ import { useLanguage } from '../context/LanguageContext';
 
 interface ChapterWhoAmIProps {
   onOpenCV?: () => void;
+  onNavigateToDrives?: () => void;
 }
 
-export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV }) => {
+export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNavigateToDrives }) => {
   const { language, tF, tA } = useLanguage();
   const [showTimeline, setShowTimeline] = useState(false);
 
@@ -1043,30 +1044,58 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV }) => {
             </p>
           </div>
 
-          <Link 
-            to="/what-drives-me"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              color: '#FFFFFF',
-              backgroundColor: 'var(--accent-blue)',
-              padding: '0.75rem 1.4rem',
-              borderRadius: '2px',
-              textDecoration: 'none',
-              letterSpacing: '0.02em',
-              transition: 'opacity 0.2s ease',
-              whiteSpace: 'nowrap'
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-          >
-            <span>{language === 'ne' ? '०२. उद्देश्य र दर्शन हेर्नुहोस् →' : 'Explore What Drives Me →'}</span>
-            <ChevronRight size={18} />
-          </Link>
+          {onNavigateToDrives ? (
+            <button 
+              onClick={onNavigateToDrives}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                color: '#FFFFFF',
+                backgroundColor: 'var(--accent-blue)',
+                padding: '0.75rem 1.4rem',
+                borderRadius: '2px',
+                border: 'none',
+                cursor: 'pointer',
+                letterSpacing: '0.02em',
+                transition: 'opacity 0.2s ease',
+                whiteSpace: 'nowrap'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+            >
+              <span>{language === 'ne' ? '०२. उद्देश्य र दर्शन हेर्नुहोस् →' : 'Explore What Drives Me →'}</span>
+              <ChevronRight size={18} />
+            </button>
+          ) : (
+            <Link 
+              to="/who-am-i?tab=02"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                color: '#FFFFFF',
+                backgroundColor: 'var(--accent-blue)',
+                padding: '0.75rem 1.4rem',
+                borderRadius: '2px',
+                textDecoration: 'none',
+                letterSpacing: '0.02em',
+                transition: 'opacity 0.2s ease',
+                whiteSpace: 'nowrap'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+            >
+              <span>{language === 'ne' ? '०२. उद्देश्य र दर्शन हेर्नुहोस् →' : 'Explore What Drives Me →'}</span>
+              <ChevronRight size={18} />
+            </Link>
+          )}
         </div>
 
       </div>

@@ -2,12 +2,11 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppLayout } from './components/AppLayout';
 import { ScrollToTop } from './components/ScrollToTop';
-import { PageWhatShapedMe } from './pages/PageWhatShapedMe';
-import { PageWhatDrivesMe } from './pages/PageWhatDrivesMe';
-import { PageWhatProblems } from './pages/PageWhatProblems';
-import { PageWhatAmICreating } from './pages/PageWhatAmICreating';
-import { PageHowICreateValue } from './pages/PageHowICreateValue';
-import { PageWhatFuture } from './pages/PageWhatFuture';
+import { HomePage } from './pages/HomePage';
+import { WhoAmIPage } from './pages/WhoAmIPage';
+import { HowItWorksPage } from './pages/HowItWorksPage';
+import { WhatWeBuiltPage } from './pages/WhatWeBuiltPage';
+import { CollaboratePage } from './pages/CollaboratePage';
 
 export const AppRouter: React.FC = () => {
   return (
@@ -15,54 +14,58 @@ export const AppRouter: React.FC = () => {
       <ScrollToTop />
       <Routes>
         <Route element={<AppLayout />}>
-          {/* Exactly 6 Primary Destination Pages */}
-          <Route path="/" element={<PageWhatShapedMe />} />
-          <Route path="/what-shaped-me" element={<PageWhatShapedMe />} />
-          <Route path="/what-drives-me" element={<PageWhatDrivesMe />} />
-          <Route path="/what-problems-am-i-solving" element={<PageWhatProblems />} />
-          <Route path="/what-am-i-creating" element={<PageWhatAmICreating />} />
-          <Route path="/how-do-i-create-value" element={<PageHowICreateValue />} />
-          <Route path="/what-future-am-i-building" element={<PageWhatFuture />} />
+          {/* Executive Overview Homepage */}
+          <Route path="/" element={<HomePage />} />
+
+          {/* Exactly 4 Primary Chapter Pages with Mixed Tabs */}
+          <Route path="/who-am-i" element={<WhoAmIPage />} />
+          <Route path="/how-it-works" element={<HowItWorksPage />} />
+          <Route path="/what-we-built" element={<WhatWeBuiltPage />} />
+          <Route path="/collaborate" element={<CollaboratePage />} />
+
+          {/* Question-to-Tab Direct Route Deep Links & Redirects */}
+          <Route path="/what-shaped-me" element={<Navigate to="/who-am-i?tab=01" replace />} />
+          <Route path="/what-drives-me" element={<Navigate to="/who-am-i?tab=02" replace />} />
+          <Route path="/what-problems-am-i-solving" element={<Navigate to="/how-it-works?tab=03" replace />} />
+          <Route path="/what-am-i-creating" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/how-do-i-create-value" element={<Navigate to="/how-it-works?tab=05" replace />} />
+          <Route path="/what-future-am-i-building" element={<Navigate to="/collaborate" replace />} />
 
           {/* Graceful Legacy Route Redirects */}
-          <Route path="/who-am-i" element={<Navigate to="/what-shaped-me" replace />} />
-          <Route path="/about" element={<Navigate to="/what-shaped-me" replace />} />
-          <Route path="/about/*" element={<Navigate to="/what-shaped-me" replace />} />
-          <Route path="/cv" element={<Navigate to="/what-shaped-me" replace />} />
+          <Route path="/about" element={<Navigate to="/who-am-i" replace />} />
+          <Route path="/about/*" element={<Navigate to="/who-am-i" replace />} />
+          <Route path="/cv" element={<Navigate to="/who-am-i" replace />} />
 
-          <Route path="/drives" element={<Navigate to="/what-drives-me" replace />} />
-          <Route path="/philosophy" element={<Navigate to="/what-drives-me" replace />} />
+          <Route path="/drives" element={<Navigate to="/who-am-i?tab=02" replace />} />
+          <Route path="/philosophy" element={<Navigate to="/who-am-i?tab=02" replace />} />
 
-          <Route path="/problems" element={<Navigate to="/what-problems-am-i-solving" replace />} />
-          <Route path="/gaps" element={<Navigate to="/what-problems-am-i-solving" replace />} />
+          <Route path="/problems" element={<Navigate to="/how-it-works?tab=03" replace />} />
+          <Route path="/gaps" element={<Navigate to="/how-it-works?tab=03" replace />} />
 
-          <Route path="/what-we-built" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/work" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/work/*" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/initiatives" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/initiatives/*" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/thought" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/thought/*" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/thoughts" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/research" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/media" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/media/*" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/gallery" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/delegations" element={<Navigate to="/what-am-i-creating" replace />} />
-          <Route path="/institutions" element={<Navigate to="/what-am-i-creating" replace />} />
+          <Route path="/work" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/work/*" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/initiatives" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/initiatives/*" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/thought" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/thought/*" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/thoughts" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/research" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/media" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/media/*" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/gallery" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/delegations" element={<Navigate to="/what-we-built" replace />} />
+          <Route path="/institutions" element={<Navigate to="/what-we-built" replace />} />
 
-          <Route path="/how-it-works" element={<Navigate to="/how-do-i-create-value" replace />} />
-          <Route path="/ecosystem" element={<Navigate to="/how-do-i-create-value" replace />} />
-          <Route path="/ecosystem/*" element={<Navigate to="/how-do-i-create-value" replace />} />
-          <Route path="/framework" element={<Navigate to="/how-do-i-create-value" replace />} />
-          <Route path="/vision" element={<Navigate to="/how-do-i-create-value" replace />} />
+          <Route path="/ecosystem" element={<Navigate to="/how-it-works?tab=05" replace />} />
+          <Route path="/ecosystem/*" element={<Navigate to="/how-it-works?tab=05" replace />} />
+          <Route path="/framework" element={<Navigate to="/how-it-works?tab=05" replace />} />
+          <Route path="/vision" element={<Navigate to="/collaborate" replace />} />
 
-          <Route path="/collaborate" element={<Navigate to="/what-future-am-i-building" replace />} />
-          <Route path="/contact" element={<Navigate to="/what-future-am-i-building" replace />} />
-          <Route path="/support" element={<Navigate to="/what-future-am-i-building" replace />} />
+          <Route path="/contact" element={<Navigate to="/collaborate" replace />} />
+          <Route path="/support" element={<Navigate to="/collaborate" replace />} />
 
           {/* Catch-all Fallback */}
-          <Route path="*" element={<Navigate to="/what-shaped-me" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

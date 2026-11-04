@@ -10,7 +10,11 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
-export const PageWhatDrivesMe: React.FC = () => {
+interface PageWhatDrivesMeProps {
+  onNavigateToShaped?: () => void;
+}
+
+export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateToShaped }) => {
   const { language } = useLanguage();
 
   const philosophicalPillars = [
@@ -384,22 +388,38 @@ export const PageWhatDrivesMe: React.FC = () => {
             borderTop: '1px solid var(--border-light)'
           }}
         >
-          <Link
-            to="/what-shaped-me"
-            className="btn-secondary"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              textDecoration: 'none'
-            }}
-          >
-            <ArrowLeft size={16} />
-            <span>{language === 'ne' ? '← ०१. पृष्ठभूमि र यात्रा' : '← 01. What Shaped Me?'}</span>
-          </Link>
+          {onNavigateToShaped ? (
+            <button
+              onClick={onNavigateToShaped}
+              className="btn-secondary"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                cursor: 'pointer'
+              }}
+            >
+              <ArrowLeft size={16} />
+              <span>{language === 'ne' ? '← ०१. पृष्ठभूमि र यात्रा' : '← 01. What Shaped Me?'}</span>
+            </button>
+          ) : (
+            <Link
+              to="/who-am-i?tab=01"
+              className="btn-secondary"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                textDecoration: 'none'
+              }}
+            >
+              <ArrowLeft size={16} />
+              <span>{language === 'ne' ? '← ०१. पृष्ठभूमि र यात्रा' : '← 01. What Shaped Me?'}</span>
+            </Link>
+          )}
 
           <Link
-            to="/what-problems-am-i-solving"
+            to="/how-it-works?tab=03"
             className="btn-primary"
             style={{
               display: 'inline-flex',
@@ -408,7 +428,7 @@ export const PageWhatDrivesMe: React.FC = () => {
               textDecoration: 'none'
             }}
           >
-            <span>{language === 'ne' ? '०३. कुन समस्या समाधान गर्दैछु? →' : 'Next: 03. What Problems Am I Solving? →'}</span>
+            <span>{language === 'ne' ? 'अध्याय ०२: यो कसरी चल्छ ? →' : 'Next: Chapter 02 (How does it work?) →'}</span>
             <ArrowRight size={16} />
           </Link>
         </div>

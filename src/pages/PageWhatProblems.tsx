@@ -12,7 +12,11 @@ import {
 import { useLanguage } from '../context/LanguageContext';
 import { PROBLEM_STATEMENTS } from '../data/sourceFacts';
 
-export const PageWhatProblems: React.FC = () => {
+interface PageWhatProblemsProps {
+  onNavigateToValue?: () => void;
+}
+
+export const PageWhatProblems: React.FC<PageWhatProblemsProps> = ({ onNavigateToValue }) => {
   const { language } = useLanguage();
 
   const gapIcons = [
@@ -365,7 +369,7 @@ export const PageWhatProblems: React.FC = () => {
           }}
         >
           <Link
-            to="/what-drives-me"
+            to="/who-am-i?tab=02"
             className="btn-secondary"
             style={{
               display: 'inline-flex',
@@ -378,19 +382,35 @@ export const PageWhatProblems: React.FC = () => {
             <span>{language === 'ne' ? '← ०२. उद्देश्य र दर्शन' : '← 02. What Drives Me?'}</span>
           </Link>
 
-          <Link
-            to="/what-am-i-creating"
-            className="btn-primary"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              textDecoration: 'none'
-            }}
-          >
-            <span>{language === 'ne' ? '०४. कुन संस्था निर्माण गर्दैछु? →' : 'Next: 04. What Am I Creating? →'}</span>
-            <ArrowRight size={16} />
-          </Link>
+          {onNavigateToValue ? (
+            <button
+              onClick={onNavigateToValue}
+              className="btn-primary"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                cursor: 'pointer'
+              }}
+            >
+              <span>{language === 'ne' ? '०५. मूल्य सिर्जना ढाँचा हेर्नुहोस् →' : 'Next: 05. How I Create Value? →'}</span>
+              <ArrowRight size={16} />
+            </button>
+          ) : (
+            <Link
+              to="/how-it-works?tab=05"
+              className="btn-primary"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                textDecoration: 'none'
+              }}
+            >
+              <span>{language === 'ne' ? '०५. मूल्य सिर्जना ढाँचा हेर्नुहोस् →' : 'Next: 05. How I Create Value? →'}</span>
+              <ArrowRight size={16} />
+            </Link>
+          )}
         </div>
 
       </div>
