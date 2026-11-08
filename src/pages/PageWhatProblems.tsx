@@ -54,7 +54,7 @@ export const PageWhatProblems: React.FC<PageWhatProblemsProps> = ({ onNavigateTo
                 letterSpacing: '0.05em'
               }}
             >
-              03. WHAT PROBLEMS AM I SOLVING?
+              WHAT PROBLEMS AM I SOLVING?
             </span>
             <span 
               style={{
@@ -379,7 +379,7 @@ export const PageWhatProblems: React.FC<PageWhatProblemsProps> = ({ onNavigateTo
             }}
           >
             <ArrowLeft size={16} />
-            <span>{language === 'ne' ? '← ०२. उद्देश्य र दर्शन' : '← 02. What Drives Me?'}</span>
+            <span>{language === 'ne' ? '← उद्देश्य र दर्शन' : '← What Drives Me?'}</span>
           </Link>
 
           {onNavigateToValue ? (
@@ -393,7 +393,7 @@ export const PageWhatProblems: React.FC<PageWhatProblemsProps> = ({ onNavigateTo
                 cursor: 'pointer'
               }}
             >
-              <span>{language === 'ne' ? '०५. मूल्य सिर्जना ढाँचा हेर्नुहोस् →' : 'Next: 05. How I Create Value? →'}</span>
+              <span>{language === 'ne' ? 'मूल्य सिर्जना ढाँचा हेर्नुहोस् →' : 'Next: How I Create Value? →'}</span>
               <ArrowRight size={16} />
             </button>
           ) : (
@@ -407,7 +407,7 @@ export const PageWhatProblems: React.FC<PageWhatProblemsProps> = ({ onNavigateTo
                 textDecoration: 'none'
               }}
             >
-              <span>{language === 'ne' ? '०५. मूल्य सिर्जना ढाँचा हेर्नुहोस् →' : 'Next: 05. How I Create Value? →'}</span>
+              <span>{language === 'ne' ? 'मूल्य सिर्जना ढाँचा हेर्नुहोस् →' : 'Next: How I Create Value? →'}</span>
               <ArrowRight size={16} />
             </Link>
           )}

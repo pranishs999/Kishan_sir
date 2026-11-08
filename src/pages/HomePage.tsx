@@ -305,7 +305,6 @@ export const HomePage: React.FC = () => {
                   }}
                 >
                   <span>{language === 'ne' ? '६ मुख्य प्रश्नहरू हेर्नुहोस् ↓' : 'Explore 6 Questions ↓'}</span>
-                  <ArrowRight size={16} />
                 </a>
 
                 <button
@@ -652,7 +651,7 @@ export const HomePage: React.FC = () => {
                     paddingTop: '1rem'
                   }}
                 >
-                  <span>{language === 'ne' ? 'विस्तृत हेर्नुहोस्' : 'Explore Chapter'}</span>
+                  <span>{language === 'ne' ? 'विस्तृत हेर्नुहोस्' : 'Explore'}</span>
                   <ArrowRight size={15} style={{ color: 'var(--accent-gold)' }} />
                 </div>
               </Link>
@@ -913,7 +912,7 @@ export const HomePage: React.FC = () => {
                 textDecoration: 'none'
               }}
             >
-              <span>{language === 'ne' ? '०५. पूर्ण ७-चरणीय विधि र स्टेकहोल्डर म्याट्रिक्स हेर्नुहोस् →' : 'Explore Full 7-Stage Framework & Matrix →'}</span>
+              <span>{language === 'ne' ? 'पूर्ण ७-चरणीय विधि र स्टेकहोल्डर म्याट्रिक्स हेर्नुहोस्': 'Explore 7-Stage Framework & Matrix'}</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -1077,7 +1076,7 @@ export const HomePage: React.FC = () => {
                 textDecoration: 'none'
               }}
             >
-              <span>{language === 'ne' ? '०४. संस्थागत इकोसिस्टम तथा पूर्ण अभिलेख हेर्नुहोस् →' : 'Explore Full Initiatives & Archive (Question 04) →'}</span>
+              <span>{language === 'ne' ? 'संस्थागत इकोसिस्टम तथा पूर्ण अभिलेख हेर्नुहोस्' : 'Explore Initiatives & Archive'}</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -1191,7 +1190,7 @@ export const HomePage: React.FC = () => {
                     textDecoration: 'none'
                   }}
                 >
-                  <span>{language === 'ne' ? '०६. विस्तृत सहकार्य प्रस्ताव तथा संवाद पृष्ठ →' : 'Send Direct Collaboration Inquiry (Question 06) →'}</span>
+                  <span>{language === 'ne' ? 'विस्तृत सहकार्य प्रस्ताव तथा संवाद पृष्ठ' : 'Send Direct Collaboration Inquiry'}</span>
                   <ArrowRight size={16} />
                 </Link>
               </div>

@@ -24,7 +24,7 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
       titleNe: 'विद्यार्थी केन्द्रित जिज्ञासा र अन्वेषण',
       descEn: 'Shifting classroom pedagogy from passive textbook memorization to active inquiry, hypothesis testing, and experiential project design. True learning happens when a learner owns the question.',
       descNe: 'पाठ्यपुस्तकको घोकन्ते सिकाइलाई हटाएर प्रश्न सोध्ने, प्रयोग गर्ने र आफैं परियोजना निर्माण गर्ने वातावरणको विकास। विद्यार्थीले जब प्रश्नको स्वामित्व लिन्छ, तब मात्र वास्तविक सिकाइ सुरु हुन्छ।',
-      icon: <Lightbulb size={24} style={{ color: 'var(--accent-gold)' }} />
+      icon: <Lightbulb size={22} style={{ color: 'var(--text-primary)' }} />
     },
     {
       num: '02',
@@ -32,7 +32,7 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
       titleNe: 'तर्क र समस्या समाधानको आधारका रूपमा गणित',
       descEn: 'Approaching mathematics not as dry abstract formulae, but as the universal language of reasoning, systemic problem solving, and technological innovation. It is the compass for scientific truth.',
       descNe: 'गणितलाई केवल शुष्क सूत्रका रूपमा नभई जीवन र विज्ञानका जटिल समस्या समाधान गर्ने तार्किक भाषाका रूपमा सिकाउने। यो वैज्ञानिक सत्य पहिल्याउने सर्वव्यापी कम्पास हो।',
-      icon: <Compass size={24} style={{ color: 'var(--accent-gold)' }} />
+      icon: <Compass size={22} style={{ color: 'var(--text-primary)' }} />
     },
     {
       num: '03',
@@ -40,7 +40,7 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
       titleNe: 'स्रोतको अभावले सम्भावना रोकिनुहुन्न',
       descEn: 'The firm conviction that geographical isolation or lack of school funding must never extinguish young scientific talent. Every public school student in regional Nepal deserves world-class laboratory access.',
       descNe: 'भौगोलिक दूरी वा विद्यालयको कमजोर आर्थिक अवस्थाले कुनै पनि प्रतिभाशाली विद्यार्थीको वैज्ञानिक सम्भावना रोकिनु हुँदैन भन्ने दृढ विश्वास। मोफसलका प्रत्येक बालबालिका आधुनिक प्रयोगशालाको हकदार छन्।',
-      icon: <Target size={24} style={{ color: 'var(--accent-gold)' }} />
+      icon: <Target size={22} style={{ color: 'var(--text-primary)' }} />
     },
     {
       num: '04',
@@ -48,7 +48,7 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
       titleNe: 'समाजका लागि उद्देश्यमूलक मूल्य सिर्जना',
       descEn: 'Education must not end with a certificate. Our purpose is to connect academic knowledge with agriculture, local industry, health, and sustainable enterprise, transforming learning into real human impact.',
       descNe: 'शिक्षा परीक्षा र प्रमाणपत्रमा मात्र सीमित हुनुहुँदैन। हाम्रो उद्देश्य प्राज्ञिक ज्ञानलाई कृषि, स्थानीय उद्योग र उद्यमशीलतासँग जोडेर समाजमा प्रत्यक्ष र दिगो सकारात्मक प्रभाव पार्नु हो।',
-      icon: <Users size={24} style={{ color: 'var(--accent-gold)' }} />
+      icon: <Users size={22} style={{ color: 'var(--text-primary)' }} />
     }
   ];
 
@@ -80,7 +80,7 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
                 letterSpacing: '0.05em'
               }}
             >
-              02. WHAT DRIVES ME?
+              WHAT DRIVES ME?
             </span>
             <span 
               style={{
@@ -233,20 +233,11 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                    <span 
-                      style={{
-                        fontFamily: 'var(--font-serif)',
-                        fontSize: '1.4rem',
-                        fontWeight: 700,
-                        color: 'var(--accent-gold)'
-                      }}
-                    >
-                      {pillar.num}
-                    </span>
+                  <div style={{ marginBottom: '1rem' }}>
                     <div 
                       style={{
-                        padding: '0.5rem',
+                        display: 'inline-flex',
+                        padding: '0.45rem',
                         backgroundColor: 'var(--bg-alt)',
                         borderRadius: '4px'
                       }}
@@ -400,7 +391,7 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
               }}
             >
               <ArrowLeft size={16} />
-              <span>{language === 'ne' ? '← ०१. पृष्ठभूमि र यात्रा' : '← 01. What Shaped Me?'}</span>
+              <span>{language === 'ne' ? '← पृष्ठभूमि र यात्रा' : '← What Shaped Me?'}</span>
             </button>
           ) : (
             <Link
@@ -414,7 +405,7 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
               }}
             >
               <ArrowLeft size={16} />
-              <span>{language === 'ne' ? '← ०१. पृष्ठभूमि र यात्रा' : '← 01. What Shaped Me?'}</span>
+              <span>{language === 'ne' ? '← पृष्ठभूमि र यात्रा' : '← What Shaped Me?'}</span>
             </Link>
           )}
 
@@ -428,7 +419,7 @@ export const PageWhatDrivesMe: React.FC<PageWhatDrivesMeProps> = ({ onNavigateTo
               textDecoration: 'none'
             }}
           >
-            <span>{language === 'ne' ? 'अध्याय ०२: यो कसरी चल्छ ? →' : 'Next: Chapter 02 (How does it work?) →'}</span>
+            <span>{language === 'ne' ? 'यो कसरी चल्छ ? →' : 'Next: How does it work? →'}</span>
             <ArrowRight size={16} />
           </Link>
         </div>

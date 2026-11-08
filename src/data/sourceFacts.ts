@@ -48,19 +48,19 @@ export const person: PersonEntity = {
     ne: "जिज्ञासादेखि व्यापारसम्म"
   },
   shortBiography: {
-    en: "Kishan Bastola is an educationist, mathematician and Research & Innovation Ecosystem Builder with 18 years of experience in education. He holds a Master's Degree in Mathematics and has served as a School Principal and Campus Chief. He has served as Country Leader for the Taiwan International Science Fair (TISF), Province Secretary of the Mathematical Association of Nepal (MAN), Bagmati, and Executive Member of the Nepal Mathematical Society (NMS), Bagmati. He is the President of Astronova Foundation Nepal and the Founder & Director of Hetauda Research and Innovation Center (HRIC).",
-    ne: "किशन बास्तोला १८ वर्षको शैक्षिक अनुभव भएका शिक्षासेवी, गणितज्ञ र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। उनीसँग गणित विषयमा स्नातकोत्तर MA/MSc. उपाधि छ र उनले प्रिन्सिपल तथा क्याम्पस प्रमुखको रूपमा नेतृत्वदायी भूमिका निर्वाह गरिसकेका छन्। उनले ताइवान अन्तर्राष्ट्रिय विज्ञान प्रदर्शनी (TISF) को कन्ट्री लिडर, गणित समाज नेपाल (MAN) बागमती प्रदेशको सचिव, र नेपाल म्याथमेटिकल सोसाइटी (NMS) बागमतीको कार्यकारिणी सदस्यको रूपमा सेवा गरेका छन्। उनी एष्ट्रोनोभा फाउण्डेशन नेपालका अध्यक्ष तथा हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC) का संस्थापक तथा निर्देशक हुन्।"
+    en: "Kishan Bastola is an educationist, mathematician, and Research & Innovation Ecosystem Builder with 18 years of experience in the education sector. He holds a Master's Degree in Mathematics and has served as a School Principal and Campus Chief, leading an institution with more than 1,600 students and 110 employees. He is the President of Astronova Foundation Nepal and Founder & Director of Hetauda Research and Innovation Center (HRIC), working to build an integrated - ecosystem From Curiosity to Commerce.",
+    ne: "किशन बास्तोला शिक्षा क्षेत्रमा १८ वर्षको अनुभव भएका शिक्षासेवी, गणितज्ञ र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। उनीसँग गणित विषयमा स्नातकोत्तर उपाधि छ र उनले प्रिन्सिपल तथा क्याम्पस प्रमुखको रूपमा १,६०० भन्दा बढी विद्यार्थी र ११० कर्मचारी भएको शैक्षिक संस्थाको नेतृत्व गरेका छन्। उनी एष्ट्रोनोभा फाउण्डेशन नेपालका अध्यक्ष तथा हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC) का संस्थापक तथा निर्देशक हुन् - जिज्ञासादेखि व्यापारसम्म।"
   },
   biography: {
     en: [
-      "Kishan Bastola (Netra Prasad Bastola) is an Educationist, Mathematician, STEM Advocate, and Research & Innovation Ecosystem Builder with over 18 years of executive leadership in Nepal's educational sector. Holding a Master's Degree in Mathematics, his work seamlessly integrates academic rigor with systemic institution building.",
-      "Having served as School Principal and Campus Chief, he currently leads nationwide and provincial initiatives as Chairperson of Astronova Foundation Nepal, Secretary of the Mathematical Association of Nepal (MAN) Bagmati Province, Executive Member of the Nepal Mathematical Society (NMS) Bagmati Province, and Founder & Director of the Hetauda Research & Innovation Center (HRIC).",
-      "On international platforms, he serves as Country Leader for Nepal at global scientific competitions including the Taiwan International Science Fair (TISF, Taiwan) and the International Science & Technology Competition (IOSTC, Indonesia), guiding young Nepalese researchers to international recognition."
+      "Kishan Bastola is an educationist, mathematician, and Research & Innovation Ecosystem Builder with 18 years of experience in the education sector. He holds a Master's Degree in Mathematics and has served as a School Principal and Campus Chief, leading an educational institution with more than 1,600 students and 110 employees. His leadership experience spans institutional management, human resource development, academic administration, and organizational development.",
+      "He is passionate about nurturing young innovators and creating opportunities for students through initiatives such as the Young Scientist Development Program (YSDP), Science and Engineering Fairs, STEAM Expos, and Science Olympiads. He is also connected with an international network of organizations from more than 30 countries working to promote science, technology, engineering, mathematics, and innovation among young people.",
+      "He has served as Country Leader for the Taiwan International Science Fair (TISF), Province Secretary of the Mathematical Association of Nepal (MAN), Bagmati, and Executive Member of the Nepal Mathematical Society (NMS), Bagmati. He is the President of Astronova Foundation Nepal and Founder & Director of Hetauda Research and Innovation Center (HRIC), working to build an integrated ecosystem that transforms Curiosity into Research, Research into Innovation, and Innovation into Entrepreneurship and Real-World Value- From Curiosity to Commerce."
     ],
     ne: [
-      "किशन बास्तोला  नेपालको शिक्षा क्षेत्रमा १८ वर्षभन्दा बढीको कार्यकारी नेतृत्व अनुभव बोकेका शिक्षासेवी, गणितज्ञ, STEM अभियन्ता र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। गणितमा स्नातकोत्तर उपाधि हासिल गरेका उनको कार्यले प्राज्ञिक गम्भीरता र संस्थागत संरचना निर्माणलाई सहज रूपमा जोड्दछ।",
-      "प्रिन्सिपल तथा क्याम्पस प्रमुखको रूपमा सेवा गरिसकेका उनले हाल एष्ट्रोनोभा फाउण्डेशन नेपालको अध्यक्ष, गणित समाज नेपाल (MAN) बागमती प्रदेशको सचिव, नेपाल म्याथमेटिकल सोसाइटी (NMS) बागमती प्रदेशको कार्यकारिणी सदस्य र हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC) को संस्थापक तथा निर्देशकको रूपमा राष्ट्रिय तथा प्रादेशिक पहलहरूको नेतृत्व गरिरहेका छन्।",
-      "अन्तर्राष्ट्रिय मञ्चहरूमा उनले ताइवान अन्तर्राष्ट्रिय विज्ञान प्रदर्शनी (TISF, ताइवान) र अन्तर्राष्ट्रिय विज्ञान तथा प्रविधि प्रतियोगिता (IOSTC, इन्डोनेसिया) लगायतका विश्वव्यापी वैज्ञानिक प्रतियोगिताहरूमा नेपालको कन्ट्री लिडरको रूपमा सेवा गर्दै युवा नेपाली अनुसन्धानकर्ताहरूलाई अन्तर्राष्ट्रिय पहिचान दिलाउन मार्गदर्शन गरिरहेका छन्।"
+      "किशन बास्तोला शिक्षा क्षेत्रमा १८ वर्षको अनुभव भएका शिक्षासेवी, गणितज्ञ र अनुसन्धान तथा नवप्रवर्तन इकोसिस्टम निर्माता हुन्। उनीसँग गणित विषयमा स्नातकोत्तर उपाधि छ र उनले प्रिन्सिपल तथा क्याम्पस प्रमुखको रूपमा १,६०० भन्दा बढी विद्यार्थी र ११० कर्मचारी भएको शैक्षिक संस्थाको नेतृत्व गरेका छन्। उनको नेतृत्व अनुभव संस्थागत व्यवस्थापन, जनशक्ति विकास, प्राज्ञिक प्रशासन र सांगठनिक विकासमा फैलिएको छ।",
+      "उनी युवा नवप्रवर्तकहरूको पोषण र विद्यार्थीहरूका लागि अवसर सिर्जना गर्ने कार्यप्रति उत्साही छन्, जसमा युवा वैज्ञानिक विकास कार्यक्रम (YSDP), विज्ञान तथा इन्जिनियरिङ प्रदर्शनी, STEAM एक्सपो र विज्ञान ओलम्पियाड जस्ता पहलहरू समावेश छन्। उनी ३० भन्दा बढी देशका संस्थाहरूको अन्तर्राष्ट्रिय सञ्जालसँग जोडिएका छन् जसले युवाहरूमा विज्ञान, प्रविधि, इन्जिनियरिङ, गणित र नवप्रवर्तन प्रवर्द्धन गर्दछ।",
+      "उनले ताइवान अन्तर्राष्ट्रिय विज्ञान प्रदर्शनी (TISF) को कन्ट्री लिडर, गणित समाज नेपाल (MAN) बागमती प्रदेशको सचिव र नेपाल म्याथमेटिकल सोसाइटी (NMS) बागमती प्रदेशको कार्यकारिणी सदस्यको रूपमा सेवा गरेका छन्। उनी एष्ट्रोनोभा फाउण्डेशन नेपालका अध्यक्ष तथा हेटौंडा रिसर्च एण्ड इनोभेसन सेन्टर (HRIC) का संस्थापक तथा निर्देशक हुन्, जसले जिज्ञासालाई अनुसन्धानमा, अनुसन्धानलाई नवप्रवर्तनमा, र नवप्रवर्तनलाई उद्यमशीलता तथा वास्तविक मूल्यमा रूपान्तरण गर्ने एकीकृत इकोसिस्टम निर्माण गर्दै हुनुहुन्छ- जिज्ञासादेखि व्यापारसम्म।"
     ]
   },
   currentFocus: [
@@ -509,7 +509,7 @@ export const initiatives: InitiativeEntity[] = [
     category: "delegation",
     categoryLabel: { en: "International Scientific Representation", ne: "अन्तर्राष्ट्रिय वैज्ञानिक प्रतिनिधित्व" },
     institutionId: "astronova",
-    role: { en: "Country Leader & Delegation Head — Nepal Contingent", ne: "कन्ट्री लिडर तथा प्रतिनिधिमण्डल प्रमुख — नेपाल टोली" },
+    role: { en: "Country Leader & Delegation Head- Nepal Contingent", ne: "कन्ट्री लिडर तथा प्रतिनिधिमण्डल प्रमुख- नेपाल टोली" },
     summary: { en: "Leading Nepal's top young scientific minds to present original research projects before international scientific juries at the National Taiwan Science Education Center.", ne: "नेपालका उत्कृष्ट युवा वैज्ञानिकहरूलाई नेशनल ताइवान साइन्स एजुकेसन सेन्टरमा अन्तर्राष्ट्रिय वैज्ञानिक निर्णायक मण्डलसमक्ष मौलिक अनुसन्धान आयोजना प्रस्तुत गर्न नेतृत्व।" },
     description: { en: "As Country Leader for Nepal, Kishan Bastola selects, mentors, and escorts secondary student researchers to represent Nepal alongside delegates from over 30 countries at TISF in Taipei.", ne: "नेपालको कन्ट्री लिडरको रूपमा किशन बास्तोलाले माध्यमिक विद्यालयका अनुसन्धानकर्ता विद्यार्थीहरूलाई ताइपेईमा ३० भन्दा बढी देशका प्रतिनिधिहरूसँगै नेपालको प्रतिनिधित्व गराउन छनोट, मेन्टरशिप र नेतृत्व गर्दछन्।" },
     location: { en: "Taipei, Taiwan 🇹🇼", ne: "ताइपेई, ताइवान 🇹🇼" },
@@ -535,7 +535,7 @@ export const initiatives: InitiativeEntity[] = [
     category: "delegation",
     categoryLabel: { en: "International Scientific Representation", ne: "अन्तर्राष्ट्रिय वैज्ञानिक प्रतिनिधित्व" },
     institutionId: "astronova",
-    role: { en: "Delegation Leader — Nepal National Team", ne: "प्रतिनिधिमण्डल प्रमुख — नेपाल राष्ट्रिय टोली" },
+    role: { en: "Delegation Leader- Nepal National Team", ne: "प्रतिनिधिमण्डल प्रमुख- नेपाल राष्ट्रिय टोली" },
     summary: { en: "Escorting and mentoring Nepalese student innovators competing in technology prototyping, applied mathematics, and STEAM solutions in Indonesia.", ne: "इन्डोनेसियामा प्रविधि प्रोटोटाइपिङ, व्यावहारिक गणित र STEAM समाधानमा प्रतिस्पर्धा गर्ने नेपाली विद्यार्थी नवप्रवर्तकहरूलाई मार्गदर्शन र नेतृत्व।" },
     description: { en: "Guiding young Nepalese inventors and hardware creators to compete on international stages, earning awards and fostering international academic exchange.", ne: "युवा नेपाली आविष्कारक र हार्डवेयर सिर्जनाकर्ताहरूलाई अन्तर्राष्ट्रिय मञ्चमा प्रतिस्पर्धा गर्न, पुरस्कार प्राप्त गर्न र अन्तर्राष्ट्रिय प्राज्ञिक आदानप्रदान प्रवर्द्धन गर्न मार्गदर्शन।" },
     location: { en: "Bali / Jakarta, Indonesia 🇮🇩", ne: "बाली / जकार्ता, इन्डोनेसिया 🇮🇩" },
@@ -742,7 +742,7 @@ export const media: MediaEntity[] = [
     image: "/images/tisf.png",
     summary: { en: "Coverage of the national roadmap connecting classroom learning with research and startup incubation.", ne: "कक्षाकोठाको सिकाइलाई अनुसन्धान र स्टार्टअप इन्क्युबेशनसँग जोड्ने राष्ट्रिय मार्गचित्रसम्बन्धी समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   },
   {
     id: "media-02",
@@ -757,7 +757,7 @@ export const media: MediaEntity[] = [
     image: "/images/astronova.png",
     summary: { en: "Report on academic MOU agreement for joint teacher training and STEM research collaboration.", ne: "संयुक्त शिक्षक तालिम र STEM अनुसन्धान सहकार्यका लागि भएको प्राज्ञिक सम्झौतासम्बन्धी समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   },
   {
     id: "media-03",
@@ -772,7 +772,7 @@ export const media: MediaEntity[] = [
     image: "/images/press1.jpeg",
     summary: { en: "Coverage of young Hetauda researcher selected under Kishan Bastola's mentorship for global competition.", ne: "किशन बास्तोलाको मेन्टरशिपमा विश्वव्यापी प्रतियोगिताका लागि छनोट भएका हेटौंडाका युवा अनुसन्धानकर्ताको समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   },
   {
     id: "media-04",
@@ -787,7 +787,7 @@ export const media: MediaEntity[] = [
     image: "/images/hero.png",
     summary: { en: "Appointment announcement of Kishan Bastola to lead executive academic operations at Narayani College.", ne: "नारायणी कलेजको कार्यकारी प्राज्ञिक सञ्चालन नेतृत्वका लागि किशन बास्तोलाको नियुक्ति समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   },
   {
     id: "media-05",
@@ -802,7 +802,7 @@ export const media: MediaEntity[] = [
     image: "/images/workshop.jpg",
     summary: { en: "Report on regional robotics, AI, and astronomy workshop conducted for Makwanpur students.", ne: "मकवानपुरका विद्यार्थीहरूका लागि सञ्चालित क्षेत्रीय रोबोटिक्स, AI र खगोल विज्ञान कार्यशालासम्बन्धी समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   },
   {
     id: "media-06",
@@ -817,7 +817,7 @@ export const media: MediaEntity[] = [
     image: "/images/camp.png",
     summary: { en: "Announcement of 9-day hands-on STEAM and scientific thinking workshop in Hetauda.", ne: "हेटौंडामा सञ्चालन हुने ९ दिने व्यावहारिक STEAM र वैज्ञानिक सोच कार्यशालाको समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   },
   {
     id: "media-07",
@@ -832,7 +832,7 @@ export const media: MediaEntity[] = [
     image: "/images/camp.png",
     summary: { en: "Coverage of 11-day intensive workshop engaging students in research projects and hardware experimentation.", ne: "विद्यार्थीहरूलाई अनुसन्धान आयोजना र हार्डवेयर प्रयोगमा संलग्न गराउने ११ दिने गहन कार्यशालाको समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   },
   {
     id: "media-08",
@@ -847,7 +847,7 @@ export const media: MediaEntity[] = [
     image: "/images/workshop.jpg",
     summary: { en: "Feature on community outreach providing free robotics and automation training to public school students.", ne: "सार्वजनिक विद्यालयका विद्यार्थीहरूलाई निःशुल्क रोबोटिक्स र अटोमेसन तालिम प्रदान गर्ने सामुदायिक पहुँच समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   },
   {
     id: "media-09",
@@ -862,7 +862,7 @@ export const media: MediaEntity[] = [
     image: "/images/press2.jpeg",
     summary: { en: "Report on provincial mathematical assembly and executive committee formation including Secretary Kishan Bastola.", ne: "सचिव किशन बास्तोलासहित कार्यकारिणी समिति गठन र प्रादेशिक गणितीय भेलासम्बन्धी समाचार।" },
     verified: false,
-    verificationNotes: "Unverified External Media Source — Pending Content Verification"
+    verificationNotes: "Unverified External Media Source- Pending Content Verification"
   }
 ];
 
@@ -996,7 +996,7 @@ export const HERO_DATA = {
   name: "KISHAN BASTOLA",
   fullNameNep: "किशन बास्तोला",
   nameWithAlias: "Kishan Bastola ",
-  title: "Chairperson — Astronova Foundation Nepal · STEM & Mathematics Advocate",
+  title: "Chairperson- Astronova Foundation Nepal · STEM & Mathematics Advocate",
   subtitle: "Educationist · Mathematician · Research & Innovation Ecosystem Builder",
   frameworkHeader: "FROM CURIOSITY TO COMMERCE",
   frameworkTagline: "Building pathways that transform curiosity into learning, research, innovation, enterprise and value.",
@@ -1016,12 +1016,12 @@ export const PROFILE_DATA = {
   credentialsSummary: [
     "18+ Years Experience in Education & Academic Leadership",
     "Master's Degree in Mathematics",
-    "Chairperson — Astronova Foundation Nepal",
-    "Province Secretary — Mathematical Association of Nepal (MAN), Bagmati",
-    "Executive Member — Nepal Mathematical Society (NMS), Bagmati",
-    "Founder & Director — Hetauda Research & Innovation Center (HRIC)",
-    "Country Leader & Delegation Head — Taiwan International Science Fair (TISF, Taiwan)",
-    "Delegation Head — International Science & Technology Competition (IOSTC, Indonesia)",
+    "Chairperson- Astronova Foundation Nepal",
+    "Province Secretary- Mathematical Association of Nepal (MAN), Bagmati",
+    "Executive Member- Nepal Mathematical Society (NMS), Bagmati",
+    "Founder & Director- Hetauda Research & Innovation Center (HRIC)",
+    "Country Leader & Delegation Head- Taiwan International Science Fair (TISF, Taiwan)",
+    "Delegation Head- International Science & Technology Competition (IOSTC, Indonesia)",
     "Former School Principal & Campus Chief"
   ]
 };
@@ -1034,7 +1034,7 @@ export const CREDENTIALS_DATA: CredentialItem[] = [
   { label: "Executive Member", detail: "Nepal Mathematical Society (NMS), Bagmati", category: "current" },
   { label: "Founder & Director", detail: "Hetauda Research & Innovation Center (HRIC)", category: "current" },
   { label: "Global Delegations", detail: "Country Leader: TISF (Taiwan) & IOSTC (Indonesia)", category: "current" },
-  { label: "Former Principal", detail: "School Principal — Institutional Governance", category: "leadership" },
+  { label: "Former Principal", detail: "School Principal- Institutional Governance", category: "leadership" },
   { label: "Former Campus Chief", detail: "Higher Education & Campus Management (Narayani College)", category: "leadership" }
 ];
 
@@ -1045,7 +1045,7 @@ export const GLOBAL_DELEGATIONS: DelegationEntry[] = [
     country: "Taiwan",
     location: "Taipei, Taiwan",
     flagEmoji: "🇹🇼",
-    role: "Country Leader & Delegation Head — Nepal Contingent",
+    role: "Country Leader & Delegation Head- Nepal Contingent",
     event: "Taiwan International Science Fair (Annual)",
     summary: "Leading Nepal's top young scientific minds to present original research projects before international scientific juries at the National Taiwan Science Education Center.",
     achievements: [
@@ -1061,7 +1061,7 @@ export const GLOBAL_DELEGATIONS: DelegationEntry[] = [
     country: "Indonesia",
     location: "Bali / Jakarta, Indonesia",
     flagEmoji: "🇮🇩",
-    role: "Delegation Leader — Nepal National Team",
+    role: "Delegation Leader- Nepal National Team",
     event: "International Olympiad / Science & Technology Competition",
     summary: "Escorting and mentoring Nepalese student innovators competing in technology prototyping, applied mathematics, and STEAM solutions.",
     achievements: [
@@ -1260,7 +1260,7 @@ export const SELECTED_WORK: WorkEntry[] = [
       "Pioneering provincial STEM learning frameworks",
       "Mentoring young scientists for global international fairs (TISF Taiwan, IOSTC Indonesia)"
     ],
-    imagePlaceholderLabel: "OFFICIAL ARCHIVE: Astronova Foundation Nepal — Summer STEAM Expo & Conference",
+    imagePlaceholderLabel: "OFFICIAL ARCHIVE: Astronova Foundation Nepal- Summer STEAM Expo & Conference",
     customImageUrl: "/images/astronova.png",
     linkText: "Visit Foundation Website",
     linkUrl: "https://astronovafoundation.com"
@@ -1280,7 +1280,7 @@ export const SELECTED_WORK: WorkEntry[] = [
       "Direct technical mentorship for prototype creation and research supervision",
       "Collaborative research projects targeting regional agricultural and technological challenges"
     ],
-    imagePlaceholderLabel: "INSTITUTIONAL ARCHIVE: Hetauda Research & Innovation Center — Prototyping Lab",
+    imagePlaceholderLabel: "INSTITUTIONAL ARCHIVE: Hetauda Research & Innovation Center- Prototyping Lab",
     customImageUrl: "/images/hric.png",
     linkText: "Explore Center Initiatives",
     linkUrl: "#institution-hric"
@@ -1300,7 +1300,7 @@ export const SELECTED_WORK: WorkEntry[] = [
       "Hands-on scientific inquiry modules across Bagmati Province",
       "Pathway for students to qualify for international science fairs"
     ],
-    imagePlaceholderLabel: "YOUTH PROGRAM: Young Scientist Development Program — Research Cohort",
+    imagePlaceholderLabel: "YOUTH PROGRAM: Young Scientist Development Program- Research Cohort",
     customImageUrl: "/images/workshop.jpg",
     linkText: "Explore YSDP Pathways",
     linkUrl: "/how-it-works"
@@ -1340,7 +1340,7 @@ export const SELECTED_WORK: WorkEntry[] = [
       "Global platform exposure for Nepalese student researchers in Taiwan & Indonesia",
       "International academic networking and cross-border scientific exchange"
     ],
-    imagePlaceholderLabel: "INTERNATIONAL DELEGATION: Global Science Competitions — Nepal Delegation",
+    imagePlaceholderLabel: "INTERNATIONAL DELEGATION: Global Science Competitions- Nepal Delegation",
     customImageUrl: "/images/tisf.png",
     linkText: "TISF Official Site",
     linkUrl: "https://www.ntsec.gov.tw"
@@ -1380,7 +1380,7 @@ export const SELECTED_WORK: WorkEntry[] = [
       "Curriculum alignment between secondary and higher mathematics",
       "Promoting mathematical research and problem-solving competitions"
     ],
-    imagePlaceholderLabel: "ACADEMIC ARCHIVE: Mathematical Association of Nepal — Bagmati Provincial Conference",
+    imagePlaceholderLabel: "ACADEMIC ARCHIVE: Mathematical Association of Nepal- Bagmati Provincial Conference",
     customImageUrl: "/images/hero.png",
     linkText: "Academic Network Details",
     linkUrl: "https://www.facebook.com/profile.php?id=61571369803423"
@@ -1421,7 +1421,7 @@ export const INSTITUTIONS_DATA: InstitutionEntry[] = [
       "Youth Scientific Mentorship for Global Delegations (TISF & IOSTC)"
     ],
     impactSummary: "Directly impacts schools, educators, and thousands of students across Bagmati Province and nationwide through structured STEM modules and research advocacy.",
-    imagePlaceholderLabel: "EXECUTIVE PORTRAIT: Astronova Foundation Nepal — Institutional Assembly",
+    imagePlaceholderLabel: "EXECUTIVE PORTRAIT: Astronova Foundation Nepal- Institutional Assembly",
     customImageUrl: "/images/camp.png"
   },
   {
@@ -1437,7 +1437,7 @@ export const INSTITUTIONS_DATA: InstitutionEntry[] = [
       "Regional Industry, Agricultural & Technological Problem Solving"
     ],
     impactSummary: "Provides localized research infrastructure outside capital cities, empowering Makwanpur and Bagmati talent to solve local challenges through technology.",
-    imagePlaceholderLabel: "FACILITY PORTRAIT: Hetauda Research & Innovation Center — Innovation Hub",
+    imagePlaceholderLabel: "FACILITY PORTRAIT: Hetauda Research & Innovation Center- Innovation Hub",
     customImageUrl: "/images/hric.png"
   }
 ];
@@ -1535,7 +1535,7 @@ export const MEDIA_ARCHIVE: MediaEntry[] = [
     category: "International Delegation",
     excerpt: "Country Leader Kishan Bastola heads Nepal's scientific delegation to TISF Taiwan, presenting breakthrough youth research projects on the international stage.",
     fullSummary: "Coverage highlighting the selection, preparation, and international representation of Nepalese secondary students at the Taiwan International Science Fair in Taipei under the leadership of Country Leader Kishan Bastola.",
-    clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature — Nepal Delegation at Taiwan International Science Fair",
+    clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature- Nepal Delegation at Taiwan International Science Fair",
     customImageUrl: "/images/tisf.png",
     sourceNotice: ""
   },
@@ -1547,7 +1547,7 @@ export const MEDIA_ARCHIVE: MediaEntry[] = [
     category: "International Delegation",
     excerpt: "Delegation Leader Kishan Bastola escorts Nepalese young researchers to international honors at IOSTC in Indonesia.",
     fullSummary: "Detailed news report on the achievements of the Nepalese delegation at the International Science & Technology Competition (IOSTC) in Indonesia, celebrating student prototype innovations.",
-    clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature — IOSTC Indonesia Delegation",
+    clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature- IOSTC Indonesia Delegation",
     customImageUrl: "/images/IOSTC.jpg",
     sourceNotice: "Verified International Coverage"
   },
@@ -1559,9 +1559,9 @@ export const MEDIA_ARCHIVE: MediaEntry[] = [
     category: "Astronova Initiative",
     excerpt: "Chairperson Kishan Bastola introduces the Summer STEAM Expo, bringing interactive science exhibits, telescopes, and robotics to Hetauda, Makwanpur.",
     fullSummary: "Detailed report on Astronova Foundation Nepal's flagship Summer STEAM Expo in Hetauda, highlighting its mission to democratize experiential STEM education.",
-    clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature — Summer STEAM Expo Hetauda",
+    clippingPlaceholderLabel: "NEWSPAPER CLIPPING ARCHIVE: Press Feature- Summer STEAM Expo Hetauda",
     customImageUrl: "/images/camp.png",
-    sourceNotice: "Verified Print Clipping — Provincial Daily"
+    sourceNotice: "Verified Print Clipping- Provincial Daily"
   }
 ];
 
@@ -1630,12 +1630,12 @@ export const CONTACT_DATA = {
   name: "KISHAN BASTOLA",
   fullNameNep: "किशन बास्तोला ",
   titleStack: [
-    "Chairperson — Astronova Foundation Nepal",
+    "Chairperson- Astronova Foundation Nepal",
     "STEM & Mathematics Advocate",
-    "Province Secretary — Mathematical Association of Nepal (MAN), Bagmati Province",
-    "Executive Member — Nepal Mathematical Society (NMS), Bagmati Province",
-    "Founder & Director — Hetauda Research & Innovation Center (HRIC)",
-    "Country Leader & Delegation Head — TISF (Taiwan) & IOSTC (Indonesia)"
+    "Province Secretary- Mathematical Association of Nepal (MAN), Bagmati Province",
+    "Executive Member- Nepal Mathematical Society (NMS), Bagmati Province",
+    "Founder & Director- Hetauda Research & Innovation Center (HRIC)",
+    "Country Leader & Delegation Head- TISF (Taiwan) & IOSTC (Indonesia)"
   ],
   credentialsLine: "18+ Years in Education | Master's Degree in Mathematics | Former School Principal & Campus Chief",
   email: "kishan.htdfren@gmail.com ",

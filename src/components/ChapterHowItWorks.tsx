@@ -58,7 +58,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
     >
       <div className="container">
 
-        {/* Chapter Metatag */}
+        {/* Section Header */}
         <div 
           style={{
             display: 'flex',
@@ -70,19 +70,6 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span 
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'var(--accent-gold)'
-              }}
-            >
-              {language === 'ne' ? 'प्रश्न ०५' : 'QUESTION 05'}
-            </span>
-            <span style={{ color: 'var(--border-dark)', fontSize: '0.78rem' }}>/</span>
             <span 
               style={{
                 fontFamily: 'var(--font-sans)',
@@ -111,7 +98,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
         </div>
 
         {/* ========================================================================= */}
-        {/* 03. WHAT PROBLEMS AM I SOLVING? (शिक्षा, अनुसन्धान र नवप्रवर्तन क्षेत्रमा म कुन समस्या समाधान गर्न खोज्दैछु?) */}
+        {/* WHAT PROBLEMS AM I SOLVING? */}
         {/* ========================================================================= */}
         <div id="problems" style={{ scrollMarginTop: '6rem', marginBottom: '4.5rem' }}>
           
@@ -139,7 +126,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
                   letterSpacing: '0.05em'
                 }}
               >
-                03. WHAT PROBLEMS AM I SOLVING?
+                WHAT PROBLEMS AM I SOLVING?
               </span>
               <span 
                 style={{
@@ -307,7 +294,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
         </div>
 
         {/* ========================================================================= */}
-        {/* 05. HOW DO I CREATE VALUE? (म ज्ञान, अनुसन्धान र नवप्रवर्तनलाई वास्तविक मूल्यमा कसरी रूपान्तरण गर्छु?) */}
+        {/* HOW DO I CREATE VALUE? */}
         {/* ========================================================================= */}
         <div id="pathway" style={{ scrollMarginTop: '6rem', paddingTop: '3rem', borderTop: '1px solid var(--border-light)' }}>
 
@@ -335,7 +322,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
                   letterSpacing: '0.05em'
                 }}
               >
-                05. HOW DO I CREATE VALUE?
+                HOW DO I CREATE VALUE?
               </span>
               <span 
                 style={{
@@ -755,7 +742,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
                 marginBottom: '0.35rem'
               }}
             >
-              {language === 'ne' ? 'अर्को खण्ड · कार्यान्वयन तथा प्रमाण' : 'NEXT CHAPTER · PROVEN OUTCOMES'}
+              {language === 'ne' ? 'कार्यान्वयन तथा प्रमाण' : 'PROVEN OUTCOMES'}
             </span>
             <h4 
               style={{
@@ -815,7 +802,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
                 }}
               >
                 <ChevronLeft size={16} />
-                <span>{language === 'ne' ? '← ०३. समस्या र समाधान' : '← 03. Problems We Solve'}</span>
+                <span>{language === 'ne' ? '← समस्या र समाधान' : '← Problems We Solve'}</span>
               </button>
             ) : (
               <Link
@@ -847,7 +834,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
                 }}
               >
                 <ChevronLeft size={16} />
-                <span>{language === 'ne' ? '← ०३. समस्या र समाधान' : '← 03. Problems We Solve'}</span>
+                <span>{language === 'ne' ? '← समस्या र समाधान' : '← Problems We Solve'}</span>
               </Link>
             )}
 
@@ -872,7 +859,7 @@ export const ChapterHowItWorks: React.FC<ChapterHowItWorksProps> = ({ onNavigate
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
             >
-              <span>{language === 'ne' ? 'अध्याय ०३: हामीले के बनायौं ? →' : 'Next: Chapter 03 (What have we built?) →'}</span>
+              <span>{language === 'ne' ? 'हामीले के बनायौं ? ' : 'Next: What have we built? '}</span>
               <ChevronRight size={18} />
             </Link>
           </div>

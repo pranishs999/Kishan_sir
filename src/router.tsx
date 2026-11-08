@@ -17,7 +17,7 @@ export const AppRouter: React.FC = () => {
           {/* Executive Overview Homepage */}
           <Route path="/" element={<HomePage />} />
 
-          {/* Exactly 4 Primary Chapter Pages with Mixed Tabs */}
+          {/* Primary Pages */}
           <Route path="/who-am-i" element={<WhoAmIPage />} />
           <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/what-we-built" element={<WhatWeBuiltPage />} />

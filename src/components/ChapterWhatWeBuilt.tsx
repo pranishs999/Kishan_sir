@@ -91,7 +91,7 @@ export const ChapterWhatWeBuilt: React.FC = () => {
     >
       <div className="container">
 
-        {/* Chapter Metatag */}
+        {/* Section Header */}
         <div 
           style={{
             display: 'flex',
@@ -103,19 +103,6 @@ export const ChapterWhatWeBuilt: React.FC = () => {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span 
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'var(--accent-gold)'
-              }}
-            >
-              {language === 'ne' ? 'अध्याय ०३' : 'CHAPTER 03'}
-            </span>
-            <span style={{ color: 'var(--border-dark)', fontSize: '0.78rem' }}>/</span>
             <span 
               style={{
                 fontFamily: 'var(--font-sans)',
@@ -174,7 +161,7 @@ export const ChapterWhatWeBuilt: React.FC = () => {
                   letterSpacing: '0.05em'
                 }}
               >
-                04. WHAT AM I CREATING?
+                WHAT AM I CREATING?
               </span>
               <span 
                 style={{
@@ -234,7 +221,7 @@ export const ChapterWhatWeBuilt: React.FC = () => {
               whiteSpace: 'nowrap'
             }}
           >
-            {language === 'ne' ? 'धारा ४: संस्था तथा इकोसिस्टम' : 'SECTION 4: ECOSYSTEM ARCHITECTURE'}
+            {language === 'ne' ? 'संस्था तथा इकोसिस्टम' : 'ECOSYSTEM ARCHITECTURE'}
           </span>
         </div>
 
@@ -944,10 +931,11 @@ export const ChapterWhatWeBuilt: React.FC = () => {
             role="tablist"
             style={{
               display: 'flex',
+              justifyContent: 'center',
               flexWrap: 'wrap',
-              gap: '0.5rem',
-              borderBottom: '2px solid var(--border-light)',
-              paddingBottom: '0.75rem',
+              gap: '1.5rem',
+              borderBottom: '1px solid var(--border-light)',
+              paddingBottom: '0',
               marginBottom: '2rem'
             }}
           >
@@ -958,20 +946,20 @@ export const ChapterWhatWeBuilt: React.FC = () => {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.65rem 1.15rem',
+                gap: '0.45rem',
+                padding: '0.75rem 0.25rem',
                 fontFamily: 'var(--font-sans)',
                 fontSize: '0.85rem',
-                fontWeight: 600,
-                borderRadius: '3px',
+                fontWeight: activeTab === 'researched' ? 600 : 400,
                 border: 'none',
+                background: 'none',
+                borderBottom: activeTab === 'researched' ? '2px solid var(--text-primary)' : '2px solid transparent',
                 cursor: 'pointer',
-                backgroundColor: activeTab === 'researched' ? 'var(--text-primary)' : 'transparent',
-                color: activeTab === 'researched' ? '#FFFFFF' : 'var(--text-secondary)',
+                color: activeTab === 'researched' ? 'var(--text-primary)' : 'var(--text-muted)',
                 transition: 'all 0.15s ease'
               }}
             >
-              <FileText size={16} />
+              <FileText size={15} />
               <span>{language === 'ne' ? 'पर्यवेक्षण गरिएका शोधहरू' : 'Supervised Theses'}</span>
             </button>
 
@@ -982,20 +970,20 @@ export const ChapterWhatWeBuilt: React.FC = () => {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.65rem 1.15rem',
+                gap: '0.45rem',
+                padding: '0.75rem 0.25rem',
                 fontFamily: 'var(--font-sans)',
                 fontSize: '0.85rem',
-                fontWeight: 600,
-                borderRadius: '3px',
+                fontWeight: activeTab === 'written' ? 600 : 400,
                 border: 'none',
+                background: 'none',
+                borderBottom: activeTab === 'written' ? '2px solid var(--text-primary)' : '2px solid transparent',
                 cursor: 'pointer',
-                backgroundColor: activeTab === 'written' ? 'var(--text-primary)' : 'transparent',
-                color: activeTab === 'written' ? '#FFFFFF' : 'var(--text-secondary)',
+                color: activeTab === 'written' ? 'var(--text-primary)' : 'var(--text-muted)',
                 transition: 'all 0.15s ease'
               }}
             >
-              <BookOpen size={16} />
+              <BookOpen size={15} />
               <span>{language === 'ne' ? 'प्रकाशित विचार तथा लेख' : 'Published Thoughts'}</span>
             </button>
 
@@ -1006,20 +994,20 @@ export const ChapterWhatWeBuilt: React.FC = () => {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.65rem 1.15rem',
+                gap: '0.45rem',
+                padding: '0.75rem 0.25rem',
                 fontFamily: 'var(--font-sans)',
                 fontSize: '0.85rem',
-                fontWeight: 600,
-                borderRadius: '3px',
+                fontWeight: activeTab === 'press' ? 600 : 400,
                 border: 'none',
+                background: 'none',
+                borderBottom: activeTab === 'press' ? '2px solid var(--text-primary)' : '2px solid transparent',
                 cursor: 'pointer',
-                backgroundColor: activeTab === 'press' ? 'var(--text-primary)' : 'transparent',
-                color: activeTab === 'press' ? '#FFFFFF' : 'var(--text-secondary)',
+                color: activeTab === 'press' ? 'var(--text-primary)' : 'var(--text-muted)',
                 transition: 'all 0.15s ease'
               }}
             >
-              <Newspaper size={16} />
+              <Newspaper size={15} />
               <span>{language === 'ne' ? 'मिडिया तथा समाचार कटिङ' : 'Press & Media'}</span>
             </button>
 
@@ -1030,20 +1018,20 @@ export const ChapterWhatWeBuilt: React.FC = () => {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.65rem 1.15rem',
+                gap: '0.45rem',
+                padding: '0.75rem 0.25rem',
                 fontFamily: 'var(--font-sans)',
                 fontSize: '0.85rem',
-                fontWeight: 600,
-                borderRadius: '3px',
+                fontWeight: activeTab === 'gallery' ? 600 : 400,
                 border: 'none',
+                background: 'none',
+                borderBottom: activeTab === 'gallery' ? '2px solid var(--text-primary)' : '2px solid transparent',
                 cursor: 'pointer',
-                backgroundColor: activeTab === 'gallery' ? 'var(--text-primary)' : 'transparent',
-                color: activeTab === 'gallery' ? '#FFFFFF' : 'var(--text-secondary)',
+                color: activeTab === 'gallery' ? 'var(--text-primary)' : 'var(--text-muted)',
                 transition: 'all 0.15s ease'
               }}
             >
-              <ImageIcon size={16} />
+              <ImageIcon size={15} />
               <span>{language === 'ne' ? 'STEAM एक्सपो तथा गतिविधि' : 'STEAM Expo Gallery'}</span>
             </button>
           </div>
@@ -1242,7 +1230,7 @@ export const ChapterWhatWeBuilt: React.FC = () => {
                 marginBottom: '0.35rem'
               }}
             >
-              {language === 'ne' ? 'अन्तिम खण्ड · सहकार्यको निमन्त्रणा' : 'FINAL CHAPTER · ACTIVE COLLABORATION'}
+              {language === 'ne' ? 'सहकार्यको निमन्त्रणा' : 'ACTIVE COLLABORATION'}
             </span>
             <h4 
               style={{
@@ -1301,7 +1289,7 @@ export const ChapterWhatWeBuilt: React.FC = () => {
               }}
             >
               <ChevronLeft size={16} />
-              <span>{language === 'ne' ? '← ०३. समस्या समाधान' : '← 03. Problems I Solve'}</span>
+              <span>{language === 'ne' ? ' समस्या समाधान' : ' Problems I Solve'}</span>
             </Link>
 
             <Link 
@@ -1325,7 +1313,7 @@ export const ChapterWhatWeBuilt: React.FC = () => {
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
             >
-              <span>{language === 'ne' ? '०५. मूल्य सिर्जना →' : 'Next: 05. How I Create Value →'}</span>
+              <span>{language === 'ne' ? 'मूल्य सिर्जना ' : 'Next: How I Create Value '}</span>
               <ChevronRight size={18} />
             </Link>
           </div>

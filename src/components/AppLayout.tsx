@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useLocation, Link } from 'react-router-dom';
-import { Menu, X, Globe, ArrowUpRight, ChevronRight, Mail, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Globe, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { contact } from '../data/sourceFacts';
 
@@ -13,35 +13,31 @@ export const AppLayout: React.FC = () => {
   const navLinks = [
     { 
       path: '/who-am-i', 
-      num: '01',
       labelEn: 'Who am I ?', 
       labelNe: 'म को हुँ ?',
-      descEn: '01. What Shaped Me? · 02. What Drives Me?',
-      descNe: '०१. पृष्ठभूमि र यात्रा · ०२. उद्देश्य र दर्शन'
+      descEn: 'Background, education & philosophy',
+      descNe: 'पृष्ठभूमि, शिक्षा र दर्शन'
     },
     { 
       path: '/how-it-works', 
-      num: '02',
       labelEn: 'How does it work ?', 
       labelNe: 'यो कसरी चल्छ ?',
-      descEn: '03. What Problems Am I Solving? · 05. How I Create Value?',
-      descNe: '०३. समस्या समाधान · ०५. मूल्य सिर्जना'
+      descEn: 'Problems & value creation',
+      descNe: 'समस्या समाधान र मूल्य सिर्जना'
     },
     { 
       path: '/what-we-built', 
-      num: '03',
       labelEn: 'What have we built ?', 
       labelNe: 'हामीले के बनायौं ?',
-      descEn: '04. What Am I Creating? · Ecosystem & Initiatives',
-      descNe: '०४. संस्था र इकोसिस्टम · उपलब्धिहरू'
+      descEn: 'Ecosystem & initiatives',
+      descNe: 'संस्था र इकोसिस्टम'
     },
     { 
       path: '/collaborate', 
-      num: '04',
       labelEn: 'Shall we collaborate ?', 
       labelNe: 'सहकार्य गरौं ?',
-      descEn: '06. What Future Am I Building? · Vision & Inquiries',
-      descNe: '०६. भविष्य र सहकार्य · प्रत्यक्ष सम्पर्क'
+      descEn: 'Vision & inquiries',
+      descNe: 'भविष्य र सहकार्य'
     },
   ];
 
@@ -275,64 +271,42 @@ export const AppLayout: React.FC = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   style={{
                     textDecoration: 'none',
-                    padding: '0.65rem 0.5rem',
-                    borderRadius: '4px',
-                    backgroundColor: active ? 'var(--bg-alt)' : 'transparent',
+                    padding: '0.75rem 0.5rem',
                     borderBottom: '1px solid var(--border-light)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: '0.75rem',
                     transition: 'all 0.15s ease'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                    <span
+                  <div>
+                    <div
                       style={{
-                        fontFamily: 'var(--font-mono, monospace)',
-                        fontSize: '0.72rem',
-                        fontWeight: 700,
-                        backgroundColor: active ? 'var(--accent-blue)' : 'var(--bg-surface)',
-                        color: active ? '#FFFFFF' : 'var(--text-secondary)',
-                        border: '1px solid var(--border-light)',
-                        padding: '0.15rem 0.4rem',
-                        borderRadius: '2px',
-                        marginTop: '0.2rem'
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.92rem',
+                        fontWeight: active ? 600 : 400,
+                        color: active ? 'var(--text-primary)' : 'var(--text-secondary)',
+                        marginBottom: '0.1rem'
                       }}
                     >
-                      {link.num}
-                    </span>
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-serif)',
-                          fontSize: '0.92rem',
-                          fontWeight: active ? 700 : 600,
-                          color: active ? 'var(--accent-blue)' : 'var(--text-primary)',
-                          marginBottom: '0.15rem'
-                        }}
-                      >
-                        {language === 'ne' ? link.labelNe : link.labelEn}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-sans)',
-                          fontSize: '0.72rem',
-                          color: 'var(--text-muted)',
-                          lineHeight: 1.3
-                        }}
-                      >
-                        {language === 'ne' ? link.descNe : link.descEn}
-                      </div>
+                      {language === 'ne' ? link.labelNe : link.labelEn}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-sans)',
+                        fontSize: '0.72rem',
+                        color: 'var(--text-muted)',
+                        lineHeight: 1.3
+                      }}
+                    >
+                      {language === 'ne' ? link.descNe : link.descEn}
                     </div>
                   </div>
 
-                  {active ? (
-                    <span style={{ fontSize: '0.85rem', color: 'var(--accent-gold)', fontWeight: 700 }}>
+                  {active && (
+                    <span style={{ fontSize: '0.5rem', color: 'var(--text-primary)' }}>
                       ●
                     </span>
-                  ) : (
-                    <ChevronRight size={16} style={{ color: 'var(--text-muted)' }} />
                   )}
                 </Link>
               );
@@ -407,7 +381,7 @@ export const AppLayout: React.FC = () => {
             </div>
 
             {/* Col 2: Six Primary Questions (React Router Navigation) */}
-            {/* Col 2: Four Core Chapters & Mixed Tabs */}
+            {/* Navigation Links */}
             <div>
               <h4 
                 style={{
@@ -420,7 +394,7 @@ export const AppLayout: React.FC = () => {
                   margin: '0 0 1rem 0'
                 }}
               >
-                {language === 'ne' ? 'मुख्य ४ खण्डहरू' : 'Primary Chapters'}
+                {language === 'ne' ? 'मुख्य खण्डहरू' : 'Navigation'}
               </h4>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {navLinks.map((link) => {
@@ -432,33 +406,18 @@ export const AppLayout: React.FC = () => {
                         style={{
                           fontFamily: 'var(--font-sans)',
                           fontSize: '0.88rem',
-                          color: active ? 'var(--accent-blue)' : 'var(--text-secondary)',
+                          color: active ? 'var(--text-primary)' : 'var(--text-secondary)',
                           textDecoration: 'none',
                           fontWeight: active ? 600 : 400,
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.35rem',
                           transition: 'color 0.15s ease'
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
                         onMouseLeave={(e) => {
                           if (!active) e.currentTarget.style.color = 'var(--text-secondary)';
                         }}
                       >
-                        <ChevronRight size={14} style={{ color: active ? 'var(--accent-gold)' : 'var(--text-muted)' }} />
-                        <span>{language === 'ne' ? link.labelNe : link.labelEn}</span>
+                        {language === 'ne' ? link.labelNe : link.labelEn}
                       </Link>
-                      <div 
-                        style={{
-                          fontFamily: 'var(--font-sans)',
-                          fontSize: '0.72rem',
-                          color: 'var(--text-muted)',
-                          paddingLeft: '1.25rem',
-                          marginTop: '0.15rem'
-                        }}
-                      >
-                        {language === 'ne' ? link.descNe : link.descEn}
-                      </div>
                     </li>
                   );
                 })}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Download, Plus, Minus, Award, GraduationCap, Briefcase, ChevronRight, ArrowRight, HelpCircle } from 'lucide-react';
+import { Download, Plus, Minus, Award, GraduationCap, Briefcase, ChevronRight, ArrowRight } from 'lucide-react';
 import { person, CREDENTIALS_DATA, education, experience, leadership, SIX_QUESTIONS } from '../data/sourceFacts';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -35,55 +35,25 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
     >
       <div className="container">
         
-        {/* Chapter Metatag */}
+        {/* Section Header */}
         <div 
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
             borderBottom: '1px solid var(--border-light)',
             paddingBottom: '0.85rem',
             marginBottom: '2.5rem'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span 
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'var(--accent-gold)'
-              }}
-            >
-              {language === 'ne' ? 'प्रश्न ०१' : 'QUESTION 01'}
-            </span>
-            <span style={{ color: 'var(--border-dark)', fontSize: '0.78rem' }}>/</span>
-            <span 
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.78rem',
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--text-muted)'
-              }}
-            >
-              {language === 'ne' ? 'मेरो पृष्ठभूमि, शिक्षा र यात्रा' : 'WHAT SHAPED ME ?'}
-            </span>
-          </div>
-
           <span 
-            style={{ 
-              fontFamily: 'var(--font-sans)', 
-              fontSize: '0.75rem', 
-              color: 'var(--text-muted)',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase'
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--text-muted)'
             }}
           >
-            BAGMATI PROVINCE · NEPAL
+            {language === 'ne' ? 'मेरो पृष्ठभूमि, शिक्षा र यात्रा' : 'Background, Education & Journey'}
           </span>
         </div>
 
@@ -96,15 +66,15 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
             <p 
               style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: '0.82rem',
-                fontWeight: 700,
-                letterSpacing: '0.16em',
+                fontSize: '0.78rem',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: 'var(--accent-gold)',
+                color: 'var(--text-muted)',
                 marginBottom: '1rem'
               }}
             >
-              {language === 'ne' ? 'कार्यकारी पोर्टफोलियो तथा अभिलेख' : 'EXECUTIVE PORTFOLIO & ARCHIVE'}
+              {language === 'ne' ? 'पोर्टफोलियो' : 'PORTFOLIO'}
             </p>
 
             <h1 
@@ -139,35 +109,17 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
             <div 
               style={{
                 display: 'inline-block',
-                borderLeft: '3px solid var(--accent-gold)',
-                paddingLeft: '1.25rem',
+                borderLeft: '2px solid var(--text-primary)',
+                paddingLeft: '1rem',
                 marginBottom: '2rem',
-                backgroundColor: 'rgba(180, 130, 34, 0.04)',
-                paddingTop: '0.6rem',
-                paddingBottom: '0.6rem',
-                paddingRight: '1rem',
-                borderRadius: '0 4px 4px 0'
+                paddingTop: '0.4rem',
+                paddingBottom: '0.4rem',
               }}
             >
-              <span 
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.72rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: 'var(--accent-gold)',
-                  display: 'block',
-                  marginBottom: '0.2rem'
-                }}
-              >
-                {language === 'ne' ? 'मार्गदर्शन अवधारणा' : 'SIGNATURE CONCEPT'}
-              </span>
               <p 
                 style={{
                   fontFamily: 'var(--font-serif)',
                   fontSize: 'clamp(1.05rem, 1.35vw, 1.25rem)',
-                  fontWeight: 600,
                   fontStyle: 'italic',
                   color: 'var(--text-primary)',
                   margin: 0
@@ -298,71 +250,51 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
 
         </div>
 
-        {/* ========================================================================= */}
-        {/* SIX-QUESTION NARRATIVE ROADMAP (Developer Brief Section 4) */}
-        {/* ========================================================================= */}
+        {/* Six-Question Overview */}
         <div 
           style={{
             marginTop: '1rem',
             marginBottom: '4.5rem',
-            padding: '2.5rem 2rem',
-            backgroundColor: 'var(--bg-alt)',
-            border: '1px solid var(--border-light)',
-            borderRadius: '4px',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.02)'
+            padding: '2rem 0',
+            borderTop: '1px solid var(--border-light)',
+            borderBottom: '1px solid var(--border-light)'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.6rem' }}>
-            <HelpCircle size={18} style={{ color: 'var(--accent-gold)' }} />
-            <span 
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'var(--accent-gold)'
-              }}
-            >
-              {language === 'ne' ? '६-प्रश्नमा आधारित कथा रूपरेखा' : 'THE 6-QUESTION NARRATIVE ROADMAP'}
-            </span>
-          </div>
-
           <h2 
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.5rem, 2.5vw, 2.2rem)',
+              fontSize: 'clamp(1.4rem, 2.2vw, 1.8rem)',
               fontWeight: 700,
               lineHeight: 1.2,
               color: 'var(--text-primary)',
-              margin: '0 0 0.75rem 0'
+              margin: '0 0 0.5rem 0'
             }}
           >
             {language === 'ne' 
-              ? 'आगन्तुकलाई व्यक्तिको कथा र प्रणाली बुझ्न प्रेरित गर्ने ६ मूल प्रश्नहरू'
-              : 'Six Inquiries That Define the Trajectory from Curiosity to Commerce'}
+              ? 'मुख्य विषयवस्तुहरू'
+              : 'Core Inquiries'}
           </h2>
 
           <p 
             style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.94rem',
+              fontSize: '0.9rem',
               color: 'var(--text-secondary)',
               lineHeight: 1.6,
               maxWidth: '780px',
-              margin: '0 0 2rem 0'
+              margin: '0 0 1.75rem 0'
             }}
           >
             {language === 'ne'
-              ? 'परम्परागत बायोडाटाभन्दा पर, यो वेबसाइटले व्यक्तिको पृष्ठभूमि, दर्शन, समाधान, संस्थागत संरचना, ७-चरणीय मूल्य सिर्जना र सहकार्यलाई उत्तरका रूपमा प्रस्तुत गर्दछ। कुनै पनि प्रश्नमा क्लिक गरी सिधै जानुहोस्:'
-              : 'Instead of a conventional resume, this portfolio unfolds as six purposeful inquiries—guiding you through personal roots, educational philosophy, systemic problem solving, institutional creation, value translation, and future collaboration:'}
+              ? 'यस पोर्टफोलियोलाई ६ मूल विषयवस्तुमा विभाजन गरिएको छ:'
+              : 'Explore the key pillars of Kishan Bastola\'s work:'}
           </p>
 
           <div 
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '1.25rem'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1rem'
             }}
           >
             {SIX_QUESTIONS.map((q) => (
@@ -375,43 +307,24 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
                   justifyContent: 'space-between',
                   backgroundColor: '#FFFFFF',
                   border: '1px solid var(--border-light)',
-                  borderRadius: '4px',
-                  padding: '1.4rem 1.25rem',
+                  borderRadius: '2px',
+                  padding: '1.25rem',
                   textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                  boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
+                  transition: 'all 0.15s ease',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--accent-gold)';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 16px rgba(180, 130, 34, 0.08)';
+                  e.currentTarget.style.borderColor = 'var(--text-primary)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'var(--border-light)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 6px rgba(0,0,0,0.02)';
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.6rem' }}>
-                    <span 
-                      style={{
-                        fontFamily: 'var(--font-serif)',
-                        fontSize: '1.2rem',
-                        fontWeight: 700,
-                        color: 'var(--accent-gold)'
-                      }}
-                    >
-                      {q.number}
-                    </span>
-                    <ArrowRight size={15} style={{ color: 'var(--text-muted)' }} />
-                  </div>
-
                   <h3 
                     style={{
                       fontFamily: 'var(--font-serif)',
-                      fontSize: '1.08rem',
-                      fontWeight: 700,
+                      fontSize: '1rem',
+                      fontWeight: 600,
                       color: 'var(--text-primary)',
                       lineHeight: 1.3,
                       margin: '0 0 0.35rem 0'
@@ -424,19 +337,6 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
                     style={{
                       fontFamily: 'var(--font-sans)',
                       fontSize: '0.82rem',
-                      fontStyle: 'italic',
-                      color: 'var(--accent-blue)',
-                      margin: '0 0 0.65rem 0',
-                      lineHeight: 1.4
-                    }}
-                  >
-                    {language === 'ne' ? q.meaningNe : q.titleNe}
-                  </p>
-
-                  <p 
-                    style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '0.84rem',
                       color: 'var(--text-secondary)',
                       lineHeight: 1.5,
                       margin: 0
@@ -449,20 +349,17 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
                 <div 
                   style={{
                     marginTop: '1rem',
-                    paddingTop: '0.75rem',
+                    paddingTop: '0.6rem',
                     borderTop: '1px solid var(--border-light)',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
-                    fontSize: '0.75rem',
-                    fontWeight: 600,
-                    color: 'var(--accent-gold)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em'
+                    justifyContent: 'flex-end',
+                    fontSize: '0.78rem',
+                    fontWeight: 500,
+                    color: 'var(--text-primary)',
                   }}
                 >
-                  <span>{language === 'ne' ? 'अध्याय हेर्नुहोस्' : 'Explore Question'}</span>
-                  <span>→</span>
+                  <ArrowRight size={14} />
                 </div>
               </Link>
             ))}
@@ -470,7 +367,7 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
         </div>
 
         {/* ========================================================================= */}
-        {/* 02. WHAT DRIVES ME? (मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ?) */}
+        {/* WHAT DRIVES ME? */}
         {/* ========================================================================= */}
         <div id="what-drives-me" style={{ scrollMarginTop: '6rem', marginTop: '4.5rem', paddingTop: '3rem', borderTop: '1px solid var(--border-light)' }}>
           
@@ -498,7 +395,7 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
                   letterSpacing: '0.05em'
                 }}
               >
-                02. WHAT DRIVES ME?
+                WHAT DRIVES ME?
               </span>
               <span 
                 style={{
@@ -612,18 +509,6 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
                 }}
               >
                 <div>
-                  <span 
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: '1.3rem',
-                      fontWeight: 700,
-                      color: 'var(--accent-gold)',
-                      display: 'block',
-                      marginBottom: '0.5rem'
-                    }}
-                  >
-                    {pillar.num}
-                  </span>
                   <h3 
                     style={{
                       fontFamily: 'var(--font-serif)',
@@ -655,7 +540,7 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
         </div>
 
         {/* ========================================================================= */}
-        {/* 01. WHAT SHAPED ME? (मेरो पृष्ठभूमि, शिक्षा र यात्राले मलाई कसरी निर्माण गर्यो?) */}
+        {/* WHAT SHAPED ME? */}
         {/* ========================================================================= */}
         <div id="what-shaped-me" style={{ scrollMarginTop: '6rem', marginBottom: '4.5rem' }}>
           
@@ -683,7 +568,7 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
                   letterSpacing: '0.05em'
                 }}
               >
-                01. WHAT SHAPED ME?
+                WHAT SHAPED ME?
               </span>
               <span 
                 style={{
@@ -1015,7 +900,7 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
                 marginBottom: '0.35rem'
               }}
             >
-              {language === 'ne' ? 'अर्को मुख्य गन्तव्य · प्रश्न ०२' : 'NEXT PRIMARY DESTINATION · QUESTION 02'}
+              {language === 'ne' ? 'अर्को विषय' : 'NEXT'}
             </span>
             <h4 
               style={{
@@ -1027,8 +912,8 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
               }}
             >
               {language === 'ne'
-                ? '०२. मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ ?'
-                : '02. WHAT DRIVES ME ?'}
+                ? 'मलाई कुन उद्देश्य, विश्वास र दर्शनले अघि बढाउँछ ?'
+                : 'WHAT DRIVES ME ?'}
             </h4>
             <p 
               style={{
@@ -1067,7 +952,7 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
             >
-              <span>{language === 'ne' ? '०२. उद्देश्य र दर्शन हेर्नुहोस् →' : 'Explore What Drives Me →'}</span>
+              <span>{language === 'ne' ? 'उद्देश्य र दर्शन हेर्नुहोस् ' : 'Explore What Drives Me '}</span>
               <ChevronRight size={18} />
             </button>
           ) : (
@@ -1092,7 +977,7 @@ export const ChapterWhoAmI: React.FC<ChapterWhoAmIProps> = ({ onOpenCV, onNaviga
               onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
             >
-              <span>{language === 'ne' ? '०२. उद्देश्य र दर्शन हेर्नुहोस् →' : 'Explore What Drives Me →'}</span>
+              <span>{language === 'ne' ? 'उद्देश्य र दर्शन हेर्नुहोस् ' : 'Explore What Drives Me '}</span>
               <ChevronRight size={18} />
             </Link>
           )}

@@ -189,7 +189,7 @@ export const ChapterCollaborate: React.FC = () => {
     >
       <div className="container">
 
-        {/* Chapter Metatag */}
+        {/* Section Header */}
         <div 
           style={{
             display: 'flex',
@@ -201,19 +201,6 @@ export const ChapterCollaborate: React.FC = () => {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span 
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.78rem',
-                fontWeight: 700,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'var(--accent-gold)'
-              }}
-            >
-              {language === 'ne' ? 'प्रश्न ०६' : 'QUESTION 06'}
-            </span>
-            <span style={{ color: 'var(--border-dark)', fontSize: '0.78rem' }}>/</span>
             <span 
               style={{
                 fontFamily: 'var(--font-sans)',
@@ -272,7 +259,7 @@ export const ChapterCollaborate: React.FC = () => {
                   letterSpacing: '0.05em'
                 }}
               >
-                06. WHAT FUTURE AM I BUILDING?
+                WHAT FUTURE AM I BUILDING?
               </span>
               <span 
                 style={{
@@ -316,7 +303,7 @@ export const ChapterCollaborate: React.FC = () => {
               borderRadius: '2px'
             }}
           >
-            {language === 'ne' ? 'धारा ६: दीर्घकालीन दृष्टिकोण' : 'SECTION 6: LONG-TERM VISION'}
+            {language === 'ne' ? 'दीर्घकालीन दृष्टिकोण' : 'LONG-TERM VISION'}
           </span>
         </div>
 
@@ -1252,7 +1239,7 @@ export const ChapterCollaborate: React.FC = () => {
               }}
             >
               <ChevronLeft size={16} />
-              <span>{language === 'ne' ? '← ०५. मूल्य सिर्जना' : '← 05. How I Create Value'}</span>
+              <span>{language === 'ne' ? 'मूल्य सिर्जना' : 'How I Create Value'}</span>
             </Link>
 
             <Link
@@ -1281,7 +1268,7 @@ export const ChapterCollaborate: React.FC = () => {
                 e.currentTarget.style.borderColor = 'var(--border-light)';
               }}
             >
-              <span>{language === 'ne' ? 'सुरुवात: ०१. पृष्ठभूमि र यात्रा' : 'Return to Start: 01. What Shaped Me?'}</span>
+              <span>{language === 'ne' ? 'सुरुवात: पृष्ठभूमि र यात्रा' : 'Return to Start: What Shaped Me?'}</span>
               <ArrowRight size={16} />
             </Link>
           </div>
