@@ -1,1 +1,2 @@
-export * from './sourceFacts';
+export * from './schemaFacts';
+export * from './portfolioFacts';
