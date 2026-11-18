@@ -1381,7 +1381,7 @@ export const SELECTED_WORK: WorkEntry[] = [
       "Promoting mathematical research and problem-solving competitions"
     ],
     imagePlaceholderLabel: "ACADEMIC ARCHIVE: Mathematical Association of Nepal- Bagmati Provincial Conference",
-    customImageUrl: "/images/hero.png",
+    customImageUrl: "/images/MAN_logo.jpg",
     linkText: "Academic Network Details",
     linkUrl: "https://www.facebook.com/profile.php?id=61571369803423"
   },
