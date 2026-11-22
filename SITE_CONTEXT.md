@@ -56,7 +56,7 @@
 
 ### Contact Directory & Socials
 - **Office Location:** Hetauda Sub-Metropolitan City, Makwanpur, Bagmati Province, Nepal *(हेटौंडा उपमहानगरपालिका, मकवानपुर, नेपाल)*
-- **Email:** `contact@astronova.org.np` / `contact@kishanbastola.edu.np`
+- **Email:** `kishan.htdfren@gmail.com`
 - **Phone / WhatsApp:** `+977-9855068222` (`https://wa.me/9779855068222`)
 - **Facebook:** `https://www.facebook.com/astronovafoundation`
 - **LinkedIn:** `https://www.linkedin.com/in/kishan-bastola/`

@@ -73,7 +73,7 @@ describe('Data Integrity & Type Validation Smoke Tests', () => {
   });
 
   it('verifies verified contact details and support vision bank records', () => {
-    expect(contact.email).toBe('contact@astronovafoundation.com');
+    expect(contact.email).toBe('kishan.htdfren@gmail.com');
     expect(contact.phone).toBe('+977-9855030706');
     expect(SUPPORT_VISION_DATA.bankName).toBe('Rastriya Banijya Bank');
     expect(SUPPORT_VISION_DATA.accountHolder).toBe('ASTRONOVA FOUNDATION NEPAL');

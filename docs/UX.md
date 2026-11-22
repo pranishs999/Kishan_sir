@@ -186,10 +186,10 @@ Long-term vision for Nepal, future direction for HRIC and scientific ecosystem d
    5. *Young Scientist Sponsorship & Delegation Support*
 4. **Accessible Collaboration Inquiry Composer:**
    - Name, Email, Organization, Domain Selection, and Proposal Message.
-   - Generates a pre-formatted verified `mailto:` payload directly addressed to `contact@astronovafoundation.com`.
+   - Generates a pre-formatted verified `mailto:` payload directly addressed to `kishan.htdfren@gmail.com`.
    - Clear feedback stating that submissions trigger an official email client without third-party form trackers.
 5. **Verified Direct Contacts:**
-   - Email: `contact@astronovafoundation.com` (with one-click copy feedback)
+   - Email: `kishan.htdfren@gmail.com` (with one-click copy feedback)
    - Phone: `+977-9855030706` (with copy feedback)
    - Location: Hetauda Sub-Metropolitan City, Makwanpur, Bagmati Province, Nepal
    - Official Links: Astronova Foundation Portal, LinkedIn Profile, Mathematical Association of Nepal (MAN) Bagmati

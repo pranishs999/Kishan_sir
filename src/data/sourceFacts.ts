@@ -926,8 +926,7 @@ export const gallery: GalleryEntity[] = [
 // =====================================================
 
 export const contact: ContactEntity = {
-  email: "contact@astronovafoundation.com",
-  altEmail: "contact@kishanbastola.edu.np",
+  email: "kishan.htdfren@gmail.com",
   phone: "+977-9855030706",
   whatsapp: "9855030706",
   location: { en: "Bagmati Province, Nepal", ne: "बागमती प्रदेश, नेपाल" },
@@ -1638,8 +1637,7 @@ export const CONTACT_DATA = {
     "Country Leader & Delegation Head- TISF (Taiwan) & IOSTC (Indonesia)"
   ],
   credentialsLine: "18+ Years in Education | Master's Degree in Mathematics | Former School Principal & Campus Chief",
-  email: "kishan.htdfren@gmail.com ",
-  altEmail: "kishan.htdfren@gmail.com ",
+  email: "kishan.htdfren@gmail.com",
   phone: "+977-9855030706",
   whatsapp: "+9779855030706",
   location: "Hetauda Sub-Metropolitan City, Makwanpur, Bagmati Province, Nepal (हेटौंडा उपमहानगरपालिका, मकवानपुर, नेपाल)",
